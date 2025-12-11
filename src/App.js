@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header";
 import Home from "./components/Home";
@@ -8,8 +9,12 @@ import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import ScrollUp from "./components/ScrollUp";
+import Blog from "./components/Blog";
+import BlogPost from "./components/BlogPost";
 
 function App() {
+  const location = useLocation();
+
   useEffect(() => {
     if (typeof window.ScrollReveal === "function") {
       const sr = window.ScrollReveal({
@@ -26,17 +31,28 @@ function App() {
       );
       sr.reveal(`.services--card, .projects--card`, { interval: 100 });
     }
-  }, []);
+  }, [location.pathname]); // Re-run on route change
 
   return (
     <div>
       <Header />
       <main className="main">
-        <Home />
-        <About />
-        <Services />
-        <Projects />
-        <Contact />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <Home />
+                <About />
+                <Services />
+                <Projects />
+                <Contact />
+              </>
+            }
+          />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:id" element={<BlogPost />} />
+        </Routes>
       </main>
       <Footer />
       <ScrollUp />
