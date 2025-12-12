@@ -34,6 +34,37 @@ const blogContent = {
       </>
     ),
   },
+  'ai-agents-revolution': {
+    title: 'The Rise of AI Agents',
+    date: 'December 08, 2025',
+    content: (
+      <>
+        <p>We are witnessing a paradigm shift from passive AI tools to active AI agents capable of autonomous decision-making and task execution.</p>
+        <h3>What are AI Agents?</h3>
+        <p>Unlike traditional chatbots that wait for prompts, AI agents can perceive their environment, reason about goals, and take actions to achieve them. They can browse the web, write code, and interact with APIs independently.</p>
+        <h3>Impact on Development</h3>
+        <p>In software engineering, agents are evolving from simple code completion tools to "pair programmers" that can refactor entire codebases, write tests, and even deploy applications.</p>
+        <h3>The Future</h3>
+        <p>As these agents become more reliable, we will see a shift towards "agentic workflows" where humans orchestrate teams of specialized AI agents to solve complex problems faster than ever before.</p>
+      </>
+    ),
+  },
+  'code-speed-optimization': {
+    title: 'Mastering Code & Speed Optimization',
+    date: 'December 05, 2025',
+    content: (
+      <>
+        <p>In today's fast-paced digital world, milliseconds matter. Optimizing your code for speed and efficiency is no longer optional—it's a necessity.</p>
+        <h3>1. Algorithmic Efficiency</h3>
+        <p>The foundation of optimization lies in choosing the right algorithms. Moving from O(n²) to O(n log n) can drastically reduce processing time for large datasets.</p>
+        <h3>2. Minimizing Re-renders in React</h3>
+        <p>For frontend performance, preventing unnecessary re-renders is key. Utilize `React.memo`, `useMemo`, and `useCallback` to ensure components only update when absolutely necessary.</p>
+        <h3>3. Network Optimization</h3>
+        <p>Reduce payload sizes by compressing assets, using code splitting, and implementing lazy loading. Efficient caching strategies can also significantly improve perceived response speeds.</p>
+        <p>By focusing on these core areas, you can ensure your applications remain snappy and responsive, providing the best possible user experience.</p>
+      </>
+    ),
+  },
 };
 
 const BlogPost = () => {
