@@ -132,7 +132,7 @@ const Header = () => {
                     setToggle(false);
                 }}
               >
-                Blog
+                My Blogs
               </Link>
             </li>
             <li className="nav--item">
