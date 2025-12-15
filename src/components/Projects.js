@@ -103,6 +103,102 @@ const Projects = () => {
             </button>
           </div>
         </article>
+
+        <article className="projects--card">
+          <div className="projects--image">
+            <img
+              src="img/dp.png"
+              alt=""
+              className="projects--img"
+            />
+            <button type="button" className="projects--button buttons">
+              <i className="ri-arrow-right-up-fill" aria-hidden="true"></i>
+            </button>
+          </div>
+          <div className="projects--content">
+            <h3 className="projects--subtitle">AI & Machine Learning</h3>
+            <h2 className="projects--title">Skin Disease Detection AI</h2>
+            <p className="project--description">
+              Developed an advanced deep learning model achieving 98% accuracy
+              in detecting early-stage skin conditions. Built with Python,
+              TensorFlow, and OpenCV for real-time predictions.
+            </p>
+          </div>
+
+          <div className="projects--buttons">
+            <button type="button" className="projects-link">
+              <i className="ri-github-fill" aria-hidden="true"></i> View
+            </button>
+
+            <button type="button" className="projects-link">
+              <i className="ri-dribbble-fill" aria-hidden="true"></i> View
+            </button>
+          </div>
+        </article>
+
+        <article className="projects--card">
+          <div className="projects--image">
+            <img
+              src="img/random-lines.svg"
+              alt=""
+              className="projects--img"
+            />
+            <button type="button" className="projects--button buttons">
+              <i className="ri-arrow-right-up-fill" aria-hidden="true"></i>
+            </button>
+          </div>
+          <div className="projects--content">
+            <h3 className="projects--subtitle">Data Science</h3>
+            <h2 className="projects--title">Sales Forecasting Tool</h2>
+            <p className="project--description">
+              Created a predictive analytics platform for retail businesses
+              using time-series analysis and machine learning algorithms
+              for accurate sales forecasting and trend analysis.
+            </p>
+          </div>
+
+          <div className="projects--buttons">
+            <button type="button" className="projects-link">
+              <i className="ri-github-fill" aria-hidden="true"></i> View
+            </button>
+
+            <button type="button" className="projects-link">
+              <i className="ri-dribbble-fill" aria-hidden="true"></i> View
+            </button>
+          </div>
+        </article>
+
+        <article className="projects--card">
+          <div className="projects--image">
+            <img
+              src="img/curved-arrow.svg"
+              alt=""
+              className="projects--img"
+            />
+            <button type="button" className="projects--button buttons">
+              <i className="ri-arrow-right-up-fill" aria-hidden="true"></i>
+            </button>
+          </div>
+          <div className="projects--content">
+            <h3 className="projects--subtitle">Full-Stack Development</h3>
+            <h2 className="projects--title">Task Management App</h2>
+            <p className="project--description">
+              Built a comprehensive task management application with team
+              collaboration features, real-time updates, and drag-and-drop
+              interface using the MERN stack.
+            </p>
+          </div>
+
+          <div className="projects--buttons">
+            <button type="button" className="projects-link">
+              <i className="ri-github-fill" aria-hidden="true"></i> View
+            </button>
+
+            <button type="button" className="projects-link">
+              <i className="ri-dribbble-fill" aria-hidden="true"></i> View
+            </button>
+          </div>
+        </article>
       </div>
     </section>
   );
