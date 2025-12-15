@@ -105,23 +105,16 @@ const Header = () => {
               )}
             </li>
             <li className="nav--item">
-              {isHome ? (
-                <a
-                    href="#projects"
-                    className={`nav--link ${activeNav === "#projects" ? "active-link" : ""}`}
-                    onClick={() => handleNavClick("#projects")}
-                >
-                    Projects
-                </a>
-              ) : (
-                <Link
-                    to="/#projects"
-                    className={`nav--link ${activeNav === "#projects" ? "active-link" : ""}`}
-                    onClick={() => handleNavClick("#projects")}
-                >
-                    Projects
-                </Link>
-              )}
+              <Link
+                to="/projects"
+                className={`nav--link ${location.pathname.startsWith("/projects") ? "active-link" : ""}`}
+                onClick={() => {
+                    setActiveNav("");
+                    setToggle(false);
+                }}
+              >
+                Projects
+              </Link>
             </li>
             <li className="nav--item">
               <Link

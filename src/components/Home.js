@@ -1,4 +1,5 @@
 import React from "react";
+import { Instagram, Linkedin, Github, ArrowDown } from "lucide-react";
 
 const Home = () => {
   return (
@@ -29,7 +30,7 @@ const Home = () => {
               rel="noopener noreferrer"
               className="home--social-link"
             >
-              
+              <Instagram />
             </a>
             <a
               href="https://www.linkedin.com/in/wasif-rehman-32210a18b/"
@@ -37,7 +38,7 @@ const Home = () => {
               rel="noopener noreferrer"
               className="home--social-link"
             >
-              <i className="ri-linkedin-box-fill"></i>
+              <Linkedin />
             </a>
             <a
               href="https://github.com/wasifwasi"
@@ -45,7 +46,7 @@ const Home = () => {
               rel="noopener noreferrer"
               className="home--social-link"
             >
-              <i className="ri-github-fill"></i>
+              <Github />
             </a>
           </div>
         </div>
@@ -56,7 +57,7 @@ const Home = () => {
           </p>
           <a href="#about" className="home--scroll">
             <div className="home--scroll-box">
-              <i className="ri-arrow-down-s-fill"></i>
+              <i><ArrowDown /></i>
             </div>
 
             <span className="home--scroll-text">Scroll Down</span>

@@ -1,4 +1,6 @@
 import React from "react";
+import { Linkedin } from "lucide-react";
+import Skills3D from "./Skills3D";
 
 const About = () => {
   return (
@@ -8,33 +10,19 @@ const About = () => {
           <span>About Me.</span>
         </h2>
         <div className="about--profile">
-          <div className="about--image">
-            <img
-              src="img/has_-removebg-preview.png"
-              alt="Wasif Rehman"
-              className="about--img"
-            />
-            <div className="about--shadow"></div>
-
-            <div className="geometric-box"></div>
-            <img
-              src="img/random-lines.svg"
-              alt=""
-              className="about--line"
-            />
-            <div className="about--box"></div>
-          </div>
+           {/* Replaced static image with 3D Skills Cloud */}
+           <Skills3D />
         </div>
         <div className="about--info">
           <p className="about--description">
-            Passionate about creating <b>Web Pages</b> with
-            <b>HTML,CSS,JS</b>, I have years of experience and clients are
-            happy with the projects carried out.
+            I am a <b>Full-Stack Developer</b> and <b>AI Engineer</b> with a passion for
+            building intelligent web applications. Specialized in <b>Computer Vision</b>
+             (Image Detection) and migrating legacy sites to modern <b>React</b> architectures.
+            I create professional, high-performance digital solutions that drive results.
           </p>
           <ul className="about--list">
             <li className="about--item">
-              <b>My Skills Are:</b> HTML, CSS, JavaScript, React, Git &
-              GitHub, Bootstrap, React.
+              <b>Core Tech:</b> React JS, Next.js, Node.js, Python (AI/ML), Three.js, Tailwind CSS.
             </li>
           </ul>
           <div className="about--buttons">
@@ -48,7 +36,7 @@ const About = () => {
               rel="noopener noreferrer"
               className="button--ghost"
             >
-              <i className="ri-linkedin-box-fill" aria-hidden="true"></i>
+              <Linkedin aria-hidden="true"/>
             </a>
           </div>
         </div>
@@ -56,5 +44,6 @@ const About = () => {
     </section>
   );
 };
+
 
 export default About;

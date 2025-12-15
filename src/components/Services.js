@@ -1,8 +1,9 @@
 import React from "react";
+import { ScanEye, Code2, Palette } from "lucide-react";
 
 const Services = () => {
   return (
-    <section className="services section" id="services.">
+    <section className="services section" id="services">
       <h2 className="section--title-2">
         <span>Services.</span>
       </h2>
@@ -12,12 +13,13 @@ const Services = () => {
           <div className="services--content">
             <div className="services--icon">
               <div className="services--box"></div>
-              <i className="ri-layout-4-line"></i>
+              <ScanEye size={32} strokeWidth={1.5} />
             </div>
-            <h2 className="services--title">Web Design</h2>
+            <h2 className="services--title">AI & Computer Vision</h2>
             <p className="services--description">
-              Beautiful and elegant designs with interfaces that are
-              intuitive, efficient and pleasant to use for the user.
+              Expertise in building AI-powered image detection models,
+              specifically for <b>skin disease diagnosis</b> and <b>human eye detection</b>,
+              leveraging deep learning for accurate analysis.
             </p>
           </div>
         </article>
@@ -27,12 +29,13 @@ const Services = () => {
           <div className="services--content">
             <div className="services--icon">
               <div className="services--box"></div>
-              <i className="ri-code-box-line"></i>
+              <Code2 size={32} strokeWidth={1.5} />
             </div>
-            <h2 className="services--title">Development</h2>
+            <h2 className="services--title">Full-Stack & Migration</h2>
             <p className="services--description">
-              Custom web development tailored to your specifications,
-              designed to provide a flawless user experience.
+              Building dynamic <b>E-commerce platforms</b> and specializing in
+              <b> migrating static HTML/CSS/JS</b> sites to scalable, modern
+              React applications for better performance.
             </p>
           </div>
         </article>
@@ -42,12 +45,13 @@ const Services = () => {
           <div className="services--content">
             <div className="services--icon">
               <div className="services--box"></div>
-              <i className="ri-wordpress-line"></i>
+              <Palette size={32} strokeWidth={1.5} />
             </div>
-            <h2 className="services--title">WordPress</h2>
+            <h2 className="services--title">Web Design & UI/UX</h2>
             <p className="services--description">
-              Leverage our WordPress development expertise to bring your
-              website concepts to life.
+              Designing professional, interactive interfaces that <b>wow</b> users.
+              Focus on responsive layouts, aesthetic visuals, and seamless
+              user experiences.
             </p>
           </div>
         </article>

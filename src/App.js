@@ -45,13 +45,13 @@ function App() {
                 <Home />
                 <About />
                 <Services />
-                <Projects />
                 <Contact />
               </>
             }
           />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:id" element={<BlogPost />} />
+          <Route path="/projects" element={<Projects />} />
         </Routes>
       </main>
       <Footer />
