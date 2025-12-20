@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import { ArrowUp } from "lucide-react";
 const ScrollUp = () => {
   const [showScroll, setShowScroll] = useState(false);
 
@@ -33,7 +33,7 @@ const ScrollUp = () => {
         id="scroll-up"
         onClick={scrollToTop}
     >
-      <i className="ri-arrow-up-s-fill"></i>
+      <i><ArrowUp /></i>
     </a>
   );
 };
