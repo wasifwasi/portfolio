@@ -10,7 +10,7 @@ const Projects = () => {
         <article className="projects--card">
           <div className="projects--image">
             <img
-              src="img/hasnain-project.png"
+              src="img/project_img_1.png"
               alt=""
               className="projects--img"
             />
@@ -107,7 +107,7 @@ const Projects = () => {
         <article className="projects--card">
           <div className="projects--image">
             <img
-              src="img/dp.png"
+              src="img/skin.png"
               alt=""
               className="projects--img"
             />
@@ -139,7 +139,7 @@ const Projects = () => {
         <article className="projects--card">
           <div className="projects--image">
             <img
-              src="img/random-lines.svg"
+              src="img/vote.png"
               alt=""
               className="projects--img"
             />
@@ -148,12 +148,11 @@ const Projects = () => {
             </button>
           </div>
           <div className="projects--content">
-            <h3 className="projects--subtitle">Data Science</h3>
-            <h2 className="projects--title">Sales Forecasting Tool</h2>
+            <h3 className="projects--subtitle">Full Stack Development</h3>
+            <h2 className="projects--title">live Voteing System</h2>
             <p className="project--description">
-              Created a predictive analytics platform for retail businesses
-              using time-series analysis and machine learning algorithms
-              for accurate sales forecasting and trend analysis.
+              Created a live voteing system using React, Node.js, and MongoDB 
+              for accurate vote forecasting and analysis with real-time updates.
             </p>
           </div>
 
@@ -171,7 +170,7 @@ const Projects = () => {
         <article className="projects--card">
           <div className="projects--image">
             <img
-              src="img/curved-arrow.svg"
+              src="img/edu.png"
               alt=""
               className="projects--img"
             />
@@ -181,9 +180,9 @@ const Projects = () => {
           </div>
           <div className="projects--content">
             <h3 className="projects--subtitle">Full-Stack Development</h3>
-            <h2 className="projects--title">Task Management App</h2>
+            <h2 className="projects--title">Academic analytics System</h2>
             <p className="project--description">
-              Built a comprehensive task management application with team
+              Built a comprehensive academic analytics system with team
               collaboration features, real-time updates, and drag-and-drop
               interface using the MERN stack.
             </p>
