@@ -17,28 +17,6 @@ const projectsData = [
   },
   {
     id: 2,
-    image: "img/hasnain-project2.png",
-    alt: "Animated Login Form with Interactive Design",
-    subtitle: "Website",
-    title: "Animated Log In Form",
-    description:
-      "Developed an interactive and visually appealing login form by combining HTML, CSS, JavaScript, jQuery, and Bootstrap, demonstrating expertise in dynamic design and user interaction.",
-    github: "https://github.com/wasifwasi",
-    demo: "#",
-  },
-  {
-    id: 3,
-    image: "img/hasnian-project1.png",
-    alt: "Netflix Clone UI Recreation",
-    subtitle: "Website",
-    title: "Netflix Clone",
-    description:
-      "Successfully replicated the Netflix user interface, paying close attention to design and structure to deliver an immersive user experience using HTML and CSS.",
-    github: "https://github.com/wasifwasi",
-    demo: "#",
-  },
-  {
-    id: 4,
     image: "img/skin.png",
     alt: "Skin Disease Detection AI Application Interface",
     subtitle: "AI & Machine Learning",
@@ -49,7 +27,7 @@ const projectsData = [
     demo: "#",
   },
   {
-    id: 5,
+    id: 3,
     image: "img/vote.png",
     alt: "Live Voting System Dashboard",
     subtitle: "Full Stack Development",
@@ -60,7 +38,7 @@ const projectsData = [
     demo: "#",
   },
   {
-    id: 6,
+    id: 4,
     image: "img/edu.png",
     alt: "Academic Analytics System Interface",
     subtitle: "Full-Stack Development",
@@ -71,7 +49,7 @@ const projectsData = [
     demo: "#",
   },
   {
-    id: 7,
+    id: 5,
     image: "img/bible-trader.png",
     alt: "Bible Trader - Marketplace Platform",
     subtitle: "Full-Stack E-commerce",
