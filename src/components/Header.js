@@ -1,10 +1,30 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { Menu, X, Sun, Moon } from "lucide-react";
 
 const Header = () => {
   const [toggle, setToggle] = useState(false);
   const [activeNav, setActiveNav] = useState("#home");
+  const [darkTheme, setDarkTheme] = useState(() => {
+    const savedTheme = localStorage.getItem("theme");
+    return savedTheme === "dark";
+  });
   const location = useLocation();
+
+  // Apply theme on mount and changes
+  useEffect(() => {
+    if (darkTheme) {
+      document.body.classList.add("dark-theme");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.body.classList.remove("dark-theme");
+      localStorage.setItem("theme", "light");
+    }
+  }, [darkTheme]);
+
+  const toggleTheme = () => {
+    setDarkTheme((prev) => !prev);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -150,13 +170,16 @@ const Header = () => {
           </ul>
 
           <div className="nav--close" id="nav-close" onClick={() => setToggle(false)}>
-            <i className="ri-close-line"></i>
+            <X size={24} />
           </div>
         </div>
 
         <div className="nav--buttons">
+          <div className="nav--theme" onClick={toggleTheme}>
+            {darkTheme ? <Sun size={20} /> : <Moon size={20} />}
+          </div>
           <div className="nav--toggle" id="nav-toggle" onClick={() => setToggle(true)}>
-            <i className="ri-menu-4-line"></i>
+            <Menu size={20} />
           </div>
         </div>
       </nav>

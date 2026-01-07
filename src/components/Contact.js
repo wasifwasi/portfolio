@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
+import { Send, Instagram, Linkedin } from "lucide-react";
 
 const Contact = () => {
   const form = useRef();
@@ -117,7 +118,7 @@ const Contact = () => {
             <p className="contact--message" id="contact-message">{message}</p>
 
             <button type="submit" className="contact--button buttons">
-              <i className="ri-send-plane-line"></i> Send Message
+              <Send size={18} /> Send Message
             </button>
           </form>
         </div>
@@ -125,6 +126,7 @@ const Contact = () => {
           <img
             src="img/curved-arrow.svg"
             alt=""
+            aria-hidden="true"
             className="contact--social-arrow"
           />
 
@@ -146,7 +148,7 @@ const Contact = () => {
                 rel="noopener noreferrer"
                 className="contact--social-link"
               >
-                <i className="ri-instagram-fill" aria-hidden="true"></i>
+                <Instagram size={20} aria-hidden="true" />
               </a>
 
               <a
@@ -155,7 +157,7 @@ const Contact = () => {
                 rel="noopener noreferrer"
                 className="contact--social-link"
               >
-                <i className="ri-linkedin-fill" aria-hidden="true"></i>
+                <Linkedin size={20} aria-hidden="true" />
               </a>
             </div>
           </div>

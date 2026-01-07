@@ -1,8 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Blog.css'; // We'll create this for styling
+import { ArrowRight } from 'lucide-react';
+import './Blog.css';
 
 const blogs = [
+  {
+    id: 'ai-powered-car-maintenance',
+    title: 'Building an AI-Powered Car Maintenance App',
+    excerpt: 'How I integrated Google Gemini AI with React Native to create intelligent dashboard light scanning, tire inspection, and maintenance quote analysis.',
+    date: 'January 05, 2026',
+  },
+  {
+    id: 'building-marketplace-with-escrow',
+    title: 'Building a Secure Marketplace with Escrow Payments',
+    excerpt: 'A deep dive into implementing Stripe escrow payments, trade systems, and secure transactions for the Bible Trader marketplace platform.',
+    date: 'January 03, 2026',
+  },
   {
     id: 'next-19-new-features',
     title: 'Next 19 New Features',
@@ -44,7 +57,7 @@ const Blog = () => {
             <p className="blog--description">{blog.excerpt}</p>
             <span className="blog--date">{blog.date}</span>
             <span className="blog--button button button--flex">
-              Read More <i className="ri-arrow-right-line button--icon"></i>
+              Read More <ArrowRight size={18} className="button--icon" />
             </span>
           </Link>
         ))}

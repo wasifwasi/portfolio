@@ -74,10 +74,10 @@ function Cloud({ radius = 20 }) {
 
 const Skills3D = () => {
   return (
-    <div style={{ height: '400px', width: '100%' }}>
+    <div className="skills-3d-container">
       <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 35], fov: 90 }}>
         <fog attach="fog" args={['#202025', 0, 80]} />
-        <Cloud radius={18} />
+        <Cloud radius={16} />
         <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={0.5} />
       </Canvas>
     </div>

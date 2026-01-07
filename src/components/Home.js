@@ -8,17 +8,19 @@ const Home = () => {
         <h1 className="home--name">Wasif Rehman</h1>
         <div className="home--profile">
           <div className="home--image">
-            <img src="img/dp.png" alt="" className="home--img" />
+            <img src="img/dp.png" alt="Wasif Rehman - Full-Stack Developer" className="home--img" />
             <div className="home--shadow"></div>
 
             <img
               src="img/curved-arrow.svg"
               alt=""
+              aria-hidden="true"
               className="home--arrow"
             />
             <img
               src="img/random-lines.svg"
               alt=""
+              aria-hidden="true"
               className="home--line"
             />
             <div className="geometric-box"></div>

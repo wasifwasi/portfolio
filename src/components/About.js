@@ -1,5 +1,5 @@
 import React from "react";
-import { Linkedin } from "lucide-react";
+import { Linkedin, Send } from "lucide-react";
 import Skills3D from "./Skills3D";
 
 const About = () => {
@@ -27,7 +27,7 @@ const About = () => {
           </ul>
           <div className="about--buttons">
             <a href="#contact" className="buttons">
-              <i className="ri-send-plane-line" aria-hidden="true"></i>{" "}
+              <Send size={18} aria-hidden="true" />{" "}
               Contact Me
             </a>
             <a
