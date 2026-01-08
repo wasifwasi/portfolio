@@ -68,7 +68,7 @@ const Footer = () => {
                 <Instagram size={20} />
               </a>
               <a
-                href="mailto:contact@wasifrehman.com"
+                href="mailto:wasifrehman58@gmail.com"
                 className="footer--social-link"
                 aria-label="Email"
               >
