@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './Blog.css';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const blogs = [
   {
@@ -43,16 +47,87 @@ const blogs = [
 ];
 
 const Blog = () => {
+  const blogRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Animate header
+      gsap.fromTo(
+        '.blog--header',
+        { opacity: 0, y: -50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          scrollTrigger: {
+            trigger: '.blog--header',
+            start: 'top 85%',
+            toggleActions: 'play none none reverse',
+          },
+        }
+      );
+
+      // Animate blog cards with stagger
+      gsap.fromTo(
+        '.blog--card',
+        { opacity: 0, y: 60, scale: 0.95 },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.7,
+          stagger: 0.15,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: '.blog--container',
+            start: 'top 80%',
+            toggleActions: 'play none none reverse',
+          },
+        }
+      );
+
+      // Hover animation setup for blog cards
+      const cards = document.querySelectorAll('.blog--card');
+      cards.forEach((card) => {
+        card.addEventListener('mouseenter', () => {
+          gsap.to(card, {
+            y: -10,
+            scale: 1.02,
+            duration: 0.3,
+            ease: 'power2.out',
+          });
+        });
+
+        card.addEventListener('mouseleave', () => {
+          gsap.to(card, {
+            y: 0,
+            scale: 1,
+            duration: 0.3,
+            ease: 'power2.out',
+          });
+        });
+      });
+    }, blogRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="blog section" id="blog">
+    <section className="blog section" id="blog" ref={blogRef}>
       <div className="blog--header container">
         <h2 className="section--title">Latest Blogs</h2>
         <span className="section--subtitle">My thoughts & insights</span>
       </div>
 
       <div className="blog--container container grid">
-        {blogs.map((blog) => (
-          <Link to={`/blog/${blog.id}`} className="blog--card" key={blog.id}>
+        {blogs.map((blog, index) => (
+          <Link
+            to={`/blog/${blog.id}`}
+            className="blog--card"
+            key={blog.id}
+            data-aos="fade-up"
+            data-aos-delay={index * 100}
+          >
             <h3 className="blog--title">{blog.title}</h3>
             <p className="blog--description">{blog.excerpt}</p>
             <span className="blog--date">{blog.date}</span>

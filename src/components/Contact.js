@@ -1,10 +1,147 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import emailjs from "@emailjs/browser";
 import { Send, Instagram, Linkedin } from "lucide-react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Contact = () => {
   const form = useRef();
+  const contactRef = useRef(null);
   const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Animate title
+      gsap.fromTo(
+        ".contact .section--title-2",
+        { opacity: 0, x: -80 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 1,
+          scrollTrigger: {
+            trigger: ".contact .section--title-2",
+            start: "top 85%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+
+      // Animate contact data
+      gsap.fromTo(
+        ".contact--data",
+        { opacity: 0, x: -60 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.8,
+          scrollTrigger: {
+            trigger: ".contact--data",
+            start: "top 80%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+
+      // Animate contact form (mail section)
+      gsap.fromTo(
+        ".contact--mail",
+        { opacity: 0, x: 60, scale: 0.95 },
+        {
+          opacity: 1,
+          x: 0,
+          scale: 1,
+          duration: 1,
+          scrollTrigger: {
+            trigger: ".contact--mail",
+            start: "top 80%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+
+      // Animate form inputs with stagger
+      gsap.fromTo(
+        ".contact--box",
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          stagger: 0.1,
+          scrollTrigger: {
+            trigger: ".contact--form",
+            start: "top 80%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+
+      // Animate submit button
+      gsap.fromTo(
+        ".contact--button",
+        { opacity: 0, scale: 0.8 },
+        {
+          opacity: 1,
+          scale: 1,
+          duration: 0.6,
+          scrollTrigger: {
+            trigger: ".contact--button",
+            start: "top 90%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+
+      // Animate social section
+      gsap.fromTo(
+        ".contact--social",
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          scrollTrigger: {
+            trigger: ".contact--social",
+            start: "top 90%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+
+      // Animate social links with stagger
+      gsap.fromTo(
+        ".contact--social-link",
+        { opacity: 0, scale: 0.5, rotate: -15 },
+        {
+          opacity: 1,
+          scale: 1,
+          rotate: 0,
+          duration: 0.5,
+          stagger: 0.15,
+          scrollTrigger: {
+            trigger: ".contact--social-links",
+            start: "top 90%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+
+      // Floating animation for geometric box
+      gsap.to(".contact .geometric-box", {
+        y: -10,
+        rotation: 5,
+        duration: 2,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+      });
+    }, contactRef);
+
+    return () => ctx.revert();
+  }, []);
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -34,7 +171,7 @@ const Contact = () => {
   };
 
   return (
-    <section className="contact section" id="contact">
+    <section className="contact section" id="contact" ref={contactRef}>
       <div className="contact--container grid">
         <div className="contact--data">
           <h2 className="section--title-2">

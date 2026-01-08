@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Sun, Moon } from "lucide-react";
+import { gsap } from "gsap";
 
 const Header = () => {
   const [toggle, setToggle] = useState(false);
@@ -10,6 +11,41 @@ const Header = () => {
     return savedTheme === "dark";
   });
   const location = useLocation();
+  const headerRef = useRef(null);
+  const hasAnimated = useRef(false);
+
+  // Initial header animation on mount
+  useEffect(() => {
+    if (hasAnimated.current) return;
+    hasAnimated.current = true;
+
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+      // Animate logo
+      tl.fromTo(
+        ".nav--logo",
+        { opacity: 0, x: -50 },
+        { opacity: 1, x: 0, duration: 0.8 }
+      )
+        // Animate nav items with stagger
+        .fromTo(
+          ".nav--item",
+          { opacity: 0, y: -20 },
+          { opacity: 1, y: 0, duration: 0.5, stagger: 0.1 },
+          "-=0.4"
+        )
+        // Animate theme toggle
+        .fromTo(
+          ".nav--theme",
+          { opacity: 0, scale: 0.5, rotate: -180 },
+          { opacity: 1, scale: 1, rotate: 0, duration: 0.6 },
+          "-=0.3"
+        );
+    }, headerRef);
+
+    return () => ctx.revert();
+  }, []);
 
   // Apply theme on mount and changes
   useEffect(() => {
@@ -24,6 +60,12 @@ const Header = () => {
 
   const toggleTheme = () => {
     setDarkTheme((prev) => !prev);
+    // Add rotation animation on theme toggle
+    gsap.to(".nav--theme", {
+      rotate: "+=360",
+      duration: 0.5,
+      ease: "power2.out",
+    });
   };
 
   useEffect(() => {
@@ -75,7 +117,7 @@ const Header = () => {
   const isHome = location.pathname === "/";
 
   return (
-    <header className="header" id="header">
+    <header className="header" id="header" ref={headerRef}>
       <nav className="nav container">
         <Link to="/" className="nav--logo">
           <span className="nav--logo-circle">

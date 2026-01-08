@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import "./App.css";
 import Header from "./components/Header";
 import Home from "./components/Home";
@@ -16,22 +18,21 @@ function App() {
   const location = useLocation();
 
   useEffect(() => {
-    if (typeof window.ScrollReveal === "function") {
-      const sr = window.ScrollReveal({
-        origin: "top",
-        distance: "60px",
-        duration: 2500,
-        delay: 400,
-        // reset:true
-      });
-      sr.reveal(`.home--profile, .about--image, .contact--mail`, { origin: "right" });
-      sr.reveal(
-        `.home--name, .home--info,.about--container,.contact--data,.contact--social,.section--title-1,.about--info`,
-        { origin: "left" }
-      );
-      sr.reveal(`.services--card, .projects--card`, { interval: 100 });
-    }
-  }, [location.pathname]); // Re-run on route change
+    // Initialize AOS
+    AOS.init({
+      duration: 1000,
+      easing: "ease-out-cubic",
+      once: false,
+      mirror: true,
+      offset: 100,
+    });
+  }, []);
+
+  useEffect(() => {
+    // Refresh AOS on route change
+    AOS.refresh();
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   return (
     <div>

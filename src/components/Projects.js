@@ -1,5 +1,9 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Github, ExternalLink } from "lucide-react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 // Project data - Update the github and demo links with your actual URLs
 const projectsData = [
@@ -63,14 +67,88 @@ const projectsData = [
 ];
 
 const Projects = () => {
+  const projectsRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Animate section title
+      gsap.fromTo(
+        ".projects .section--title-1",
+        { opacity: 0, x: -80 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 1,
+          scrollTrigger: {
+            trigger: ".projects .section--title-1",
+            start: "top 85%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+
+      // Animate project cards with stagger
+      gsap.fromTo(
+        ".projects--card",
+        {
+          opacity: 0,
+          y: 80,
+          scale: 0.9,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.8,
+          stagger: 0.2,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".projects--container",
+            start: "top 80%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+
+      // Animate project images on hover effect setup
+      const cards = document.querySelectorAll(".projects--card");
+      cards.forEach((card) => {
+        const img = card.querySelector(".projects--img");
+
+        card.addEventListener("mouseenter", () => {
+          gsap.to(img, {
+            scale: 1.1,
+            duration: 0.4,
+            ease: "power2.out",
+          });
+        });
+
+        card.addEventListener("mouseleave", () => {
+          gsap.to(img, {
+            scale: 1,
+            duration: 0.4,
+            ease: "power2.out",
+          });
+        });
+      });
+    }, projectsRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="projects section" id="projects">
+    <section className="projects section" id="projects" ref={projectsRef}>
       <h2 className="section--title-1">
         <span>Projects.</span>
       </h2>
       <div className="projects--container container grid">
-        {projectsData.map((project) => (
-          <article className="projects--card" key={project.id}>
+        {projectsData.map((project, index) => (
+          <article
+            className="projects--card"
+            key={project.id}
+            data-aos="fade-up"
+            data-aos-delay={index * 100}
+          >
             <div className="projects--image">
               <img
                 src={project.image}

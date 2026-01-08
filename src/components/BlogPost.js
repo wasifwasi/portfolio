@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { gsap } from 'gsap';
 import './Blog.css';
 
 const blogContent = {
@@ -70,10 +71,62 @@ const blogContent = {
 const BlogPost = () => {
   const { id } = useParams();
   const post = blogContent[id];
+  const blogPostRef = useRef(null);
+
+  useEffect(() => {
+    if (!post) return;
+
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+      // Animate back link
+      tl.fromTo(
+        '.blog--back-link',
+        { opacity: 0, x: -30 },
+        { opacity: 1, x: 0, duration: 0.6 }
+      )
+        // Animate title
+        .fromTo(
+          '.blog-post .section--title',
+          { opacity: 0, y: 30 },
+          { opacity: 1, y: 0, duration: 0.8 },
+          '-=0.3'
+        )
+        // Animate subtitle
+        .fromTo(
+          '.blog-post .section--subtitle',
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.5 },
+          '-=0.4'
+        )
+        // Animate content
+        .fromTo(
+          '.blog--content',
+          { opacity: 0, y: 40 },
+          { opacity: 1, y: 0, duration: 0.8 },
+          '-=0.3'
+        );
+
+      // Animate paragraphs and headings with stagger
+      gsap.fromTo(
+        '.blog--content p, .blog--content h3',
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          stagger: 0.1,
+          delay: 0.5,
+        }
+      );
+    }, blogPostRef);
+
+    return () => ctx.revert();
+  }, [post]);
 
   if (!post) {
     return (
-      <div className="blog-post section container">
+      <div className="blog-post section container" data-aos="fade-up">
         <h2>Post not found</h2>
         <Link to="/blog" className="button button--flex">
           Back to Blog
@@ -83,7 +136,7 @@ const BlogPost = () => {
   }
 
   return (
-    <section className="blog-post section" id="blog-post">
+    <section className="blog-post section" id="blog-post" ref={blogPostRef}>
       <div className="container">
         <Link to="/blog" className="blog--back-link">
           <i className="ri-arrow-left-line"></i> Back to Blogs
