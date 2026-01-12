@@ -59,14 +59,8 @@
   margin: 0;
 }
 
-html,
-body {
-  height: 100%;
-}
-
 html {
   scroll-behavior: smooth;
-  background-color: hsl(0, 0%, 8%);
 }
 
 body {
@@ -75,21 +69,13 @@ body {
   background-color: var(--body-color);
   color: var(--text-color);
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
 }
 
-#root {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  min-height: 100vh;
-}
-
+#root,
 #root > div {
   display: flex;
   flex-direction: column;
-  flex: 1;
+  min-height: 100vh;
 }
 
 h1,
@@ -310,8 +296,6 @@ body.dark-theme {
   overflow: hidden;
   /* For animation ScrollReveal */
   flex: 1;
-  display: flex;
-  flex-direction: column;
 }
 
 /*=============== HEADER & NAV ===============*/
@@ -1212,20 +1196,6 @@ body.dark-theme {
   background: linear-gradient(135deg, var(--black-color) 0%, hsl(0, 0%, 8%) 100%);
   border-top: 1px solid hsla(0, 0%, 100%, 0.1);
   margin-top: auto;
-  position: relative;
-}
-
-/* Extend footer background to cover any gap below */
-.footer::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 100vh;
-  background: hsl(0, 0%, 8%);
-  z-index: -1;
-  transform: translateY(100%);
 }
 
 .footer--container {
