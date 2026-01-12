@@ -4,6 +4,50 @@ import { gsap } from 'gsap';
 import './Blog.css';
 
 const blogContent = {
+  'ai-powered-car-maintenance': {
+    title: 'Building an AI-Powered Car Maintenance App',
+    date: 'January 05, 2026',
+    content: (
+      <>
+        <p>Car maintenance can be confusing, especially when mysterious dashboard lights appear. I built an AI-powered mobile app using React Native and Google Gemini AI to help users understand and address their vehicle maintenance needs.</p>
+        <h3>The Problem</h3>
+        <p>Most car owners don't know what their dashboard warning lights mean, often ignoring critical issues or overpaying for simple fixes. Traditional solutions require manual lookups or expensive diagnostic tools.</p>
+        <h3>Integrating Google Gemini AI</h3>
+        <p>I chose Google Gemini for its powerful multimodal capabilities. The app uses the Gemini Vision API to analyze photos of dashboard lights and provide instant, accurate explanations of what each light means and recommended actions.</p>
+        <h3>Dashboard Light Scanner</h3>
+        <p>Users simply snap a photo of their dashboard. The AI identifies all visible warning lights, explains their meaning, urgency level, and provides step-by-step guidance on what to do next—whether it's a simple fix or requires professional attention.</p>
+        <h3>Tire Inspection Feature</h3>
+        <p>Beyond dashboard lights, the app can analyze tire conditions from photos. It detects wear patterns, tread depth issues, and potential alignment problems, helping users know when it's time for rotation or replacement.</p>
+        <h3>Maintenance Quote Analysis</h3>
+        <p>One of the most valuable features is the quote analyzer. Users can upload repair quotes from mechanics, and the AI evaluates whether the pricing is fair, identifies unnecessary services, and suggests questions to ask the mechanic.</p>
+        <h3>Technical Implementation</h3>
+        <p>The React Native app uses Expo for cross-platform deployment, with a Node.js backend handling Gemini API calls. I implemented image compression to optimize API costs and response times while maintaining accuracy.</p>
+        <p>This project demonstrates how AI can democratize expertise, giving everyday car owners the knowledge they need to make informed maintenance decisions.</p>
+      </>
+    ),
+  },
+  'building-marketplace-with-escrow': {
+    title: 'Building a Secure Marketplace with Escrow Payments',
+    date: 'January 03, 2026',
+    content: (
+      <>
+        <p>Building a peer-to-peer marketplace requires solving one fundamental problem: trust. For Bible Trader, a platform where users buy, sell, and trade religious books and collectibles, I implemented a robust escrow payment system using Stripe.</p>
+        <h3>Why Escrow Matters</h3>
+        <p>In traditional marketplace transactions, either the buyer or seller takes on risk. Escrow eliminates this by holding funds until both parties confirm the transaction is complete, protecting everyone involved.</p>
+        <h3>Stripe Connect Implementation</h3>
+        <p>I used Stripe Connect with the "destination charges" model. When a buyer purchases an item, funds are captured but held in a pending state. The seller only receives payment once the buyer confirms delivery and satisfaction.</p>
+        <h3>The Trade System</h3>
+        <p>Bible Trader allows direct trades between users—swapping items without money changing hands. I built a matching system where users can propose trades, and both parties must accept before items are marked for exchange.</p>
+        <h3>Dispute Resolution Flow</h3>
+        <p>Despite best efforts, disputes happen. I implemented a structured dispute process: either party can open a dispute within 48 hours of delivery, providing evidence through the app. Admins review cases and can release funds, issue refunds, or split the difference.</p>
+        <h3>Security Considerations</h3>
+        <p>Security was paramount. All sensitive operations use webhook verification to prevent spoofing. Payment intents are idempotent to prevent double-charges. User verification requires email confirmation and optional phone verification for high-value transactions.</p>
+        <h3>Handling Edge Cases</h3>
+        <p>Real-world scenarios required careful handling: what if a seller never ships? What if a buyer claims non-delivery falsely? I implemented automatic release timers, shipping integration for tracking verification, and a reputation system that influences dispute outcomes.</p>
+        <p>Building this marketplace taught me that the technical payment integration is just the beginning—the real challenge is designing systems that handle human behavior at scale.</p>
+      </>
+    ),
+  },
   'next-19-new-features': {
     title: 'Next 19 New Features',
     date: 'December 12, 2025',
