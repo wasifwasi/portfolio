@@ -59,6 +59,11 @@
   margin: 0;
 }
 
+html,
+body {
+  height: 100%;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -69,18 +74,21 @@ body {
   background-color: var(--body-color);
   color: var(--text-color);
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 #root {
   display: flex;
   flex-direction: column;
+  flex: 1;
   min-height: 100vh;
 }
 
 #root > div {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  flex: 1;
 }
 
 h1,
@@ -1202,6 +1210,7 @@ body.dark-theme {
 .footer {
   background: linear-gradient(135deg, var(--black-color) 0%, hsl(0, 0%, 8%) 100%);
   border-top: 1px solid hsla(0, 0%, 100%, 0.1);
+  margin-top: auto;
 }
 
 .footer--container {
