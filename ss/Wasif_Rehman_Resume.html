@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wasif Rehman - Resume</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+
+        .resume {
+            max-width: 850px;
+            margin: 20px auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 8px;
+            letter-spacing: 2px;
+        }
+
+        .header .title {
+            font-size: 1.2rem;
+            color: #ff6b35;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-size: 0.9rem;
+        }
+
+        .contact-info a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-info a:hover {
+            color: #ff6b35;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 0;
+        }
+
+        .left-column {
+            padding: 30px;
+        }
+
+        .right-column {
+            background: #f8f9fa;
+            padding: 30px;
+            border-left: 1px solid #eee;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #1a1a1a;
+            border-bottom: 3px solid #ff6b35;
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .summary {
+            color: #555;
+            font-size: 0.95rem;
+        }
+
+        .project {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .project:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+
+        .project-title {
+            font-weight: 600;
+            font-size: 1rem;
+            color: #1a1a1a;
+        }
+
+        .project-tech {
+            font-size: 0.75rem;
+            color: #ff6b35;
+            background: #fff5f2;
+            padding: 2px 8px;
+            border-radius: 3px;
+        }
+
+        .project-description {
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .service {
+            margin-bottom: 15px;
+        }
+
+        .service-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #1a1a1a;
+            margin-bottom: 5px;
+        }
+
+        .service-description {
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .skills-category {
+            margin-bottom: 15px;
+        }
+
+        .skills-category-title {
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .skill-tag {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            color: #555;
+        }
+
+        .highlight {
+            background: #ff6b35;
+            color: white;
+            border-color: #ff6b35;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            .resume {
+                box-shadow: none;
+                margin: 0;
+            }
+            .header {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            .right-column {
+                border-left: none;
+                border-top: 1px solid #eee;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="resume">
+        <header class="header">
+            <h1>WASIF REHMAN</h1>
+            <p class="title">Full-Stack Developer & AI Engineer</p>
+            <div class="contact-info">
+                <a href="mailto:wasifrehman58@gmail.com">wasifrehman58@gmail.com</a>
+                <span>|</span>
+                <a href="https://www.linkedin.com/in/wasif-rehman-32210a18b/" target="_blank">LinkedIn</a>
+                <span>|</span>
+                <a href="https://github.com/wasifwasi" target="_blank">GitHub</a>
+                <span>|</span>
+                <a href="https://wasidev.netlify.app" target="_blank">Portfolio</a>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <div class="left-column">
+                <section class="section">
+                    <h2 class="section-title">Professional Summary</h2>
+                    <p class="summary">
+                        Results-driven Full-Stack Developer and AI Engineer with expertise in building intelligent web applications.
+                        Specialized in Computer Vision and image detection systems, with a proven track record of migrating legacy
+                        sites to modern React architectures. Passionate about creating high-performance digital solutions that
+                        deliver measurable results and exceptional user experiences.
+                    </p>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Projects</h2>
+
+                    <div class="project">
+                        <div class="project-header">
+                            <span class="project-title">Prove It Auto - AI Car Maintenance App</span>
+                            <span class="project-tech">React Native / AI</span>
+                        </div>
+                        <p class="project-description">
+                            AI-powered mobile app featuring dashboard light scanning, tire inspection, and maintenance quote analysis.
+                            Integrated Google Gemini AI for intelligent diagnostics. Built with React Native, Node.js, and MongoDB.
+                        </p>
+                    </div>
+
+                    <div class="project">
+                        <div class="project-header">
+                            <span class="project-title">Skin Disease Detection AI</span>
+                            <span class="project-tech">Python / ML</span>
+                        </div>
+                        <p class="project-description">
+                            Advanced deep learning model achieving 98% accuracy in detecting early-stage skin conditions.
+                            Developed using Python, TensorFlow, and OpenCV for real-time image analysis and predictions.
+                        </p>
+                    </div>
+
+                    <div class="project">
+                        <div class="project-header">
+                            <span class="project-title">Bible Trader - Marketplace Platform</span>
+                            <span class="project-tech">Full-Stack</span>
+                        </div>
+                        <p class="project-description">
+                            E-commerce platform for buying, selling, and trading religious books. Features escrow payments,
+                            Stripe integration, and trade request system. Built with React, TypeScript, Tailwind CSS, and Supabase.
+                        </p>
+                    </div>
+
+                    <div class="project">
+                        <div class="project-header">
+                            <span class="project-title">Live Voting System</span>
+                            <span class="project-tech">MERN Stack</span>
+                        </div>
+                        <p class="project-description">
+                            Real-time voting platform with live updates and vote forecasting analytics.
+                            Built using React, Node.js, and MongoDB with WebSocket integration.
+                        </p>
+                    </div>
+
+                    <div class="project">
+                        <div class="project-header">
+                            <span class="project-title">Academic Analytics System</span>
+                            <span class="project-tech">MERN Stack</span>
+                        </div>
+                        <p class="project-description">
+                            Comprehensive analytics platform with team collaboration features, real-time updates,
+                            and intuitive drag-and-drop interface for academic performance tracking.
+                        </p>
+                    </div>
+                </section>
+            </div>
+
+            <div class="right-column">
+                <section class="section">
+                    <h2 class="section-title">Technical Skills</h2>
+
+                    <div class="skills-category">
+                        <p class="skills-category-title">Frontend</p>
+                        <div class="skills-list">
+                            <span class="skill-tag highlight">React.js</span>
+                            <span class="skill-tag highlight">Next.js</span>
+                            <span class="skill-tag">TypeScript</span>
+                            <span class="skill-tag">Tailwind CSS</span>
+                            <span class="skill-tag">Three.js</span>
+                            <span class="skill-tag">GSAP</span>
+                        </div>
+                    </div>
+
+                    <div class="skills-category">
+                        <p class="skills-category-title">Backend</p>
+                        <div class="skills-list">
+                            <span class="skill-tag highlight">Node.js</span>
+                            <span class="skill-tag">Express.js</span>
+                            <span class="skill-tag">MongoDB</span>
+                            <span class="skill-tag">Supabase</span>
+                            <span class="skill-tag">REST APIs</span>
+                        </div>
+                    </div>
+
+                    <div class="skills-category">
+                        <p class="skills-category-title">AI / Machine Learning</p>
+                        <div class="skills-list">
+                            <span class="skill-tag highlight">Python</span>
+                            <span class="skill-tag">TensorFlow</span>
+                            <span class="skill-tag">OpenCV</span>
+                            <span class="skill-tag">Google Gemini</span>
+                            <span class="skill-tag">Computer Vision</span>
+                        </div>
+                    </div>
+
+                    <div class="skills-category">
+                        <p class="skills-category-title">Mobile & Tools</p>
+                        <div class="skills-list">
+                            <span class="skill-tag">React Native</span>
+                            <span class="skill-tag">Git</span>
+                            <span class="skill-tag">Stripe</span>
+                            <span class="skill-tag">Figma</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Services</h2>
+
+                    <div class="service">
+                        <p class="service-title">AI & Computer Vision</p>
+                        <p class="service-description">
+                            Building AI-powered image detection models for medical diagnosis and analytics.
+                        </p>
+                    </div>
+
+                    <div class="service">
+                        <p class="service-title">Full-Stack Development</p>
+                        <p class="service-description">
+                            E-commerce platforms and legacy site migration to modern React architectures.
+                        </p>
+                    </div>
+
+                    <div class="service">
+                        <p class="service-title">Web Design & UI/UX</p>
+                        <p class="service-description">
+                            Professional, responsive interfaces with seamless user experiences.
+                        </p>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Languages</h2>
+                    <div class="skills-list">
+                        <span class="skill-tag">English</span>
+                        <span class="skill-tag">Urdu</span>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
