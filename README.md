@@ -1,29 +1,51 @@
 # Wasif's Portfolio
 
-A modern, responsive portfolio website showcasing my work as a Full-Stack Developer and AI Engineer.
+**v1.1** | A modern, interactive portfolio website showcasing my work as a Full-Stack Developer and AI Engineer. Built with React 19 and featuring 3D visualizations, professional animations, and a complete blog system.
 
 ## Tech Stack
 
-- **React 19** - Frontend framework
-- **React Router** - Client-side routing
-- **Three.js** - 3D graphics for interactive skills visualization
-- **GSAP** - Professional-grade animations and scroll triggers
-- **AOS** - Animate On Scroll library for reveal effects
-- **EmailJS** - Contact form integration
-- **Lucide React** - Icon library
+| Category | Technologies |
+|----------|-------------|
+| **Frontend** | React 19, React Router DOM 7, Vite 7 |
+| **3D Graphics** | Three.js, @react-three/fiber, @react-three/drei |
+| **Animations** | GSAP (with ScrollTrigger), AOS |
+| **Icons** | Lucide React |
+| **Email** | EmailJS |
+| **Testing** | React Testing Library, Jest DOM |
 
 ## Features
 
-- **Home** - Introduction and hero section with GSAP entrance animations
-- **About** - Bio with interactive 3D skills cloud and scroll-triggered reveals
-- **Services** - AI & Computer Vision, Full-Stack Development, Web Design & UI/UX with staggered card animations
-- **Projects** - Portfolio of work with hover effects and scroll animations
-- **Blog** - Technical articles and posts with smooth transitions
-- **Contact** - Email form integration with animated form fields
-- **Dark Mode** - Theme toggle with rotation animation
-- **Responsive Design** - Mobile-first approach
+### Core Sections
+- **Home** - Hero section with staggered GSAP entrance animations and floating profile image
+- **About** - Bio with interactive 3D skills cloud (15 technologies in golden spiral distribution)
+- **Services** - MERN Stack Development, AI & Automation, API & Backend Solutions
+- **Projects** - Five featured projects with hover effects and lazy-loaded images
+- **Blog** - Six technical articles with dynamic routing
+- **Contact** - EmailJS-powered contact form with validation
+
+### Technical Highlights
+- **3D Skills Cloud** - Interactive Three.js visualization with camera-facing text and orbit controls
+- **Dark Mode** - Full theme support with localStorage persistence and rotation animation
+- **Responsive Design** - Mobile-first approach with hamburger menu
 - **Smooth Animations** - GSAP timelines, ScrollTrigger, and AOS for professional motion effects
-- **Accessibility** - Respects prefers-reduced-motion for users who prefer minimal animations
+- **Accessibility** - ARIA labels, semantic HTML, prefers-reduced-motion support
+
+## Featured Projects
+
+1. **Prove It Auto** - AI-powered car maintenance app (React Native, Node.js, MongoDB, Google Gemini)
+2. **Skin Disease Detection AI** - Deep learning model with 98% accuracy (Python, TensorFlow, OpenCV)
+3. **Live Voting System** - Real-time voting platform (React, Node.js, MongoDB)
+4. **Academic Analytics System** - MERN stack with drag-and-drop functionality
+5. **Bible Trader** - Marketplace with Stripe escrow payments (TypeScript, Supabase)
+
+## Blog Posts
+
+- Building an AI-Powered Car Maintenance App
+- Building a Secure Marketplace with Escrow Payments
+- Next 19 New Features
+- Security Flaw: react2shell
+- The Rise of AI Agents
+- Mastering Code & Speed Optimization
 
 ## Getting Started
 
@@ -54,39 +76,46 @@ The app will open at [http://localhost:3000](http://localhost:3000).
 
 | Command | Description |
 |---------|-------------|
-| `npm start` | Start development server |
-| `npm run build` | Build for production |
+| `npm start` | Start Vite development server |
+| `npm run build` | Build for production (outputs to `build/`) |
+| `npm run preview` | Preview production build locally |
 | `npm test` | Run tests |
 
 ## Project Structure
 
 ```
-src/
-├── components/
-│   ├── Header.js      # Navigation
-│   ├── Home.js        # Hero section
-│   ├── About.js       # About section
-│   ├── Skills3D.js    # 3D skills visualization
-│   ├── Services.js    # Services offered
-│   ├── Projects.js    # Project showcase
-│   ├── Blog.js        # Blog listing
-│   ├── BlogPost.js    # Individual blog post
-│   ├── Contact.js     # Contact form
-│   ├── Footer.js      # Footer
-│   └── ScrollUp.js    # Scroll to top button
-├── App.js             # Main app component
-├── App.css            # Global styles
-└── index.js           # Entry point
+portfolio/
+├── src/
+│   ├── components/
+│   │   ├── Header.jsx      # Navigation with dark mode toggle
+│   │   ├── Home.jsx        # Hero section with GSAP animations
+│   │   ├── About.jsx       # About section with 3D skills cloud
+│   │   ├── Skills3D.jsx    # Interactive Three.js visualization
+│   │   ├── Services.jsx    # Services showcase
+│   │   ├── Projects.jsx    # Project portfolio
+│   │   ├── Blog.jsx        # Blog listing page
+│   │   ├── BlogPost.jsx    # Individual blog post view
+│   │   ├── Contact.jsx     # Contact form with EmailJS
+│   │   ├── Footer.jsx      # Footer with social links
+│   │   └── ScrollUp.jsx    # Scroll-to-top button
+│   ├── App.jsx             # Main app with routing
+│   ├── main.jsx            # React entry point
+│   └── index.css           # Global styles
+├── public/
+│   ├── img/                # Images and project screenshots
+│   └── js/                 # ScrollReveal script
+├── vite.config.js          # Vite configuration
+└── package.json            # Dependencies and scripts
 ```
 
 ## Environment Variables
 
-Create a `.env` file in the root directory for EmailJS configuration:
+For EmailJS configuration, create a `.env` file in the root directory:
 
 ```
-REACT_APP_EMAILJS_SERVICE_ID=your_service_id
-REACT_APP_EMAILJS_TEMPLATE_ID=your_template_id
-REACT_APP_EMAILJS_PUBLIC_KEY=your_public_key
+VITE_EMAILJS_SERVICE_ID=your_service_id
+VITE_EMAILJS_TEMPLATE_ID=your_template_id
+VITE_EMAILJS_PUBLIC_KEY=your_public_key
 ```
 
 ## Deployment
@@ -97,8 +126,10 @@ Build the production bundle:
 npm run build
 ```
 
-The `build` folder contains optimized static files ready for deployment.
+The `build` folder contains optimized static files ready for deployment to any static hosting service (Vercel, Netlify, GitHub Pages, etc.).
 
 ## Contact
 
-- LinkedIn: [Wasif Rehman](https://www.linkedin.com/in/wasif-rehman-32210a18b/)
+- **LinkedIn**: [Wasif Rehman](https://www.linkedin.com/in/wasif-rehman-32210a18b/)
+- **GitHub**: [wasif-rehman](https://github.com/wasif-rehman)
+- **Instagram**: [@wasif_ur_rehman](https://www.instagram.com/wasif_ur_rehman/)

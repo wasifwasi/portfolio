@@ -1,38 +1,38 @@
 import React from "react";
-import { ScanEye, Code2, Palette } from "lucide-react";
+import { Layers, Bot, Workflow } from "lucide-react";
 
 const Services = () => {
   const servicesData = [
     {
-      icon: ScanEye,
-      title: "AI & Computer Vision",
+      icon: Layers,
+      title: "MERN Stack Development",
       description: (
         <>
-          Expertise in building AI-powered image detection models,
-          specifically for <b>skin disease diagnosis</b> and <b>human eye detection</b>,
-          leveraging deep learning for accurate analysis.
+          Building scalable full-stack applications with <b>MongoDB, Express, React & Node.js</b>.
+          From RESTful APIs to dynamic dashboards, delivering end-to-end
+          solutions with clean architecture.
         </>
       ),
     },
     {
-      icon: Code2,
-      title: "Full-Stack & Migration",
+      icon: Bot,
+      title: "AI & Automation",
       description: (
         <>
-          Building dynamic <b>E-commerce platforms</b> and specializing in
-          <b> migrating static HTML/CSS/JS</b> sites to scalable, modern
-          React applications for better performance.
+          Integrating <b>AI-powered features</b> into web applications including
+          chatbots, image recognition, and smart automation. Expertise in
+          <b> TensorFlow, OpenCV</b>, and LLM APIs like Google Gemini.
         </>
       ),
     },
     {
-      icon: Palette,
-      title: "Web Design & UI/UX",
+      icon: Workflow,
+      title: "API & Backend Solutions",
       description: (
         <>
-          Designing professional, interactive interfaces that <b>wow</b> users.
-          Focus on responsive layouts, aesthetic visuals, and seamless
-          user experiences.
+          Designing robust <b>REST & GraphQL APIs</b> with authentication,
+          real-time features using <b>Socket.io</b>, and database optimization.
+          Building backends that scale efficiently.
         </>
       ),
     },

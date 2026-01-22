@@ -85,7 +85,7 @@ const Footer = () => {
         <div className="footer--divider"></div>
 
         {/* Bottom Section */}
-        <div className="footer--bottom" data-aos="fade-up" data-aos-delay="200">
+        <div className="footer--bottom" data-aos="fade-up" data-aos-delay="200" data-aos-offset="0" data-aos-anchor-placement="top-bottom">
           <span className="footer--copy">
             &copy; {currentYear} Wasif Rehman. All Rights Reserved.
           </span>
