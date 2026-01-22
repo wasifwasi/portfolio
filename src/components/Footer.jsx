@@ -90,7 +90,7 @@ const Footer = () => {
             &copy; {currentYear} Wasif Rehman. All Rights Reserved.
           </span>
           <span className="footer--made-with">
-            Made with <Heart size={14} className="footer--heart" /> using React
+            Made with <Heart size={14} className="footer--heart" />
           </span>
         </div>
       </div>
