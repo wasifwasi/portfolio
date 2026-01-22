@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import "./App.css";
 import Header from "./components/Header";
 import Home from "./components/Home";
 import About from "./components/About";

@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { gsap } from 'gsap';
-import './Blog.css';
 
 const blogContent = {
   'ai-powered-car-maintenance': {
