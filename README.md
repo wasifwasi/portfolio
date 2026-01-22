@@ -1,6 +1,6 @@
 # Wasif's Portfolio
 
-**v1.1** | A modern, interactive portfolio website showcasing my work as a Full-Stack Developer and AI Engineer. Built with React 19 and featuring 3D visualizations, professional animations, and a complete blog system.
+**v1.1** | A modern, interactive portfolio website showcasing my work as a Full-Stack MERN Developer. Built with React 19 and featuring 3D visualizations, professional animations, and a complete blog system.
 
 ## Tech Stack
 
@@ -18,7 +18,7 @@
 ### Core Sections
 - **Home** - Hero section with staggered GSAP entrance animations and floating profile image
 - **About** - Bio with interactive 3D skills cloud (15 technologies in golden spiral distribution)
-- **Services** - MERN Stack Development, AI & Automation, API & Backend Solutions
+- **Services** - MERN Stack Development, AI Integration & Automation, API & Backend Solutions
 - **Projects** - Five featured projects with hover effects and lazy-loaded images
 - **Blog** - Six technical articles with dynamic routing
 - **Contact** - EmailJS-powered contact form with validation
@@ -33,8 +33,8 @@
 ## Featured Projects
 
 1. **Prove It Auto** - AI-powered car maintenance app (React Native, Node.js, MongoDB, Google Gemini)
-2. **Skin Disease Detection AI** - Deep learning model with 98% accuracy (Python, TensorFlow, OpenCV)
-3. **Live Voting System** - Real-time voting platform (React, Node.js, MongoDB)
+2. **E-Commerce Platform** - Full-featured online store (MongoDB, Express, React, Node.js, Stripe)
+3. **Live Voting System** - Real-time voting platform (React, Node.js, MongoDB, Socket.io)
 4. **Academic Analytics System** - MERN stack with drag-and-drop functionality
 5. **Bible Trader** - Marketplace with Stripe escrow payments (TypeScript, Supabase)
 

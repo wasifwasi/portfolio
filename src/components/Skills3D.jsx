@@ -4,9 +4,9 @@ import { Text, OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
 
 const skills = [
-  'React', 'JavaScript', 'HTML5', 'CSS3', 'Next.js',
-  'Node.js', 'GitHub', 'Python', 'AI/ML', 'OpenCV',
-  'TensorFlow', 'UI/UX', 'Tailwind', 'Three.js', 'Redux'
+  'React', 'JavaScript', 'TypeScript', 'Node.js', 'Express',
+  'MongoDB', 'PostgreSQL', 'Next.js', 'GraphQL', 'REST API',
+  'Redux', 'Tailwind', 'Docker', 'AWS', 'Git'
 ];
 
 function Word({ children, ...props }) {

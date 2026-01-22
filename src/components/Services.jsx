@@ -16,12 +16,12 @@ const Services = () => {
     },
     {
       icon: Bot,
-      title: "AI & Automation",
+      title: "AI Integration & Automation",
       description: (
         <>
           Integrating <b>AI-powered features</b> into web applications including
-          chatbots, image recognition, and smart automation. Expertise in
-          <b> TensorFlow, OpenCV</b>, and LLM APIs like Google Gemini.
+          chatbots, smart assistants, and workflow automation using
+          <b> OpenAI, Google Gemini</b>, and other LLM APIs.
         </>
       ),
     },

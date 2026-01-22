@@ -852,6 +852,7 @@ body.dark-theme {
 .projects {
   background-color: var(--container-color);
   transition: background-color .4s;
+  min-height: calc(100vh - 200px);
 }
 
 .projects--container {
@@ -2358,10 +2359,18 @@ button,
 }
 
 /*=============== BLOG ===============*/
+/* Blog section fills remaining viewport height */
+.blog.section {
+    min-height: calc(100vh - 200px);
+    display: flex;
+    flex-direction: column;
+}
+
 /* Blog Container */
 .blog--container {
     gap: 2.5rem;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    flex: 1;
 }
 
 /* Professional Blog Header */
@@ -2458,6 +2467,10 @@ button,
 }
 
 /* Blog Post Detail */
+.blog-post.section {
+    min-height: calc(100vh - 200px);
+}
+
 .blog-post .container {
     max-width: 800px;
 }

@@ -21,12 +21,12 @@ const projectsData = [
   },
   {
     id: 2,
-    image: "img/skin.png",
-    alt: "Skin Disease Detection AI Application Interface",
-    subtitle: "AI & Machine Learning",
-    title: "Skin Disease Detection AI",
+    image: "img/ecommerce.png",
+    alt: "E-Commerce Platform Dashboard",
+    subtitle: "Full-Stack MERN",
+    title: "E-Commerce Platform",
     description:
-      "Developed an advanced deep learning model achieving 98% accuracy in detecting early-stage skin conditions. Built with Python, TensorFlow, and OpenCV for real-time predictions.",
+      "A complete e-commerce solution with product management, cart functionality, Stripe payments, user authentication, and admin dashboard. Built with MongoDB, Express, React, and Node.js.",
     github: "https://github.com/wasifwasi",
     demo: "#",
   },

@@ -111,14 +111,14 @@ const About = () => {
         </div>
         <div className="about--info">
           <p className="about--description">
-            I am a <b>Full-Stack Developer</b> and <b>AI Engineer</b> with a passion for
-            building intelligent web applications. Specialized in <b>Computer Vision</b>
-             (Image Detection) and migrating legacy sites to modern <b>React</b> architectures.
-            I create professional, high-performance digital solutions that drive results.
+            I am a <b>Full-Stack Developer</b> specializing in the <b>MERN Stack</b> with a passion for
+            building scalable, high-performance web applications. Expert in crafting modern
+            <b> React</b> frontends and robust <b>Node.js</b> backends with clean, maintainable code.
+            I deliver professional digital solutions that drive real business results.
           </p>
           <ul className="about--list">
             <li className="about--item">
-              <b>Core Tech:</b> React JS, Next.js, Node.js, Python (AI/ML), Three.js, Tailwind CSS.
+              <b>Core Tech:</b> MongoDB, Express, React, Node.js, TypeScript, Next.js, PostgreSQL.
             </li>
           </ul>
           <div className="about--buttons">
