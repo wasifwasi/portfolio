@@ -8,40 +8,53 @@ gsap.registerPlugin(ScrollTrigger);
 
 const blogs = [
   {
+    id: 'web-performance-optimization',
+    title: 'Web Performance Optimization: A Complete Guide',
+    excerpt: 'Master critical techniques like code splitting, lazy loading, image optimization, caching strategies, and Core Web Vitals to build blazing-fast web applications.',
+    date: 'January 20, 2026',
+    tags: ['Performance', 'Core Web Vitals', 'Caching', 'Lazy Loading', 'SEO'],
+  },
+  {
     id: 'ai-powered-car-maintenance',
     title: 'Building an AI-Powered Car Maintenance App',
     excerpt: 'How I integrated Google Gemini AI with React Native to create intelligent dashboard light scanning, tire inspection, and maintenance quote analysis.',
     date: 'January 05, 2026',
+    tags: ['React Native', 'Google Gemini', 'AI/ML', 'Mobile Dev', 'Node.js'],
   },
   {
     id: 'building-marketplace-with-escrow',
     title: 'Building a Secure Marketplace with Escrow Payments',
     excerpt: 'A deep dive into implementing Stripe escrow payments, trade systems, and secure transactions for the Bible Trader marketplace platform.',
     date: 'January 03, 2026',
+    tags: ['Stripe', 'Payments', 'Security', 'E-commerce', 'React'],
   },
   {
     id: 'next-19-new-features',
     title: 'Next 19 New Features',
     excerpt: 'Explore the groundbreaking features introduced in Next.js 19, from enhanced performance to new routing capabilities.',
     date: 'December 12, 2025',
+    tags: ['Next.js', 'React', 'TurboPack', 'Server Actions', 'Full-Stack'],
   },
   {
     id: 'security-flaw-react2shell',
     title: 'Security Flaw: react2shell',
     excerpt: 'A critical look at the recently discovered security vulnerability in the react2shell library and how to mitigate it.',
     date: 'December 10, 2025',
+    tags: ['Security', 'Vulnerability', 'React', 'Code Audit', 'Best Practices'],
   },
   {
     id: 'ai-agents-revolution',
     title: 'The Rise of AI Agents',
     excerpt: 'How autonomous AI agents are transforming software development, automation, and the future of work.',
     date: 'December 08, 2025',
+    tags: ['AI Agents', 'Automation', 'LLMs', 'Future Tech', 'DevTools'],
   },
   {
     id: 'code-speed-optimization',
     title: 'Mastering Code & Speed Optimization',
     excerpt: 'Essential techniques to slash latency, optimize algorithms, and boost your application\'s response speed.',
     date: 'December 05, 2025',
+    tags: ['Algorithms', 'React', 'Performance', 'Optimization', 'Best Practices'],
   },
 ];
 
@@ -127,6 +140,11 @@ const Blog = () => {
             data-aos="fade-up"
             data-aos-delay={index * 100}
           >
+            <div className="blog--tags">
+              {blog.tags.map((tag, tagIndex) => (
+                <span key={tagIndex} className="blog--tag">{tag}</span>
+              ))}
+            </div>
             <h3 className="blog--title">{blog.title}</h3>
             <p className="blog--description">{blog.excerpt}</p>
             <span className="blog--date">{blog.date}</span>

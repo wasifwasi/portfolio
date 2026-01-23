@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { gsap } from "gsap";
 
@@ -11,6 +11,7 @@ const Header = () => {
     return savedTheme === "dark";
   });
   const location = useLocation();
+  const navigate = useNavigate();
   const headerRef = useRef(null);
   const hasAnimated = useRef(false);
 
@@ -114,6 +115,23 @@ const Header = () => {
     setToggle(false);
   };
 
+  // Handle navigation to home page sections from other pages
+  const handleSectionNavigation = (hash) => {
+    setActiveNav(hash);
+    setToggle(false);
+
+    // Navigate to home page first, then scroll to section
+    navigate("/");
+
+    // Use setTimeout to allow the page to render before scrolling
+    setTimeout(() => {
+      const element = document.querySelector(hash);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 100);
+  };
+
   const isHome = location.pathname === "/";
 
   return (
@@ -157,13 +175,16 @@ const Header = () => {
                     About Me
                 </a>
               ) : (
-                <Link
-                    to="/#about" // Note: This might not scroll automatically without extra logic, but keeps URL correct
+                <a
+                    href="#about"
                     className={`nav--link ${activeNav === "#about" ? "active-link" : ""}`}
-                    onClick={() => handleNavClick("#about")}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleSectionNavigation("#about");
+                    }}
                 >
                     About Me
-                </Link>
+                </a>
               )}
             </li>
             <li className="nav--item">
@@ -200,13 +221,16 @@ const Header = () => {
                     Contact Me
                 </a>
               ) : (
-                <Link
-                    to="/#contact"
+                <a
+                    href="#contact"
                     className={`nav--link nav--link-buttonn ${activeNav === "#contact" ? "active-link" : ""}`}
-                    onClick={() => handleNavClick("#contact")}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleSectionNavigation("#contact");
+                    }}
                 >
                     Contact Me
-                </Link>
+                </a>
               )}
             </li>
           </ul>

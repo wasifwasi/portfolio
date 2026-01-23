@@ -1,8 +1,43 @@
 import React from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Instagram, Linkedin, Github, Mail, Heart } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isHome = location.pathname === "/";
+
+  const handleSectionClick = (e, hash) => {
+    e.preventDefault();
+    if (isHome) {
+      // On home page, just scroll to section
+      const element = document.querySelector(hash);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      // Navigate to home page first, then scroll
+      navigate("/");
+      setTimeout(() => {
+        const element = document.querySelector(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    }
+  };
+
+  const handlePageClick = (e, path) => {
+    e.preventDefault();
+    // Only navigate if not already on that page
+    if (!location.pathname.startsWith(path)) {
+      navigate(path);
+    } else {
+      // Already on the page, scroll to top
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
 
   return (
     <footer className="footer">
@@ -23,19 +58,19 @@ const Footer = () => {
             <h4 className="footer--title">Quick Links</h4>
             <ul className="footer--links">
               <li>
-                <a href="#home" className="footer--link">Home</a>
+                <a href="#home" className="footer--link" onClick={(e) => handleSectionClick(e, "#home")}>Home</a>
               </li>
               <li>
-                <a href="#about" className="footer--link">About Me</a>
+                <a href="#about" className="footer--link" onClick={(e) => handleSectionClick(e, "#about")}>About Me</a>
               </li>
               <li>
-                <a href="/projects" className="footer--link">Projects</a>
+                <a href="/projects" className="footer--link" onClick={(e) => handlePageClick(e, "/projects")}>Projects</a>
               </li>
               <li>
-                <a href="/blog" className="footer--link">My Blogs</a>
+                <a href="/blog" className="footer--link" onClick={(e) => handlePageClick(e, "/blog")}>My Blogs</a>
               </li>
               <li>
-                <a href="#contact" className="footer--link">Contact Me</a>
+                <a href="#contact" className="footer--link" onClick={(e) => handleSectionClick(e, "#contact")}>Contact Me</a>
               </li>
             </ul>
           </div>

@@ -3,6 +3,41 @@ import { useParams, Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 
 const blogContent = {
+  'web-performance-optimization': {
+    title: 'Web Performance Optimization: A Complete Guide',
+    date: 'January 20, 2026',
+    content: (
+      <>
+        <p>Website speed directly impacts user experience, SEO rankings, and conversion rates. Studies show that a 1-second delay in page load time can result in a 7% reduction in conversions. Here's a comprehensive guide to making your web applications lightning-fast.</p>
+
+        <h3>1. Code Splitting & Lazy Loading</h3>
+        <p>Instead of loading your entire application upfront, split your code into smaller chunks that load on demand. In React, use dynamic imports with React.lazy() and Suspense to defer loading of components until they're needed. This dramatically reduces initial bundle size and Time to Interactive (TTI).</p>
+
+        <h3>2. Image Optimization</h3>
+        <p>Images often account for 50%+ of page weight. Use modern formats like WebP or AVIF for 30-50% smaller file sizes. Implement responsive images with srcset to serve appropriately sized images based on device. Always specify width and height attributes to prevent layout shifts, and use lazy loading for below-the-fold images.</p>
+
+        <h3>3. Caching Strategies</h3>
+        <p>Implement a multi-layer caching approach: browser caching with proper Cache-Control headers, CDN caching for static assets, and service workers for offline-first experiences. Use cache busting with content hashes in filenames to ensure users get updated content while maximizing cache hits.</p>
+
+        <h3>4. Critical Rendering Path Optimization</h3>
+        <p>Inline critical CSS to eliminate render-blocking requests. Defer non-critical JavaScript with async or defer attributes. Preload essential resources like fonts and hero images using link rel="preload". Consider server-side rendering (SSR) or static site generation (SSG) for faster First Contentful Paint.</p>
+
+        <h3>5. Database & API Optimization</h3>
+        <p>On the backend, optimize database queries with proper indexing and avoid N+1 query problems. Implement pagination for large datasets. Use GraphQL or sparse fieldsets to fetch only required data. Add Redis or Memcached for frequently accessed data to reduce database load.</p>
+
+        <h3>6. Core Web Vitals</h3>
+        <p>Focus on Google's Core Web Vitals: Largest Contentful Paint (LCP) should be under 2.5s, First Input Delay (FID) under 100ms, and Cumulative Layout Shift (CLS) under 0.1. Use tools like Lighthouse, WebPageTest, and Chrome DevTools to measure and monitor these metrics continuously.</p>
+
+        <h3>7. Bundle Analysis & Tree Shaking</h3>
+        <p>Regularly analyze your bundle with tools like webpack-bundle-analyzer. Remove unused dependencies and leverage tree shaking to eliminate dead code. Consider lighter alternatives for heavy libraries—for example, date-fns instead of moment.js can save 90% bundle size.</p>
+
+        <h3>8. Network Optimization</h3>
+        <p>Enable HTTP/2 or HTTP/3 for multiplexed connections. Use Brotli compression for 15-20% better compression than gzip. Minimize DNS lookups by reducing third-party scripts. Implement resource hints like dns-prefetch and preconnect for external domains.</p>
+
+        <p>Performance optimization is an ongoing process, not a one-time task. Establish performance budgets, set up monitoring with tools like SpeedCurve or Calibre, and make performance a core part of your development workflow. Your users—and your business metrics—will thank you.</p>
+      </>
+    ),
+  },
   'ai-powered-car-maintenance': {
     title: 'Building an AI-Powered Car Maintenance App',
     date: 'January 05, 2026',

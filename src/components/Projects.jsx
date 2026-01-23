@@ -1,14 +1,103 @@
-import React, { useEffect, useRef } from "react";
-import { Github, ExternalLink } from "lucide-react";
+import React, { useEffect, useRef, useState, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
+import { Github, ExternalLink, ArrowRight } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
+// Optimized Image Component with lazy loading, placeholder, and smooth transitions
+const OptimizedImage = ({ src, alt, className, isLogo }) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [isInView, setIsInView] = useState(false);
+  const [hasError, setHasError] = useState(false);
+  const imgRef = useRef(null);
+  const containerRef = useRef(null);
+
+  // Intersection Observer for lazy loading
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.disconnect();
+        }
+      },
+      {
+        rootMargin: "100px",
+        threshold: 0.1,
+      }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  const handleLoad = useCallback(() => {
+    setIsLoaded(true);
+  }, []);
+
+  const handleError = useCallback(() => {
+    setHasError(true);
+    setIsLoaded(true);
+  }, []);
+
+  return (
+    <div ref={containerRef} className="optimized-image-container">
+      {/* Skeleton placeholder */}
+      <div
+        className={`image-skeleton ${isLoaded ? "hidden" : ""}`}
+        aria-hidden="true"
+      />
+
+      {/* Actual image */}
+      {isInView && !hasError && (
+        <img
+          ref={imgRef}
+          src={src}
+          alt={alt}
+          className={`${className} ${isLoaded ? "loaded" : "loading"}`}
+          onLoad={handleLoad}
+          onError={handleError}
+          decoding="async"
+          fetchpriority="low"
+        />
+      )}
+
+      {/* Error fallback */}
+      {hasError && (
+        <div className={`image-fallback ${isLogo ? "logo-fallback" : ""}`}>
+          <span>{alt.split(" - ")[0]}</span>
+        </div>
+      )}
+    </div>
+  );
+};
+
 // Project data - Update the github and demo links with your actual URLs
 const projectsData = [
   {
     id: 1,
+    slug: "erpnext-system",
+    image: "img/erpnext.png",
+    alt: "ERPNext - Enterprise Resource Planning System",
+    subtitle: "Full-Stack ERP Solution",
+    title: "ERPNext System",
+    description:
+      "Enterprise-grade ERP system with 35+ modules including accounting, inventory, HR/payroll, CRM, manufacturing, and sales. Built on Frappe Framework with Python, Vue.js, MariaDB, and Redis.",
+    github: "https://github.com/wasifwasi",
+    demo: "#",
+    isLogo: true,
+    role: "Full-Stack Developer",
+    company: "Frappe Technologies",
+    tags: ["Python", "Vue.js", "MariaDB", "Redis", "Frappe"],
+  },
+  {
+    id: 2,
+    slug: "prove-it-auto",
     image: "img/project_img_1.png",
     alt: "Prove It Auto - AI-Powered Car Maintenance App",
     subtitle: "Mobile App & AI",
@@ -18,9 +107,13 @@ const projectsData = [
     github: "https://github.com/wasifwasi",
     demo: "#",
     isLogo: true,
+    role: "Full-Stack Developer",
+    company: "AIDEVGEN",
+    tags: ["React Native", "Node.js", "MongoDB", "Gemini AI"],
   },
   {
-    id: 2,
+    id: 3,
+    slug: "ecommerce-platform",
     image: "img/ecommerce.png",
     alt: "E-Commerce Platform Dashboard",
     subtitle: "Full-Stack MERN",
@@ -29,9 +122,13 @@ const projectsData = [
       "A complete e-commerce solution with product management, cart functionality, Stripe payments, user authentication, and admin dashboard. Built with MongoDB, Express, React, and Node.js.",
     github: "https://github.com/wasifwasi",
     demo: "#",
+    role: "Full-Stack Developer",
+    company: "Personal Project",
+    tags: ["MongoDB", "Express", "React", "Node.js", "Stripe"],
   },
   {
-    id: 3,
+    id: 4,
+    slug: "live-voting-system",
     image: "img/vote.png",
     alt: "Live Voting System Dashboard",
     subtitle: "Full Stack Development",
@@ -40,9 +137,13 @@ const projectsData = [
       "Created a live voting system using React, Node.js, and MongoDB for accurate vote forecasting and analysis with real-time updates.",
     github: "https://github.com/wasifwasi",
     demo: "#",
+    role: "Full-Stack Developer",
+    company: "Freelance",
+    tags: ["React", "Node.js", "MongoDB", "Socket.io", "Real-time"],
   },
   {
-    id: 4,
+    id: 5,
+    slug: "academic-analytics",
     image: "img/edu.png",
     alt: "Academic Analytics System Interface",
     subtitle: "Full-Stack Development",
@@ -51,9 +152,13 @@ const projectsData = [
       "Built a comprehensive academic analytics system with team collaboration features, real-time updates, and drag-and-drop interface using the MERN stack.",
     github: "https://github.com/wasifwasi",
     demo: "#",
+    role: "Full-Stack Developer",
+    company: "Freelance",
+    tags: ["React", "Node.js", "MongoDB", "Express", "Analytics"],
   },
   {
-    id: 5,
+    id: 6,
+    slug: "bible-trader",
     image: "img/bible-trader.png",
     alt: "Bible Trader - Marketplace Platform",
     subtitle: "Full-Stack E-commerce",
@@ -63,11 +168,39 @@ const projectsData = [
     github: "https://github.com/wasifwasi",
     demo: "#",
     isLogo: true,
+    role: "Full-Stack Developer",
+    company: "AIDEVGEN",
+    tags: ["React", "TypeScript", "Tailwind", "Supabase", "Stripe"],
+  },
+  {
+    id: 7,
+    slug: "mmpb-recruitment",
+    image: "img/mmpb.png",
+    alt: "Master Man Power Bureau - Recruitment Platform",
+    subtitle: "Full-Stack Recruitment Platform",
+    title: "Master Man Power Bureau",
+    description:
+      "International recruitment agency platform for overseas employment. Features job listings, application tracking, CV management with AWS S3, admin dashboard, and email notifications. Built with Next.js, NestJS, PostgreSQL, and Prisma.",
+    github: "https://github.com/wasifwasi",
+    demo: "#",
+    isLogo: true,
+    role: "Full-Stack Developer",
+    company: "Freelance",
+    tags: ["Next.js", "NestJS", "PostgreSQL", "Prisma", "AWS S3"],
   },
 ];
 
 const Projects = () => {
   const projectsRef = useRef(null);
+  const navigate = useNavigate();
+
+  const handleCardClick = (slug) => {
+    navigate(`/projects/${slug}`);
+  };
+
+  const handleExternalClick = (e) => {
+    e.stopPropagation();
+  };
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -148,41 +281,78 @@ const Projects = () => {
             key={project.id}
             data-aos="fade-up"
             data-aos-delay={index * 100}
+            onClick={() => handleCardClick(project.slug)}
+            style={{ cursor: 'pointer' }}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                handleCardClick(project.slug);
+              }
+            }}
           >
-            <div className="projects--image">
-              <img
-                src={project.image}
-                alt={project.alt}
-                className={`projects--img ${project.isLogo ? 'logo-img' : ''}`}
-                loading="lazy"
-              />
+            <div className="projects--image-link">
+              <div className="projects--image">
+                <OptimizedImage
+                  src={project.image}
+                  alt={project.alt}
+                  className={`projects--img ${project.isLogo ? 'logo-img' : ''}`}
+                  isLogo={project.isLogo}
+                />
+                <div className="projects--image-overlay">
+                  <span>View Details</span>
+                </div>
+              </div>
             </div>
+
             <div className="projects--content">
-              <h3 className="projects--subtitle">{project.subtitle}</h3>
-              <h2 className="projects--title">{project.title}</h2>
+              <div className="projects--header">
+                <h3 className="projects--subtitle">{project.subtitle}</h3>
+                <div className="projects--meta">
+                  <span className="projects--role">{project.role}</span>
+                  <span className="projects--company">{project.company}</span>
+                </div>
+              </div>
+
+              <div className="projects--title-link">
+                <h2 className="projects--title">{project.title}</h2>
+              </div>
+
               <p className="project--description">{project.description}</p>
-            </div>
 
-            <div className="projects--buttons">
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="projects-link"
-              >
-                <Github size={16} aria-hidden="true" /> Code
-              </a>
+              <div className="projects--tags">
+                {project.tags.map((tag, tagIndex) => (
+                  <span key={tagIndex} className="projects--tag">{tag}</span>
+                ))}
+              </div>
 
-              {project.demo !== "#" && (
+              <div className="projects--buttons">
+                <span className="projects-link projects-link--details">
+                  <ArrowRight size={16} aria-hidden="true" /> Details
+                </span>
                 <a
-                  href={project.demo}
+                  href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="projects-link"
+                  onClick={handleExternalClick}
                 >
-                  <ExternalLink size={16} aria-hidden="true" /> Demo
+                  <Github size={16} aria-hidden="true" /> Code
                 </a>
-              )}
+
+                {project.demo !== "#" && (
+                  <a
+                    href={project.demo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="projects-link"
+                    onClick={handleExternalClick}
+                  >
+                    <ExternalLink size={16} aria-hidden="true" /> Demo
+                  </a>
+                )}
+              </div>
             </div>
           </article>
         ))}
