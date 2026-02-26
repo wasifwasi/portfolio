@@ -8,6 +8,13 @@ gsap.registerPlugin(ScrollTrigger);
 
 const blogs = [
   {
+    id: 'ai-automation-future',
+    title: 'AI Automation: Transforming the Future of Work',
+    excerpt: 'Explore how AI-driven automation is reshaping industries—from intelligent workflows and autonomous coding agents to no-code platforms and the evolving role of developers.',
+    date: 'February 27, 2026',
+    tags: ['AI', 'Automation', 'LLMs', 'Workflows', 'Future Tech'],
+  },
+  {
     id: 'web-performance-optimization',
     title: 'Web Performance Optimization: A Complete Guide',
     excerpt: 'Master critical techniques like code splitting, lazy loading, image optimization, caching strategies, and Core Web Vitals to build blazing-fast web applications.',
