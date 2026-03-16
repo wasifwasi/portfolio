@@ -14,6 +14,7 @@ import ScrollUp from "./components/ScrollUp";
 import Blog from "./components/Blog";
 import BlogPost from "./components/BlogPost";
 import Chatbot from "./components/Chatbot";
+import TracingBeam from "./components/TracingBeam";
 
 function App() {
   const location = useLocation();
@@ -39,23 +40,25 @@ function App() {
     <div>
       <Header />
       <main className="main">
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <Home />
-                <About />
-                <Services />
-                <Contact />
-              </>
-            }
-          />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/:id" element={<BlogPost />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/projects/:id" element={<ProjectDetail />} />
-        </Routes>
+        <TracingBeam>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <>
+                  <Home />
+                  <About />
+                  <Services />
+                  <Contact />
+                </>
+              }
+            />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:id" element={<BlogPost />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/projects/:id" element={<ProjectDetail />} />
+          </Routes>
+        </TracingBeam>
       </main>
       <Footer />
       <ScrollUp />

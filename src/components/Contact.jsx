@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import emailjs from "@emailjs/browser";
 import { Send, Instagram, Linkedin } from "lucide-react";
+import PulseBeams from "./PulseBeams";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -172,6 +173,7 @@ const Contact = () => {
 
   return (
     <section className="contact section" id="contact" ref={contactRef}>
+      <PulseBeams className="contact--pulse-beams" />
       <div className="contact--container grid">
         <div className="contact--data">
           <h2 className="section--title-2">

@@ -434,6 +434,59 @@ const projectContent = {
       </>
     ),
   },
+  'zareen-couture': {
+    title: 'Zareen Couture',
+    subtitle: 'Luxury Pakistani Bridal E-Commerce Platform',
+    date: 'February 2026 - March 2026',
+    role: 'Full-Stack Developer',
+    company: 'Freelance Project',
+    companyType: 'Freelance',
+    image: 'img/zareen.png',
+    isLogo: true,
+    techStack: ['Next.js 14', 'TypeScript', 'React 18', 'Tailwind CSS', 'Lucide React', 'CVA', 'PostCSS'],
+    overview: 'A premium e-commerce platform for a luxury Pakistani bridal couture brand, featuring a curated collection showcase, advanced product filtering, custom order system with image uploads, virtual consultation booking, and global shipping to 6+ countries.',
+    content: (
+      <>
+        <h3>Project Overview</h3>
+        <p>Zareen Couture is a high-end bridal fashion e-commerce platform designed for a Pakistani couture brand specializing in handcrafted, made-to-measure wedding outfits. The platform serves a global clientele, delivering custom bridal wear with emphasis on craftsmanship, personalization, and an elegant online shopping experience.</p>
+
+        <h3>My Role & Responsibilities</h3>
+        <p>As a <b>Freelance Full-Stack Developer</b>, I was responsible for:</p>
+        <ul>
+          <li>Architecting the full application using Next.js 14 App Router with TypeScript</li>
+          <li>Designing a luxury-grade UI with custom Tailwind CSS themes (gold, brown, cream palette)</li>
+          <li>Building the product collection page with advanced multi-criteria filtering</li>
+          <li>Developing the custom order form with drag-and-drop image upload</li>
+          <li>Creating the virtual consultation booking system with Calendly integration</li>
+          <li>Implementing responsive design for all devices with premium animations</li>
+          <li>Setting up the global shipping information system with country-specific rates</li>
+        </ul>
+
+        <h3>Key Features Developed</h3>
+        <ul>
+          <li><b>Collection Showcase:</b> Product grid with hover effects, image zoom animations, and detailed product cards featuring occasion tags, embroidery levels, and pricing</li>
+          <li><b>Advanced Filtering:</b> Real-time filtering by occasion (Nikkah, Barat, Walima, Mehndi), color, embroidery level, and price range slider ($1,000–$3,000)</li>
+          <li><b>Custom Order System:</b> Comprehensive form capturing personal details, wedding date, budget, occasion, vision description, and inspiration image uploads with drag-and-drop</li>
+          <li><b>Virtual Consultation:</b> 30-minute Zoom consultation booking with Calendly widget, flexible scheduling, and direct WhatsApp/email contact options</li>
+          <li><b>Global Shipping:</b> Detailed shipping table covering UK, US, Canada, Australia, UAE/GCC, and Europe with carrier info (DHL & FedEx), delivery timelines, and pricing</li>
+          <li><b>Premium Design:</b> Serif typography (Playfair Display) for headings, smooth transitions, backdrop blur effects, and a luxury gold-accent color scheme</li>
+        </ul>
+
+        <h3>Technical Architecture</h3>
+        <ul>
+          <li><b>Framework:</b> Next.js 14 with App Router and server components for optimal performance</li>
+          <li><b>Language:</b> TypeScript throughout for type safety and maintainability</li>
+          <li><b>Styling:</b> Tailwind CSS with custom theme configuration — gold (#B8860B), brown (#3D2B1F), cream (#F5F0E8) palette</li>
+          <li><b>Components:</b> Reusable component library with Class Variance Authority (CVA) for consistent variants</li>
+          <li><b>Data Layer:</b> Centralized product and shipping data with TypeScript interfaces</li>
+          <li><b>Optimization:</b> Image optimization, responsive breakpoints, and smooth scroll animations</li>
+        </ul>
+
+        <h3>Results & Impact</h3>
+        <p>Delivered a production-ready luxury e-commerce platform that elevated the brand's online presence. The elegant UI and seamless UX resulted in increased customer engagement, with the custom order system streamlining the bespoke bridal wear process and the consultation booking feature bridging the gap between online browsing and personalized service.</p>
+      </>
+    ),
+  },
 };
 
 const ProjectDetail = () => {
