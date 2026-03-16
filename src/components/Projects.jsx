@@ -97,6 +97,22 @@ const projectsData = [
   },
   {
     id: 2,
+    slug: "freenote-app",
+    image: "img/freenote.png",
+    alt: "FreeNote - AI-Powered Voice Note App",
+    subtitle: "Mobile App & AI",
+    title: "FreeNote",
+    description:
+      "AI-powered voice note-taking app with real-time transcription, smart summarization, interactive AI chat, PDF export, and cloud sync. Built with React Native, Expo, Firebase, and Groq AI.",
+    github: "https://github.com/wasifwasi",
+    demo: "#",
+    isLogo: true,
+    role: "Full-Stack Developer",
+    company: "AIDEVGEN",
+    tags: ["React Native", "Expo", "Firebase", "Groq AI", "TypeScript"],
+  },
+  {
+    id: 3,
     slug: "prove-it-auto",
     image: "img/project_img_1.png",
     alt: "Prove It Auto - AI-Powered Car Maintenance App",
@@ -112,7 +128,7 @@ const projectsData = [
     tags: ["React Native", "Node.js", "MongoDB", "Gemini AI"],
   },
   {
-    id: 3,
+    id: 4,
     slug: "ecommerce-platform",
     image: "img/ecommerce.png",
     alt: "E-Commerce Platform Dashboard",
@@ -127,7 +143,7 @@ const projectsData = [
     tags: ["MongoDB", "Express", "React", "Node.js", "Stripe"],
   },
   {
-    id: 4,
+    id: 5,
     slug: "live-voting-system",
     image: "img/vote.png",
     alt: "Live Voting System Dashboard",
@@ -142,7 +158,7 @@ const projectsData = [
     tags: ["React", "Node.js", "MongoDB", "Socket.io", "Real-time"],
   },
   {
-    id: 5,
+    id: 6,
     slug: "academic-analytics",
     image: "img/edu.png",
     alt: "Academic Analytics System Interface",
@@ -157,7 +173,7 @@ const projectsData = [
     tags: ["React", "Node.js", "MongoDB", "Express", "Analytics"],
   },
   {
-    id: 6,
+    id: 7,
     slug: "bible-trader",
     image: "img/bible-trader.png",
     alt: "Bible Trader - Marketplace Platform",
@@ -173,7 +189,7 @@ const projectsData = [
     tags: ["React", "TypeScript", "Tailwind", "Supabase", "Stripe"],
   },
   {
-    id: 7,
+    id: 8,
     slug: "mmpb-recruitment",
     image: "img/mmpb.png",
     alt: "Master Man Power Bureau - Recruitment Platform",

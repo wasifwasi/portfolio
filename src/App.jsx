@@ -13,6 +13,7 @@ import Footer from "./components/Footer";
 import ScrollUp from "./components/ScrollUp";
 import Blog from "./components/Blog";
 import BlogPost from "./components/BlogPost";
+import Chatbot from "./components/Chatbot";
 
 function App() {
   const location = useLocation();
@@ -58,6 +59,7 @@ function App() {
       </main>
       <Footer />
       <ScrollUp />
+      <Chatbot />
     </div>
   );
 }

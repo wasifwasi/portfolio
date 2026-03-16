@@ -58,6 +58,68 @@ const projectContent = {
       </>
     ),
   },
+  'freenote-app': {
+    title: 'FreeNote',
+    subtitle: 'AI-Powered Voice Note-Taking Application',
+    date: 'January 2026 - March 2026',
+    role: 'Full-Stack Developer',
+    company: 'AIDEVGEN',
+    companyType: 'AI & Software Development Company',
+    image: 'img/freenote.png',
+    isLogo: true,
+    techStack: ['React Native', 'Expo', 'TypeScript', 'Firebase', 'Firestore', 'Cloud Functions', 'Groq AI', 'OpenAI Whisper', 'Zustand', 'RevenueCat'],
+    overview: 'A cross-platform voice note-taking application that leverages AI to automatically transcribe, summarize, and enable interactive chat with audio recordings. Features cloud sync, PDF export, and a freemium subscription model.',
+    content: (
+      <>
+        <h3>Project Overview</h3>
+        <p>FreeNote transforms the way people capture and interact with voice notes. Instead of just recording audio, the app uses AI to instantly transcribe recordings, generate intelligent summaries, and allow users to chat with their notes—making every recording searchable, actionable, and shareable.</p>
+
+        <h3>My Role & Responsibilities</h3>
+        <p>As a <b>Full-Stack Developer at AIDEVGEN</b>, I was responsible for:</p>
+        <ul>
+          <li>Architecting the entire cross-platform mobile application with React Native and Expo</li>
+          <li>Integrating OpenAI Whisper API for accurate multi-language audio transcription</li>
+          <li>Implementing Groq AI (Llama models) for real-time summarization and interactive chat</li>
+          <li>Building Firebase Cloud Functions for serverless AI processing pipelines</li>
+          <li>Designing the Firestore database schema with real-time sync capabilities</li>
+          <li>Implementing RevenueCat for subscription management and monetization</li>
+          <li>Creating an intuitive onboarding flow with permission handling</li>
+        </ul>
+
+        <h3>Key Features Developed</h3>
+        <ul>
+          <li><b>Smart Recording:</b> High-quality audio capture with real-time duration tracking, category organization (Meeting, Lecture, Idea, Personal), and adjustable quality settings</li>
+          <li><b>AI Transcription:</b> Cloud-based transcription powered by OpenAI Whisper with multi-language support and automatic processing</li>
+          <li><b>AI Summarization:</b> Intelligent summaries using Groq API with custom prompts, key points extraction, and auto-generated titles</li>
+          <li><b>Interactive AI Chat:</b> Chat with recording content using suggested prompts for key points, action items, follow-up emails, and one-sentence summaries</li>
+          <li><b>PDF Export & Sharing:</b> Professional PDF generation with full formatting, native sharing, and clipboard support</li>
+          <li><b>Cloud Sync:</b> Firebase-powered cross-device sync with Google authentication for seamless access anywhere</li>
+          <li><b>Freemium Model:</b> RevenueCat subscription system with free tier limits (2hr sessions) and premium features (3hr sessions, unlimited cloud sync)</li>
+        </ul>
+
+        <h3>Technical Architecture</h3>
+        <ul>
+          <li><b>Frontend:</b> React Native 0.81 with Expo 54, TypeScript, and Zustand for state management</li>
+          <li><b>Backend:</b> Firebase Cloud Functions handling AI API calls, Firestore for real-time data, Cloud Storage for audio files</li>
+          <li><b>AI Pipeline:</b> OpenAI Whisper for speech-to-text, Groq API (Llama models) for summarization and chat</li>
+          <li><b>Authentication:</b> Google Sign-In with anonymous fallback, Firebase App Check for security</li>
+          <li><b>Monetization:</b> RevenueCat for cross-platform subscription management, Google Mobile Ads for reward-based access</li>
+          <li><b>Local Storage:</b> Expo SQLite for offline data persistence and expo-file-system for audio management</li>
+        </ul>
+
+        <h3>Technical Challenges Solved</h3>
+        <ul>
+          <li>Optimized audio file compression to reduce API costs while maintaining transcription accuracy</li>
+          <li>Built a robust offline-first architecture with automatic cloud sync when connectivity is restored</li>
+          <li>Implemented session-based recording limits with daily caps to manage API usage costs</li>
+          <li>Designed an editable summary system with user feedback (thumbs up/down) for continuous improvement</li>
+        </ul>
+
+        <h3>Results & Impact</h3>
+        <p>Successfully launched on iOS and Android with support for multiple languages. The app processes recordings in under 30 seconds, achieves 95%+ transcription accuracy, and has received positive user feedback for its seamless AI-powered workflow that turns voice recordings into actionable, searchable content.</p>
+      </>
+    ),
+  },
   'prove-it-auto': {
     title: 'Prove It Auto',
     subtitle: 'AI-Powered Car Maintenance Application',
