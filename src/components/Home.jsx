@@ -1,6 +1,8 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Instagram, Linkedin, Github, ArrowDown } from "lucide-react";
 import { gsap } from "gsap";
+import PulseBeams from "./PulseBeams";
+import PixelatedCanvas from "./PixelatedCanvas";
 
 const Home = () => {
   const homeRef = useRef(null);
@@ -74,11 +76,27 @@ const Home = () => {
 
   return (
     <section className="home section" id="home" ref={homeRef}>
+      <PulseBeams className="home--pulse-beams" />
       <div className="home--container container grid">
         <h1 className="home--name" ref={nameRef}>Wasif Rehman</h1>
         <div className="home--profile" ref={profileRef}>
           <div className="home--image">
-            <img src="img/dp.png" alt="Wasif Rehman - Full-Stack Developer" className="home--img" />
+            <PixelatedCanvas
+              src="img/dp.png"
+              width={350}
+              height={350}
+              cellSize={4}
+              dotScale={0.9}
+              shape="square"
+              backgroundColor="transparent"
+              interactive
+              distortionStrength={3}
+              distortionRadius={120}
+              distortionMode="repel"
+              followSpeed={0.15}
+              jitterStrength={0}
+              className="home--img home--pixelated"
+            />
             <div className="home--shadow"></div>
 
             <img

@@ -3,16 +3,35 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import CardBeam from './CardBeam';
+import PulseBeams from './PulseBeams';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const blogs = [
+  {
+    id: 'react-native-expo-2026',
+    title: 'React Native with Expo in 2026: The Ultimate Mobile Stack',
+    excerpt: 'How Expo 54 and React Native 0.81 are making cross-platform mobile development faster than ever—from EAS builds to native modules, and why it\'s the go-to stack for startups.',
+    date: 'March 15, 2026',
+    tags: ['React Native', 'Expo', 'Mobile Dev', 'TypeScript', 'Cross-Platform'],
+    icons: ['📱', '🚀', '⚛️', '🔷', '🏗️'],
+  },
+  {
+    id: 'openclaw-personal-ai-gateway',
+    title: 'OpenClaw: Your Personal AI Gateway to Messaging Apps',
+    excerpt: 'How OpenClaw bridges WhatsApp, Telegram, Discord, and iMessage with AI agents—giving you a self-hosted, privacy-first AI assistant that actually does things.',
+    date: 'March 10, 2026',
+    tags: ['OpenClaw', 'AI Agents', 'Self-Hosted', 'WhatsApp', 'Automation'],
+    icons: ['🦞', '💬', '🤖', '🔒', '⚡'],
+  },
   {
     id: 'ai-automation-future',
     title: 'AI Automation: Transforming the Future of Work',
     excerpt: 'Explore how AI-driven automation is reshaping industries—from intelligent workflows and autonomous coding agents to no-code platforms and the evolving role of developers.',
     date: 'February 27, 2026',
     tags: ['AI', 'Automation', 'LLMs', 'Workflows', 'Future Tech'],
+    icons: ['🤖', '⚡', '🧠', '🔗', '🚀'],
   },
   {
     id: 'web-performance-optimization',
@@ -20,6 +39,7 @@ const blogs = [
     excerpt: 'Master critical techniques like code splitting, lazy loading, image optimization, caching strategies, and Core Web Vitals to build blazing-fast web applications.',
     date: 'January 20, 2026',
     tags: ['Performance', 'Core Web Vitals', 'Caching', 'Lazy Loading', 'SEO'],
+    icons: ['⚡', '📊', '🗄️', '🖼️', '🔍'],
   },
   {
     id: 'ai-powered-car-maintenance',
@@ -27,6 +47,7 @@ const blogs = [
     excerpt: 'How I integrated Google Gemini AI with React Native to create intelligent dashboard light scanning, tire inspection, and maintenance quote analysis.',
     date: 'January 05, 2026',
     tags: ['React Native', 'Google Gemini', 'AI/ML', 'Mobile Dev', 'Node.js'],
+    icons: ['📱', '✨', '🚗', '🔧', '🟢'],
   },
   {
     id: 'building-marketplace-with-escrow',
@@ -34,6 +55,7 @@ const blogs = [
     excerpt: 'A deep dive into implementing Stripe escrow payments, trade systems, and secure transactions for the Bible Trader marketplace platform.',
     date: 'January 03, 2026',
     tags: ['Stripe', 'Payments', 'Security', 'E-commerce', 'React'],
+    icons: ['💳', '🔒', '🛒', '⚛️', '🔄'],
   },
   {
     id: 'next-19-new-features',
@@ -41,6 +63,7 @@ const blogs = [
     excerpt: 'Explore the groundbreaking features introduced in Next.js 19, from enhanced performance to new routing capabilities.',
     date: 'December 12, 2025',
     tags: ['Next.js', 'React', 'TurboPack', 'Server Actions', 'Full-Stack'],
+    icons: ['▲', '⚛️', '⚡', '🔄', '🏗️'],
   },
   {
     id: 'security-flaw-react2shell',
@@ -48,6 +71,7 @@ const blogs = [
     excerpt: 'A critical look at the recently discovered security vulnerability in the react2shell library and how to mitigate it.',
     date: 'December 10, 2025',
     tags: ['Security', 'Vulnerability', 'React', 'Code Audit', 'Best Practices'],
+    icons: ['🛡️', '🐛', '⚛️', '🔍', '⚠️'],
   },
   {
     id: 'ai-agents-revolution',
@@ -55,6 +79,7 @@ const blogs = [
     excerpt: 'How autonomous AI agents are transforming software development, automation, and the future of work.',
     date: 'December 08, 2025',
     tags: ['AI Agents', 'Automation', 'LLMs', 'Future Tech', 'DevTools'],
+    icons: ['🤖', '🧠', '🔗', '💡', '⚙️'],
   },
   {
     id: 'code-speed-optimization',
@@ -62,6 +87,50 @@ const blogs = [
     excerpt: 'Essential techniques to slash latency, optimize algorithms, and boost your application\'s response speed.',
     date: 'December 05, 2025',
     tags: ['Algorithms', 'React', 'Performance', 'Optimization', 'Best Practices'],
+    icons: ['⚡', '📈', '⚛️', '🧮', '🏎️'],
+  },
+];
+
+const stickyContent = [
+  {
+    title: "AI & Automation",
+    description:
+      "Exploring how AI agents, LLMs, and intelligent automation are revolutionizing software development — from autonomous coding to no-code workflows.",
+    content: (
+      <div className="sticky-scroll--icons">
+        <span>🤖</span><span>🧠</span><span>⚡</span><span>🔗</span>
+      </div>
+    ),
+  },
+  {
+    title: "Web Performance",
+    description:
+      "Deep dives into code splitting, lazy loading, caching strategies, Core Web Vitals, and everything needed to build blazing-fast web applications.",
+    content: (
+      <div className="sticky-scroll--icons">
+        <span>📊</span><span>⚡</span><span>🖼️</span><span>🔍</span>
+      </div>
+    ),
+  },
+  {
+    title: "Full-Stack Projects",
+    description:
+      "Building real-world applications with React, Node.js, Stripe payments, escrow systems, and marketplace architectures from concept to deployment.",
+    content: (
+      <div className="sticky-scroll--icons">
+        <span>💳</span><span>⚛️</span><span>🟢</span><span>🛒</span>
+      </div>
+    ),
+  },
+  {
+    title: "Security & Best Practices",
+    description:
+      "Analyzing vulnerabilities, code audit techniques, and implementing security-first development practices to build resilient applications.",
+    content: (
+      <div className="sticky-scroll--icons">
+        <span>🛡️</span><span>🔒</span><span>🐛</span><span>⚠️</span>
+      </div>
+    ),
   },
 ];
 
@@ -105,27 +174,7 @@ const Blog = () => {
         }
       );
 
-      // Hover animation setup for blog cards
-      const cards = document.querySelectorAll('.blog--card');
-      cards.forEach((card) => {
-        card.addEventListener('mouseenter', () => {
-          gsap.to(card, {
-            y: -10,
-            scale: 1.02,
-            duration: 0.3,
-            ease: 'power2.out',
-          });
-        });
-
-        card.addEventListener('mouseleave', () => {
-          gsap.to(card, {
-            y: 0,
-            scale: 1,
-            duration: 0.3,
-            ease: 'power2.out',
-          });
-        });
-      });
+      // Hover effects now handled by CSS meteors
     }, blogRef);
 
     return () => ctx.revert();
@@ -133,6 +182,7 @@ const Blog = () => {
 
   return (
     <section className="blog section" id="blog" ref={blogRef}>
+      <PulseBeams className="blog--pulse-beams" />
       <div className="blog--header container">
         <h2 className="section--title">Latest Blogs</h2>
         <span className="section--subtitle">My thoughts & insights</span>
@@ -147,6 +197,7 @@ const Blog = () => {
             data-aos="fade-up"
             data-aos-delay={index * 100}
           >
+            <CardBeam icons={blog.icons} />
             <div className="blog--tags">
               {blog.tags.map((tag, tagIndex) => (
                 <span key={tagIndex} className="blog--tag">{tag}</span>

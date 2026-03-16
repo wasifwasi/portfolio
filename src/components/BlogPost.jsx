@@ -3,6 +3,67 @@ import { useParams, Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 
 const blogContent = {
+  'react-native-expo-2026': {
+    title: 'React Native with Expo in 2026: The Ultimate Mobile Stack',
+    date: 'March 15, 2026',
+    content: (
+      <>
+        <p>React Native has come a long way, and with Expo 54 paired with React Native 0.81, 2026 is shaping up to be the best time ever to build cross-platform mobile apps. The developer experience is smoother, the ecosystem is mature, and the gap between native and cross-platform performance has virtually disappeared.</p>
+
+        <h3>Why Expo in 2026?</h3>
+        <p>Expo has evolved from a "quick prototyping tool" to a full production-grade platform. With EAS (Expo Application Services), you get cloud builds, OTA updates, and submission to app stores—all without touching Xcode or Android Studio. The new Expo Router brings file-based routing to mobile, mirroring the Next.js experience developers already love.</p>
+
+        <h3>React Native 0.81: What's New</h3>
+        <p>The latest React Native release brings significant improvements to the New Architecture with Fabric renderer and TurboModules now stable by default. JSI (JavaScript Interface) enables direct communication between JavaScript and native code without the bridge, resulting in dramatically faster performance for heavy operations.</p>
+
+        <h3>TypeScript-First Development</h3>
+        <p>TypeScript is no longer optional in the React Native ecosystem—it's the standard. Expo 54 ships with full TypeScript support out of the box, and the type definitions for React Native APIs are comprehensive. Combined with Zustand for state management and typed navigation, you get end-to-end type safety across your entire mobile app.</p>
+
+        <h3>Native Modules Made Easy</h3>
+        <p>The days of ejecting from Expo to use native modules are over. Expo Modules API lets you write native Swift/Kotlin code that integrates seamlessly with your JavaScript layer. Config plugins handle native configuration automatically, so you can use libraries like react-native-google-signin, expo-camera, and expo-av without manual linking.</p>
+
+        <h3>Real-World Performance</h3>
+        <p>In our FreeNote app built with this stack, we achieved sub-100ms screen transitions, smooth 60fps animations with Reanimated, and audio recording with real-time duration tracking—all sharing 95% of code between iOS and Android. The performance is indistinguishable from fully native apps.</p>
+
+        <h3>The Startup Stack</h3>
+        <p>For startups, the React Native + Expo combination is unbeatable. One team, one codebase, two platforms, plus web support via Expo Web. Pair it with Firebase or Supabase for backend, RevenueCat for subscriptions, and you have a complete production stack that can go from idea to App Store in weeks, not months.</p>
+
+        <p>If you're starting a mobile project in 2026, React Native with Expo isn't just a good choice—it's the obvious one.</p>
+      </>
+    ),
+  },
+  'openclaw-personal-ai-gateway': {
+    title: 'OpenClaw: Your Personal AI Gateway to Messaging Apps',
+    date: 'March 10, 2026',
+    content: (
+      <>
+        <p>Imagine having a personal AI assistant that lives inside your WhatsApp, Telegram, Discord, and iMessage—one that runs on your own hardware, keeps your data private, and can actually do things like clear your inbox, manage your calendar, and browse the web. That's OpenClaw, and it's changing how developers interact with AI.</p>
+
+        <h3>What Is OpenClaw?</h3>
+        <p>OpenClaw is an open-source, self-hosted AI gateway that bridges your messaging apps with powerful AI agents. Unlike cloud-hosted AI assistants, OpenClaw runs entirely on your machine as a single Gateway process. Your conversations, data, and API keys never leave your hardware. It's MIT licensed and takes about 5 minutes to set up.</p>
+
+        <h3>Multi-Channel Architecture</h3>
+        <p>The killer feature is multi-channel connectivity. One Gateway process simultaneously manages WhatsApp, Telegram, Discord, Slack, Signal, and iMessage. You configure each channel once, and your AI assistant becomes available across all your messaging platforms with persistent memory and context across conversations.</p>
+
+        <h3>Agent-Native Design</h3>
+        <p>OpenClaw isn't just a chatbot wrapper—it's built for agentic AI. It supports tool use, sessions, memory, and multi-agent routing with isolated workspaces. Your AI can browse the web, write and execute code, interact with APIs, manage files, and control your system. It works with Claude, GPT, and local models, giving you flexibility in choosing your AI backbone.</p>
+
+        <h3>Real-World Use Cases</h3>
+        <p>The possibilities are practical and powerful. Send a WhatsApp message like "check me in for my flight tomorrow" and OpenClaw handles it. Ask it to "summarize my unread emails" via Telegram and get a concise digest. Tell it to "create a PR for the bug fix on branch hotfix-auth" through Discord and it executes the git commands. With 50+ integrations including Spotify, Gmail, GitHub, and Obsidian, it's a true digital assistant.</p>
+
+        <h3>Setting It Up</h3>
+        <p>Installation is a one-liner: run the install script, then use the onboard wizard to configure authentication, gateway settings, and channels. The Web Control UI at localhost gives you a browser dashboard for chat management and session monitoring. For mobile access, iOS and Android companion apps are available with voice capabilities.</p>
+
+        <h3>Privacy-First Philosophy</h3>
+        <p>In an era where every AI service wants your data, OpenClaw takes the opposite approach. Everything runs locally—your conversations aren't training someone else's model. You bring your own API keys, choose your own models, and maintain full control. For developers handling sensitive code or business data, this is a game-changer.</p>
+
+        <h3>The Extensibility Factor</h3>
+        <p>OpenClaw's plugin system means the community can add new channels, tools, and capabilities. It can self-generate new skills based on your requests, and the growing ecosystem of community skills means functionality keeps expanding without core updates.</p>
+
+        <p>OpenClaw represents the future of personal AI—not a cloud service you subscribe to, but an open-source tool you own and control. For developers who want AI that actually does things while respecting privacy, it's worth the 5-minute setup.</p>
+      </>
+    ),
+  },
   'ai-automation-future': {
     title: 'AI Automation: Transforming the Future of Work',
     date: 'February 27, 2026',

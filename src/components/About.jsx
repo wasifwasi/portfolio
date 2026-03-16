@@ -2,7 +2,8 @@ import React, { useEffect, useRef } from "react";
 import { Linkedin, Send } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Skills3D from "./Skills3D";
+import SkillsGrid from "./SkillsGrid";
+import Cover from "./Cover";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -106,14 +107,13 @@ const About = () => {
           <span>About Me.</span>
         </h2>
         <div className="about--profile">
-           {/* Replaced static image with 3D Skills Cloud */}
-           <Skills3D />
+           <SkillsGrid />
         </div>
         <div className="about--info">
           <p className="about--description">
-            I am a <b>Full-Stack Developer</b> specializing in the <b>MERN Stack</b> with a passion for
+            I am a <Cover>Full-Stack Developer</Cover> specializing in the <Cover>MERN Stack</Cover> with a passion for
             building scalable, high-performance web applications. Expert in crafting modern
-            <b> React</b> frontends and robust <b>Node.js</b> backends with clean, maintainable code.
+            <Cover> React</Cover> frontends and robust <Cover>Node.js</Cover> backends with clean, maintainable code.
             I deliver professional digital solutions that drive real business results.
           </p>
           <ul className="about--list">

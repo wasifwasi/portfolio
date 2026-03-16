@@ -204,6 +204,22 @@ const projectsData = [
     company: "Freelance",
     tags: ["Next.js", "NestJS", "PostgreSQL", "Prisma", "AWS S3"],
   },
+  {
+    id: 9,
+    slug: "zareen-couture",
+    image: "img/zareen.png",
+    alt: "Zareen Couture - Luxury Bridal E-Commerce",
+    subtitle: "Full-Stack E-commerce",
+    title: "Zareen Couture",
+    description:
+      "Luxury Pakistani bridal couture e-commerce platform with advanced filtering, custom order system, virtual consultation booking, and global shipping. Built with Next.js, TypeScript, and Tailwind CSS.",
+    github: "https://github.com/wasifwasi",
+    demo: "#",
+    isLogo: true,
+    role: "Full-Stack Developer",
+    company: "Freelance",
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "React", "Lucide"],
+  },
 ];
 
 const Projects = () => {
@@ -259,27 +275,7 @@ const Projects = () => {
         }
       );
 
-      // Animate project images on hover effect setup
-      const cards = document.querySelectorAll(".projects--card");
-      cards.forEach((card) => {
-        const img = card.querySelector(".projects--img");
-
-        card.addEventListener("mouseenter", () => {
-          gsap.to(img, {
-            scale: 1.1,
-            duration: 0.4,
-            ease: "power2.out",
-          });
-        });
-
-        card.addEventListener("mouseleave", () => {
-          gsap.to(img, {
-            scale: 1,
-            duration: 0.4,
-            ease: "power2.out",
-          });
-        });
-      });
+      // Image hover is now handled by CSS border beam effect
     }, projectsRef);
 
     return () => ctx.revert();

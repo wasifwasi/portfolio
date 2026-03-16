@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { gsap } from "gsap";
+import { motion, AnimatePresence } from "framer-motion";
+import SparklesCore from "./SparklesCore";
 
 const Header = () => {
   const [toggle, setToggle] = useState(false);
@@ -10,6 +12,8 @@ const Header = () => {
     const savedTheme = localStorage.getItem("theme");
     return savedTheme === "dark";
   });
+  const [visible, setVisible] = useState(true);
+  const lastScrollY = useRef(0);
   const location = useLocation();
   const navigate = useNavigate();
   const headerRef = useRef(null);
@@ -71,15 +75,29 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
+      const currentScrollY = window.scrollY;
       const header = document.getElementById("header");
-      if (window.scrollY >= 50) {
-        header.classList.add("shadow-header");
+
+      // Shadow on scroll
+      if (currentScrollY >= 50) {
+        header?.classList.add("shadow-header");
       } else {
-        header.classList.remove("shadow-header");
+        header?.classList.remove("shadow-header");
       }
+
+      // Floating nav: show at top, show on scroll up, hide on scroll down
+      if (currentScrollY < 100) {
+        setVisible(true);
+      } else if (currentScrollY < lastScrollY.current) {
+        setVisible(true);
+      } else if (currentScrollY > lastScrollY.current + 10) {
+        setVisible(false);
+      }
+
+      lastScrollY.current = currentScrollY;
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -135,7 +153,26 @@ const Header = () => {
   const isHome = location.pathname === "/";
 
   return (
-    <header className="header" id="header" ref={headerRef}>
+    <AnimatePresence mode="wait">
+      <motion.header
+        className="header"
+        id="header"
+        ref={headerRef}
+        initial={{ y: -100, opacity: 0 }}
+        animate={{
+          y: visible ? 0 : -100,
+          opacity: visible ? 1 : 0,
+        }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+      >
+      <SparklesCore
+        className="header--sparkles"
+        particleColor="hsl(14, 98%, 50%)"
+        particleDensity={120}
+        minSize={0.4}
+        maxSize={2}
+        speed={3}
+      />
       <nav className="nav container">
         <Link to="/" className="nav--logo">
           <span className="nav--logo-circle">
@@ -249,7 +286,8 @@ const Header = () => {
           </div>
         </div>
       </nav>
-    </header>
+    </motion.header>
+    </AnimatePresence>
   );
 };
 
