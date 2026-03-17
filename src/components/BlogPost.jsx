@@ -1,11 +1,15 @@
 import React, { useEffect, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { gsap } from 'gsap';
+import SEO from './SEO';
 
 const blogContent = {
   'react-native-expo-2026': {
     title: 'React Native with Expo in 2026: The Ultimate Mobile Stack',
     date: 'March 15, 2026',
+    dateISO: '2026-03-15',
+    description: 'How Expo 54 and React Native 0.81 are making cross-platform mobile development faster than ever—from EAS builds to native modules.',
+    tags: ['React Native', 'Expo', 'Mobile Dev', 'TypeScript', 'Cross-Platform'],
     content: (
       <>
         <p>React Native has come a long way, and with Expo 54 paired with React Native 0.81, 2026 is shaping up to be the best time ever to build cross-platform mobile apps. The developer experience is smoother, the ecosystem is mature, and the gap between native and cross-platform performance has virtually disappeared.</p>
@@ -35,6 +39,9 @@ const blogContent = {
   'openclaw-personal-ai-gateway': {
     title: 'OpenClaw: Your Personal AI Gateway to Messaging Apps',
     date: 'March 10, 2026',
+    dateISO: '2026-03-10',
+    description: 'How OpenClaw bridges WhatsApp, Telegram, Discord, and iMessage with AI agents—giving you a self-hosted, privacy-first AI assistant.',
+    tags: ['OpenClaw', 'AI Agents', 'Self-Hosted', 'WhatsApp', 'Automation'],
     content: (
       <>
         <p>Imagine having a personal AI assistant that lives inside your WhatsApp, Telegram, Discord, and iMessage—one that runs on your own hardware, keeps your data private, and can actually do things like clear your inbox, manage your calendar, and browse the web. That's OpenClaw, and it's changing how developers interact with AI.</p>
@@ -67,6 +74,9 @@ const blogContent = {
   'ai-automation-future': {
     title: 'AI Automation: Transforming the Future of Work',
     date: 'February 27, 2026',
+    dateISO: '2026-02-27',
+    description: 'Explore how AI-driven automation is reshaping industries—from intelligent workflows and autonomous coding agents to no-code platforms.',
+    tags: ['AI', 'Automation', 'LLMs', 'Workflows', 'Future Tech'],
     content: (
       <>
         <p>Artificial intelligence is no longer just a buzzword—it's actively reshaping how we build software, run businesses, and think about productivity. From automated code reviews to entire workflows orchestrated by AI agents, automation powered by large language models is accelerating at an unprecedented pace.</p>
@@ -99,6 +109,9 @@ const blogContent = {
   'web-performance-optimization': {
     title: 'Web Performance Optimization: A Complete Guide',
     date: 'January 20, 2026',
+    dateISO: '2026-01-20',
+    description: 'Master code splitting, lazy loading, image optimization, caching strategies, and Core Web Vitals to build blazing-fast web applications.',
+    tags: ['Performance', 'Core Web Vitals', 'Caching', 'Lazy Loading', 'SEO'],
     content: (
       <>
         <p>Website speed directly impacts user experience, SEO rankings, and conversion rates. Studies show that a 1-second delay in page load time can result in a 7% reduction in conversions. Here's a comprehensive guide to making your web applications lightning-fast.</p>
@@ -134,6 +147,9 @@ const blogContent = {
   'ai-powered-car-maintenance': {
     title: 'Building an AI-Powered Car Maintenance App',
     date: 'January 05, 2026',
+    dateISO: '2026-01-05',
+    description: 'How I integrated Google Gemini AI with React Native to create intelligent dashboard light scanning, tire inspection, and maintenance quote analysis.',
+    tags: ['React Native', 'Google Gemini', 'AI/ML', 'Mobile Dev', 'Node.js'],
     content: (
       <>
         <p>Car maintenance can be confusing, especially when mysterious dashboard lights appear. I built an AI-powered mobile app using React Native and Google Gemini AI to help users understand and address their vehicle maintenance needs.</p>
@@ -155,6 +171,9 @@ const blogContent = {
   },
   'building-marketplace-with-escrow': {
     title: 'Building a Secure Marketplace with Escrow Payments',
+    dateISO: '2026-01-03',
+    description: 'A deep dive into implementing Stripe escrow payments, trade systems, and secure transactions for the Bible Trader marketplace.',
+    tags: ['Stripe', 'Payments', 'Security', 'E-commerce', 'React'],
     date: 'January 03, 2026',
     content: (
       <>
@@ -176,6 +195,9 @@ const blogContent = {
     ),
   },
   'next-19-new-features': {
+    dateISO: '2025-12-12',
+    description: 'Explore the groundbreaking features introduced in Next.js 19, from enhanced performance to new routing capabilities.',
+    tags: ['Next.js', 'React', 'TurboPack', 'Server Actions', 'Full-Stack'],
     title: 'Next 19 New Features',
     date: 'December 12, 2025',
     content: (
@@ -192,6 +214,9 @@ const blogContent = {
     ),
   },
   'security-flaw-react2shell': {
+    dateISO: '2025-12-10',
+    description: 'A critical look at the recently discovered security vulnerability in the react2shell library and how to mitigate it.',
+    tags: ['Security', 'Vulnerability', 'React', 'Code Audit', 'Best Practices'],
     title: 'Security Flaw: react2shell',
     date: 'December 10, 2025',
     content: (
@@ -209,6 +234,9 @@ const blogContent = {
   'ai-agents-revolution': {
     title: 'The Rise of AI Agents',
     date: 'December 08, 2025',
+    dateISO: '2025-12-08',
+    description: 'How autonomous AI agents are transforming software development, automation, and the future of work.',
+    tags: ['AI Agents', 'Automation', 'LLMs', 'Future Tech', 'DevTools'],
     content: (
       <>
         <p>We are witnessing a paradigm shift from passive AI tools to active AI agents capable of autonomous decision-making and task execution.</p>
@@ -222,6 +250,9 @@ const blogContent = {
     ),
   },
   'code-speed-optimization': {
+    dateISO: '2025-12-05',
+    description: 'Essential techniques to slash latency, optimize algorithms, and boost your application\'s response speed.',
+    tags: ['Algorithms', 'React', 'Performance', 'Optimization', 'Best Practices'],
     title: 'Mastering Code & Speed Optimization',
     date: 'December 05, 2025',
     content: (
@@ -308,6 +339,18 @@ const BlogPost = () => {
 
   return (
     <section className="blog-post section" id="blog-post" ref={blogPostRef}>
+      <SEO
+        title={`${post.title} | Wasif Rehman`}
+        description={post.description || post.title}
+        path={`/blog/${id}`}
+        type="article"
+        article={{
+          title: post.title,
+          excerpt: post.description,
+          datePublished: post.dateISO,
+          tags: post.tags,
+        }}
+      />
       <div className="container">
         <Link to="/blog" className="blog--back-link">
           <i className="ri-arrow-left-line"></i> Back to Blogs

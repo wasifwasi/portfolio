@@ -10,11 +10,12 @@ import Projects from "./components/Projects";
 import ProjectDetail from "./components/ProjectDetail";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
-
 import Blog from "./components/Blog";
 import BlogPost from "./components/BlogPost";
 import Chatbot from "./components/Chatbot";
 import TracingBeam from "./components/TracingBeam";
+import NotFound from "./components/NotFound";
+import SEO from "./components/SEO";
 
 function App() {
   const location = useLocation();
@@ -46,6 +47,7 @@ function App() {
               path="/"
               element={
                 <>
+                  <SEO />
                   <Home />
                   <About />
                   <Services />
@@ -57,11 +59,11 @@ function App() {
             <Route path="/blog/:id" element={<BlogPost />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/projects/:id" element={<ProjectDetail />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </TracingBeam>
       </main>
       <Footer />
-
       <Chatbot />
     </div>
   );

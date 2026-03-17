@@ -1,0 +1,180 @@
+# Wasif Rehman - Full Stack Developer
+
+> Wasif Rehman is a Full Stack Developer specializing in React, Next.js, Node.js, React Native, Python, and AI/ML integration. Building modern, scalable web and mobile applications.
+
+## About
+
+Wasif Rehman is a passionate Full Stack Developer with deep expertise in building enterprise-grade web applications, AI-powered mobile apps, and scalable backend systems. He specializes in the JavaScript/TypeScript ecosystem including React, Next.js, Node.js, and React Native, along with Python for AI/ML integration.
+
+### Technical Skills
+
+**Frontend:** React, Next.js, Vue.js, TypeScript, JavaScript, Tailwind CSS, GSAP, Framer Motion
+**Backend:** Node.js, Express, NestJS, Python, Frappe Framework, Firebase Cloud Functions
+**Database:** MongoDB, PostgreSQL, MariaDB, Redis, Supabase, Firebase Firestore
+**AI/ML:** Google Gemini AI, Groq AI, OpenAI GPT, LangChain, LLM Integration
+**Mobile:** React Native, Expo, iOS, Android, Cross-Platform Development
+**Cloud & DevOps:** AWS S3, Firebase, Vercel, Netlify, Docker, Git
+**Other:** Stripe Payments, Socket.io, REST APIs, GraphQL, WebSockets, EAS Build
+
+### Services
+
+- Full-Stack Web Development (React, Next.js, Node.js)
+- Mobile App Development (React Native, Expo)
+- AI/ML Integration (Chatbots, Voice AI, Computer Vision)
+- Enterprise System Development (ERP, CRM, Analytics)
+- E-Commerce Solutions (Stripe, Payment Gateways)
+- API Development & Integration
+
+---
+
+## Projects
+
+### ERPNext System
+**Role:** Full-Stack Developer | **Company:** Frappe Technologies
+**Tech Stack:** Python, Vue.js, MariaDB, Redis, Frappe Framework
+
+Enterprise-grade ERP system with 35+ modules including accounting, inventory management, HR/payroll, CRM, manufacturing, and sales. Built on the Frappe Framework, this system provides comprehensive business process automation with role-based access control, customizable workflows, and real-time analytics dashboards. Features multi-currency support, automated tax calculations, and integration with third-party services.
+
+---
+
+### FreeNote - AI-Powered Voice Note App
+**Role:** Full-Stack Developer | **Company:** AIDEVGEN
+**Tech Stack:** React Native, Expo, Firebase, Groq AI, TypeScript
+
+AI-powered voice note-taking app with real-time transcription, smart summarization, interactive AI chat, PDF export, and cloud sync. Users can record voice notes that are automatically transcribed and summarized using Groq AI with Llama models. Features include chat-with-your-notes functionality, suggested prompts, recording history with search, and secure Firebase authentication. The app supports both iOS and Android with 95% shared codebase.
+
+---
+
+### Prove It Auto - AI Car Maintenance
+**Role:** Full-Stack Developer | **Company:** AIDEVGEN
+**Tech Stack:** React Native, Node.js, MongoDB, Google Gemini AI
+
+AI-powered car maintenance app featuring dashboard light scanning, tire inspection, maintenance quote analysis, and service scheduling. Uses Google Gemini AI for computer vision to identify dashboard warning lights and assess tire condition from photos. Includes a service marketplace, maintenance history tracking, and push notifications for scheduled services.
+
+---
+
+### E-Commerce Platform
+**Role:** Full-Stack Developer | **Company:** Personal Project
+**Tech Stack:** MongoDB, Express, React, Node.js, Stripe
+
+Complete e-commerce solution with product management, shopping cart, Stripe payment processing, user authentication, order tracking, and admin dashboard. Features responsive design, product search and filtering, wishlist functionality, and automated email notifications for order updates.
+
+---
+
+### Live Voting System
+**Role:** Full-Stack Developer | **Company:** Freelance
+**Tech Stack:** React, Node.js, MongoDB, Socket.io
+
+Real-time live voting system with accurate vote forecasting and analysis. Built with WebSocket connections for instant vote updates, interactive charts and graphs for result visualization, role-based access for administrators and voters, and anti-fraud mechanisms to ensure voting integrity.
+
+---
+
+### Academic Analytics System
+**Role:** Full-Stack Developer | **Company:** Freelance
+**Tech Stack:** React, Node.js, MongoDB, Express
+
+Comprehensive academic analytics system with team collaboration features, real-time updates, and drag-and-drop interface. Provides student performance tracking, grade analytics, attendance monitoring, and exportable reports for educational institutions.
+
+---
+
+### Bible Trader
+**Role:** Full-Stack Developer | **Company:** AIDEVGEN
+**Tech Stack:** React, TypeScript, Tailwind CSS, Supabase, Stripe
+
+Marketplace platform for buying, selling, and trading Bibles. Features escrow payment system through Stripe, trade request management, user reputation system, daily verse display, and secure messaging between buyers and sellers. Built with real-time updates using Supabase subscriptions.
+
+---
+
+### Master Man Power Bureau
+**Role:** Full-Stack Developer | **Company:** Freelance
+**Tech Stack:** Next.js, NestJS, PostgreSQL, Prisma, AWS S3
+
+International recruitment agency platform for overseas employment. Features job listings management, application tracking system, CV storage and management with AWS S3, admin dashboard with analytics, automated email notifications, and multi-language support for international job seekers.
+
+---
+
+### Zareen Couture
+**Role:** Full-Stack Developer | **Company:** Freelance
+**Tech Stack:** Next.js, TypeScript, Tailwind CSS, React
+
+Luxury Pakistani bridal couture e-commerce platform with advanced product filtering, custom order system, virtual consultation booking, and global shipping calculator. Features high-resolution image galleries, size guide, fabric customization options, and WhatsApp integration for customer inquiries.
+
+---
+
+## Blog Posts
+
+### React Native with Expo in 2026: The Ultimate Mobile Stack
+**Published:** March 15, 2026 | **Tags:** React Native, Expo, Mobile Dev, TypeScript, Cross-Platform
+
+React Native has come a long way, and with Expo 54 paired with React Native 0.81, 2026 is shaping up to be the best time ever to build cross-platform mobile apps. The developer experience is smoother, the ecosystem is mature, and the gap between native and cross-platform performance has virtually disappeared. Expo has evolved from a quick prototyping tool to a full production-grade platform with EAS builds, OTA updates, and app store submission. The new Expo Router brings file-based routing to mobile, and TypeScript is now the standard. Native Modules are easier than ever with Config Plugins.
+
+---
+
+### OpenClaw: Your Personal AI Gateway to Messaging Apps
+**Published:** March 10, 2026 | **Tags:** OpenClaw, AI Agents, Self-Hosted, WhatsApp, Automation
+
+OpenClaw is an open-source, self-hosted AI gateway that bridges your messaging apps with powerful AI agents. It runs entirely on your machine, keeping your data private. One Gateway process simultaneously manages WhatsApp, Telegram, Discord, Slack, Signal, and iMessage. It supports tool use, sessions, memory, and multi-agent routing. With 50+ integrations including Spotify, Gmail, GitHub, and Obsidian, it is a true digital assistant that respects privacy.
+
+---
+
+### AI Automation: Transforming the Future of Work
+**Published:** February 27, 2026 | **Tags:** AI, Automation, LLMs, Workflows, Future Tech
+
+Exploration of how AI-driven automation is reshaping industries from intelligent workflows and autonomous coding agents to no-code platforms and the evolving role of developers. Covers the impact of large language models on software development, the rise of AI-powered code generation, and strategies for developers to stay relevant in an AI-augmented workplace.
+
+---
+
+### Web Performance Optimization: A Complete Guide
+**Published:** January 20, 2026 | **Tags:** Performance, Core Web Vitals, Caching, Lazy Loading, SEO
+
+Comprehensive guide to critical web performance techniques including code splitting, lazy loading, image optimization with modern formats (AVIF, WebP), caching strategies (CDN, service workers, browser cache), and Core Web Vitals optimization (LCP, FID, CLS). Includes practical examples with React and Next.js applications.
+
+---
+
+### Building an AI-Powered Car Maintenance App
+**Published:** January 5, 2026 | **Tags:** React Native, Google Gemini, AI/ML, Mobile Dev, Node.js
+
+Technical deep-dive into integrating Google Gemini AI with React Native to create intelligent dashboard light scanning, tire condition inspection from photos, and maintenance quote analysis. Covers the architecture of the AI pipeline, image preprocessing, prompt engineering for vision models, and building a responsive mobile UI for real-time AI results.
+
+---
+
+### Building a Secure Marketplace with Escrow Payments
+**Published:** January 3, 2026 | **Tags:** Stripe, Payments, Security, E-commerce, React
+
+Deep dive into implementing Stripe escrow payments, trade systems, and secure transactions for the Bible Trader marketplace platform. Covers Stripe Connect architecture, escrow flow design, dispute resolution, and security best practices for handling financial transactions in web applications.
+
+---
+
+### Next.js 19 New Features
+**Published:** December 12, 2025 | **Tags:** Next.js, React, TurboPack, Server Actions, Full-Stack
+
+Exploration of groundbreaking features in Next.js 19 including enhanced performance with TurboPack as default bundler, improved Server Actions, new routing capabilities, better image optimization, and developer experience improvements.
+
+---
+
+### Security Flaw: react2shell
+**Published:** December 10, 2025 | **Tags:** Security, Vulnerability, React, Code Audit, Best Practices
+
+Critical analysis of the security vulnerability discovered in the react2shell library, how it enables remote code execution through React components, and comprehensive mitigation strategies. Includes code audit techniques, dependency scanning best practices, and secure coding patterns for React applications.
+
+---
+
+### The Rise of AI Agents
+**Published:** December 8, 2025 | **Tags:** AI Agents, Automation, LLMs, Future Tech, DevTools
+
+How autonomous AI agents are transforming software development, automation, and the future of work. Covers the architecture of modern AI agents, tool use patterns, multi-agent systems, and practical applications in code generation, testing, and deployment automation.
+
+---
+
+### Mastering Code & Speed Optimization
+**Published:** December 5, 2025 | **Tags:** Algorithms, React, Performance, Optimization, Best Practices
+
+Essential techniques to slash latency, optimize algorithms, and boost application response speed. Covers algorithm complexity analysis, React rendering optimization (memo, useMemo, useCallback), database query optimization, and profiling tools for identifying performance bottlenecks.
+
+---
+
+## Contact
+
+- **Email:** Available through portfolio contact form
+- **GitHub:** https://github.com/wasifwasi
+- **Portfolio:** https://wasifrehman.com

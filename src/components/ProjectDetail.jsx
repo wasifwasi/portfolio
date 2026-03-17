@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ArrowLeft, Github, ExternalLink, Calendar, User, Building2, Layers, CheckCircle2 } from 'lucide-react';
+import SEO from './SEO';
 
 const projectContent = {
   'erpnext-system': {
@@ -549,6 +550,11 @@ const ProjectDetail = () => {
 
   return (
     <section className="project-detail section" id="project-detail" ref={projectRef}>
+      <SEO
+        title={`${project.title} | Wasif Rehman`}
+        description={project.description}
+        path={`/projects/${slug}`}
+      />
       <div className="container">
         <Link to="/projects" className="project-detail--back">
           <ArrowLeft size={20} /> Back to Projects

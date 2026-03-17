@@ -1,0 +1,18 @@
+/* TEAM */
+Developer: Wasif Rehman
+Role: Full Stack Developer
+GitHub: https://github.com/wasifwasi
+Site: https://wasifrehman.com
+
+/* SITE */
+Standards: HTML5, CSS3, JavaScript ES2024
+Components: React, Vite, Framer Motion, GSAP
+Fonts: Google Fonts
+Software: VS Code, Git, Figma
+
+/* THANKS */
+React - https://react.dev
+Vite - https://vitejs.dev
+Aceternity UI - https://ui.aceternity.com
+GSAP - https://gsap.com
+Framer Motion - https://motion.dev
