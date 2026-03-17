@@ -5,6 +5,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import CardBeam from './CardBeam';
 import PulseBeams from './PulseBeams';
+import SEO from './SEO';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -182,6 +183,11 @@ const Blog = () => {
 
   return (
     <section className="blog section" id="blog" ref={blogRef}>
+      <SEO
+        title="Blog | Wasif Rehman - Full Stack Developer"
+        description="Read articles about web development, AI/ML, React, Node.js, mobile development, and software engineering best practices."
+        path="/blog"
+      />
       <PulseBeams className="blog--pulse-beams" />
       <div className="blog--header container">
         <h2 className="section--title">Latest Blogs</h2>

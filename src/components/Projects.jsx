@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Github, ExternalLink, ArrowRight } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import SEO from "./SEO";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -283,6 +284,11 @@ const Projects = () => {
 
   return (
     <section className="projects section" id="projects" ref={projectsRef}>
+      <SEO
+        title="Projects | Wasif Rehman - Full Stack Developer"
+        description="Explore my portfolio of full-stack projects including enterprise systems, AI-powered apps, mobile applications, and e-commerce platforms."
+        path="/projects"
+      />
       <h2 className="section--title-1">
         <span>Projects.</span>
       </h2>
