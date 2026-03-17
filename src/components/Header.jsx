@@ -14,9 +14,11 @@ const Header = () => {
   });
   const [visible, setVisible] = useState(true);
   const lastScrollY = useRef(0);
+  const touchStartY = useRef(0);
   const location = useLocation();
   const navigate = useNavigate();
   const headerRef = useRef(null);
+  const menuRef = useRef(null);
   const hasAnimated = useRef(false);
 
   // Initial header animation on mount
@@ -73,6 +75,7 @@ const Header = () => {
     });
   };
 
+  // Close mobile menu on scroll
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -92,6 +95,8 @@ const Header = () => {
         setVisible(true);
       } else if (currentScrollY > lastScrollY.current + 10) {
         setVisible(false);
+        // Auto-close mobile menu when navbar hides
+        setToggle(false);
       }
 
       lastScrollY.current = currentScrollY;
@@ -100,6 +105,57 @@ const Header = () => {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Swipe up to close mobile menu
+  useEffect(() => {
+    const handleTouchStart = (e) => {
+      touchStartY.current = e.touches[0].clientY;
+    };
+
+    const handleTouchEnd = (e) => {
+      const touchEndY = e.changedTouches[0].clientY;
+      const swipeDistance = touchStartY.current - touchEndY;
+
+      // Swipe up (positive distance) closes menu
+      if (swipeDistance > 50 && toggle) {
+        setToggle(false);
+      }
+    };
+
+    if (toggle) {
+      document.addEventListener("touchstart", handleTouchStart, { passive: true });
+      document.addEventListener("touchend", handleTouchEnd, { passive: true });
+    }
+
+    return () => {
+      document.removeEventListener("touchstart", handleTouchStart);
+      document.removeEventListener("touchend", handleTouchEnd);
+    };
+  }, [toggle]);
+
+  // Close menu when clicking outside
+  useEffect(() => {
+    if (!toggle) return;
+
+    const handleClickOutside = (e) => {
+      if (menuRef.current && !menuRef.current.contains(e.target)) {
+        setToggle(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [toggle]);
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (toggle) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => { document.body.style.overflow = ""; };
+  }, [toggle]);
 
   useEffect(() => {
     // Only run scroll active logic on home page
@@ -180,7 +236,7 @@ const Header = () => {
           </span>
           <span className="nav--logo-name">Wasif Rehman</span>
         </Link>
-        <div className={`nav--menu ${toggle ? "show-menu" : ""}`} id="nav-menu">
+        <div ref={menuRef} className={`nav--menu ${toggle ? "show-menu" : ""}`} id="nav-menu">
           <span className="nav--title">Menu</span>
           <ul className="nav--list">
             <li className="nav--item">
@@ -273,7 +329,12 @@ const Header = () => {
           </ul>
 
           <div className="nav--close" id="nav-close" onClick={() => setToggle(false)}>
-            <X size={24} />
+            <X size={20} />
+          </div>
+
+          {/* Swipe indicator */}
+          <div className="nav--swipe-indicator" onClick={() => setToggle(false)}>
+            <div className="nav--swipe-bar" />
           </div>
         </div>
 

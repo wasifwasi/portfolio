@@ -10,7 +10,7 @@ import Projects from "./components/Projects";
 import ProjectDetail from "./components/ProjectDetail";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
-import ScrollUp from "./components/ScrollUp";
+
 import Blog from "./components/Blog";
 import BlogPost from "./components/BlogPost";
 import Chatbot from "./components/Chatbot";
@@ -61,7 +61,7 @@ function App() {
         </TracingBeam>
       </main>
       <Footer />
-      <ScrollUp />
+
       <Chatbot />
     </div>
   );
