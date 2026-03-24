@@ -106,17 +106,19 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Swipe up to close mobile menu
+  // Swipe right to close mobile menu (sidebar slides from right)
+  const touchStartX = useRef(0);
+
   useEffect(() => {
     const handleTouchStart = (e) => {
-      touchStartY.current = e.touches[0].clientY;
+      touchStartX.current = e.touches[0].clientX;
     };
 
     const handleTouchEnd = (e) => {
-      const touchEndY = e.changedTouches[0].clientY;
-      const swipeDistance = touchStartY.current - touchEndY;
+      const touchEndX = e.changedTouches[0].clientX;
+      const swipeDistance = touchEndX - touchStartX.current;
 
-      // Swipe up (positive distance) closes menu
+      // Swipe right (positive distance) closes menu
       if (swipeDistance > 50 && toggle) {
         setToggle(false);
       }
@@ -236,7 +238,17 @@ const Header = () => {
           </span>
           <span className="nav--logo-name">Wasif Rehman</span>
         </Link>
+        {/* Overlay behind sidebar */}
+        <div
+          className={`nav--menu-overlay ${toggle ? "show-overlay" : ""}`}
+          onClick={() => setToggle(false)}
+        />
+
         <div ref={menuRef} className={`nav--menu ${toggle ? "show-menu" : ""}`} id="nav-menu">
+          <div className="nav--close" id="nav-close" onClick={() => setToggle(false)}>
+            <X size={20} />
+          </div>
+
           <span className="nav--title">Menu</span>
           <ul className="nav--list">
             <li className="nav--item">
@@ -327,15 +339,6 @@ const Header = () => {
               )}
             </li>
           </ul>
-
-          <div className="nav--close" id="nav-close" onClick={() => setToggle(false)}>
-            <X size={20} />
-          </div>
-
-          {/* Swipe indicator */}
-          <div className="nav--swipe-indicator" onClick={() => setToggle(false)}>
-            <div className="nav--swipe-bar" />
-          </div>
         </div>
 
         <div className="nav--buttons">
