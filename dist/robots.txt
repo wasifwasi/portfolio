@@ -1,0 +1,172 @@
+# https://www.robotstxt.org/robotstxt.html
+
+# =============================================
+# ALLOWED - Search Engines
+# =============================================
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Yandex
+Allow: /
+
+# =============================================
+# ALLOWED - AI Search & Chat (legitimate use)
+# =============================================
+
+# OpenAI (ChatGPT Search)
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic (Claude)
+User-agent: ClaudeBot
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+# Google AI (Gemini)
+User-agent: Google-Extended
+Allow: /
+
+# =============================================
+# BLOCKED - AI Training Scrapers
+# =============================================
+
+# OpenAI training crawler (NOT search - used for scraping training data)
+User-agent: GPTBot
+Disallow: /
+
+# Common Crawl (mass scraping for AI training datasets)
+User-agent: CCBot
+Disallow: /
+
+# Anthropic training crawler
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+# Meta / Facebook AI training
+User-agent: FacebookBot
+Disallow: /
+
+User-agent: Meta-ExternalAgent
+Disallow: /
+
+User-agent: Meta-ExternalFetcher
+Disallow: /
+
+# Apple AI training
+User-agent: Applebot-Extended
+Disallow: /
+
+# Bytedance / TikTok scraper
+User-agent: Bytespider
+Disallow: /
+
+# Amazon AI scraper
+User-agent: Amazonbot
+Disallow: /
+
+# Cohere AI training
+User-agent: cohere-ai
+Disallow: /
+
+# AI2 (Allen Institute) scraper
+User-agent: AI2Bot
+Disallow: /
+
+# Diffbot (content extraction)
+User-agent: Diffbot
+Disallow: /
+
+# =============================================
+# BLOCKED - Known Scraping / Spam Bots
+# =============================================
+
+# SEO scrapers
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /
+
+User-agent: DataForSeoBot
+Disallow: /
+
+User-agent: serpstatbot
+Disallow: /
+
+# Content scrapers
+User-agent: PetalBot
+Disallow: /
+
+User-agent: Sogou
+Disallow: /
+
+User-agent: Seekport
+Disallow: /
+
+User-agent: ZoominfoBot
+Disallow: /
+
+User-agent: Scrapy
+Disallow: /
+
+User-agent: HttpClient
+Disallow: /
+
+User-agent: python-requests
+Disallow: /
+
+User-agent: Go-http-client
+Disallow: /
+
+User-agent: Java
+Disallow: /
+
+User-agent: libwww-perl
+Disallow: /
+
+User-agent: wget
+Disallow: /
+
+User-agent: curl
+Disallow: /
+
+# Archive scrapers (optional - uncomment to block)
+# User-agent: ia_archiver
+# Disallow: /
+
+# =============================================
+# DEFAULT - Block unknown bots, allow known
+# =============================================
+User-agent: *
+Allow: /
+Disallow: /js/
+
+# Sitemaps
+Sitemap: https://wasifrehman.com/sitemap.xml

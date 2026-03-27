@@ -1,0 +1,43 @@
+# Wasif Rehman - Full Stack Developer
+
+> Wasif Rehman is a Full Stack Developer specializing in React, Next.js, Node.js, React Native, Python, and AI/ML integration. This portfolio showcases professional projects, technical blogs, and development expertise.
+
+Available for freelance and full-time roles. Experienced in building enterprise systems, AI-powered mobile apps, e-commerce platforms, and real-time web applications. Skilled in TypeScript, Python, JavaScript, Firebase, MongoDB, PostgreSQL, and cloud infrastructure.
+
+## Pages
+
+- [Home](https://wasifrehman.com/): Portfolio homepage with hero section, about, services, and contact
+- [Projects](https://wasifrehman.com/projects): Showcase of 9+ full-stack web and mobile applications
+- [Blog](https://wasifrehman.com/blog): 10+ technical articles on web development, AI, and software engineering
+- [About](https://wasifrehman.com/#about): Background, skills, education, and professional experience
+- [Contact](https://wasifrehman.com/#contact): Get in touch for collaboration or hiring
+
+## Projects
+
+- [ERPNext System](https://wasifrehman.com/projects/erpnext-system): Enterprise-grade ERP system with 35+ modules including accounting, inventory, HR/payroll, CRM. Built with Python, Vue.js, MariaDB, Redis, and Frappe Framework
+- [FreeNote](https://wasifrehman.com/projects/freenote-app): AI-powered voice note-taking app with real-time transcription, smart summarization, interactive AI chat, PDF export. Built with React Native, Expo, Firebase, and Groq AI
+- [Prove It Auto](https://wasifrehman.com/projects/prove-it-auto): AI-powered car maintenance app with dashboard light scanning, tire inspection using Google Gemini AI. Built with React Native, Node.js, MongoDB
+- [E-Commerce Platform](https://wasifrehman.com/projects/ecommerce-platform): Complete e-commerce solution with Stripe payments, admin dashboard. Built with MongoDB, Express, React, Node.js
+- [Live Voting System](https://wasifrehman.com/projects/live-voting-system): Real-time live voting system with accurate vote forecasting. Built with React, Node.js, MongoDB, Socket.io
+- [Academic Analytics](https://wasifrehman.com/projects/academic-analytics): Comprehensive academic analytics system with team collaboration and drag-and-drop interface. MERN stack
+- [Bible Trader](https://wasifrehman.com/projects/bible-trader): Marketplace platform with escrow payments, Stripe integration, and trade system. Built with React, TypeScript, Supabase
+- [Master Man Power Bureau](https://wasifrehman.com/projects/mmpb-recruitment): International recruitment platform with job listings, CV management, AWS S3. Built with Next.js, NestJS, PostgreSQL, Prisma
+- [Zareen Couture](https://wasifrehman.com/projects/zareen-couture): Luxury Pakistani bridal couture e-commerce with custom order system and virtual consultation. Built with Next.js, TypeScript, Tailwind CSS
+
+## Blog Posts
+
+- [React Native with Expo in 2026](https://wasifrehman.com/blog/react-native-expo-2026): How Expo 54 and React Native 0.81 are making cross-platform mobile development faster than ever
+- [OpenClaw: Your Personal AI Gateway](https://wasifrehman.com/blog/openclaw-personal-ai-gateway): How OpenClaw bridges WhatsApp, Telegram, Discord, and iMessage with AI agents
+- [AI Automation: Transforming the Future of Work](https://wasifrehman.com/blog/ai-automation-future): How AI-driven automation is reshaping industries with intelligent workflows and autonomous coding agents
+- [Web Performance Optimization](https://wasifrehman.com/blog/web-performance-optimization): Complete guide to code splitting, lazy loading, image optimization, caching, and Core Web Vitals
+- [Building an AI-Powered Car Maintenance App](https://wasifrehman.com/blog/ai-powered-car-maintenance): Integrating Google Gemini AI with React Native for intelligent vehicle diagnostics
+- [Building a Secure Marketplace with Escrow Payments](https://wasifrehman.com/blog/building-marketplace-with-escrow): Implementing Stripe escrow payments and secure transactions
+- [Next.js 19 New Features](https://wasifrehman.com/blog/next-19-new-features): Groundbreaking features in Next.js 19 including enhanced performance and routing
+- [Security Flaw: react2shell](https://wasifrehman.com/blog/security-flaw-react2shell): Critical security vulnerability analysis in the react2shell library
+- [The Rise of AI Agents](https://wasifrehman.com/blog/ai-agents-revolution): How autonomous AI agents are transforming software development and automation
+- [Mastering Code & Speed Optimization](https://wasifrehman.com/blog/code-speed-optimization): Essential techniques to slash latency and optimize algorithms
+
+## Optional
+
+- [Contact Form](https://wasifrehman.com/#contact): Send a message directly through the portfolio
+- [GitHub](https://github.com/wasifwasi): Source code and open-source contributions
