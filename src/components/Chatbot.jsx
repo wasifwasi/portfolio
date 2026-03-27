@@ -58,8 +58,8 @@ const Chatbot = () => {
     }
   }, [isOpen]);
 
-  const sendMessage = async () => {
-    const trimmed = input.trim();
+  const sendMessage = async (overrideText) => {
+    const trimmed = (overrideText || input).trim();
     if (!trimmed || isLoading) return;
 
     const userMessage = { role: 'user', content: trimmed };
@@ -74,11 +74,10 @@ const Chatbot = () => {
         ...updatedMessages.map((m) => ({ role: m.role, content: m.content })),
       ];
 
-      const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+      const res = await fetch('/api/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${import.meta.env.VITE_GROQ_API_KEY}`,
         },
         body: JSON.stringify({
           model: 'llama-3.1-8b-instant',
@@ -182,48 +181,7 @@ const Chatbot = () => {
               <button
                 key={i}
                 className="chatbot--quick-btn"
-                onClick={() => {
-                  setInput(q);
-                  setTimeout(() => {
-                    setInput(q);
-                    const fakeEvent = { trim: () => q };
-                    setInput('');
-                    setMessages((prev) => [...prev, { role: 'user', content: q }]);
-                    setIsLoading(true);
-
-                    const apiMessages = [
-                      { role: 'system', content: SYSTEM_PROMPT },
-                      ...messages.map((m) => ({ role: m.role, content: m.content })),
-                      { role: 'user', content: q },
-                    ];
-
-                    fetch('https://api.groq.com/openai/v1/chat/completions', {
-                      method: 'POST',
-                      headers: {
-                        'Content-Type': 'application/json',
-                        Authorization: `Bearer ${import.meta.env.VITE_GROQ_API_KEY}`,
-                      },
-                      body: JSON.stringify({
-                        model: 'llama-3.1-8b-instant',
-                        messages: apiMessages,
-                        temperature: 0.7,
-                        max_tokens: 512,
-                      }),
-                    })
-                      .then((res) => res.json())
-                      .then((data) => {
-                        const reply = data.choices?.[0]?.message?.content || "Sorry, I couldn't process that.";
-                        setMessages((prev) => [...prev, { role: 'assistant', content: reply }]);
-                      })
-                      .catch(() => {
-                        setMessages((prev) => [
-                          ...prev,
-                          { role: 'assistant', content: "Sorry, I'm having trouble connecting right now." },
-                        ]);
-                      })
-                      .finally(() => setIsLoading(false));
-                  }, 0);
-                }}
+                onClick={() => sendMessage(q)}
               >
                 {q}
               </button>
