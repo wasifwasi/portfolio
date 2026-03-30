@@ -4,6 +4,85 @@ import { gsap } from 'gsap';
 import SEO from './SEO';
 
 const blogContent = {
+  'nextjs-20-whats-new': {
+    title: 'Next.js 20: Everything New You Need to Know',
+    date: 'March 28, 2026',
+    dateISO: '2026-03-28',
+    description: 'From React Server Functions to the revamped Turbopack pipeline and native Edge-first routing—here\'s what makes Next.js 20 the biggest release yet.',
+    tags: ['Next.js', 'React', 'Turbopack', 'Edge Computing', 'Full-Stack'],
+    content: (
+      <>
+        <p>Next.js 20 just dropped, and it's not an incremental update—it's a rethinking of how modern full-stack React applications should be built. From a completely rewritten build pipeline to first-class edge primitives, here's everything that matters in this release.</p>
+
+        <h3>Turbopack: Now the Default</h3>
+        <p>Turbopack is no longer opt-in. Next.js 20 ships with Turbopack as the default bundler for both development and production builds. Cold starts are up to 10x faster than webpack, and incremental builds in large monorepos now complete in under 200ms. The migration is seamless—existing next.config.js options are fully compatible, and the webpack escape hatch is still available for edge cases.</p>
+
+        <h3>React Server Functions</h3>
+        <p>Server Actions have been replaced by React Server Functions—a more flexible primitive that works beyond form submissions. You can now call server-side logic from any client event handler, useEffect, or even other server components. Type safety is baked in with automatic TypeScript inference between client and server boundaries, eliminating the boilerplate of manual API routes for most use cases.</p>
+
+        <h3>Edge-First Routing</h3>
+        <p>Next.js 20 introduces a new routing layer designed for edge deployment. Routes can declare their runtime preference—Node.js, Edge, or Static—at the file level with a single export. The framework automatically optimizes data fetching and rendering strategy based on the declared runtime, giving you Cloudflare Workers-level latency with zero configuration.</p>
+
+        <h3>Partial Prerendering (Stable)</h3>
+        <p>PPR is now stable and enabled by default. It combines static shell rendering with streaming dynamic content, delivering instant page loads while still serving personalized data. The HTML shell is served from the CDN edge in under 50ms, and dynamic holes are filled via streaming as the server resolves them—no client-side loading spinners required.</p>
+
+        <h3>Built-in Database Layer</h3>
+        <p>The most surprising addition is next/db—a built-in database abstraction layer. It provides a lightweight ORM-like API that works with Postgres, SQLite, and Turso out of the box. Migrations are file-based and run automatically in development. For prototyping and small-to-medium apps, you no longer need Prisma or Drizzle as a dependency.</p>
+
+        <h3>Dev Overlay 2.0</h3>
+        <p>The development experience gets a major upgrade with the new Dev Overlay. It shows real-time rendering waterfall diagrams, component-level performance metrics, and a visual route inspector. You can see exactly which components are server-rendered vs. client-rendered, track hydration mismatches, and profile slow data fetches—all without leaving the browser.</p>
+
+        <h3>Image and Font Optimization</h3>
+        <p>next/image now supports automatic AVIF generation with smart format negotiation. The new next/font engine pre-computes font subsets at build time based on actual character usage in your app, reducing font payloads by up to 60%. Both features work seamlessly at the edge with no additional configuration.</p>
+
+        <h3>Breaking Changes to Watch</h3>
+        <p>The pages/ directory is officially deprecated—existing projects will still work, but new features target app/ exclusively. The minimum Node.js version is now 20 LTS. getServerSideProps and getStaticProps are removed in favor of Server Functions and the fetch cache API. If you're migrating from Next.js 19, the codemods handle most of the transition automatically.</p>
+
+        <p>Next.js 20 is the most ambitious release since the App Router was introduced. Whether you're building a SaaS dashboard, an e-commerce platform, or a content-heavy site, this version gives you the tools to ship faster with less code. The future of full-stack React is here.</p>
+      </>
+    ),
+  },
+  'openclaw-deep-dive-setup': {
+    title: 'OpenClaw Deep Dive: Building Your Own AI Agent Pipeline',
+    date: 'March 22, 2026',
+    dateISO: '2026-03-22',
+    description: 'A hands-on technical walkthrough of setting up OpenClaw from scratch—configuring channels, creating custom skills, wiring up tool chains, and deploying your personal AI agent stack.',
+    tags: ['OpenClaw', 'AI Agents', 'Tutorial', 'Self-Hosted', 'DevOps'],
+    content: (
+      <>
+        <p>In a previous post, I covered what OpenClaw is and why it matters. This time, we're going hands-on. I'll walk you through setting up OpenClaw from zero, connecting it to your messaging apps, building custom skills, and deploying a production-grade AI agent pipeline on your own hardware.</p>
+
+        <h3>Prerequisites and Installation</h3>
+        <p>You'll need Docker, Node.js 20+, and API keys for your preferred LLM provider (Claude, GPT, or a local model via Ollama). Start by cloning the OpenClaw repo and running the bootstrap script. The CLI wizard walks you through setting your gateway port, encryption passphrase, and default model. Within 3 minutes, you'll have a running Gateway process accessible at localhost.</p>
+
+        <h3>Connecting Your First Channel: WhatsApp</h3>
+        <p>OpenClaw uses the WhatsApp Business API through a lightweight bridge container. Run the channel setup command, scan the QR code with your phone, and the bridge establishes a persistent WebSocket connection. From this point, every message you send to your WhatsApp number is intercepted by the Gateway, processed through your configured AI model, and the response is delivered back—all in under 2 seconds.</p>
+
+        <h3>Adding Telegram and Discord</h3>
+        <p>Telegram integration requires a Bot Token from BotFather. Discord uses a bot application with message content intent enabled. Both channels are configured via a single YAML file—specify the token, target channels or groups, and permission rules. The Gateway multiplexes all channels through a unified message bus, so your AI maintains context whether you message from WhatsApp, Telegram, or Discord.</p>
+
+        <h3>Building a Custom Skill: GitHub PR Reviewer</h3>
+        <p>Skills are the heart of OpenClaw's extensibility. Let's build one that reviews GitHub pull requests on command. Create a new skill directory, define the skill manifest with trigger phrases and required parameters, then write the handler function. The handler receives the parsed user message, calls the GitHub API to fetch the PR diff, sends it to your LLM with a review prompt, and returns the formatted review. Register the skill, restart the Gateway, and now you can message "review PR #42 on my-repo" from any channel.</p>
+
+        <h3>Tool Chains and Multi-Step Workflows</h3>
+        <p>Single skills are powerful, but tool chains unlock real automation. OpenClaw's pipeline system lets you compose skills sequentially—for example, a "deploy" command that first runs tests via your CI API, waits for results, creates a release tag, triggers a deployment webhook, and reports status back to your chat. Each step has access to the previous step's output, and the pipeline supports conditional branching and error handling.</p>
+
+        <h3>Memory and Context Management</h3>
+        <p>OpenClaw stores conversation history in a local SQLite database with vector embeddings for semantic search. This means your AI remembers past conversations and can reference them naturally. You can configure memory retention periods, per-channel isolation (so work and personal contexts don't bleed), and manual memory injection for bootstrapping the AI with project-specific knowledge.</p>
+
+        <h3>Running Multiple Agents</h3>
+        <p>For complex setups, OpenClaw supports multi-agent routing. Define specialized agents—one for code tasks using Claude, another for creative writing using GPT, a third for local-only queries using Ollama. The router agent analyzes incoming messages and delegates to the appropriate specialist. Each agent maintains its own system prompt, tool access, and memory namespace while sharing the unified channel layer.</p>
+
+        <h3>Production Deployment</h3>
+        <p>For always-on operation, deploy OpenClaw with Docker Compose. The stack includes the Gateway, channel bridges, a Redis instance for rate limiting and queuing, and an optional Grafana dashboard for monitoring message throughput and latency. Use a reverse proxy like Caddy for TLS termination if you want to expose the Web Control UI externally. Set up systemd or Docker restart policies so the Gateway survives reboots.</p>
+
+        <h3>Security Hardening</h3>
+        <p>Before going live, lock down your deployment. Enable allowlist-only messaging so only approved contacts can interact with your AI. Set rate limits per channel to prevent abuse. Encrypt the SQLite database at rest. Store API keys in a secrets manager or encrypted .env file rather than plain text config. Audit the skill permissions—limit file system and network access to only what each skill needs.</p>
+
+        <p>OpenClaw gives you the building blocks to create an AI assistant that's truly yours—tailored to your workflows, running on your terms, and extensible enough to grow with your needs. The 5-minute setup gets you started, but this deep dive shows that the ceiling is as high as your imagination.</p>
+      </>
+    ),
+  },
   'react-native-expo-2026': {
     title: 'React Native with Expo in 2026: The Ultimate Mobile Stack',
     date: 'March 15, 2026',

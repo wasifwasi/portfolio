@@ -11,6 +11,22 @@ gsap.registerPlugin(ScrollTrigger);
 
 const blogs = [
   {
+    id: 'nextjs-20-whats-new',
+    title: 'Next.js 20: Everything New You Need to Know',
+    excerpt: 'From React Server Functions to the revamped Turbopack pipeline and native Edge-first routing—here\'s what makes Next.js 20 the biggest release yet.',
+    date: 'March 28, 2026',
+    tags: ['Next.js', 'React', 'Turbopack', 'Edge Computing', 'Full-Stack'],
+    icons: ['▲', '⚛️', '⚡', '🌐', '🚀'],
+  },
+  {
+    id: 'openclaw-deep-dive-setup',
+    title: 'OpenClaw Deep Dive: Building Your Own AI Agent Pipeline',
+    excerpt: 'A hands-on technical walkthrough of setting up OpenClaw from scratch—configuring channels, creating custom skills, wiring up tool chains, and deploying your personal AI agent stack.',
+    date: 'March 22, 2026',
+    tags: ['OpenClaw', 'AI Agents', 'Tutorial', 'Self-Hosted', 'DevOps'],
+    icons: ['🦞', '🔧', '🤖', '🛠️', '📡'],
+  },
+  {
     id: 'react-native-expo-2026',
     title: 'React Native with Expo in 2026: The Ultimate Mobile Stack',
     excerpt: 'How Expo 54 and React Native 0.81 are making cross-platform mobile development faster than ever—from EAS builds to native modules, and why it\'s the go-to stack for startups.',
