@@ -85,8 +85,8 @@ const Home = () => {
               src="img/dp.jpeg"
               width={350}
               height={480}
-              cellSize={4}
-              dotScale={0.9}
+              cellSize={2}
+              dotScale={0.95}
               shape="square"
               backgroundColor="transparent"
               interactive
