@@ -82,7 +82,7 @@ const Home = () => {
         <div className="home--profile" ref={profileRef}>
           <div className="home--image">
             <PixelatedCanvas
-              src="img/dp.png"
+              src="img/dp.jpeg"
               width={350}
               height={350}
               cellSize={4}
