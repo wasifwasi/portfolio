@@ -84,7 +84,7 @@ const Home = () => {
             <PixelatedCanvas
               src="img/dp.jpeg"
               width={350}
-              height={350}
+              height={480}
               cellSize={4}
               dotScale={0.9}
               shape="square"
