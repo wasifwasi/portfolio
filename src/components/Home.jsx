@@ -142,8 +142,7 @@ const Home = () => {
         </div>
         <div className="home--info" ref={infoRef}>
           <p className="home--description">
-            <b>Full-Stack Developer</b>, with knowledge in web development
-            and design, I offer the best projects resulting in quality work.
+            <b>Full-Stack Developer</b> specializing in MERN, Next.js, and AI-powered solutions — from voice AI widgets to real-time platforms and e-commerce experiences.
           </p>
           <a href="#about" className="home--scroll">
             <div className="home--scroll-box">
