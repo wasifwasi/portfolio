@@ -553,7 +553,7 @@ const ProjectDetail = () => {
       <SEO
         title={`${project.title} | Wasif Rehman`}
         description={project.description}
-        path={`/projects/${slug}`}
+        path={`/projects/${id}`}
       />
       <div className="container">
         <Link to="/projects" className="project-detail--back">
