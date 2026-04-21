@@ -16,6 +16,7 @@ const PixelatedCanvas = ({
   jitterStrength = 0,
   jitterSpeed = 1,
   className = "",
+  onLoad,
 }) => {
   const canvasRef = useRef(null);
   const imgRef = useRef(null);
@@ -159,6 +160,7 @@ const PixelatedCanvas = ({
     img.onload = () => {
       imgRef.current = img;
       setLoaded(true);
+      if (typeof onLoad === "function") onLoad();
     };
     img.src = src;
   }, [src]);

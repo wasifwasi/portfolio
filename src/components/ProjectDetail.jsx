@@ -5,60 +5,6 @@ import { ArrowLeft, Github, ExternalLink, Calendar, User, Building2, Layers, Che
 import SEO from './SEO';
 
 const projectContent = {
-  'erpnext-system': {
-    title: 'ERPNext System',
-    subtitle: 'Enterprise Resource Planning Solution',
-    date: 'October 2025 - Present',
-    role: 'Full-Stack Developer & System Administrator',
-    company: 'Frappe Technologies',
-    companyType: 'Open Source ERP Platform',
-    image: 'img/erpnext.png',
-    isLogo: true,
-    techStack: ['Python', 'Frappe Framework', 'Vue.js', 'MariaDB', 'Redis', 'Node.js', 'REST API', 'WebSocket'],
-    overview: 'A comprehensive, enterprise-grade ERP system deployment and customization project built on the Frappe Framework. This solution integrates 35+ business modules to streamline operations for small to large enterprises.',
-    content: (
-      <>
-        <h3>Project Overview</h3>
-        <p>ERPNext is a fully-featured open-source ERP system that I deployed, configured, and customized for business operations. The system provides integrated solutions for accounting, inventory management, HR/payroll, CRM, manufacturing, and more—all within a single unified platform.</p>
-
-        <h3>My Role & Responsibilities</h3>
-        <p>As the <b>Full-Stack Developer & System Administrator</b>, I was responsible for:</p>
-        <ul>
-          <li>Setting up the complete development and production environment on macOS/Linux servers</li>
-          <li>Configuring MariaDB database with optimized settings for high-performance queries</li>
-          <li>Implementing Redis caching layers for improved response times</li>
-          <li>Customizing modules to meet specific business requirements</li>
-          <li>Developing custom DocTypes, reports, and workflow automations</li>
-          <li>Managing real-time WebSocket integrations for live data updates</li>
-          <li>Building REST API integrations with third-party services</li>
-        </ul>
-
-        <h3>Key Modules Implemented</h3>
-        <p>Successfully configured and deployed the following core modules:</p>
-        <ul>
-          <li><b>Accounting & Finance:</b> Chart of accounts, journal entries, financial statements, multi-currency support</li>
-          <li><b>Inventory & Stock:</b> Warehouse management, stock valuation, batch tracking, reorder automation</li>
-          <li><b>Human Resources:</b> Employee management, attendance tracking, leave management, payroll processing</li>
-          <li><b>CRM:</b> Lead management, opportunity tracking, customer engagement workflows</li>
-          <li><b>Manufacturing:</b> Bill of Materials (BOM), work orders, production planning</li>
-          <li><b>Buying & Selling:</b> Purchase orders, sales orders, quotations, supplier/customer portals</li>
-        </ul>
-
-        <h3>Technical Architecture</h3>
-        <p>The system is built on a robust, scalable architecture featuring:</p>
-        <ul>
-          <li>Gunicorn web server with 17 worker processes for high concurrency</li>
-          <li>Separate Redis instances for caching (port 13000) and queue management (port 11000)</li>
-          <li>Socket.IO server for real-time updates and notifications</li>
-          <li>Background job processing with async workers</li>
-          <li>Role-based access control (RBAC) for granular permissions</li>
-        </ul>
-
-        <h3>Results & Impact</h3>
-        <p>The implementation resulted in significant operational improvements including streamlined business processes, real-time visibility into operations, automated workflows reducing manual tasks by 60%, and a unified platform replacing multiple disconnected systems.</p>
-      </>
-    ),
-  },
   'freenote-app': {
     title: 'FreeNote',
     subtitle: 'AI-Powered Voice Note-Taking Application',

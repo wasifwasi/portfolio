@@ -1,9 +1,12 @@
-import React, { useEffect, useRef, useState, useCallback } from "react";
+import React, { useEffect, useRef, useState, useCallback, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { Github, ExternalLink, ArrowRight } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SEO from "./SEO";
+import Pagination from "./Pagination";
+
+const PROJECTS_PER_PAGE = 6;
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -80,22 +83,6 @@ const OptimizedImage = ({ src, alt, className, isLogo }) => {
 
 // Project data - Update the github and demo links with your actual URLs
 const projectsData = [
-  {
-    id: 1,
-    slug: "erpnext-system",
-    image: "img/erpnext.png",
-    alt: "ERPNext - Enterprise Resource Planning System",
-    subtitle: "Full-Stack ERP Solution",
-    title: "ERPNext System",
-    description:
-      "Enterprise-grade ERP system with 35+ modules including accounting, inventory, HR/payroll, CRM, manufacturing, and sales. Built on Frappe Framework with Python, Vue.js, MariaDB, and Redis.",
-    github: "https://github.com/wasifwasi",
-    demo: "#",
-    isLogo: true,
-    role: "Full-Stack Developer",
-    company: "Frappe Technologies",
-    tags: ["Python", "Vue.js", "MariaDB", "Redis", "Frappe"],
-  },
   {
     id: 2,
     slug: "freenote-app",
@@ -221,11 +208,60 @@ const projectsData = [
     company: "Freelance",
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "React", "Lucide"],
   },
+  {
+    id: 10,
+    slug: "plumbers-mate-ai",
+    image: "img/plumbers-mate.png",
+    alt: "Plumber's Mate AI - AI Business Automation Platform",
+    subtitle: "AI SaaS & Business Automation",
+    title: "Plumber's Mate AI",
+    description:
+      "AI-powered business automation platform for plumbing businesses — captures leads, books jobs, automates quotes, payments, and Google review requests, and re-engages old leads. Built with Next.js 16, React 19, TypeScript, Tailwind CSS, and Framer Motion.",
+    github: "https://github.com/wasifwasi",
+    demo: "#",
+    isLogo: true,
+    role: "Full-Stack Developer (Collaborator)",
+    company: "AIDEVGEN",
+    tags: ["Next.js", "React 19", "TypeScript", "Tailwind CSS", "Framer Motion"],
+  },
+  {
+    id: 11,
+    slug: "clay-imaginary",
+    image: "img/clay-imaginary.png",
+    alt: "Clay Imaginary - AI Image Generation Studio",
+    subtitle: "AI Image Generation & Editing",
+    title: "Clay Imaginary",
+    description:
+      "AI-powered image generation and editing studio with canvas-based compositing, drag-and-drop design, and export-to-image workflows for social, product, and content creators. Built with Next.js 15, React 19, Fabric.js, Framer Motion, and html2canvas.",
+    github: "https://github.com/wasifwasi",
+    demo: "#",
+    isLogo: true,
+    role: "Full-Stack Developer (Collaborator)",
+    company: "AIDEVGEN",
+    tags: ["Next.js", "React 19", "Fabric.js", "TypeScript", "Tailwind CSS"],
+  },
 ];
 
 const Projects = () => {
   const projectsRef = useRef(null);
+  const containerRef = useRef(null);
   const navigate = useNavigate();
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const totalPages = Math.ceil(projectsData.length / PROJECTS_PER_PAGE);
+
+  const paginatedProjects = useMemo(() => {
+    const start = (currentPage - 1) * PROJECTS_PER_PAGE;
+    return projectsData.slice(start, start + PROJECTS_PER_PAGE);
+  }, [currentPage]);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+    if (containerRef.current) {
+      const top = containerRef.current.getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({ top, behavior: "smooth" });
+    }
+  };
 
   const handleCardClick = (slug) => {
     navigate(`/projects/${slug}`);
@@ -258,21 +294,16 @@ const Projects = () => {
         ".projects--card",
         {
           opacity: 0,
-          y: 80,
-          scale: 0.9,
+          y: 40,
+          scale: 0.95,
         },
         {
           opacity: 1,
           y: 0,
           scale: 1,
-          duration: 0.8,
-          stagger: 0.2,
+          duration: 0.6,
+          stagger: 0.12,
           ease: "power3.out",
-          scrollTrigger: {
-            trigger: ".projects--container",
-            start: "top 80%",
-            toggleActions: "play none none reverse",
-          },
         }
       );
 
@@ -280,7 +311,7 @@ const Projects = () => {
     }, projectsRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [currentPage]);
 
   return (
     <section className="projects section" id="projects" ref={projectsRef}>
@@ -292,8 +323,8 @@ const Projects = () => {
       <h2 className="section--title-1">
         <span>Projects.</span>
       </h2>
-      <div className="projects--container container grid">
-        {projectsData.map((project, index) => (
+      <div className="projects--container container grid" ref={containerRef}>
+        {paginatedProjects.map((project, index) => (
           <article
             className="projects--card"
             key={project.id}
@@ -375,6 +406,11 @@ const Projects = () => {
           </article>
         ))}
       </div>
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
+      />
     </section>
   );
 };

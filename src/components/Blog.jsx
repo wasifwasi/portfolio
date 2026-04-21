@@ -1,15 +1,34 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import CardBeam from './CardBeam';
 import PulseBeams from './PulseBeams';
+import Pagination from './Pagination';
 import SEO from './SEO';
+
+const BLOGS_PER_PAGE = 6;
 
 gsap.registerPlugin(ScrollTrigger);
 
 const blogs = [
+  {
+    id: 'ai-lead-capture-trades-businesses',
+    title: 'Building an AI Lead-Capture Platform for Trades Businesses',
+    excerpt: 'How I built Plumber\'s Mate AI — an automation platform that captures leads, books jobs, sends quotes, collects payments, and re-engages old customers with Next.js 16 and React 19.',
+    date: 'April 18, 2026',
+    tags: ['Next.js', 'AI Automation', 'SaaS', 'Lead Generation', 'Framer Motion'],
+    icons: ['🔧', '🤖', '📞', '📅', '⚡'],
+  },
+  {
+    id: 'canvas-ai-image-studio-fabricjs',
+    title: 'Canvas-Based AI Image Studios with Fabric.js and Next.js',
+    excerpt: 'A technical walkthrough of building Clay Imaginary — a drag-and-drop AI image studio with Fabric.js compositing, html2canvas export, and AI-powered generation for creators.',
+    date: 'April 10, 2026',
+    tags: ['Fabric.js', 'Next.js', 'AI Image Gen', 'Canvas API', 'html2canvas'],
+    icons: ['🎨', '✨', '🖼️', '🧩', '🤖'],
+  },
   {
     id: 'nextjs-20-whats-new',
     title: 'Next.js 20: Everything New You Need to Know',
@@ -153,6 +172,23 @@ const stickyContent = [
 
 const Blog = () => {
   const blogRef = useRef(null);
+  const containerRef = useRef(null);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const totalPages = Math.ceil(blogs.length / BLOGS_PER_PAGE);
+
+  const paginatedBlogs = useMemo(() => {
+    const start = (currentPage - 1) * BLOGS_PER_PAGE;
+    return blogs.slice(start, start + BLOGS_PER_PAGE);
+  }, [currentPage]);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+    if (containerRef.current) {
+      const top = containerRef.current.getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  };
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -175,19 +211,14 @@ const Blog = () => {
       // Animate blog cards with stagger
       gsap.fromTo(
         '.blog--card',
-        { opacity: 0, y: 60, scale: 0.95 },
+        { opacity: 0, y: 40, scale: 0.95 },
         {
           opacity: 1,
           y: 0,
           scale: 1,
-          duration: 0.7,
-          stagger: 0.15,
+          duration: 0.6,
+          stagger: 0.12,
           ease: 'power3.out',
-          scrollTrigger: {
-            trigger: '.blog--container',
-            start: 'top 80%',
-            toggleActions: 'play none none reverse',
-          },
         }
       );
 
@@ -195,7 +226,7 @@ const Blog = () => {
     }, blogRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [currentPage]);
 
   return (
     <section className="blog section" id="blog" ref={blogRef}>
@@ -210,8 +241,8 @@ const Blog = () => {
         <span className="section--subtitle">My thoughts & insights</span>
       </div>
 
-      <div className="blog--container container grid">
-        {blogs.map((blog, index) => (
+      <div className="blog--container container grid" ref={containerRef}>
+        {paginatedBlogs.map((blog, index) => (
           <Link
             to={`/blog/${blog.id}`}
             className="blog--card"
@@ -234,6 +265,11 @@ const Blog = () => {
           </Link>
         ))}
       </div>
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
+      />
     </section>
   );
 };
