@@ -4,6 +4,79 @@ import { gsap } from 'gsap';
 import SEO from './SEO';
 
 const blogContent = {
+  'ai-lead-capture-trades-businesses': {
+    title: 'Building an AI Lead-Capture Platform for Trades Businesses',
+    date: 'April 18, 2026',
+    dateISO: '2026-04-18',
+    description: 'How I built Plumber\'s Mate AI — an automation platform that captures leads, books jobs, sends quotes, collects payments, and re-engages old customers with Next.js 16 and React 19.',
+    tags: ['Next.js', 'AI Automation', 'SaaS', 'Lead Generation', 'Framer Motion'],
+    content: (
+      <>
+        <p>Trades businesses — plumbers, electricians, HVAC techs — lose jobs every day because they can't answer the phone. They're under a sink, on a roof, or driving to the next call. Plumber's Mate AI is a platform I built with the AIDEVGEN team to close that gap: an AI that captures every lead, books the job, sends the quote, collects payment, and asks for the Google review — all without the owner touching a keyboard.</p>
+
+        <h3>The Problem: Missed Calls = Missed Revenue</h3>
+        <p>For a one-van plumbing business, a missed call is often a lost customer. The average plumber misses 30–40% of inbound calls, and most callers don't leave a voicemail — they just dial the next result on Google. That's not a lead management problem; it's a survival problem. The goal of Plumber's Mate AI is to make sure every inbound signal — call, form, text — becomes a booked job.</p>
+
+        <h3>Stack: Next.js 16, React 19, and Framer Motion</h3>
+        <p>The dashboard is built on Next.js 16 with React 19 and TypeScript. The Webpack build mode (<code>next build --webpack</code>) keeps CI stable while we evaluate Turbopack for production. Tailwind CSS 4 handles styling, and Framer Motion powers the onboarding flow, quote animations, and the marketing landing page. The minimalist dependency list is intentional — every runtime dep adds surface area for security and bundle bloat, and trades-SaaS users don't care about 50 UI libraries.</p>
+
+        <h3>The Lead Capture Pipeline</h3>
+        <p>When a lead comes in — via the website form, a missed-call webhook, or a text — it lands in a unified lead queue. The AI qualifies the lead by asking for job type, postcode, urgency, and preferred time window. Valid leads are auto-scheduled into the owner's calendar using availability rules, and the customer gets an instant booking confirmation with a quote link. No human touches it unless the AI flags ambiguity (emergency keywords, unusual job types, out-of-area postcodes).</p>
+
+        <h3>Quotes, Payments, and the Review Loop</h3>
+        <p>Once a job is marked complete, the platform auto-generates a line-item invoice from the quote, sends it via email and SMS, and opens a Stripe-backed payment link. 24 hours after payment clears, it fires a Google review request with a one-tap link. This "complete → invoice → paid → review" loop is what moves a plumber from "I do jobs" to "I have a business" — Google reviews compound into more leads, and the cycle self-reinforces.</p>
+
+        <h3>Re-Engaging Old Leads</h3>
+        <p>The most underrated feature is re-engagement. Every plumber has a CRM graveyard — old quotes never accepted, customers who ghosted. Plumber's Mate AI runs a weekly re-engagement job: it scores cold leads based on job type, time since last contact, and seasonality (boiler services before winter, drainage after storms), then sends a personalised nudge. We've seen 8–12% of dead leads reactivate this way.</p>
+
+        <h3>Dashboard Architecture</h3>
+        <p>The owner dashboard is route-grouped into <code>(dashboard)</code>, <code>(admin)</code>, and <code>(auth)</code> segments. Leads, quotes, payments, and reviews each get a dedicated view, but the home screen is a single feed: "what needs your attention today." We deliberately resisted building a kitchen-sink CRM — trades owners don't have time to learn software. If a feature needs a tutorial, it doesn't ship.</p>
+
+        <h3>Lessons Learned</h3>
+        <p>Three things surprised me. First, SMS matters more than email — plumbers live in their messages app. Second, the onboarding offer page (/offer) converts 3x better than a generic pricing page because it frames the product around a specific pain. Third, Framer Motion on the landing page measurably increased trial signups — polish signals trust, and trades owners are understandably skeptical of software salespeople.</p>
+
+        <p>Plumber's Mate AI is proof that vertical AI SaaS doesn't need to be flashy — it just needs to eliminate one painful, repetitive task and do it reliably. For plumbers, that task is never missing a job again.</p>
+      </>
+    ),
+  },
+  'canvas-ai-image-studio-fabricjs': {
+    title: 'Canvas-Based AI Image Studios with Fabric.js and Next.js',
+    date: 'April 10, 2026',
+    dateISO: '2026-04-10',
+    description: 'A technical walkthrough of building Clay Imaginary — a drag-and-drop AI image studio with Fabric.js compositing, html2canvas export, and AI-powered generation for creators.',
+    tags: ['Fabric.js', 'Next.js', 'AI Image Gen', 'Canvas API', 'html2canvas'],
+    content: (
+      <>
+        <p>Creators today don't want another text-to-image tool. They want a studio — a workspace where they can generate, composite, edit, and export polished visuals without bouncing between Photoshop, Figma, and five AI tabs. Clay Imaginary is that studio, built with AIDEVGEN using Next.js 15, React 19, and Fabric.js. Here's how the canvas engine, drag-and-drop layers, and AI generation pipeline come together.</p>
+
+        <h3>Why Fabric.js Over Raw Canvas</h3>
+        <p>Raw <code>&lt;canvas&gt;</code> is great for drawing, terrible for editing. You'd have to rebuild selection, transformation, grouping, serialization, and undo from scratch. Fabric.js gives you all of that out of the box — objects are first-class, each with position, rotation, scale, and event handlers. For Clay Imaginary, that meant we could focus on the creative features (AI generation, templates, exports) instead of reinventing a scene graph.</p>
+
+        <h3>The Layer System</h3>
+        <p>Every element on the canvas — an AI-generated image, a text headline, a shape, an uploaded asset — is a Fabric object with a <code>layerId</code>. A side panel renders the layer stack, and react-draggable lets users reorder layers with a drag. Reordering updates Fabric's internal z-index, the canvas re-renders, and the layer panel stays in sync via a shared state store. It feels like Figma; it's a few hundred lines of code.</p>
+
+        <h3>Wiring Up AI Image Generation</h3>
+        <p>Generation is a server-side API route that proxies to the image model — keeping API keys off the client and letting us rate-limit, log, and swap providers without a client update. The user types a prompt, picks a style preset, and hits generate. The returned image URL is loaded into a Fabric image object and dropped onto the canvas at the last click position, ready to be moved, scaled, or composited with other layers.</p>
+
+        <h3>Showcase Templates</h3>
+        <p>Cold-start is the enemy of creative tools — a blank canvas intimidates users. Clay Imaginary ships with a showcase gallery of templates: product mockups, recipe cards, finance infographics, meme formats, quote cards, AI tech news layouts, gym posts. Each template is a pre-populated Fabric scene the user can remix. This is also how the product sells itself — the showcase page doubles as a landing page and a starting point.</p>
+
+        <h3>Export with html2canvas</h3>
+        <p>Fabric has its own <code>toDataURL</code> method, but we use html2canvas for the final export because the studio overlays HTML UI (annotations, watermarks for free users, branding frames) on top of the canvas. html2canvas captures the composed DOM + canvas region as a single PNG, which is what users actually want to post to Instagram or LinkedIn. Fabric handles editing; html2canvas handles shipping.</p>
+
+        <h3>Performance: Keep the Canvas Small</h3>
+        <p>The naive approach is to render at full 4K resolution while editing. Don't. We render at a lower working resolution (usually 1024×1024 or 1080×1350 for social ratios) and upscale on export. This keeps drag, rotate, and scale interactions at 60fps even on mid-range laptops. For really large compositions, we use Fabric's <code>renderOnAddRemove: false</code> and batch updates manually.</p>
+
+        <h3>Auth and Persistence</h3>
+        <p>Google OAuth via <code>@react-oauth/google</code> handles sign-in. Projects serialize as Fabric JSON (via <code>canvas.toJSON()</code>) and live in a backend store keyed by user ID. Deserializing a project restores every layer with its exact state — positions, rotations, opacities, filters. This makes project sharing trivial: a URL + a JSON blob = a fully editable remix.</p>
+
+        <h3>What I'd Do Differently</h3>
+        <p>If I were starting Clay Imaginary over, I'd invest earlier in a proper undo/redo history stack. Fabric's event model makes it possible but not free — you need to snapshot state on every mutation. Bolting it on later is painful. I'd also build the template system as a first-class primitive from day one rather than as a gallery layered on top.</p>
+
+        <p>Canvas-based AI tools are a growing category, and Fabric.js + Next.js is a surprisingly capable stack. If you're building something like Clay Imaginary, skip the pure-canvas detour and stand on the shoulders of a mature scene graph — your users want features, not reinvented wheels.</p>
+      </>
+    ),
+  },
   'nextjs-20-whats-new': {
     title: 'Next.js 20: Everything New You Need to Know',
     date: 'March 28, 2026',
