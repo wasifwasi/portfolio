@@ -83,11 +83,6 @@ const Home = () => {
         <h1 className="home--name" ref={nameRef}>Wasif Rehman</h1>
         <div className="home--profile" ref={profileRef}>
           <div className="home--image">
-            {!imageLoaded && (
-              <div className="home--loader" aria-label="Loading profile image">
-                <CounterLoader />
-              </div>
-            )}
             <PixelatedCanvas
               src="img/dp.jpeg"
               width={350}
@@ -103,7 +98,6 @@ const Home = () => {
               followSpeed={0.15}
               jitterStrength={0}
               className="home--img home--pixelated"
-              onLoad={() => setImageLoaded(true)}
             />
             <div className="home--shadow"></div>
 
