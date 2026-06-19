@@ -3847,6 +3847,90 @@ button,
   box-shadow: 0 4px 15px hsla(0, 0%, 0%, 0.1);
 }
 
+.project-detail--hero {
+  position: relative;
+  margin-top: -6rem;
+  margin-bottom: 2.5rem;
+  min-height: 420px;
+  display: flex;
+  align-items: flex-end;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.project-detail--hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, hsla(0, 0%, 4%, 0.2) 0%, hsla(0, 0%, 4%, 0.55) 55%, hsla(0, 0%, 4%, 0.92) 100%),
+    linear-gradient(90deg, hsla(0, 0%, 4%, 0.75) 0%, hsla(0, 0%, 4%, 0.15) 60%, transparent 100%);
+}
+
+.project-detail--hero-inner {
+  position: relative;
+  z-index: 2;
+  padding-top: 8rem;
+  padding-bottom: 3rem;
+}
+
+.project-detail--hero-badge {
+  display: inline-block;
+  margin-bottom: 1rem;
+  padding: 0.4rem 1rem;
+  border-radius: 2rem;
+  font-size: var(--small-font-size);
+  font-weight: var(--font-medium);
+  color: #fff;
+  background: hsla(14, 98%, 50%, 0.85);
+  box-shadow: 0 4px 18px hsla(14, 98%, 50%, 0.35);
+}
+
+.project-detail--hero-title {
+  color: #fff;
+  font-size: clamp(2.25rem, 6vw, 3.75rem);
+  line-height: 1.05;
+  margin-bottom: 0.75rem;
+  text-shadow: 0 4px 24px hsla(0, 0%, 0%, 0.45);
+}
+
+.project-detail--hero-tagline {
+  color: hsla(0, 0%, 100%, 0.88);
+  font-size: clamp(1rem, 2.2vw, 1.25rem);
+  max-width: 640px;
+  margin-bottom: 1.75rem;
+  text-shadow: 0 2px 12px hsla(0, 0%, 0%, 0.45);
+}
+
+.project-detail--hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.6rem;
+  border-radius: 2rem;
+  font-weight: var(--font-medium);
+  color: #fff;
+  background: linear-gradient(135deg, hsl(14, 98%, 50%) 0%, hsl(14, 98%, 42%) 100%);
+  box-shadow: 0 8px 24px hsla(14, 98%, 50%, 0.4);
+  text-decoration: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-detail--hero-cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px hsla(14, 98%, 50%, 0.55);
+}
+
+@media screen and (max-width: 768px) {
+  .project-detail--hero {
+    min-height: 340px;
+  }
+  .project-detail--hero-inner {
+    padding-top: 6rem;
+  }
+}
+
 .project-detail--header {
   display: grid;
   grid-template-columns: 200px 1fr;
