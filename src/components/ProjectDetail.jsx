@@ -12,7 +12,7 @@ const projectContent = {
     role: 'Full-Stack Developer',
     company: 'AIDEVGEN',
     companyType: 'AI & Software Development Company',
-    image: 'img/freenote.png',
+    image: 'img/freenote.webp',
     isLogo: true,
     techStack: ['React Native', 'Expo', 'TypeScript', 'Firebase', 'Firestore', 'Cloud Functions', 'Groq AI', 'OpenAI Whisper', 'Zustand', 'RevenueCat'],
     overview: 'A cross-platform voice note-taking application that leverages AI to automatically transcribe, summarize, and enable interactive chat with audio recordings. Features cloud sync, PDF export, and a freemium subscription model.',
@@ -74,7 +74,7 @@ const projectContent = {
     role: 'Full-Stack Developer',
     company: 'AIDEVGEN',
     companyType: 'AI & Software Development Company',
-    image: 'img/project_img_1.png',
+    image: 'img/project_img_1.webp',
     isLogo: true,
     techStack: ['React Native', 'Expo', 'Node.js', 'MongoDB', 'Google Gemini AI', 'Express.js', 'JWT Auth', 'Cloud Storage'],
     overview: 'An innovative mobile application that leverages Google Gemini AI to help car owners understand dashboard warning lights, inspect tire conditions, and analyze maintenance quotes from mechanics.',
@@ -125,7 +125,7 @@ const projectContent = {
     role: 'Full-Stack Developer',
     company: 'Personal Project',
     companyType: 'Personal Portfolio Project',
-    image: 'img/ecommerce.png',
+    image: 'img/ecommerce.webp',
     isLogo: false,
     techStack: ['MongoDB', 'Express.js', 'React', 'Node.js', 'Stripe', 'Redux', 'JWT', 'Cloudinary', 'Tailwind CSS'],
     overview: 'A complete e-commerce solution featuring product management, shopping cart functionality, secure Stripe payments, user authentication, and a comprehensive admin dashboard for inventory and order management.',
@@ -177,7 +177,7 @@ const projectContent = {
     role: 'Full-Stack Developer',
     company: 'Freelance Project',
     companyType: 'Freelance',
-    image: 'img/vote.png',
+    image: 'img/vote.webp',
     isLogo: false,
     techStack: ['React', 'Node.js', 'MongoDB', 'Socket.IO', 'Express.js', 'Chart.js', 'Redis', 'JWT'],
     overview: 'A secure, real-time voting and polling system designed for accurate vote forecasting, live result visualization, and transparent election management with robust anti-fraud measures.',
@@ -229,7 +229,7 @@ const projectContent = {
     role: 'Full-Stack Developer',
     company: 'Freelance Project',
     companyType: 'Freelance',
-    image: 'img/edu.png',
+    image: 'img/edu.webp',
     isLogo: false,
     techStack: ['MongoDB', 'Express.js', 'React', 'Node.js', 'D3.js', 'Socket.IO', 'React DnD', 'PDF Generation'],
     overview: 'A comprehensive academic analytics platform providing real-time insights into student performance, attendance patterns, and curriculum effectiveness with team collaboration features.',
@@ -281,7 +281,7 @@ const projectContent = {
     role: 'Full-Stack Developer',
     company: 'AIDEVGEN',
     companyType: 'AI & Software Development Company',
-    image: 'img/bible-trader.png',
+    image: 'img/bible-trader.webp',
     isLogo: true,
     techStack: ['React', 'TypeScript', 'Tailwind CSS', 'Supabase', 'Stripe Connect', 'PostgreSQL', 'Edge Functions'],
     overview: 'A secure peer-to-peer marketplace for buying, selling, and trading Bibles and religious books, featuring escrow payments, trade matching, and daily verse displays.',
@@ -334,7 +334,7 @@ const projectContent = {
     role: 'Full-Stack Developer',
     company: 'Freelance Project',
     companyType: 'Freelance',
-    image: 'img/mmpb.png',
+    image: 'img/mmpb.webp',
     isLogo: true,
     techStack: ['Next.js 14', 'NestJS', 'PostgreSQL', 'Prisma', 'AWS S3', 'TypeScript', 'Tailwind CSS', 'JWT Auth', 'Nodemailer'],
     overview: 'A comprehensive international recruitment platform connecting skilled workers with employers across GCC countries. Features job listings, application tracking, CV management, and a complete admin dashboard for managing the recruitment workflow.',
@@ -388,7 +388,7 @@ const projectContent = {
     role: 'Full-Stack Developer',
     company: 'Freelance Project',
     companyType: 'Freelance',
-    image: 'img/zareen.png',
+    image: 'img/zareen.webp',
     isLogo: true,
     techStack: ['Next.js 14', 'TypeScript', 'React 18', 'Tailwind CSS', 'Lucide React', 'CVA', 'PostCSS'],
     overview: 'A premium e-commerce platform for a luxury Pakistani bridal couture brand, featuring a curated collection showcase, advanced product filtering, custom order system with image uploads, virtual consultation booking, and global shipping to 6+ countries.',
@@ -434,6 +434,290 @@ const projectContent = {
       </>
     ),
   },
+  'home-structure': {
+    title: 'homeStructure',
+    subtitle: 'Attock House Design Studio — 2D Plan to Live 3D',
+    date: 'May 2026 - June 2026',
+    role: 'Full-Stack Developer',
+    company: 'Personal Project',
+    companyType: 'Personal Project',
+    image: 'img/home-structure.webp',
+    heroImage: 'img/home-structure-hero.webp',
+    isLogo: false,
+    techStack: ['Next.js 16', 'React 19', 'TypeScript', 'Three.js', 'react-three-fiber', 'react-konva', 'Zustand', 'Zod', 'Tailwind CSS'],
+    overview: 'A web app to design a climate-smart house on a real irregular plot in Attock, Pakistan. Draw and edit a 2D floor plan on the exact plot boundary, watch it build in live 3D, load architect-designed models, and get passive-design and ventilation advice tuned to Attock\'s hot, semi-arid climate.',
+    content: (
+      <>
+        <h3>Project Overview</h3>
+        <p>homeStructure lets a homeowner design a house on a <b>real, irregular trapezoid plot</b> (~2,455 sq ft ≈ 9 Marla) traced from satellite imagery. Because three of the four sides are shared party walls, every design relies on a central courtyard (sehan) for light and cross-ventilation — and the app makes that trade-off visible while you draw. The same floor-plan document drives the 2D editor, the live 3D view, the thumbnails, and a climate score, so everything stays in sync.</p>
+
+        <h3>My Role & Responsibilities</h3>
+        <p>As the <b>Full-Stack Developer</b> on this personal project, I was responsible for:</p>
+        <ul>
+          <li>Designing a single <b>FloorPlan</b> document (a Zod schema) as the source of truth for the whole app</li>
+          <li>Building an editable 2D floor planner on an irregular boundary with react-konva</li>
+          <li>Extruding the same plan into live 3D with react-three-fiber and Three.js</li>
+          <li>Implementing a Zustand store with undo/redo (zundo) and localStorage autosave</li>
+          <li>Authoring two architect-designed models dimensioned to fit the trapezoid</li>
+          <li>Creating an Attock-specific passive-design score, checklist, and sun diagram</li>
+        </ul>
+
+        <h3>Key Features Developed</h3>
+        <ul>
+          <li><b>Editable 2D floor planner:</b> add, drag, resize and label rooms on the irregular boundary, with grid snap, polygon containment, party-wall locking, and a live area / Marla / coverage readout</li>
+          <li><b>Live 3D:</b> the same plan extrudes into 3D instantly, with Massing / Realistic / Blocks render modes and Front / Back / Left / Right / Top / Iso direction presets</li>
+          <li><b>Pre-built models:</b> Courtyard Family Home and Joint-Family Two-Unit, loadable straight into the editor</li>
+          <li><b>Attock climate analysis:</b> a live passive-design score plus a checklist and sun diagram covering courtyard, shading, roof, zoning, and monsoon</li>
+          <li><b>Persistence:</b> autosaves to localStorage with JSON Import / Export</li>
+        </ul>
+
+        <h3>Technical Architecture</h3>
+        <ul>
+          <li><b>Framework:</b> Next.js 16 with React 19 and TypeScript</li>
+          <li><b>Source of truth:</b> a single Zod-validated FloorPlan document, everything measured in feet</li>
+          <li><b>2D editor:</b> react-konva for canvas rendering, with @flatten-js/core and earcut for geometry and polygon triangulation</li>
+          <li><b>3D viewer:</b> react-three-fiber and @react-three/drei over Three.js</li>
+          <li><b>State:</b> Zustand store with zundo for time-travel undo/redo</li>
+        </ul>
+
+        <h3>Technical Challenges Solved</h3>
+        <ul>
+          <li>Constraining room placement to an irregular, non-rectangular boundary with reliable polygon containment and snapping</li>
+          <li>Keeping a single document perfectly in sync across a 2D editor and a 3D extrusion without drift</li>
+          <li>Turning qualitative passive-design guidance into a concrete, live score the user can act on while editing</li>
+        </ul>
+
+        <h3>Results & Impact</h3>
+        <p>A polished, deployed design studio that makes climate-smart planning approachable for a real plot — letting a homeowner sketch a layout, see it in 3D immediately, and understand the ventilation and shading trade-offs specific to Attock's climate, all in the browser with no installs.</p>
+      </>
+    ),
+  },
+  'bpoai': {
+    title: 'BPOAI',
+    subtitle: 'BPO Directory & AI Intelligence Hub',
+    date: 'April 2026 - June 2026',
+    role: 'Lead Developer',
+    company: 'AIDEVGEN',
+    companyType: 'AI & Software Development Company',
+    image: 'img/bpoai.webp',
+    isLogo: false,
+    techStack: ['Next.js 16', 'React 19', 'TypeScript', 'Supabase', 'Three.js', 'react-three-fiber', 'Framer Motion', 'Tailwind CSS', 'Resend'],
+    overview: 'A directory and AI intelligence hub for the top BPO (Business Process Outsourcing) companies in the Philippines, combining company discovery with an immersive 3D landing experience and a Supabase-backed data layer.',
+    content: (
+      <>
+        <h3>Project Overview</h3>
+        <p>BPOAI is a directory and intelligence hub for the Philippine BPO industry. It pairs a searchable directory of top outsourcing companies with an immersive, animated landing experience and a backend data layer, giving prospective clients a fast way to discover and compare providers.</p>
+
+        <h3>My Role & Responsibilities</h3>
+        <p>As the <b>Lead Developer at AIDEVGEN</b>, I was responsible for:</p>
+        <ul>
+          <li>Leading the architecture and build of the Next.js 16 / React 19 application end-to-end</li>
+          <li>Modeling and integrating the Supabase data layer for the company directory</li>
+          <li>Building an immersive 3D landing experience with react-three-fiber and Three.js</li>
+          <li>Crafting motion and micro-interactions with Framer Motion</li>
+          <li>Wiring transactional email (demo requests / contact) via Resend</li>
+          <li>Configuring deployment to Cloudflare via OpenNext</li>
+        </ul>
+
+        <h3>Key Features Developed</h3>
+        <ul>
+          <li><b>BPO directory:</b> browse and discover top outsourcing companies in the Philippines, backed by Supabase</li>
+          <li><b>Immersive 3D landing:</b> an animated Three.js hero that sets the product apart from a typical directory site</li>
+          <li><b>Lead capture:</b> demo-request and contact flows delivered by email via Resend</li>
+          <li><b>Polished motion design:</b> Framer Motion transitions throughout for a premium feel</li>
+        </ul>
+
+        <h3>Technical Architecture</h3>
+        <ul>
+          <li><b>Framework:</b> Next.js 16 with React 19 and TypeScript</li>
+          <li><b>Backend / data:</b> Supabase (Postgres + SSR auth helpers) for the directory data layer</li>
+          <li><b>3D / motion:</b> react-three-fiber over Three.js, with Framer Motion for UI animation</li>
+          <li><b>Email:</b> Resend for transactional and lead notifications</li>
+          <li><b>Deployment:</b> Cloudflare via @opennextjs/cloudflare</li>
+        </ul>
+
+        <h3>Technical Challenges Solved</h3>
+        <ul>
+          <li>Balancing a heavy 3D landing experience against fast load and good Core Web Vitals</li>
+          <li>Structuring the Supabase schema and queries for flexible directory search and filtering</li>
+          <li>Adapting a Next.js 16 app to deploy cleanly on Cloudflare via OpenNext</li>
+        </ul>
+
+        <h3>Results & Impact</h3>
+        <p>Delivered a distinctive, production-ready directory that stands out from generic listing sites — combining real company data with an immersive 3D presentation and lead-capture flows that turn visitors into demo requests.</p>
+      </>
+    ),
+  },
+  'voltoutreach': {
+    title: 'VoltOutreach',
+    subtitle: 'Recruitment & Outreach Platform',
+    date: 'April 2026 - June 2026',
+    role: 'Lead Developer',
+    company: 'AIDEVGEN',
+    companyType: 'AI & Software Development Company',
+    image: 'img/voltoutreach.webp',
+    isLogo: false,
+    techStack: ['Next.js 16', 'React 19', 'TypeScript', 'MongoDB', 'Mongoose', 'Anthropic AI', 'JWT (jose)', 'Cloudinary', 'Calendly', 'Framer Motion'],
+    overview: 'A recruitment and outreach portal with job listings, candidate applications, an admin dashboard, AI-assisted outreach, Calendly scheduling, and Cloudinary-backed media handling.',
+    content: (
+      <>
+        <h3>Project Overview</h3>
+        <p>VoltOutreach is an end-to-end recruitment and outreach platform. Candidates browse jobs and apply; admins manage listings, review applications, and run AI-assisted outreach — with interview scheduling handled through an embedded Calendly flow and document/media uploads stored on Cloudinary.</p>
+
+        <h3>My Role & Responsibilities</h3>
+        <p>As the <b>Lead Developer at AIDEVGEN</b>, I was responsible for:</p>
+        <ul>
+          <li>Architecting the full Next.js 16 / React 19 application, including the public portal and admin area</li>
+          <li>Designing the MongoDB data model with Mongoose for jobs, applications, and leads</li>
+          <li>Implementing secure JWT authentication and route protection with jose</li>
+          <li>Integrating the Anthropic AI SDK for AI-assisted outreach</li>
+          <li>Wiring Cloudinary for CV / media uploads and Calendly for scheduling</li>
+          <li>Building the admin dashboard for jobs, applications, and lead management</li>
+        </ul>
+
+        <h3>Key Features Developed</h3>
+        <ul>
+          <li><b>Job listings & applications:</b> a candidate-facing portal to browse roles and apply, with supplemental job data</li>
+          <li><b>Admin dashboard:</b> manage jobs, review applications, and handle leads from a protected admin area</li>
+          <li><b>AI-assisted outreach:</b> Anthropic-powered drafting to speed up candidate and client outreach</li>
+          <li><b>Scheduling & media:</b> embedded Calendly booking and Cloudinary-backed document/image uploads</li>
+          <li><b>Secure auth:</b> JWT-based sessions with middleware-protected routes</li>
+        </ul>
+
+        <h3>Technical Architecture</h3>
+        <ul>
+          <li><b>Framework:</b> Next.js 16 with React 19 and TypeScript</li>
+          <li><b>Database:</b> MongoDB with Mongoose models for jobs, applications, and leads</li>
+          <li><b>Auth:</b> JWT sessions via jose with bcryptjs password hashing</li>
+          <li><b>AI:</b> the Anthropic AI SDK for outreach assistance</li>
+          <li><b>Integrations:</b> Cloudinary for media, react-calendly for scheduling, Framer Motion for UI</li>
+        </ul>
+
+        <h3>Technical Challenges Solved</h3>
+        <ul>
+          <li>Separating public portal and admin concerns behind clean, middleware-protected route groups</li>
+          <li>Designing a flexible schema for jobs, supplemental job data, applications, and leads</li>
+          <li>Integrating AI outreach in a way that stays useful and controllable for admins</li>
+        </ul>
+
+        <h3>Results & Impact</h3>
+        <p>Delivered a complete recruitment platform that streamlines the pipeline from job posting to application to interview — cutting manual outreach effort with AI assistance and consolidating scheduling, media, and candidate management in one admin dashboard.</p>
+      </>
+    ),
+  },
+  'purex': {
+    title: 'PureX',
+    subtitle: 'Product & Water-Quality Mobile App',
+    date: 'March 2026 - May 2026',
+    role: 'Full-Stack Developer',
+    company: 'AIDEVGEN',
+    companyType: 'AI & Software Development Company',
+    image: 'img/purex.webp',
+    isLogo: false,
+    techStack: ['React Native', 'Expo', 'TypeScript', 'Supabase', 'Google Gemini AI', 'RevenueCat', 'Apple Auth', 'Expo Camera', 'Expo Location'],
+    overview: 'A cross-platform mobile app that scans product barcodes for nutrition and safety insights and surfaces location-based water-quality reports, powered by Google Gemini AI and a Supabase backend.',
+    content: (
+      <>
+        <h3>Project Overview</h3>
+        <p>PureX turns a phone into a personal health and safety scanner. Point the camera at a product barcode to get AI-analyzed nutrition and safety insights, and use your location to pull water-quality reports for your area — all wrapped in a polished, native mobile experience with a subscription tier.</p>
+
+        <h3>My Role & Responsibilities</h3>
+        <p>As a <b>Full-Stack Developer at AIDEVGEN</b>, I was responsible for:</p>
+        <ul>
+          <li>Building the cross-platform mobile app with React Native and Expo</li>
+          <li>Implementing barcode scanning with Expo Camera and location features with Expo Location</li>
+          <li>Integrating Google Gemini AI for product and report analysis</li>
+          <li>Designing the Supabase backend for data and authentication</li>
+          <li>Adding Apple authentication and RevenueCat subscriptions</li>
+          <li>Implementing receipt/report generation with Expo Print and native sharing</li>
+        </ul>
+
+        <h3>Key Features Developed</h3>
+        <ul>
+          <li><b>Barcode scanning:</b> scan products for AI-analyzed nutrition and safety information</li>
+          <li><b>Water-quality reports:</b> location-based water-quality data using device GPS</li>
+          <li><b>AI analysis:</b> Google Gemini interprets scanned data into clear, actionable insights</li>
+          <li><b>Subscriptions:</b> RevenueCat-powered premium tier with native paywall</li>
+          <li><b>Native polish:</b> haptics, blur, gradients, notifications, printing, and sharing via Expo modules</li>
+        </ul>
+
+        <h3>Technical Architecture</h3>
+        <ul>
+          <li><b>Framework:</b> React Native 0.81 on Expo 54 with TypeScript</li>
+          <li><b>Backend:</b> Supabase for data and auth</li>
+          <li><b>AI:</b> Google Gemini (@google/genai) for analysis</li>
+          <li><b>Auth & monetization:</b> Apple authentication and RevenueCat subscriptions</li>
+          <li><b>Native modules:</b> Expo Camera, Location, Notifications, Print, Sharing, Haptics, and Blur</li>
+        </ul>
+
+        <h3>Technical Challenges Solved</h3>
+        <ul>
+          <li>Making barcode scanning fast and reliable across a wide range of products and lighting</li>
+          <li>Turning raw product and location data into trustworthy, easy-to-read AI insights</li>
+          <li>Integrating cross-platform subscriptions and Apple auth cleanly within an Expo dev-client build</li>
+        </ul>
+
+        <h3>Results & Impact</h3>
+        <p>Delivered a feature-rich health-and-safety scanner that puts AI-powered product and water-quality insights in users' pockets — combining camera, location, and AI into a single native app with a working subscription model.</p>
+      </>
+    ),
+  },
+  'auth-system': {
+    title: 'Auth System',
+    subtitle: 'Full-Stack Authentication Application',
+    date: 'February 2026 - March 2026',
+    role: 'Full-Stack Developer',
+    company: 'AIDEVGEN',
+    companyType: 'AI & Software Development Company',
+    image: 'img/auth-system.webp',
+    isLogo: false,
+    techStack: ['Next.js 16', 'TypeScript', 'NextAuth v5', 'MongoDB', 'bcryptjs', 'Nodemailer', 'Zod', 'Tailwind CSS'],
+    overview: 'A production-ready authentication application with sign-up, login, protected routes, and Gmail-based password reset, built on Next.js 16 and NextAuth v5 with secure, middleware-protected session handling.',
+    content: (
+      <>
+        <h3>Project Overview</h3>
+        <p>Auth System is a complete, production-ready authentication starter: users can register, log in, access protected routes, and reset forgotten passwords via email. It demonstrates a secure, modern auth flow built on the latest Next.js and NextAuth, with validation and middleware protection done right.</p>
+
+        <h3>My Role & Responsibilities</h3>
+        <p>As a <b>Full-Stack Developer at AIDEVGEN</b>, I was responsible for:</p>
+        <ul>
+          <li>Building the full authentication application with Next.js 16 and NextAuth v5</li>
+          <li>Implementing registration and login with bcryptjs password hashing</li>
+          <li>Designing the Gmail-based password-reset flow with Nodemailer</li>
+          <li>Protecting routes with middleware and secure session handling</li>
+          <li>Validating all inputs end-to-end with Zod</li>
+          <li>Modeling users and tokens in MongoDB</li>
+        </ul>
+
+        <h3>Key Features Developed</h3>
+        <ul>
+          <li><b>Sign-up & login:</b> secure credential auth with hashed passwords</li>
+          <li><b>Password reset:</b> email-based reset over Gmail SMTP via Nodemailer</li>
+          <li><b>Protected routes:</b> middleware-guarded pages that require a valid session</li>
+          <li><b>Validation:</b> Zod schemas on every form and API route</li>
+        </ul>
+
+        <h3>Technical Architecture</h3>
+        <ul>
+          <li><b>Framework:</b> Next.js 16 with TypeScript and Tailwind CSS</li>
+          <li><b>Auth:</b> NextAuth v5 (beta) with a credentials provider and bcryptjs hashing</li>
+          <li><b>Database:</b> MongoDB for users and reset tokens</li>
+          <li><b>Email:</b> Nodemailer over Gmail SMTP for password-reset links</li>
+          <li><b>Validation:</b> Zod across forms and server routes</li>
+        </ul>
+
+        <h3>Technical Challenges Solved</h3>
+        <ul>
+          <li>Implementing a secure, time-limited password-reset token flow over email</li>
+          <li>Configuring NextAuth v5 (beta) with a credentials provider and middleware route protection</li>
+          <li>Keeping validation consistent on both client and server with shared Zod schemas</li>
+        </ul>
+
+        <h3>Results & Impact</h3>
+        <p>Delivered a reusable, production-ready authentication foundation that handles the full account lifecycle — registration, login, protected access, and password recovery — with modern security practices baked in and ready to drop into other products.</p>
+      </>
+    ),
+  },
 };
 
 const ProjectDetail = () => {
@@ -446,6 +730,14 @@ const ProjectDetail = () => {
 
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+      if (project.heroImage) {
+        tl.fromTo(
+          '.project-detail--hero-inner > *',
+          { opacity: 0, y: 30 },
+          { opacity: 1, y: 0, duration: 0.7, stagger: 0.12 }
+        );
+      }
 
       tl.fromTo(
         '.project-detail--back',
@@ -501,6 +793,29 @@ const ProjectDetail = () => {
         description={project.description}
         path={`/projects/${id}`}
       />
+      {project.heroImage && (
+        <div
+          className="project-detail--hero"
+          style={{ backgroundImage: `url(/${project.heroImage})` }}
+        >
+          <div className="project-detail--hero-overlay" />
+          <div className="container project-detail--hero-inner">
+            <span className="project-detail--hero-badge">{project.companyType}</span>
+            <h1 className="project-detail--hero-title">{project.title}</h1>
+            <p className="project-detail--hero-tagline">{project.subtitle}</p>
+            {project.demo && project.demo !== '#' && (
+              <a
+                href={project.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="project-detail--hero-cta"
+              >
+                <ExternalLink size={18} /> View Live Site
+              </a>
+            )}
+          </div>
+        </div>
+      )}
       <div className="container">
         <Link to="/projects" className="project-detail--back">
           <ArrowLeft size={20} /> Back to Projects

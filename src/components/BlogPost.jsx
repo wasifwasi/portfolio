@@ -4,6 +4,194 @@ import { gsap } from 'gsap';
 import SEO from './SEO';
 
 const blogContent = {
+  'building-a-9-agent-ai-backend-for-bpoai': {
+    title: 'How the BPOAI Agent Flow Works',
+    date: 'June 18, 2026',
+    dateISO: '2026-06-18',
+    description: 'How I built the agent server behind BPOAI — nine specialized Claude-powered agents that scrape leads, score AI readiness, verify claims, run email outreach drips, and publish weekly news, all wired together through webhooks and cron.',
+    tags: ['AI Agents', 'Claude', 'Apify', 'Supabase', 'Express'],
+    content: (
+      <>
+        <p>BPOAI is a directory and intelligence hub for the BPO industry that I led at AIDEVGEN. The public Next.js site is only half the story — behind it runs a completely separate <b>agent server</b>: a small Express app whose entire job is to make the directory feel alive. It scrapes new companies, scores them, verifies ownership claims, runs cold-email campaigns, and writes weekly news, with almost no human in the loop. This post is a walkthrough of how those nine agents are wired together.</p>
+
+        <h3>Two Apps, One Webhook Contract</h3>
+        <p>The main site and the agents are deliberately kept apart. The Next.js app never runs an agent inline; it just fires a webhook. A tiny helper POSTs to <code>{`${AGENT_SERVER}/webhook/{event}`}</code> with an <code>x-agent-secret</code> header and — crucially — swallows every error so an agent outage can <i>never</i> break the main site. The agent server is an Express app exposing routes like <code>/webhook/search</code>, <code>/webhook/claim-submit</code>, <code>/webhook/profile-update</code>, and a few <code>/webhook/cron/*</code> endpoints. That clean contract is what lets the agents evolve, crash, and redeploy independently of the customer-facing site.</p>
+
+        <h3>The Search → Scrape → Outreach Chain</h3>
+        <p>The most interesting flow starts with a failed search. <b>Agent 1 (Search)</b> logs every directory query to Supabase and Slack. If a search returns zero results, it sets a flag that fires <b>Agent 2 (Scraper)</b> in the background — the response to the site returns immediately, the scrape runs after.</p>
+        <p>Agent 2 is the workhorse. It uses Apify's <code>compass/crawler-google-places</code> actor to find matching BPO companies on Google Maps, then <code>apify/website-content-crawler</code> to pull text from each company's site, and a regex-based extractor to harvest contact emails (preferring role inboxes like <code>info@</code> and <code>sales@</code> on the matching domain). New leads are de-duplicated and written to Supabase. Then it <i>chains two more agents</i>: <b>Agent 8</b> to notify anyone who requested that scan, and <b>Agent 9</b> to kick off an outreach campaign for every lead that has an email.</p>
+
+        <h3>Outreach as a Drip, Stopped by Replies</h3>
+        <p><b>Agent 9 (Outreach)</b> is a three-email drip. The first email goes out the moment a lead is created; an hourly cron (<code>/webhook/cron/outreach</code>) sends follow-up #2 at +24h and #3 at +48h. A unique DB index prevents the same lead being enrolled twice, and an admin master switch can pause all outreach at once. The clever part is the feedback loop: when a recipient replies, Resend's <code>email.received</code> webhook hits the server, <b>Agent 8</b> stores the reply, and it calls back into Agent 9 to mark the campaign <i>replied</i> and stop the drip. No one wants a "just following up" email after they've already answered.</p>
+
+        <h3>Scoring and Claims: AI Where It Earns Its Keep</h3>
+        <p>Two agents lean directly on Claude. <b>Agent 3 (Scoring)</b> fires on every profile update and asks Claude to compute an <b>AI Readiness Score</b> (0–100) from the company's listed tools, services, and profile completeness — auto-awarding an "AI-Ready" badge at 70+. <b>Agent 5 (Claims)</b> handles ownership claims by comparing the claimant's email domain to the company's website domain: a match auto-approves and emails the user; a mismatch is queued to an admin Slack channel for manual review. Claude is used where judgment helps; a plain domain check is used where it's all you need.</p>
+
+        <h3>The Weekly Cron: News and Analytics</h3>
+        <p>Every Monday morning, two agents wake up. <b>Agent 6 (News)</b> scrapes BPO/AI headlines across a set of topics (Apify's Google-search scraper + content crawler), runs each article through Claude to produce an SEO title, summary, and clean HTML body, and saves them as <i>pending drafts</i> for an admin to approve. It also writes one original "trending" article naming the week's top-scoring and newly-added companies. <b>Agent 7 (Analytics)</b> compiles weekly stats — new companies, claims, top searches, highest scores — and posts a digest to Slack. No content auto-publishes; humans stay in the approval loop where reputation is on the line.</p>
+
+        <h3>The Shared Toolbelt</h3>
+        <p>Four small libraries keep the agents thin. <code>claude.ts</code> wraps the Claude integration and exposes typed helpers (<code>calculateAIScore</code>, <code>generateArticleSummary</code>, <code>extractBPOData</code>). <code>apify.ts</code> wraps the Google Maps and content-crawler actors. <code>slack.ts</code> gives every agent a consistent way to post execution logs, lead cards, and error alerts to dedicated channels. <code>emailExtract.ts</code> does the unglamorous but vital work of finding a real, reachable email on a company website. Each agent reads almost like a recipe because the messy parts live here.</p>
+
+        <h3>What Made It Reliable</h3>
+        <p>Three decisions did the heavy lifting. First, <b>fire-and-forget by default</b>: webhooks respond instantly and the real work runs in background tasks with <code>.catch()</code> guards, so a slow scrape never times out a user request. Second, <b>one driver per job</b> — outreach follow-ups are driven only by the external cron, never a second in-process timer, to avoid double-sending. Third, <b>humans gate anything public</b>: scraped leads, AI-written articles, and ambiguous claims all wait for approval. The result is a backend that does a remarkable amount on its own while staying safe to leave running.</p>
+
+        <p>Nine agents, one webhook contract, and a handful of shared tools turn a static directory into something that grows, scores, and follows up by itself. That's the part of BPOAI users never see — and the part I had the most fun building.</p>
+      </>
+    ),
+  },
+  'designing-houses-in-the-browser-react-three-konva': {
+    title: 'Designing a Real House in the Browser: 2D Plans to Live 3D',
+    date: 'June 14, 2026',
+    dateISO: '2026-06-14',
+    description: 'How I built homeStructure — a climate-smart house design studio for a real irregular plot in Attock, with an editable 2D floor planner (react-konva), live 3D (react-three-fiber), and a passive-design score.',
+    tags: ['Three.js', 'react-konva', 'Next.js', 'Zustand', '3D Web'],
+    content: (
+      <>
+        <p>Most house-design tools assume a clean rectangular lot. Real plots aren't like that. homeStructure is a personal project I built to design a climate-smart house on a <b>real, irregular trapezoid plot</b> in Attock, Pakistan — about 2,455 sq ft (≈ 9 Marla), traced from satellite imagery, with three of four sides as shared party walls. You draw the floor plan on the exact boundary, watch it build in live 3D, and get passive-design advice tuned to a hot, semi-arid climate.</p>
+
+        <h3>One Document as the Source of Truth</h3>
+        <p>The whole app is driven by a single <code>FloorPlan</code> document, validated with a Zod schema and measured entirely in feet. That one document feeds the 2D editor, the 3D viewer, the model thumbnails, and the climate score. Keeping a single source of truth is what makes "edit in 2D, see it in 3D instantly" actually work without the two views drifting apart.</p>
+
+        <h3>The 2D Floor Planner (react-konva)</h3>
+        <p>The editor is built on react-konva. You add, drag, resize, and label rooms directly on the irregular boundary, with grid snapping and a live readout of area, Marla, and plot coverage. The hard part is constraint: rooms must stay inside a non-rectangular polygon and respect locked party walls. I used <code>@flatten-js/core</code> for polygon containment and <code>earcut</code> to triangulate the footprint for area calculations.</p>
+
+        <h3>Live 3D (react-three-fiber)</h3>
+        <p>The same plan extrudes into 3D the moment you change it, using react-three-fiber over Three.js with helpers from <code>@react-three/drei</code>. There are three render modes — Massing, Realistic, and Blocks — and camera presets for Front, Back, Left, Right, Top, and Iso. Because the geometry is derived from the FloorPlan document, the 3D view is never out of sync with the 2D editor.</p>
+
+        <h3>Undo/Redo and Persistence</h3>
+        <p>State lives in a Zustand store, with <code>zundo</code> layered on top for time-travel undo/redo — essential for a design tool where you experiment constantly. Everything autosaves to localStorage, and you can Import/Export the plan as JSON, so a design is portable and shareable as a plain data file.</p>
+
+        <h3>Climate-Smart by Design</h3>
+        <p>Because three sides are blind party walls, every viable layout relies on a central courtyard (sehan) for light and cross-ventilation. homeStructure makes that trade-off visible: a live passive-design score plus a checklist and sun diagram covering courtyard placement, shading, roof strategy, zoning, and monsoon handling. The goal is to turn vague "good design" intuition into a concrete number you can push up as you edit.</p>
+
+        <h3>What I Learned</h3>
+        <p>Two lessons stood out. First, deriving 3D from a single validated document is far more robust than syncing two separate models — let one representation be the truth and compute the rest. Second, constraining an editor to an irregular boundary is mostly a geometry problem; investing early in a solid containment-and-snapping layer paid off across every feature built on top of it.</p>
+
+        <p>homeStructure is live and runs entirely in the browser — no installs, no plugins. It's a small proof that climate-smart planning for a real, awkward plot can be approachable, visual, and immediate.</p>
+      </>
+    ),
+  },
+  'building-a-bpo-directory-ai-hub-supabase-three': {
+    title: 'Building a BPO Directory & AI Hub with Supabase and Three.js',
+    date: 'June 02, 2026',
+    dateISO: '2026-06-02',
+    description: 'A look at BPOAI — a directory and intelligence hub for the top BPO companies in the Philippines, combining a Supabase data layer with an immersive 3D landing experience.',
+    tags: ['Next.js', 'Supabase', 'Three.js', 'Framer Motion', 'Directory'],
+    content: (
+      <>
+        <p>The Business Process Outsourcing market in the Philippines is huge, but discovering the right provider is still a mess of outdated lists and SEO spam. BPOAI, which I led at AIDEVGEN, is a directory and intelligence hub that pairs real company data with a landing experience that doesn't feel like a phone book. Here's how it's put together.</p>
+
+        <h3>Supabase as the Data Layer</h3>
+        <p>The directory runs on Supabase — Postgres for the company data plus the SSR auth helpers (<code>@supabase/ssr</code>) so server components can read data securely. Modeling the schema for flexible search was the core work: companies have services, locations, sizes, and specialties, and the UI needs to filter across all of them quickly. Postgres indexes and a clean query layer keep discovery fast even as the dataset grows.</p>
+
+        <h3>An Immersive 3D Landing</h3>
+        <p>First impressions matter for a directory that wants to be the default. The landing page uses react-three-fiber over Three.js for an animated 3D hero that sets BPOAI apart from a generic listing site. The challenge is always the same: a heavy 3D scene must not wreck load time or Core Web Vitals, so the experience is scoped, lazy-loaded, and tuned to stay smooth on mid-range hardware.</p>
+
+        <h3>Motion as a Product Feature</h3>
+        <p>Framer Motion handles transitions throughout — page changes, card reveals, and micro-interactions. On a B2B product, polish reads as credibility. Buyers comparing outsourcing partners are making a high-trust decision, and a site that feels considered earns more of that trust than one that feels like a spreadsheet with a logo.</p>
+
+        <h3>Lead Capture with Resend</h3>
+        <p>Discovery is only half the job; the product has to convert interest into contact. Demo-request and contact flows are delivered by email via Resend, so an interested visitor becomes a real lead in the team's inbox without any third-party form middleware.</p>
+
+        <h3>Deploying on Cloudflare via OpenNext</h3>
+        <p>BPOAI deploys to Cloudflare using <code>@opennextjs/cloudflare</code>, which adapts a Next.js 16 app to Cloudflare's runtime. It's a great fit for a globally accessed directory — edge distribution keeps the site fast worldwide — but it does mean being deliberate about which Node APIs you reach for, since the runtime isn't a standard Node server.</p>
+
+        <h3>Takeaways</h3>
+        <p>The lesson from BPOAI is that "directory" doesn't have to mean "boring." A solid Supabase schema makes the data trustworthy and searchable; a restrained 3D landing and Framer Motion make it memorable; and Resend turns browsing into pipeline. Combine those and a listing site becomes a product.</p>
+      </>
+    ),
+  },
+  'ai-assisted-recruitment-platform-nextjs-mongodb': {
+    title: 'An AI-Assisted Recruitment Platform with Next.js and MongoDB',
+    date: 'May 24, 2026',
+    dateISO: '2026-05-24',
+    description: 'How VoltOutreach streamlines hiring — job listings, candidate applications, an admin dashboard, and AI-assisted outreach with the Anthropic SDK, Cloudinary, and Calendly.',
+    tags: ['Next.js', 'MongoDB', 'Anthropic AI', 'Recruitment', 'Cloudinary'],
+    content: (
+      <>
+        <p>Recruitment is a pipeline problem: jobs go up, candidates apply, someone reviews them, interviews get scheduled, and outreach never stops. VoltOutreach, which I led at AIDEVGEN, is an end-to-end portal that runs that whole pipeline — with AI assistance where the manual effort hurts most. Here's the architecture.</p>
+
+        <h3>Public Portal vs Admin, Cleanly Separated</h3>
+        <p>The app is built on Next.js 16 with React 19 and TypeScript, and the first design decision was a hard separation between the candidate-facing portal and the admin area using route groups. Candidates browse jobs and apply; admins manage listings, review applications, and handle leads behind middleware-protected routes. Keeping these concerns apart keeps both the code and the security model clean.</p>
+
+        <h3>The Data Model (MongoDB + Mongoose)</h3>
+        <p>MongoDB with Mongoose backs the platform, with models for jobs, supplemental job data, applications, and leads. Recruitment data is naturally document-shaped — an application bundles a candidate, a role, answers, and attachments — so a document store fits well. The schema is built for flexibility because every client wants slightly different fields on a job posting.</p>
+
+        <h3>AI-Assisted Outreach</h3>
+        <p>The standout feature is AI-assisted outreach via the Anthropic SDK. Drafting personalized messages to candidates and clients is the most repetitive, time-consuming part of recruiting, so the platform drafts it for you. The key is keeping the AI controllable — it accelerates the human rather than replacing the judgment, and admins always review before anything goes out.</p>
+
+        <h3>Scheduling and Media</h3>
+        <p>Interview scheduling is handled with an embedded Calendly flow (<code>react-calendly</code>), so booking happens without leaving the app. CV and document uploads go to Cloudinary, which offloads file storage and delivery from the application server and keeps media fast and reliable.</p>
+
+        <h3>Secure Sessions with jose</h3>
+        <p>Authentication uses JWT sessions implemented with <code>jose</code>, paired with bcryptjs for password hashing. Sessions are validated in middleware, which is exactly where the public/admin route split is enforced — a request for an admin route without a valid session never reaches the page.</p>
+
+        <h3>Lessons</h3>
+        <p>VoltOutreach reinforced two things. First, separating portal and admin behind route groups from day one avoids a tangle later. Second, AI is most valuable when aimed at a specific, painful, repeatable task — here, outreach drafting — rather than sprinkled everywhere. Consolidating jobs, applications, scheduling, and media into one dashboard is what turns a pile of tools into a platform.</p>
+      </>
+    ),
+  },
+  'barcode-scanning-water-quality-mobile-gemini': {
+    title: 'Barcode Scanning Meets Water Quality: PureX on Expo + Gemini',
+    date: 'May 12, 2026',
+    dateISO: '2026-05-12',
+    description: 'Building PureX — a React Native app that scans product barcodes for nutrition and safety insights and surfaces location-based water-quality reports, powered by Google Gemini and Supabase.',
+    tags: ['React Native', 'Expo', 'Google Gemini', 'Supabase', 'Mobile Dev'],
+    content: (
+      <>
+        <p>PureX turns a phone into a personal health-and-safety scanner. Point the camera at a product barcode to get AI-analyzed nutrition and safety insights, or use your location to pull water-quality reports for your area. I built it at AIDEVGEN with React Native and Expo, Google Gemini for analysis, and Supabase on the back end. Here's how the pieces fit.</p>
+
+        <h3>Camera and Location, the Native Way</h3>
+        <p>Barcode scanning runs on <code>expo-camera</code> and water-quality lookups on <code>expo-location</code>. Getting scanning to feel instant across a wide range of products and lighting conditions is the real work — the camera pipeline has to be responsive, give clear feedback, and degrade gracefully when a code is damaged or unusual. Expo's modules made this far less painful than wiring native code by hand.</p>
+
+        <h3>Turning Raw Data into Trustworthy Insights</h3>
+        <p>A barcode or a location reading is meaningless on its own. Google Gemini (<code>@google/genai</code>) interprets the scanned product or regional data into clear, actionable insights — what's in a product, what to watch for, what a water report actually means for you. The bar here is trust: the output has to be readable and reliable, because people are making health decisions on it.</p>
+
+        <h3>Supabase Backend</h3>
+        <p>Supabase handles data and authentication. Pairing it with Apple authentication (<code>expo-apple-authentication</code>) gives a fast, privacy-respecting sign-in that iOS users expect, while Supabase stores user data and history behind it.</p>
+
+        <h3>Subscriptions with RevenueCat</h3>
+        <p>The premium tier is powered by RevenueCat (<code>react-native-purchases</code>), which abstracts the cross-platform pain of in-app purchases. Integrating subscriptions and Apple auth cleanly inside an Expo dev-client build takes care — build properties and entitlements have to line up — but RevenueCat removes most of the receipt-validation drudgery.</p>
+
+        <h3>Native Polish</h3>
+        <p>The details are what make a utility app feel premium: haptics, blur, gradients, push notifications, and the ability to generate and share reports with <code>expo-print</code> and <code>expo-sharing</code>. Each is a small Expo module, but together they push the app from "functional" to "feels native."</p>
+
+        <h3>Takeaways</h3>
+        <p>PureX is a reminder that a focused mobile app can combine camera, location, and AI into something genuinely useful without becoming bloated. Expo carried the heavy native lifting; the product work was making the AI insights trustworthy and the scanning fast. Get those two right and the rest is polish.</p>
+      </>
+    ),
+  },
+  'production-ready-auth-nextauth-v5-mongodb': {
+    title: 'Production-Ready Auth with NextAuth v5 and MongoDB',
+    date: 'May 02, 2026',
+    dateISO: '2026-05-02',
+    description: 'A practical guide to the full account lifecycle — sign-up, login, protected routes, and email-based password reset — built with Next.js 16, NextAuth v5, MongoDB, and Nodemailer.',
+    tags: ['Next.js', 'NextAuth', 'MongoDB', 'Authentication', 'Security'],
+    content: (
+      <>
+        <p>Authentication is the feature everyone needs and nobody enjoys rebuilding. I built Auth System at AIDEVGEN as a production-ready foundation that handles the whole account lifecycle — registration, login, protected routes, and email-based password reset — on Next.js 16 and NextAuth v5. Here's what goes into doing it properly.</p>
+
+        <h3>NextAuth v5 with a Credentials Provider</h3>
+        <p>The app uses NextAuth v5 (beta) with a credentials provider, which gives you full control over the login flow while still leaning on a battle-tested session layer. Passwords are hashed with bcryptjs before they ever touch the database — storing anything reversible is a non-starter — and the provider verifies the hash on sign-in.</p>
+
+        <h3>Middleware-Protected Routes</h3>
+        <p>Protected pages are guarded in middleware: a request without a valid session is redirected before the page renders. Doing this at the middleware layer (rather than per-page checks) keeps protection consistent and centralizes the rule in one place, which is exactly where you want your security logic.</p>
+
+        <h3>The Password-Reset Flow</h3>
+        <p>The trickiest part of any auth system is password reset. Auth System implements it over email with Nodemailer and Gmail SMTP: the user requests a reset, receives a time-limited token by email, and sets a new password. The token has to be single-use and expiring, the email has to be reliable, and the whole flow has to fail safely — never revealing whether an address is registered.</p>
+
+        <h3>Validation with Zod, End to End</h3>
+        <p>Every form and API route is validated with Zod, and the same schemas run on both client and server. Sharing schemas means the rules can't drift between where the user is told something is invalid and where it's actually enforced — the server is the source of truth, and the client just mirrors it for a better UX.</p>
+
+        <h3>MongoDB for Users and Tokens</h3>
+        <p>MongoDB stores users and reset tokens. It's a simple data model, but the details matter: tokens carry an expiry, are removed once used, and are never logged. Keeping the token lifecycle tight is what keeps the reset flow from becoming an attack vector.</p>
+
+        <h3>Why Build a Reusable Foundation</h3>
+        <p>The point of Auth System is reuse. Auth is the same across most products — only the branding changes — so getting a secure, modern implementation right once and dropping it into the next project saves real time and avoids re-introducing the same subtle bugs. Registration, login, protected access, and recovery, done correctly, become a starting point rather than a recurring tax.</p>
+      </>
+    ),
+  },
   'ai-lead-capture-trades-businesses': {
     title: 'Building an AI Lead-Capture Platform for Trades Businesses',
     date: 'April 18, 2026',
