@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState, useCallback, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-import { Github, ExternalLink, ArrowRight } from "lucide-react";
+import { MessageCircle, ExternalLink, ArrowRight, Sparkles } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SEO from "./SEO";
@@ -243,12 +243,13 @@ const projectsData = [
   {
     id: 12,
     slug: "home-structure",
+    featured: true,
     image: "img/home-structure.webp",
-    alt: "homeStructure - Attock House Design Studio",
+    alt: "homeStructure - House Design Studio",
     subtitle: "3D Architecture & Design Tool",
     title: "homeStructure",
     description:
-      "A web app to design a climate-smart house on a real irregular plot in Attock, Pakistan. Draw and edit a 2D floor plan on the exact boundary, watch it build in live 3D, browse pre-built models, and get ventilation advice tuned to the local climate. Built with Next.js 16, React 19, Three.js, and react-konva.",
+      "A web app to design a climate-smart house on a real irregular plot. Draw and edit a 2D floor plan on the exact boundary, watch it build in live 3D, browse pre-built models, and get ventilation advice tuned to the local climate. Built with Next.js 16, React 19, Three.js, and react-konva.",
     github: "https://github.com/wasifwasi",
     demo: "https://home-structure-nxnh.vercel.app/",
     isLogo: false,
@@ -330,10 +331,18 @@ const Projects = () => {
 
   const totalPages = Math.ceil(projectsData.length / PROJECTS_PER_PAGE);
 
+  // Newest first (highest id), with any featured project pinned to the very top
+  const orderedProjects = useMemo(() => {
+    return [...projectsData].sort((a, b) => {
+      if (!!b.featured !== !!a.featured) return b.featured ? 1 : -1;
+      return b.id - a.id;
+    });
+  }, []);
+
   const paginatedProjects = useMemo(() => {
     const start = (currentPage - 1) * PROJECTS_PER_PAGE;
-    return projectsData.slice(start, start + PROJECTS_PER_PAGE);
-  }, [currentPage]);
+    return orderedProjects.slice(start, start + PROJECTS_PER_PAGE);
+  }, [currentPage, orderedProjects]);
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
@@ -349,6 +358,14 @@ const Projects = () => {
 
   const handleExternalClick = (e) => {
     e.stopPropagation();
+  };
+
+  // Personal & freelance projects invite a conversation; company (AIDEVGEN) ones don't
+  const canDiscuss = (project) => project.company !== "AIDEVGEN";
+
+  const handleDiscuss = (e, project) => {
+    e.stopPropagation();
+    navigate(`/?discuss=${encodeURIComponent(project.slug)}#contact`);
   };
 
   useEffect(() => {
@@ -396,7 +413,7 @@ const Projects = () => {
   return (
     <section className="projects section" id="projects" ref={projectsRef}>
       <SEO
-        title="Projects | Wasif Rehman - Full Stack Developer"
+        title="Projects | Wasif Rehman - Solution Architect"
         description="Explore my portfolio of full-stack projects including enterprise systems, AI-powered apps, mobile applications, and e-commerce platforms."
         path="/projects"
       />
@@ -408,8 +425,8 @@ const Projects = () => {
           <article
             className="projects--card"
             key={project.id}
-            data-aos="fade-up"
-            data-aos-delay={index * 100}
+
+
             onClick={() => handleCardClick(project.slug)}
             style={{ cursor: 'pointer' }}
             role="button"
@@ -423,6 +440,11 @@ const Projects = () => {
           >
             <div className="projects--image-link">
               <div className="projects--image">
+                {project.featured && (
+                  <span className="projects--featured-badge">
+                    <Sparkles size={13} aria-hidden="true" /> Featured
+                  </span>
+                )}
                 <OptimizedImage
                   src={project.image}
                   alt={project.alt}
@@ -460,15 +482,15 @@ const Projects = () => {
                 <span className="projects-link projects-link--details">
                   <ArrowRight size={16} aria-hidden="true" /> Details
                 </span>
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="projects-link"
-                  onClick={handleExternalClick}
-                >
-                  <Github size={16} aria-hidden="true" /> Code
-                </a>
+                {canDiscuss(project) && (
+                  <button
+                    type="button"
+                    className="projects-link projects-link--discuss"
+                    onClick={(e) => handleDiscuss(e, project)}
+                  >
+                    <MessageCircle size={16} aria-hidden="true" /> Discuss this project
+                  </button>
+                )}
 
                 {project.demo !== "#" && (
                   <a

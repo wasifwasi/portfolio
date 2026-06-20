@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { gsap } from 'gsap';
-import { ArrowLeft, Github, ExternalLink, Calendar, User, Building2, Layers, CheckCircle2 } from 'lucide-react';
+import { ArrowLeft, MessageCircle, ExternalLink, Calendar, User, Building2, Layers, CheckCircle2 } from 'lucide-react';
 import SEO from './SEO';
 
 const projectContent = {
@@ -436,7 +436,7 @@ const projectContent = {
   },
   'home-structure': {
     title: 'homeStructure',
-    subtitle: 'Attock House Design Studio — 2D Plan to Live 3D',
+    subtitle: 'House Design Studio — 2D Plan to Live 3D',
     date: 'May 2026 - June 2026',
     role: 'Full-Stack Developer',
     company: 'Personal Project',
@@ -445,7 +445,7 @@ const projectContent = {
     heroImage: 'img/home-structure-hero.webp',
     isLogo: false,
     techStack: ['Next.js 16', 'React 19', 'TypeScript', 'Three.js', 'react-three-fiber', 'react-konva', 'Zustand', 'Zod', 'Tailwind CSS'],
-    overview: 'A web app to design a climate-smart house on a real irregular plot in Attock, Pakistan. Draw and edit a 2D floor plan on the exact plot boundary, watch it build in live 3D, load architect-designed models, and get passive-design and ventilation advice tuned to Attock\'s hot, semi-arid climate.',
+    overview: 'A web app to design a climate-smart house on a real irregular plot. Draw and edit a 2D floor plan on the exact plot boundary, watch it build in live 3D, load architect-designed models, and get passive-design and ventilation advice tuned to a hot, semi-arid climate.',
     content: (
       <>
         <h3>Project Overview</h3>
@@ -459,7 +459,7 @@ const projectContent = {
           <li>Extruding the same plan into live 3D with react-three-fiber and Three.js</li>
           <li>Implementing a Zustand store with undo/redo (zundo) and localStorage autosave</li>
           <li>Authoring two architect-designed models dimensioned to fit the trapezoid</li>
-          <li>Creating an Attock-specific passive-design score, checklist, and sun diagram</li>
+          <li>Creating a location-specific passive-design score, checklist, and sun diagram</li>
         </ul>
 
         <h3>Key Features Developed</h3>
@@ -467,7 +467,7 @@ const projectContent = {
           <li><b>Editable 2D floor planner:</b> add, drag, resize and label rooms on the irregular boundary, with grid snap, polygon containment, party-wall locking, and a live area / Marla / coverage readout</li>
           <li><b>Live 3D:</b> the same plan extrudes into 3D instantly, with Massing / Realistic / Blocks render modes and Front / Back / Left / Right / Top / Iso direction presets</li>
           <li><b>Pre-built models:</b> Courtyard Family Home and Joint-Family Two-Unit, loadable straight into the editor</li>
-          <li><b>Attock climate analysis:</b> a live passive-design score plus a checklist and sun diagram covering courtyard, shading, roof, zoning, and monsoon</li>
+          <li><b>Climate analysis:</b> a live passive-design score plus a checklist and sun diagram covering courtyard, shading, roof, zoning, and monsoon</li>
           <li><b>Persistence:</b> autosaves to localStorage with JSON Import / Export</li>
         </ul>
 
@@ -488,7 +488,7 @@ const projectContent = {
         </ul>
 
         <h3>Results & Impact</h3>
-        <p>A polished, deployed design studio that makes climate-smart planning approachable for a real plot — letting a homeowner sketch a layout, see it in 3D immediately, and understand the ventilation and shading trade-offs specific to Attock's climate, all in the browser with no installs.</p>
+        <p>A polished, deployed design studio that makes climate-smart planning approachable for a real plot — letting a homeowner sketch a layout, see it in 3D immediately, and understand the ventilation and shading trade-offs specific to a hot, semi-arid climate, all in the browser with no installs.</p>
       </>
     ),
   },
@@ -888,14 +888,14 @@ const ProjectDetail = () => {
         </div>
 
         <div className="project-detail--actions">
-          <a
-            href="https://github.com/wasifwasi"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="buttons"
-          >
-            <Github size={20} /> View Source Code
-          </a>
+          {project.company !== "AIDEVGEN" && (
+            <Link
+              to={`/?discuss=${encodeURIComponent(id)}#contact`}
+              className="buttons"
+            >
+              <MessageCircle size={20} /> Discuss this project
+            </Link>
+          )}
           <Link to="/projects" className="button--ghost">
             <ArrowLeft size={20} /> All Projects
           </Link>

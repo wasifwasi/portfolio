@@ -668,7 +668,7 @@ const BlogPost = () => {
 
   if (!post) {
     return (
-      <div className="blog-post section container" data-aos="fade-up">
+      <div className="blog-post section container">
         <h2>Post not found</h2>
         <Link to="/blog" className="button button--flex">
           Back to Blog

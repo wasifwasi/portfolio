@@ -24,7 +24,18 @@ export default defineConfig(({ mode }) => {
     },
     build: {
       outDir: 'dist',
-      sourcemap: false
+      sourcemap: false,
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+            gsap: ['gsap'],
+            motion: ['framer-motion'],
+            markdown: ['react-markdown', 'remark-gfm'],
+            icons: ['lucide-react'],
+          },
+        },
+      },
     }
   }
 })

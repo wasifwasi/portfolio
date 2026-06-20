@@ -3,13 +3,13 @@ import { MessageCircle, X, Send, Bot, User, Loader2 } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
-const SYSTEM_PROMPT = `You are Wasif's AI portfolio assistant. You help visitors learn about Wasif Rehman — a Full-Stack Developer.
+const SYSTEM_PROMPT = `You are Wasif's AI portfolio assistant. You help visitors learn about Wasif Rehman — a Solution Architect.
 
 Here is Wasif's complete portfolio context:
 
 ABOUT:
 - Full name: Wasif Rehman
-- Full-Stack Developer specializing in MERN, Next.js, and AI-powered solutions — from voice AI widgets to real-time platforms and e-commerce experiences
+- Solution Architect who designs and ships end-to-end systems across web, mobile, and AI — from architecture, API design, and data modeling to React/Next.js frontends, Node.js/NestJS backends, and cloud infrastructure. Leads projects spanning AI-powered automation, real-time platforms, 3D experiences, and cross-platform mobile apps
 - Works at AIDEVGEN as a developer
 - Skilled in React, React Native, Next.js, Node.js, TypeScript, Python, and AI integration
 - Experienced with databases: MongoDB, PostgreSQL, MariaDB, Supabase, Firebase

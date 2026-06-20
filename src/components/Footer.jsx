@@ -43,14 +43,14 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer--container container">
         {/* Top Section */}
-        <div className="footer--top" data-aos="fade-up" data-aos-duration="800">
+        <div className="footer--top">
           <div className="footer--brand">
             <a href="#home" className="footer--logo">
               <span className="footer--logo-icon">W</span>
               <span className="footer--logo-text">Wasif Rehman</span>
             </a>
             <p className="footer--description">
-              Full-Stack Developer & AI Engineer crafting modern web experiences.
+              Solution Architect & AI Engineer designing end-to-end web, mobile & AI systems.
             </p>
           </div>
 
@@ -129,7 +129,7 @@ const Footer = () => {
         <div className="footer--divider"></div>
 
         {/* Bottom Section */}
-        <div className="footer--bottom" data-aos="fade-up" data-aos-delay="200" data-aos-offset="0" data-aos-anchor-placement="top-bottom">
+        <div className="footer--bottom">
           <span className="footer--copy">
             &copy; {currentYear} Wasif Rehman. All Rights Reserved.
           </span>
