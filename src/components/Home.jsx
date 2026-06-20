@@ -102,12 +102,6 @@ const Home = () => {
             <div className="home--shadow"></div>
 
             <img
-              src="img/curved-arrow.svg"
-              alt=""
-              aria-hidden="true"
-              className="home--arrow"
-            />
-            <img
               src="img/random-lines.svg"
               alt=""
               aria-hidden="true"
