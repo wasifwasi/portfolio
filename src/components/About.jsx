@@ -111,14 +111,22 @@ const About = () => {
         </div>
         <div className="about--info">
           <p className="about--description">
-            I am a <Cover>Full-Stack Developer</Cover> specializing in the <Cover>MERN Stack</Cover> with a passion for
-            building scalable, high-performance web applications. Expert in crafting modern
-            <Cover> React</Cover> frontends and robust <Cover>Node.js</Cover> backends with clean, maintainable code.
-            I deliver professional digital solutions that drive real business results.
+            I am a <Cover>Solution Architect</Cover> who designs and ships complete systems end-to-end — from
+            architecture and data modeling to <Cover>React</Cover> and <Cover>Next.js</Cover> frontends, robust
+            <Cover> Node.js</Cover> and <Cover>NestJS</Cover> backends, and cloud infrastructure. I lead projects
+            spanning <Cover>AI-powered automation</Cover>, real-time platforms, 3D experiences, and cross-platform
+            mobile apps — turning ambiguous requirements into scalable, production-grade solutions that drive real
+            business results.
           </p>
           <ul className="about--list">
             <li className="about--item">
-              <b>Core Tech:</b> MongoDB, Express, React, Node.js, TypeScript, Next.js, PostgreSQL.
+              <b>Architecture:</b> System design, API design, data modeling, multi-tenant platforms, payments &amp; auth.
+            </li>
+            <li className="about--item">
+              <b>Core Tech:</b> Next.js, React, React Native, Node.js, NestJS, TypeScript, PostgreSQL, MongoDB, Prisma, Supabase.
+            </li>
+            <li className="about--item">
+              <b>AI &amp; Cloud:</b> Anthropic, Gemini &amp; Groq AI, AWS S3, Stripe, Three.js, real-time &amp; serverless.
             </li>
           </ul>
           <div className="about--buttons">

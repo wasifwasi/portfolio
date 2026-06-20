@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import emailjs from "@emailjs/browser";
 import { Send, Instagram, Linkedin } from "lucide-react";
 import PulseBeams from "./PulseBeams";
@@ -7,10 +8,41 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
+// slug -> display name for the "Discuss this project" prefill
+const PROJECT_NAMES = {
+  "home-structure": "homeStructure",
+  "ecommerce-platform": "E-Commerce Platform",
+  "live-voting-system": "Live Voting System",
+  "academic-analytics": "Academic Analytics System",
+  "mmpb-recruitment": "Master Man Power Bureau",
+  "zareen-couture": "Zareen Couture",
+};
+
 const Contact = () => {
   const form = useRef();
   const contactRef = useRef(null);
+  const location = useLocation();
   const [message, setMessage] = useState("");
+
+  // Prefill subject/message + scroll when arriving via "Discuss this project"
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const slug = params.get("discuss");
+    if (!slug) return;
+    const name = PROJECT_NAMES[slug] || slug;
+    const subjectEl = document.getElementById("subject");
+    const messageEl = document.getElementById("message");
+    if (subjectEl) subjectEl.value = `Project inquiry: ${name}`;
+    if (messageEl) {
+      messageEl.value = `Hi Wasif, I came across your ${name} project and would like to discuss it further. `;
+    }
+    const section = document.getElementById("contact");
+    if (section) {
+      requestAnimationFrame(() =>
+        section.scrollIntoView({ behavior: "smooth", block: "start" })
+      );
+    }
+  }, [location.search]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {

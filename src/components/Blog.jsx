@@ -279,7 +279,7 @@ const Blog = () => {
   return (
     <section className="blog section" id="blog" ref={blogRef}>
       <SEO
-        title="Blog | Wasif Rehman - Full Stack Developer"
+        title="Blog | Wasif Rehman - Solution Architect"
         description="Read articles about web development, AI/ML, React, Node.js, mobile development, and software engineering best practices."
         path="/blog"
       />
@@ -295,8 +295,8 @@ const Blog = () => {
             to={`/blog/${blog.id}`}
             className="blog--card"
             key={blog.id}
-            data-aos="fade-up"
-            data-aos-delay={index * 100}
+
+
           >
             <CardBeam icons={blog.icons} />
             <div className="blog--tags">

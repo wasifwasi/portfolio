@@ -93,8 +93,8 @@ const Services = () => {
       <PulseBeams className="services--pulse-beams" />
       <h2
         className="section--title-2"
-        data-aos="fade-right"
-        data-aos-duration="800"
+
+
       >
         <span>Services.</span>
       </h2>
@@ -108,9 +108,9 @@ const Services = () => {
             >
               <article
                 className="services--card-inner"
-                data-aos="fade-up"
-                data-aos-delay={index * 150}
-                data-aos-duration="800"
+
+
+
               >
                 <div className="services--border"></div>
                 <div className="services--content">

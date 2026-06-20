@@ -6,8 +6,8 @@ const SITE_NAME = "Wasif Rehman Portfolio";
 const DEFAULT_IMAGE = `${SITE_URL}/logo512.png`;
 
 const SEO = ({
-  title = "Wasif Rehman | Full Stack Developer",
-  description = "Full Stack Developer specializing in React, Node.js, AI/ML integration, and mobile app development. Building modern, scalable web and mobile applications.",
+  title = "Wasif Rehman | Solution Architect",
+  description = "Solution Architect designing and shipping end-to-end systems across web, mobile, and AI — from real-time platforms and 3D experiences to AI-powered automation on Next.js, React, and modern cloud stacks.",
   path = "/",
   image = DEFAULT_IMAGE,
   type = "website",
@@ -22,8 +22,8 @@ const SEO = ({
     "@type": "Person",
     name: "Wasif Rehman",
     url: SITE_URL,
-    jobTitle: "Full Stack Developer",
-    description: "Full Stack Developer specializing in React, Node.js, AI/ML integration, and mobile app development.",
+    jobTitle: "Solution Architect",
+    description: "Solution Architect designing end-to-end systems across web, mobile, and AI with Next.js, React, Node.js, and modern cloud stacks.",
     sameAs: [
       "https://github.com/wasifrehman",
       "https://linkedin.com/in/wasifrehman",
@@ -39,7 +39,7 @@ const SEO = ({
     "@type": "WebSite",
     name: SITE_NAME,
     url: SITE_URL,
-    description: "Portfolio of Wasif Rehman - Full Stack Developer",
+    description: "Portfolio of Wasif Rehman - Solution Architect",
     author: personSchema,
   };
 
