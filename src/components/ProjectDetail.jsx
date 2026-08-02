@@ -662,6 +662,124 @@ const projectContent = {
       </>
     ),
   },
+  'umrahflow': {
+    title: 'UmrahFlow',
+    subtitle: 'Umrah/Hajj Visa Automation Platform',
+    date: 'June 2026 - July 2026',
+    role: 'Full-Stack Developer',
+    company: 'Freelance',
+    companyType: 'Freelance Client Project',
+    image: 'img/umrahflow.svg',
+    isLogo: false,
+    techStack: ['Next.js', 'Python', 'FastAPI', 'PostgreSQL', 'Prisma', 'Claude AI (Vision)', 'OpenAI', 'Docker', 'WAHA (WhatsApp)', 'Twilio-compatible API'],
+    overview: 'An end-to-end Umrah/Hajj visa-automation platform that takes a pilgrim from a WhatsApp message to a staged visa submission: AI passport OCR, an automated WhatsApp agent, a human-review dashboard, and a bridge into the Saudi Nusuk submission console.',
+    content: (
+      <>
+        <h3>Project Overview</h3>
+        <p>UmrahFlow connects every service of an Umrah/Hajj visa-automation system into one working platform. A pilgrim sends passport photos over WhatsApp; an AI agent classifies the messages, runs OCR, and replies automatically; staff review and approve passports in a dashboard; and a bridge stages approved passports as submission jobs for the Saudi Nusuk portal — with the final live submission deliberately kept behind a human operator action.</p>
+
+        <h3>My Role & Responsibilities</h3>
+        <p>As a <b>freelance Full-Stack Developer</b>, I was responsible for:</p>
+        <ul>
+          <li>Designing the overall architecture that ties the client's three existing repos together with new services</li>
+          <li>Building the OCR microservice that reads passports by merging a local MRZ pass with a Claude vision pass (OpenAI fallback)</li>
+          <li>Building the WhatsApp agent service that drains unprocessed messages, runs OCR on images, creates passport records, and replies to users</li>
+          <li>Building the bridge service that leases approved passports and stages submission jobs for the visa console</li>
+          <li>Wiring WhatsApp through a Twilio-compatible relay (WAHA) into the review dashboard</li>
+          <li>Creating a single control surface (Makefile, shared env, Docker Compose) and an 11-check end-to-end smoke test</li>
+        </ul>
+
+        <h3>Key Features Developed</h3>
+        <ul>
+          <li><b>WhatsApp intake:</b> pilgrims submit passports over WhatsApp via a Twilio-compatible relay</li>
+          <li><b>AI passport OCR:</b> MRZ parsing merged with Claude vision for reliable field extraction</li>
+          <li><b>Autonomous agent:</b> classifies messages, debounces photo albums, creates records, and replies — with a full agent trace</li>
+          <li><b>Human review:</b> staff approve passports in the dashboard before anything is queued</li>
+          <li><b>Nusuk bridge:</b> approved passports become staged submission jobs; live submission stays operator-initiated</li>
+          <li><b>One-command ops:</b> <code>make up</code> / <code>make health</code> plus an 11-check smoke script verifying the whole pipeline</li>
+        </ul>
+
+        <h3>Technical Architecture</h3>
+        <ul>
+          <li><b>Dashboard:</b> Next.js with PostgreSQL storing conversations, messages, and passports</li>
+          <li><b>ML services:</b> Python OCR service (:8001) and WhatsApp agent (:8002) built to the exact API contract the dashboard expects</li>
+          <li><b>Bridge:</b> Python service (:8003) that leases queued passports and builds submission plans via the visa console's own plan builder</li>
+          <li><b>Messaging:</b> WAHA-based WhatsApp stack exposing a Twilio-compatible wire API</li>
+          <li><b>Infrastructure:</b> Docker Compose for Postgres and WAHA, a shared env file, and a Makefile control surface</li>
+        </ul>
+
+        <h3>Technical Challenges Solved</h3>
+        <ul>
+          <li>Rebuilding two missing ML services to an existing dashboard's API contract without changing dashboard code</li>
+          <li>Making passport OCR trustworthy by cross-checking MRZ parsing against an AI vision pass</li>
+          <li>Coalescing WhatsApp photo albums with debounced message draining so multi-image submissions process as one</li>
+          <li>Keeping the final government-portal submission safely behind a deliberate human action</li>
+        </ul>
+
+        <h3>Results & Impact</h3>
+        <p>Delivered a fully wired pipeline — verified end-to-end by an automated smoke test — that turns a WhatsApp photo of a passport into a staged, human-approved visa submission, drastically reducing manual data entry for Umrah/Hajj visa processing.</p>
+      </>
+    ),
+  },
+  'multi-department-pos': {
+    title: 'Multi-Department POS',
+    subtitle: 'Multi-Tenant Retail Point-of-Sale System',
+    date: 'July 2026 - Present',
+    role: 'Full-Stack Developer',
+    company: 'Freelance',
+    companyType: 'Freelance Client Project',
+    image: 'img/pos.svg',
+    isLogo: false,
+    techStack: ['Next.js 16', 'React 19', 'TypeScript', 'Prisma 7', 'PostgreSQL', 'Supabase', 'Tailwind CSS v4'],
+    overview: 'A multi-tenant, multi-department retail POS built for a Pakistani cloth house: departments record sales as numbered tickets, one central counter takes payment, and the owner oversees inventory, KPIs, shifts, returns, and reconciliation.',
+    content: (
+      <>
+        <h3>Project Overview</h3>
+        <p>Built for Sher-e-Punjab Cloth House — a multi-department cloth store with a second branch — this POS models how such shops actually work: floor staff ring up sales as numbered tickets at department tills, customers pay once at a central checkout that combines tickets from several floors, and the owner watches stock, revenue, and discrepancies from a dashboard. It is designed multi-tenant from day one so it can grow into a SaaS product for other stores.</p>
+
+        <h3>My Role & Responsibilities</h3>
+        <p>As a <b>freelance Full-Stack Developer</b>, I am responsible for:</p>
+        <ul>
+          <li>Designing the multi-tenant data model — tenants, departments, products, variants, and per-department stock</li>
+          <li>Building the three role-based surfaces: department POS, central checkout, and owner dashboard</li>
+          <li>Implementing the ticket → bill flow where multiple department tickets settle as one payment</li>
+          <li>Building returns, exchanges, shifts, drawer reconciliation, and owner-approval escalations</li>
+          <li>Writing an audit-log layer so every sensitive action is traceable</li>
+          <li>Designing a fast, keyboard-first UI with WCAG AA contrast, light/dark themes, and tabular numerals for money and stock</li>
+        </ul>
+
+        <h3>Key Features Developed</h3>
+        <ul>
+          <li><b>Department tills:</b> staff ring up sales in seconds as numbered tickets while the customer waits</li>
+          <li><b>Central checkout:</b> combines tickets from multiple departments into a single bill and payment</li>
+          <li><b>Inventory:</b> products, variants, and per-department stock levels with stock-out states</li>
+          <li><b>Returns & exchanges:</b> structured decisions, refund methods, and settlement handling</li>
+          <li><b>Shifts & reconciliation:</b> drawer open/close counts so money always reconciles</li>
+          <li><b>Owner oversight:</b> KPIs, audit logs, discrepancy tracking, and approval escalations</li>
+        </ul>
+
+        <h3>Technical Architecture</h3>
+        <ul>
+          <li><b>Framework:</b> Next.js 16 (App Router) with React 19 and TypeScript</li>
+          <li><b>Database:</b> PostgreSQL via Prisma 7 with the pg driver adapter</li>
+          <li><b>Auth:</b> Supabase authentication with role-based access (department, checkout, owner)</li>
+          <li><b>Data model:</b> tenants, departments, users, products/variants, tickets, bills, returns, exchanges, shifts, audit logs, and escalations</li>
+          <li><b>UI:</b> Tailwind CSS v4 with a disciplined token system — emerald for action, gold for identity, tabular numerals for money</li>
+        </ul>
+
+        <h3>Technical Challenges Solved</h3>
+        <ul>
+          <li>Modeling a real store's split between where a sale is recorded and where money is taken</li>
+          <li>Keeping tills fast enough for hundreds of repeated actions a day — one glance, one tap per action</li>
+          <li>Making cash trustworthy with shift counts, reconciliation, and an institutional audit trail</li>
+          <li>Structuring the schema as multi-tenant from the start without complicating the single-store experience</li>
+        </ul>
+
+        <h3>Results & Impact</h3>
+        <p>An in-progress production system that digitizes a real multi-department cloth house end to end — from floor ticket to reconciled drawer — with an architecture ready to onboard additional tenant stores as a SaaS offering.</p>
+      </>
+    ),
+  },
   'auth-system': {
     title: 'Auth System',
     subtitle: 'Full-Stack Authentication Application',
