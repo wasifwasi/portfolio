@@ -16,6 +16,7 @@ const Blog = lazy(() => import("./components/Blog"));
 const BlogPost = lazy(() => import("./components/BlogPost"));
 const NotFound = lazy(() => import("./components/NotFound"));
 const Chatbot = lazy(() => import("./components/Chatbot"));
+const Playbook = lazy(() => import("./components/Playbook"));
 
 const RouteFallback = () => (
   <div className="route-fallback" aria-busy="true" aria-live="polite">
@@ -53,6 +54,7 @@ function App() {
               <Route path="/blog/:id" element={<BlogPost />} />
               <Route path="/projects" element={<Projects />} />
               <Route path="/projects/:id" element={<ProjectDetail />} />
+              <Route path="/playbook" element={<Playbook />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>

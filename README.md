@@ -118,6 +118,15 @@ VITE_EMAILJS_TEMPLATE_ID=your_template_id
 VITE_EMAILJS_PUBLIC_KEY=your_public_key
 ```
 
+## Interview Playbook (`/playbook`)
+
+A private, password-protected interview question bank (basic → advanced) lives at `/playbook`.
+
+- The questions are **not** shipped in the public JS bundle. `api/playbook.js` (a Vercel serverless function) checks the password and only then returns `lib/playbook-data.js`.
+- Default password is set as a SHA-256 hash inside `api/playbook.js`. To change it without touching code, add an environment variable `PLAYBOOK_PASSWORD` in the Vercel project settings and redeploy.
+- Locally, the same handler runs inside the Vite dev server (see the `playbookDevApi` plugin in `vite.config.js`), so `npm run dev` is enough.
+- The route is `noindex` and listed under `Disallow` in `robots.txt`.
+
 ## Deployment
 
 Build the production bundle:

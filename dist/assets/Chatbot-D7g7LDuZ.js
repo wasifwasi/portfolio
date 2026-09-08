@@ -1,4 +1,4 @@
-import{j as e}from"./motion-DEWNdVTz.js";import{r as t}from"./react-vendor-Ds9ujRdZ.js";import{X as y,g as k,B as h,U as N,n as R,d as E}from"./icons-CrZ1QwyI.js";import{M as D,r as M}from"./markdown-CMUDsybz.js";const C=`You are Wasif's AI portfolio assistant. You help visitors learn about Wasif Rehman — a Solution Architect.
+import{j as e}from"./motion-DEWNdVTz.js";import{r as t}from"./react-vendor-Ds9ujRdZ.js";import{X as y,g as k,B as h,U as N,n as R,d as E}from"./icons-K6gwA64S.js";import{M as D,r as M}from"./markdown-CMUDsybz.js";const C=`You are Wasif's AI portfolio assistant. You help visitors learn about Wasif Rehman — a Solution Architect.
 
 Here is Wasif's complete portfolio context:
 
