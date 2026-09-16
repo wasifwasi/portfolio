@@ -5,8 +5,8 @@
 const crypto = require('crypto');
 const data = require('../lib/playbook-data.js');
 
-// sha256 of the default password
-const DEFAULT_HASH = '6269a075ff630b7e3868eb7b9bd7ad9dd11033cf78761ec6eb22f76a13f77a22';
+// sha256 of the default password ("Playbook123")
+const DEFAULT_HASH = 'd52b14348ca3329971f250b20c9366efeec32a3ff340eaeaf3e25accb2617b3c';
 
 function sha256(value) {
   return crypto.createHash('sha256').update(String(value), 'utf8').digest('hex');
