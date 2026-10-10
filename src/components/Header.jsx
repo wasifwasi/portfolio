@@ -1,16 +1,22 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Menu, X, Sun, Moon } from "lucide-react";
-import { gsap } from "gsap";
+import { Menu, X, Sun, Moon, CalendarClock } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import SparklesCore from "./SparklesCore";
+import BookCallLink from "./BookCallLink";
+
+const SECTION_LINKS = [
+  { hash: "#work", label: "Work" },
+  { hash: "#services", label: "Services" },
+  { hash: "#about", label: "About" },
+];
 
 const Header = () => {
   const [toggle, setToggle] = useState(false);
   const [activeNav, setActiveNav] = useState("#home");
+  // Dark is the default; only an explicit "light" choice switches it off
   const [darkTheme, setDarkTheme] = useState(() => {
     const savedTheme = localStorage.getItem("theme");
-    return savedTheme === "dark";
+    return savedTheme !== "light";
   });
   const [visible, setVisible] = useState(true);
   const lastScrollY = useRef(0);
@@ -19,40 +25,6 @@ const Header = () => {
   const navigate = useNavigate();
   const headerRef = useRef(null);
   const menuRef = useRef(null);
-  const hasAnimated = useRef(false);
-
-  // Initial header animation on mount
-  useEffect(() => {
-    if (hasAnimated.current) return;
-    hasAnimated.current = true;
-
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-
-      // Animate logo
-      tl.fromTo(
-        ".nav--logo",
-        { opacity: 0, x: -50 },
-        { opacity: 1, x: 0, duration: 0.8 }
-      )
-        // Animate nav items with stagger
-        .fromTo(
-          ".nav--item",
-          { opacity: 0, y: -20 },
-          { opacity: 1, y: 0, duration: 0.5, stagger: 0.1 },
-          "-=0.4"
-        )
-        // Animate theme toggle
-        .fromTo(
-          ".nav--theme",
-          { opacity: 0, scale: 0.5, rotate: -180 },
-          { opacity: 1, scale: 1, rotate: 0, duration: 0.6 },
-          "-=0.3"
-        );
-    }, headerRef);
-
-    return () => ctx.revert();
-  }, []);
 
   // Apply theme on mount and changes
   useEffect(() => {
@@ -67,12 +39,6 @@ const Header = () => {
 
   const toggleTheme = () => {
     setDarkTheme((prev) => !prev);
-    // Add rotation animation on theme toggle
-    gsap.to(".nav--theme", {
-      rotate: "+=360",
-      duration: 0.5,
-      ease: "power2.out",
-    });
   };
 
   // Close mobile menu on scroll
@@ -223,18 +189,10 @@ const Header = () => {
         }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
       >
-      <SparklesCore
-        className="header--sparkles"
-        particleColor="hsl(14, 98%, 50%)"
-        particleDensity={120}
-        minSize={0.4}
-        maxSize={2}
-        speed={3}
-      />
       <nav className="nav container">
         <Link to="/" className="nav--logo">
           <span className="nav--logo-circle">
-            <img src="img/icon.png" alt="Wasif logo" />
+            <img src="/img/me/avatar-128.webp" alt="" width={32} height={32} />
           </span>
           <span className="nav--logo-name">Wasif Rehman</span>
         </Link>
@@ -245,109 +203,78 @@ const Header = () => {
         />
 
         <div ref={menuRef} className={`nav--menu ${toggle ? "show-menu" : ""}`} id="nav-menu">
-          <div className="nav--close" id="nav-close" onClick={() => setToggle(false)}>
+          <button type="button" className="nav--close" id="nav-close" onClick={() => setToggle(false)} aria-label="Close menu">
             <X size={20} />
-          </div>
+          </button>
 
           <span className="nav--title">Menu</span>
           <ul className="nav--list">
-            <li className="nav--item">
-              {isHome ? (
-                  <a
-                    href="#home"
-                    className={`nav--link ${activeNav === "#home" ? "active-link" : ""}`}
-                    onClick={() => handleNavClick("#home")}
-                  >
-                    Home
-                  </a>
-              ) : (
-                  <Link
-                    to="/"
-                    className={`nav--link ${activeNav === "#home" ? "active-link" : ""}`}
-                    onClick={() => handleNavClick("#home")}
-                  >
-                    Home
-                  </Link>
-              )}
-            </li>
-            <li className="nav--item">
-              {isHome ? (
+            {SECTION_LINKS.map(({ hash, label }) => (
+              <li className="nav--item" key={hash}>
                 <a
-                    href="#about"
-                    className={`nav--link ${activeNav === "#about" ? "active-link" : ""}`}
-                    onClick={() => handleNavClick("#about")}
-                >
-                    About Me
-                </a>
-              ) : (
-                <a
-                    href="#about"
-                    className={`nav--link ${activeNav === "#about" ? "active-link" : ""}`}
-                    onClick={(e) => {
+                  href={hash}
+                  className={`nav--link ${activeNav === hash || (hash === "#work" && location.pathname.startsWith("/projects")) ? "active-link" : ""}`}
+                  onClick={(e) => {
+                    if (isHome) {
+                      handleNavClick(hash);
+                    } else {
                       e.preventDefault();
-                      handleSectionNavigation("#about");
-                    }}
+                      handleSectionNavigation(hash);
+                    }
+                  }}
                 >
-                    About Me
+                  {label}
                 </a>
-              )}
-            </li>
-            <li className="nav--item">
-              <Link
-                to="/projects"
-                className={`nav--link ${location.pathname.startsWith("/projects") ? "active-link" : ""}`}
-                onClick={() => {
-                    setActiveNav("");
-                    setToggle(false);
-                }}
-              >
-                Projects
-              </Link>
-            </li>
+              </li>
+            ))}
             <li className="nav--item">
               <Link
                 to="/blog"
                 className={`nav--link ${location.pathname.startsWith("/blog") ? "active-link" : ""}`}
                 onClick={() => {
-                    setActiveNav(""); // Clear active nav for sections
-                    setToggle(false);
+                  setActiveNav("");
+                  setToggle(false);
                 }}
               >
-                My Blogs
+                Blog
               </Link>
             </li>
             <li className="nav--item">
-              {isHome ? (
-                <a
-                    href="#contact"
-                    className={`nav--link nav--link-buttonn ${activeNav === "#contact" ? "active-link" : ""}`}
-                    onClick={() => handleNavClick("#contact")}
-                >
-                    Contact Me
-                </a>
-              ) : (
-                <a
-                    href="#contact"
-                    className={`nav--link nav--link-buttonn ${activeNav === "#contact" ? "active-link" : ""}`}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleSectionNavigation("#contact");
-                    }}
-                >
-                    Contact Me
-                </a>
-              )}
+              <a
+                href="#contact"
+                className={`nav--link ${activeNav === "#contact" ? "active-link" : ""}`}
+                onClick={(e) => {
+                  if (isHome) {
+                    handleNavClick("#contact");
+                  } else {
+                    e.preventDefault();
+                    handleSectionNavigation("#contact");
+                  }
+                }}
+              >
+                Contact
+              </a>
+            </li>
+            <li className="nav--item">
+              <BookCallLink className="nav--cta" onClick={() => setToggle(false)}>
+                <CalendarClock size={16} aria-hidden="true" /> Book a call
+              </BookCallLink>
             </li>
           </ul>
         </div>
 
         <div className="nav--buttons">
-          <div className="nav--theme" onClick={toggleTheme}>
+          <button
+            type="button"
+            className="nav--theme"
+            onClick={toggleTheme}
+            aria-label={darkTheme ? "Switch to light theme" : "Switch to dark theme"}
+          >
             {darkTheme ? <Sun size={20} /> : <Moon size={20} />}
-          </div>
-          <div className="nav--toggle" id="nav-toggle" onClick={() => setToggle(true)}>
+          </button>
+          <button type="button" className="nav--toggle" id="nav-toggle" onClick={() => setToggle(true)} aria-label="Open menu">
             <Menu size={20} />
-          </div>
+          </button>
         </div>
       </nav>
     </motion.header>

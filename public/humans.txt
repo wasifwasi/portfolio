@@ -1,8 +1,8 @@
 /* TEAM */
 Developer: Wasif Rehman
-Role: Full Stack Developer
+Role: Full-Stack & AI Engineer
 GitHub: https://github.com/wasifwasi
-Site: https://wasifrehman.com
+Site: https://portfolio-wod3.vercel.app
 
 /* SITE */
 Standards: HTML5, CSS3, JavaScript ES2024

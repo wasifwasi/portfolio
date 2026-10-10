@@ -1,43 +1,85 @@
-# Wasif Rehman - Full Stack Developer
+# Wasif Rehman — Full-Stack & AI Engineer
 
-> Wasif Rehman is a Full Stack Developer specializing in React, Next.js, Node.js, React Native, Python, and AI/ML integration. This portfolio showcases professional projects, technical blogs, and development expertise.
+> Wasif Rehman is a full-stack and AI engineer who builds AI agents, automation pipelines, Next.js web platforms and React Native mobile apps, shipping production software since 2022.
 
-Available for freelance and full-time roles. Experienced in building enterprise systems, AI-powered mobile apps, e-commerce platforms, and real-time web applications. Skilled in TypeScript, Python, JavaScript, Firebase, MongoDB, PostgreSQL, and cloud infrastructure.
+Available for freelance projects. Currently a full-stack developer at AIDEVGEN and working directly with freelance clients. Projects marked AIDEVGEN were built as part of the AIDEVGEN team. To start a project, book a free 15-minute call via WhatsApp (https://wa.me/923088934229) or email wasifrehman58@gmail.com.
 
 ## Pages
 
-- [Home](https://wasifrehman.com/): Portfolio homepage with hero section, about, services, and contact
-- [Projects](https://wasifrehman.com/projects): Showcase of 9+ full-stack web and mobile applications
-- [Blog](https://wasifrehman.com/blog): 10+ technical articles on web development, AI, and software engineering
-- [About](https://wasifrehman.com/#about): Background, skills, education, and professional experience
-- [Contact](https://wasifrehman.com/#contact): Get in touch for collaboration or hiring
+- [Home](https://portfolio-wod3.vercel.app/): Hero, selected work, services, about and contact
+- [Selected work](https://portfolio-wod3.vercel.app/#work): Four featured case studies in problem → solution → stack format
+- [Services](https://portfolio-wod3.vercel.app/#services): Fixed-scope offers for AI automation, AI features and web/mobile MVPs
+- [All projects](https://portfolio-wod3.vercel.app/projects): 15 case studies across AI, SaaS, web and mobile
+- [Blog](https://portfolio-wod3.vercel.app/blog): 28 technical articles and architecture write-ups
+- [Contact](https://portfolio-wod3.vercel.app/#contact): Book a call, WhatsApp, email or contact form
 
-## Projects
+## Services
 
-- [ERPNext System](https://wasifrehman.com/projects/erpnext-system): Enterprise-grade ERP system with 35+ modules including accounting, inventory, HR/payroll, CRM. Built with Python, Vue.js, MariaDB, Redis, and Frappe Framework
-- [FreeNote](https://wasifrehman.com/projects/freenote-app): AI-powered voice note-taking app with real-time transcription, smart summarization, interactive AI chat, PDF export. Built with React Native, Expo, Firebase, and Groq AI
-- [Prove It Auto](https://wasifrehman.com/projects/prove-it-auto): AI-powered car maintenance app with dashboard light scanning, tire inspection using Google Gemini AI. Built with React Native, Node.js, MongoDB
-- [E-Commerce Platform](https://wasifrehman.com/projects/ecommerce-platform): Complete e-commerce solution with Stripe payments, admin dashboard. Built with MongoDB, Express, React, Node.js
-- [Live Voting System](https://wasifrehman.com/projects/live-voting-system): Real-time live voting system with accurate vote forecasting. Built with React, Node.js, MongoDB, Socket.io
-- [Academic Analytics](https://wasifrehman.com/projects/academic-analytics): Comprehensive academic analytics system with team collaboration and drag-and-drop interface. MERN stack
-- [Bible Trader](https://wasifrehman.com/projects/bible-trader): Marketplace platform with escrow payments, Stripe integration, and trade system. Built with React, TypeScript, Supabase
-- [Master Man Power Bureau](https://wasifrehman.com/projects/mmpb-recruitment): International recruitment platform with job listings, CV management, AWS S3. Built with Next.js, NestJS, PostgreSQL, Prisma
-- [Zareen Couture](https://wasifrehman.com/projects/zareen-couture): Luxury Pakistani bridal couture e-commerce with custom order system and virtual consultation. Built with Next.js, TypeScript, Tailwind CSS
+- AI Agent & Automation Build: Turn a manual, repetitive workflow into an AI pipeline with a human in the loop.
+- AI Feature for Your Product: Add a reliable AI feature to an app you already run, without breaking what works.
+- Web or Mobile MVP: Go from idea to a real product people can sign up for, pay for and use.
 
-## Blog Posts
+## Featured case studies
 
-- [React Native with Expo in 2026](https://wasifrehman.com/blog/react-native-expo-2026): How Expo 54 and React Native 0.81 are making cross-platform mobile development faster than ever
-- [OpenClaw: Your Personal AI Gateway](https://wasifrehman.com/blog/openclaw-personal-ai-gateway): How OpenClaw bridges WhatsApp, Telegram, Discord, and iMessage with AI agents
-- [AI Automation: Transforming the Future of Work](https://wasifrehman.com/blog/ai-automation-future): How AI-driven automation is reshaping industries with intelligent workflows and autonomous coding agents
-- [Web Performance Optimization](https://wasifrehman.com/blog/web-performance-optimization): Complete guide to code splitting, lazy loading, image optimization, caching, and Core Web Vitals
-- [Building an AI-Powered Car Maintenance App](https://wasifrehman.com/blog/ai-powered-car-maintenance): Integrating Google Gemini AI with React Native for intelligent vehicle diagnostics
-- [Building a Secure Marketplace with Escrow Payments](https://wasifrehman.com/blog/building-marketplace-with-escrow): Implementing Stripe escrow payments and secure transactions
-- [Next.js 19 New Features](https://wasifrehman.com/blog/next-19-new-features): Groundbreaking features in Next.js 19 including enhanced performance and routing
-- [Security Flaw: react2shell](https://wasifrehman.com/blog/security-flaw-react2shell): Critical security vulnerability analysis in the react2shell library
-- [The Rise of AI Agents](https://wasifrehman.com/blog/ai-agents-revolution): How autonomous AI agents are transforming software development and automation
-- [Mastering Code & Speed Optimization](https://wasifrehman.com/blog/code-speed-optimization): Essential techniques to slash latency and optimize algorithms
+- [UmrahFlow](https://portfolio-wod3.vercel.app/projects/umrahflow): Visa staff typed passport details by hand from photos pilgrims sent on WhatsApp. A WhatsApp agent reads each passport (MRZ checked against Claude vision), staff approve it on a dashboard, and approved passports are staged for the Saudi Nusuk portal.
+- [Multi-Department POS](https://portfolio-wod3.vercel.app/projects/multi-department-pos): A cloth house records sales in each department but takes payment at one counter. Department tills issue tickets, one checkout settles them as a single bill, and the owner sees stock, shifts and returns.
+- [BPOAI](https://portfolio-wod3.vercel.app/projects/bpoai): A BPO directory had to stay current without a team updating it by hand. Nine Claude-powered agents scrape new companies, score them, verify claims and run the email outreach.
+- [homeStructure](https://portfolio-wod3.vercel.app/projects/home-structure): Homeowners want to see a house on their actual plot before they pay an architect. Enter the plot and the rooms you want, get a floor plan in seconds, walk around it in 3D and see a cost estimate. Everything runs in the browser.
+- [FreeNote](https://portfolio-wod3.vercel.app/projects/freenote-app): An hour-long lecture or meeting is hard to use if it only exists as audio. A React Native app that transcribes with Whisper, then summarises and answers questions about each recording with Groq.
 
-## Optional
+## All projects
 
-- [Contact Form](https://wasifrehman.com/#contact): Send a message directly through the portfolio
-- [GitHub](https://github.com/wasifwasi): Source code and open-source contributions
+- [Multi-Department POS](https://portfolio-wod3.vercel.app/projects/multi-department-pos): Multi-Tenant Retail SaaS. Full-Stack Developer (Freelance). Next.js, React 19, Prisma, PostgreSQL, Supabase
+- [UmrahFlow](https://portfolio-wod3.vercel.app/projects/umrahflow): AI Automation Platform. Full-Stack Developer (Freelance). Next.js, Python, PostgreSQL, Claude AI, Docker
+- [PureX](https://portfolio-wod3.vercel.app/projects/purex): Mobile App & AI. Full-Stack Developer (AIDEVGEN). React Native, Expo, Supabase, Gemini AI, RevenueCat
+- [VoltOutreach](https://portfolio-wod3.vercel.app/projects/voltoutreach): Recruitment & Outreach Platform. Lead Developer (AIDEVGEN). Next.js, React 19, MongoDB, Anthropic AI, Cloudinary
+- [BPOAI](https://portfolio-wod3.vercel.app/projects/bpoai): AI Directory Platform. Lead Developer (AIDEVGEN). Next.js, React 19, Supabase, Three.js, Framer Motion
+- [homeStructure](https://portfolio-wod3.vercel.app/projects/home-structure): 3D Architecture & Design Tool. Full-Stack Developer (Personal Project). Next.js, React 19, Three.js, react-konva, Zustand
+- [HookFeed](https://portfolio-wod3.vercel.app/projects/clay-imaginary): AI Social Content Generator. Full-Stack Developer (Collaborator) (AIDEVGEN). Next.js, React 19, Fabric.js, TypeScript, Tailwind CSS
+- [Zareen Couture](https://portfolio-wod3.vercel.app/projects/zareen-couture): Full-Stack E-commerce. Full-Stack Developer (Freelance). Next.js, TypeScript, Tailwind CSS, React, Lucide
+- [Master Man Power Bureau](https://portfolio-wod3.vercel.app/projects/mmpb-recruitment): Full-Stack Recruitment Platform. Full-Stack Developer (Freelance). Next.js, NestJS, PostgreSQL, Prisma, AWS S3
+- [Bible Trader](https://portfolio-wod3.vercel.app/projects/bible-trader): Full-Stack E-commerce. Full-Stack Developer (AIDEVGEN). React, TypeScript, Tailwind, Supabase, Stripe
+- [Academic Analytics System](https://portfolio-wod3.vercel.app/projects/academic-analytics): Full-Stack Development. Full-Stack Developer (Freelance). React, Node.js, MongoDB, Express, Analytics
+- [Live Voting System](https://portfolio-wod3.vercel.app/projects/live-voting-system): Full Stack Development. Full-Stack Developer (Freelance). React, Node.js, MongoDB, Socket.io, Real-time
+- [E-Commerce Platform](https://portfolio-wod3.vercel.app/projects/ecommerce-platform): Full-Stack MERN. Full-Stack Developer (Personal Project). MongoDB, Express, React, Node.js, Stripe
+- [Prove It Auto](https://portfolio-wod3.vercel.app/projects/prove-it-auto): Mobile App & AI. Full-Stack Developer (AIDEVGEN). React Native, Node.js, MongoDB, Gemini AI
+- [FreeNote](https://portfolio-wod3.vercel.app/projects/freenote-app): Mobile App & AI. Full-Stack Developer (AIDEVGEN). React Native, Expo, Firebase, Groq AI, TypeScript
+
+## Blog posts
+
+- [When NOT to Let the AI Finish the Job](https://portfolio-wod3.vercel.app/blog/when-not-to-let-ai-finish-the-job): Two production systems, one lesson: the most valuable line of code in an automation platform is the one that stops and asks a human. Why UmrahFlow halts before the government portal and why my POS makes owners approve discounts.
+- [Multi-Tenant from Day One: Building for One Store, Architecting for SaaS](https://portfolio-wod3.vercel.app/blog/multi-tenant-from-day-one-pos-saas): My POS has exactly one customer, but every table has a tenantId. What multi-tenancy actually cost to add up front, what it buys later, and where the line is between preparing for SaaS and over-engineering.
+- [Designing UI for People Who Do the Same 5 Actions 300 Times a Day](https://portfolio-wod3.vercel.app/blog/designing-ui-for-repetitive-retail-work): Retail staff are not "users exploring an interface" — they are operators under time pressure. How I designed a POS around tabular numerals, state-only color, keyboard-first tills, and chrome that disappears into the sale.
+- [Modeling a Real Cloth House: Why My POS Has Tickets AND Bills](https://portfolio-wod3.vercel.app/blog/modeling-real-store-tickets-and-bills-pos): In a multi-department Pakistani cloth store, where a sale is recorded and where money is taken are different places. How that one domain insight shaped a Prisma schema of tickets, bills, shifts, and escalations.
+- [Taming WhatsApp as an App Input: Debouncing Albums, Draining Queues](https://portfolio-wod3.vercel.app/blog/taming-whatsapp-as-an-app-input): WhatsApp is a terrible API and a perfect UX. How UmrahFlow turns messy real-world messages — photo albums, doubles, voice notes — into clean records with a Twilio-compatible relay, debounced draining, and agent traces.
+- [Building Microservices to Someone Else's Contract](https://portfolio-wod3.vercel.app/blog/building-microservices-to-someone-elses-contract): The dashboard already existed; its ML services didn't. How I rebuilt two missing services to the exact API shape an existing app expected — without changing a line of dashboard code — and made five services start with one command.
+- [Reading Passports with AI: Merging MRZ Parsing with Claude Vision](https://portfolio-wod3.vercel.app/blog/passport-ocr-mrz-claude-vision): MRZ parsing is deterministic but brittle; vision models read anything but can hallucinate. Why UmrahFlow's passport OCR cross-checks a local MRZ pass against a Claude vision pass — and falls back to OpenAI when it must.
+- [From WhatsApp Photo to Government Portal: Automating Visa Processing](https://portfolio-wod3.vercel.app/blog/whatsapp-to-government-portal-visa-automation): How UmrahFlow takes a pilgrim from a WhatsApp message to a staged Umrah visa submission — an AI agent, passport OCR, a human-review dashboard, and a bridge into the Saudi Nusuk portal that deliberately stops one step short.
+- [How the BPOAI Agent Flow Works](https://portfolio-wod3.vercel.app/blog/building-a-9-agent-ai-backend-for-bpoai): How I built the agent server behind BPOAI — nine specialized Claude-powered agents that scrape leads, score AI readiness, verify claims, run email outreach drips, and publish weekly news, all wired together through webhooks and cron.
+- [Designing a Real House in the Browser: 2D Plans to Live 3D](https://portfolio-wod3.vercel.app/blog/designing-houses-in-the-browser-react-three-konva): How I built homeStructure — a climate-smart house design studio for a real irregular plot in Attock, with an editable 2D floor planner (react-konva), live 3D (react-three-fiber), and a passive-design score.
+- [Building a BPO Directory & AI Hub with Supabase and Three.js](https://portfolio-wod3.vercel.app/blog/building-a-bpo-directory-ai-hub-supabase-three): A look at BPOAI — a directory and intelligence hub for the top BPO companies in the Philippines, combining a Supabase data layer with an immersive 3D landing experience.
+- [An AI-Assisted Recruitment Platform with Next.js and MongoDB](https://portfolio-wod3.vercel.app/blog/ai-assisted-recruitment-platform-nextjs-mongodb): How VoltOutreach streamlines hiring — job listings, candidate applications, an admin dashboard, and AI-assisted outreach with the Anthropic SDK, Cloudinary, and Calendly.
+- [Barcode Scanning Meets Water Quality: PureX on Expo + Gemini](https://portfolio-wod3.vercel.app/blog/barcode-scanning-water-quality-mobile-gemini): Building PureX — a React Native app that scans product barcodes for nutrition and safety insights and surfaces location-based water-quality reports, powered by Google Gemini and Supabase.
+- [Production-Ready Auth with NextAuth v5 and MongoDB](https://portfolio-wod3.vercel.app/blog/production-ready-auth-nextauth-v5-mongodb): A practical guide to the full account lifecycle — sign-up, login, protected routes, and email-based password reset — built with Next.js 16, NextAuth v5, MongoDB, and Nodemailer.
+- [Building an AI Lead-Capture Platform for Trades Businesses](https://portfolio-wod3.vercel.app/blog/ai-lead-capture-trades-businesses): How I built Plumber's Mate AI — an automation platform that captures leads, books jobs, sends quotes, collects payments, and re-engages old customers with Next.js 16 and React 19.
+- [Canvas-Based AI Image Studios with Fabric.js and Next.js](https://portfolio-wod3.vercel.app/blog/canvas-ai-image-studio-fabricjs): A technical walkthrough of building Clay Imaginary — a drag-and-drop AI image studio with Fabric.js compositing, html2canvas export, and AI-powered generation for creators.
+- [Next.js 20: Everything New You Need to Know](https://portfolio-wod3.vercel.app/blog/nextjs-20-whats-new): From React Server Functions to the revamped Turbopack pipeline and native Edge-first routing—here's what makes Next.js 20 the biggest release yet.
+- [OpenClaw Deep Dive: Building Your Own AI Agent Pipeline](https://portfolio-wod3.vercel.app/blog/openclaw-deep-dive-setup): A hands-on technical walkthrough of setting up OpenClaw from scratch—configuring channels, creating custom skills, wiring up tool chains, and deploying your personal AI agent stack.
+- [React Native with Expo in 2026: The Ultimate Mobile Stack](https://portfolio-wod3.vercel.app/blog/react-native-expo-2026): How Expo 54 and React Native 0.81 are making cross-platform mobile development faster than ever—from EAS builds to native modules, and why it's the go-to stack for startups.
+- [OpenClaw: Your Personal AI Gateway to Messaging Apps](https://portfolio-wod3.vercel.app/blog/openclaw-personal-ai-gateway): How OpenClaw bridges WhatsApp, Telegram, Discord, and iMessage with AI agents—giving you a self-hosted, privacy-first AI assistant that actually does things.
+- [AI Automation: Transforming the Future of Work](https://portfolio-wod3.vercel.app/blog/ai-automation-future): Explore how AI-driven automation is reshaping industries—from intelligent workflows and autonomous coding agents to no-code platforms and the evolving role of developers.
+- [Web Performance Optimization: A Complete Guide](https://portfolio-wod3.vercel.app/blog/web-performance-optimization): Master critical techniques like code splitting, lazy loading, image optimization, caching strategies, and Core Web Vitals to build blazing-fast web applications.
+- [Building an AI-Powered Car Maintenance App](https://portfolio-wod3.vercel.app/blog/ai-powered-car-maintenance): How I integrated Google Gemini AI with React Native to create intelligent dashboard light scanning, tire inspection, and maintenance quote analysis.
+- [Building a Secure Marketplace with Escrow Payments](https://portfolio-wod3.vercel.app/blog/building-marketplace-with-escrow): A deep dive into implementing Stripe escrow payments, trade systems, and secure transactions for the Bible Trader marketplace platform.
+- [Next 19 New Features](https://portfolio-wod3.vercel.app/blog/next-19-new-features): Explore the groundbreaking features introduced in Next.js 19, from enhanced performance to new routing capabilities.
+- [Security Flaw: react2shell](https://portfolio-wod3.vercel.app/blog/security-flaw-react2shell): A critical look at the recently discovered security vulnerability in the react2shell library and how to mitigate it.
+- [The Rise of AI Agents](https://portfolio-wod3.vercel.app/blog/ai-agents-revolution): How autonomous AI agents are transforming software development, automation, and the future of work.
+- [Mastering Code & Speed Optimization](https://portfolio-wod3.vercel.app/blog/code-speed-optimization): Essential techniques to slash latency, optimize algorithms, and boost your application's response speed.
+
+## Contact
+
+- Email: wasifrehman58@gmail.com
+- WhatsApp: +92 308 8934229
+- LinkedIn: https://www.linkedin.com/in/wasif-rehman-32210a18b/
+- GitHub: https://github.com/wasifwasi
+- Portfolio: https://portfolio-wod3.vercel.app

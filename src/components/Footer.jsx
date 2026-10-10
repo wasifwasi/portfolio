@@ -1,6 +1,7 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { Instagram, Linkedin, Github, Mail, Heart } from "lucide-react";
+import { Linkedin, Github, Mail, Heart } from "lucide-react";
+import { CONTACT, whatsappLink } from "../data/site";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -50,27 +51,28 @@ const Footer = () => {
               <span className="footer--logo-text">Wasif Rehman</span>
             </a>
             <p className="footer--description">
-              Solution Architect & AI Engineer designing end-to-end web, mobile & AI systems.
+              Full-stack & AI engineer. I build AI agents, web platforms and mobile apps that hold up in production.
             </p>
           </div>
 
           <div className="footer--nav">
             <h4 className="footer--title">Quick Links</h4>
             <ul className="footer--links">
-              <li>
-                <a href="#home" className="footer--link" onClick={(e) => handleSectionClick(e, "#home")}>Home</a>
-              </li>
-              <li>
-                <a href="#about" className="footer--link" onClick={(e) => handleSectionClick(e, "#about")}>About Me</a>
-              </li>
+              {[
+                ["#work", "Work"],
+                ["#services", "Services"],
+                ["#about", "About"],
+                ["#contact", "Contact"],
+              ].map(([hash, label]) => (
+                <li key={hash}>
+                  <a href={hash} className="footer--link" onClick={(e) => handleSectionClick(e, hash)}>{label}</a>
+                </li>
+              ))}
               <li>
                 <a href="/projects" className="footer--link" onClick={(e) => handlePageClick(e, "/projects")}>Projects</a>
               </li>
               <li>
-                <a href="/blog" className="footer--link" onClick={(e) => handlePageClick(e, "/blog")}>My Blogs</a>
-              </li>
-              <li>
-                <a href="#contact" className="footer--link" onClick={(e) => handleSectionClick(e, "#contact")}>Contact Me</a>
+                <a href="/blog" className="footer--link" onClick={(e) => handlePageClick(e, "/blog")}>Blog</a>
               </li>
             </ul>
           </div>
@@ -79,7 +81,7 @@ const Footer = () => {
             <h4 className="footer--title">Connect</h4>
             <div className="footer--social">
               <a
-                href="https://github.com/wasifwasi"
+                href={CONTACT.github}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="footer--social-link"
@@ -88,7 +90,7 @@ const Footer = () => {
                 <Github size={20} />
               </a>
               <a
-                href="https://www.linkedin.com/in/wasif-rehman-32210a18b/"
+                href={CONTACT.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="footer--social-link"
@@ -97,23 +99,14 @@ const Footer = () => {
                 <Linkedin size={20} />
               </a>
               <a
-                href="https://www.instagram.com/les_troll_them"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="footer--social-link"
-                aria-label="Instagram"
-              >
-                <Instagram size={20} />
-              </a>
-              <a
-                href="mailto:wasifrehman58@gmail.com"
+                href={`mailto:${CONTACT.email}`}
                 className="footer--social-link"
                 aria-label="Email"
               >
                 <Mail size={20} />
               </a>
               <a
-                href="https://wa.me/923088934229"
+                href={whatsappLink()}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="footer--social-link"

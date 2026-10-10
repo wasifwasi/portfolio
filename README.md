@@ -1,51 +1,38 @@
 # Wasif's Portfolio
 
-**v1.1** | A modern, interactive portfolio website showcasing my work as a Full-Stack MERN Developer. Built with React 19 and featuring 3D visualizations, professional animations, and a complete blog system.
+**v2.0** | Personal portfolio for Wasif Rehman, full-stack & AI engineer. Built to turn visitors into client calls: a direct hero, real case studies, fixed-scope services and a low-friction contact path.
 
 ## Tech Stack
 
 | Category | Technologies |
 |----------|-------------|
 | **Frontend** | React 19, React Router DOM 7, Vite 7 |
-| **3D Graphics** | Three.js, @react-three/fiber, @react-three/drei |
-| **Animations** | GSAP (with ScrollTrigger), AOS |
+| **Animations** | Framer Motion (scroll reveals, respects reduced motion), GSAP on the projects/blog pages |
 | **Icons** | Lucide React |
 | **Email** | EmailJS |
-| **Testing** | React Testing Library, Jest DOM |
+| **Chatbot** | Groq (via the `api/chat.js` serverless function) |
 
-## Features
+## Home Page
 
-### Core Sections
-- **Home** - Hero section with staggered GSAP entrance animations and floating profile image
-- **About** - Bio with interactive 3D skills cloud (15 technologies in golden spiral distribution)
-- **Services** - MERN Stack Development, AI Integration & Automation, API & Backend Solutions
-- **Projects** - Five featured projects with hover effects and lazy-loaded images
-- **Blog** - Six technical articles with dynamic routing
-- **Contact** - EmailJS-powered contact form with validation
+1. **Hero** – one-line hook, two CTAs (book a call, view work) and headline numbers
+2. **Selected work** – bento grid of four case studies in problem → solution → stack format
+3. **Services** – three fixed-scope offers, each linked to the projects that prove it
+4. **About** – short bio and skills grid
+5. **Contact** – book a call, WhatsApp, email, or the EmailJS form
 
-### Technical Highlights
-- **3D Skills Cloud** - Interactive Three.js visualization with camera-facing text and orbit controls
-- **Dark Mode** - Full theme support with localStorage persistence and rotation animation
-- **Responsive Design** - Mobile-first approach with hamburger menu
-- **Smooth Animations** - GSAP timelines, ScrollTrigger, and AOS for professional motion effects
-- **Accessibility** - ARIA labels, semantic HTML, prefers-reduced-motion support
+Dark "obsidian" theme is the default; light theme is still available from the header toggle.
 
-## Featured Projects
+## Editing Content
 
-1. **Prove It Auto** - AI-powered car maintenance app (React Native, Node.js, MongoDB, Google Gemini)
-2. **E-Commerce Platform** - Full-featured online store (MongoDB, Express, React, Node.js, Stripe)
-3. **Live Voting System** - Real-time voting platform (React, Node.js, MongoDB, Socket.io)
-4. **Academic Analytics System** - MERN stack with drag-and-drop functionality
-5. **Bible Trader** - Marketplace with Stripe escrow payments (TypeScript, Supabase)
+| What | Where |
+|------|-------|
+| Calendly link, contact details, headline numbers, featured work, services | `src/data/site.js` |
+| Project cards (Projects page, contact prefill, chatbot) | `src/data/projects.js` |
+| Blog listing (blog page, chatbot) | `src/data/blogs.js` |
+| Full case study pages / blog post bodies | `src/components/ProjectDetail.jsx`, `src/components/BlogPost.jsx` |
+| Accent colour | `--accent-h` / `--accent-s` at the top of `src/index.css` |
 
-## Blog Posts
-
-- Building an AI-Powered Car Maintenance App
-- Building a Secure Marketplace with Escrow Payments
-- Next 19 New Features
-- Security Flaw: react2shell
-- The Rise of AI Agents
-- Mastering Code & Speed Optimization
+Until `CALENDLY_URL` is set, every "Book a call" button opens WhatsApp with a pre-filled message.
 
 ## Getting Started
 
@@ -76,47 +63,46 @@ The app will open at [http://localhost:3000](http://localhost:3000).
 
 | Command | Description |
 |---------|-------------|
-| `npm start` | Start Vite development server |
-| `npm run build` | Build for production (outputs to `build/`) |
+| `npm start` / `npm run dev` | Start Vite development server |
+| `npm run build` | Build for production (outputs to `dist/`) |
 | `npm run preview` | Preview production build locally |
-| `npm test` | Run tests |
 
 ## Project Structure
 
 ```
 portfolio/
+├── api/                    # Vercel serverless functions (chat, playbook)
+├── lib/                    # Server-only data (playbook questions)
+├── public/                 # Images, llms.txt, sitemap, robots.txt
 ├── src/
+│   ├── data/               # site.js, projects.js, blogs.js — edit content here
 │   ├── components/
-│   │   ├── Header.jsx      # Navigation with dark mode toggle
-│   │   ├── Home.jsx        # Hero section with GSAP animations
-│   │   ├── About.jsx       # About section with 3D skills cloud
-│   │   ├── Skills3D.jsx    # Interactive Three.js visualization
-│   │   ├── Services.jsx    # Services showcase
-│   │   ├── Projects.jsx    # Project portfolio
-│   │   ├── Blog.jsx        # Blog listing page
-│   │   ├── BlogPost.jsx    # Individual blog post view
-│   │   ├── Contact.jsx     # Contact form with EmailJS
-│   │   ├── Footer.jsx      # Footer with social links
-│   │   └── ScrollUp.jsx    # Scroll-to-top button
-│   ├── App.jsx             # Main app with routing
-│   ├── main.jsx            # React entry point
-│   └── index.css           # Global styles
-├── public/
-│   ├── img/                # Images and project screenshots
-│   └── js/                 # ScrollReveal script
-├── vite.config.js          # Vite configuration
-└── package.json            # Dependencies and scripts
+│   │   ├── Header.jsx      # Nav, "Book a call" button, theme toggle
+│   │   ├── Home.jsx        # Hero: hook, CTAs, headline numbers
+│   │   ├── FeaturedWork.jsx# Bento grid of featured case studies
+│   │   ├── Services.jsx    # Fixed-scope service offers
+│   │   ├── About.jsx       # Bio + skills grid
+│   │   ├── Contact.jsx     # Call / WhatsApp / email + EmailJS form
+│   │   ├── Projects.jsx    # All projects page
+│   │   ├── ProjectDetail.jsx # Case study pages
+│   │   ├── Blog.jsx / BlogPost.jsx
+│   │   └── Chatbot.jsx     # Groq-powered portfolio assistant
+│   ├── App.jsx             # Routing
+│   └── index.css           # Global styles and theme tokens
+└── vite.config.js
 ```
 
 ## Environment Variables
 
-For EmailJS configuration, create a `.env` file in the root directory:
+| Variable | Where | Used for |
+|----------|-------|----------|
+| `GROQ_API_KEY` | Vercel project settings, and local `.env` | Chatbot (`api/chat.js`, also run by the dev server) |
+| `GROQ_MODEL` | Optional, same places | Overrides the chatbot model (default `openai/gpt-oss-20b`) |
+| `PLAYBOOK_PASSWORD` | Vercel project settings (optional) | Overrides the default `/playbook` password |
+| `CALENDLY_TOKEN` | Vercel project settings, and local `.env` | Calendly personal access token; lets the booking box show live free times (`api/availability.js`). Without it, "Book a call" opens Calendly's full calendar |
+| `CALENDLY_EVENT_URL` | Optional, same places | The Calendly event link to read times for (default `https://calendly.com/wasifrehman58/new-meeting`) |
 
-```
-VITE_EMAILJS_SERVICE_ID=your_service_id
-VITE_EMAILJS_TEMPLATE_ID=your_template_id
-VITE_EMAILJS_PUBLIC_KEY=your_public_key
-```
+EmailJS service/template IDs and the public key are set in `src/components/Contact.jsx`.
 
 ## Interview Playbook (`/playbook`)
 
@@ -129,16 +115,9 @@ A private, password-protected interview question bank (basic → advanced) lives
 
 ## Deployment
 
-Build the production bundle:
-
-```bash
-npm run build
-```
-
-The `build` folder contains optimized static files ready for deployment to any static hosting service (Vercel, Netlify, GitHub Pages, etc.).
+Vercel builds the site from source (`npm run build` → `dist/`, see `vercel.json`), so `dist/` is not committed.
 
 ## Contact
 
 - **LinkedIn**: [Wasif Rehman](https://www.linkedin.com/in/wasif-rehman-32210a18b/)
-- **GitHub**: [wasif-rehman](https://github.com/wasif-rehman)
-- **Instagram**: [@wasif_ur_rehman](https://www.instagram.com/wasif_ur_rehman/)
+- **GitHub**: [wasifwasi](https://github.com/wasifwasi)

@@ -1,7 +1,7 @@
 /*=============== INTERVIEW PLAYBOOK (/playbook) ===============*/
 .playbook {
   --pb-accent: var(--first-color);
-  --pb-accent-soft: hsla(14, 98%, 50%, .12);
+  --pb-accent-soft: hsla(var(--accent-h), var(--accent-s), 50%, .12);
   --pb-accent-ink: hsl(0, 0%, 100%);
   --pb-surface: var(--container-color);
   --pb-surface-2: hsla(0, 0%, 0%, .05);

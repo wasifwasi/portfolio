@@ -1,338 +1,179 @@
 import React, { useRef, useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import emailjs from "@emailjs/browser";
-import { Send, Instagram, Linkedin } from "lucide-react";
-import PulseBeams from "./PulseBeams";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { motion } from "framer-motion";
+import { Send, CalendarClock, Mail, MessageCircle, Linkedin, Github } from "lucide-react";
+import BookCallLink from "./BookCallLink";
+import {
+  BOOK_CALL_IS_CALENDLY,
+  CONTACT,
+  SERVICES,
+  projectTitle,
+  whatsappLink,
+} from "../data/site";
 
-gsap.registerPlugin(ScrollTrigger);
-
-// slug -> display name for the "Discuss this project" prefill
-const PROJECT_NAMES = {
-  "home-structure": "homeStructure",
-  "ecommerce-platform": "E-Commerce Platform",
-  "live-voting-system": "Live Voting System",
-  "academic-analytics": "Academic Analytics System",
-  "mmpb-recruitment": "Master Man Power Bureau",
-  "zareen-couture": "Zareen Couture",
+const reveal = {
+  initial: { opacity: 0, y: 28 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: "-60px" },
+  transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
 };
 
 const Contact = () => {
   const form = useRef();
-  const contactRef = useRef(null);
   const location = useLocation();
+  const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
+  const [status, setStatus] = useState({ state: "idle", text: "" });
 
-  // Prefill subject/message + scroll when arriving via "Discuss this project"
+  // Prefill when arriving via "Discuss this project" or "Get a free estimate"
   useEffect(() => {
     const params = new URLSearchParams(location.search);
-    const slug = params.get("discuss");
-    if (!slug) return;
-    const name = PROJECT_NAMES[slug] || slug;
-    const subjectEl = document.getElementById("subject");
-    const messageEl = document.getElementById("message");
-    if (subjectEl) subjectEl.value = `Project inquiry: ${name}`;
-    if (messageEl) {
-      messageEl.value = `Hi Wasif, I came across your ${name} project and would like to discuss it further. `;
+    const projectSlug = params.get("discuss");
+    const serviceSlug = params.get("service");
+    if (!projectSlug && !serviceSlug) return;
+
+    if (projectSlug) {
+      const name = projectTitle(projectSlug);
+      setSubject(`Project inquiry: ${name}`);
+      setMessage(`Hi Wasif, I came across your ${name} project and would like to discuss something similar. `);
+    } else {
+      const service = SERVICES.find((s) => s.slug === serviceSlug);
+      const title = service ? service.title : serviceSlug;
+      setSubject(`Estimate request: ${title}`);
+      setMessage(`Hi Wasif, I'd like a free estimate (${title}). Here's what I'm building: `);
     }
+
     const section = document.getElementById("contact");
     if (section) {
-      requestAnimationFrame(() =>
-        section.scrollIntoView({ behavior: "smooth", block: "start" })
-      );
+      requestAnimationFrame(() => section.scrollIntoView({ behavior: "smooth", block: "start" }));
     }
   }, [location.search]);
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Animate title
-      gsap.fromTo(
-        ".contact .section--title-2",
-        { opacity: 0, x: -80 },
-        {
-          opacity: 1,
-          x: 0,
-          duration: 1,
-          scrollTrigger: {
-            trigger: ".contact .section--title-2",
-            start: "top 85%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-
-      // Animate contact data
-      gsap.fromTo(
-        ".contact--data",
-        { opacity: 0, x: -60 },
-        {
-          opacity: 1,
-          x: 0,
-          duration: 0.8,
-          scrollTrigger: {
-            trigger: ".contact--data",
-            start: "top 80%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-
-      // Animate contact form (mail section)
-      gsap.fromTo(
-        ".contact--mail",
-        { opacity: 0, x: 60, scale: 0.95 },
-        {
-          opacity: 1,
-          x: 0,
-          scale: 1,
-          duration: 1,
-          scrollTrigger: {
-            trigger: ".contact--mail",
-            start: "top 80%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-
-      // Animate form inputs with stagger
-      gsap.fromTo(
-        ".contact--box",
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.5,
-          stagger: 0.1,
-          scrollTrigger: {
-            trigger: ".contact--form",
-            start: "top 80%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-
-      // Animate submit button
-      gsap.fromTo(
-        ".contact--button",
-        { opacity: 0, scale: 0.8 },
-        {
-          opacity: 1,
-          scale: 1,
-          duration: 0.6,
-          scrollTrigger: {
-            trigger: ".contact--button",
-            start: "top 90%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-
-      // Animate social section
-      gsap.fromTo(
-        ".contact--social",
-        { opacity: 0, y: 40 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          scrollTrigger: {
-            trigger: ".contact--social",
-            start: "top 90%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-
-      // Animate social links with stagger
-      gsap.fromTo(
-        ".contact--social-link",
-        { opacity: 0, scale: 0.5, rotate: -15 },
-        {
-          opacity: 1,
-          scale: 1,
-          rotate: 0,
-          duration: 0.5,
-          stagger: 0.15,
-          scrollTrigger: {
-            trigger: ".contact--social-links",
-            start: "top 90%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-
-      // Floating animation for geometric box
-      gsap.to(".contact .geometric-box", {
-        y: -10,
-        rotation: 5,
-        duration: 2,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-      });
-    }, contactRef);
-
-    return () => ctx.revert();
-  }, []);
-
   const sendEmail = (e) => {
     e.preventDefault();
+    setStatus({ state: "sending", text: "Sending…" });
 
     emailjs
-      .sendForm(
-        "service_tmpwlqa",
-        "template_5qlb69h",
-        form.current,
-        {
-          publicKey: "hukBj5RRKNCFDMk5E",
-        }
-      )
+      .sendForm("service_tmpwlqa", "template_5qlb69h", form.current, {
+        publicKey: "hukBj5RRKNCFDMk5E",
+      })
       .then(
         () => {
-          setMessage("Message sent successfully ✅");
-          setTimeout(() => {
-            setMessage("");
-          }, 5000);
-          e.target.reset();
+          setStatus({ state: "sent", text: "Thanks, your message is in. I'll reply by email." });
+          form.current.reset();
+          setSubject("");
+          setMessage("");
         },
         (error) => {
-          setMessage(`Message not sent ❌: ${error.text}`);
+          setStatus({
+            state: "error",
+            text: "That didn't send. Please try WhatsApp or email instead.",
+          });
           console.error("Error sending message:", error);
         }
       );
   };
 
   return (
-    <section className="contact section" id="contact" ref={contactRef}>
-      <PulseBeams className="contact--pulse-beams" />
-      <div className="contact--container grid">
-        <div className="contact--data">
-          <h2 className="section--title-2">
-            <span>Contact Me.</span>
-          </h2>
-
-          <p className="contact--description-1">
-            I will read all emails. Send me any message you want and I'll
-            get back to you.
+    <section className="connect section" id="contact">
+      <div className="container connect--container">
+        <motion.div className="connect--intro" {...reveal}>
+          <h2 className="section-head--title">Tell me what you're building.</h2>
+          <p className="connect--lead">
+            The fastest way to start is a quick call. I'll ask about your users, your deadline and
+            your budget, then send a written scope and a fixed quote.
           </p>
 
-          <p className="contact--description-2">
-            I need your <b>Name</b> and <b>Email Address</b>, but you won't
-            receive anything other than your reply.
-          </p>
+          <div className="connect--channels">
+            <BookCallLink className="connect--channel connect--channel-primary">
+              <CalendarClock size={20} aria-hidden="true" />
+              <span>
+                <b>Book a 15-min call</b>
+                <small>{BOOK_CALL_IS_CALENDLY ? "Pick a time that suits you" : "Message me on WhatsApp to set a time"}</small>
+              </span>
+            </BookCallLink>
+            <a
+              href={whatsappLink("Hi Wasif, I'd like to talk about a project.")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="connect--channel"
+            >
+              <MessageCircle size={20} aria-hidden="true" />
+              <span>
+                <b>WhatsApp</b>
+                <small>{CONTACT.whatsappDisplay}</small>
+              </span>
+            </a>
+            <a href={`mailto:${CONTACT.email}`} className="connect--channel">
+              <Mail size={20} aria-hidden="true" />
+              <span>
+                <b>Email</b>
+                <small>{CONTACT.email}</small>
+              </span>
+            </a>
+          </div>
 
-          <div className="geometric-box"></div>
-        </div>
+          <div className="connect--social">
+            <a href={CONTACT.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <Linkedin size={18} />
+            </a>
+            <a href={CONTACT.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <Github size={18} />
+            </a>
+          </div>
+        </motion.div>
 
-        <div className="contact--mail">
-          <h2 className="contact--title">Send Me A Message</h2>
+        <motion.div className="connect--panel" {...reveal}>
+          <h3 className="connect--panel-title">Or send a message</h3>
 
-          <form ref={form} onSubmit={sendEmail} className="contact--form" id="contact-form">
-            <div className="contact--group">
-              <div className="contact--box">
-                <input
-                  type="text"
-                  name="user_name"
-                  className="contact--input"
-                  id="name"
-                  required
-                  placeholder="Name"
-                />
-                <label htmlFor="name" className="contact--label">
-                  First Name
-                </label>
-              </div>
-
-              <div className="contact--box">
-                <input
-                  type="email"
-                  name="user_email"
-                  className="contact--input"
-                  id="email"
-                  required
-                  placeholder="Email Address"
-                />
-                <label htmlFor="email" className="contact--label">
-                  Email Address
-                </label>
-              </div>
+          <form ref={form} onSubmit={sendEmail} className="connect--form" id="contact-form">
+            <div className="connect--row">
+              <label className="connect--field">
+                <span>Name</span>
+                <input type="text" name="user_name" required autoComplete="name" />
+              </label>
+              <label className="connect--field">
+                <span>Email</span>
+                <input type="email" name="user_email" required autoComplete="email" />
+              </label>
             </div>
 
-            <div className="contact--box">
+            <label className="connect--field">
+              <span>Subject</span>
               <input
                 type="text"
                 name="user_subject"
-                className="contact--input"
                 id="subject"
                 required
-                placeholder="Subject"
+                value={subject}
+                onChange={(e) => setSubject(e.target.value)}
+                placeholder="e.g. WhatsApp AI agent for our support team"
               />
-              <label htmlFor="subject" className="contact--label">
-                Subject
-              </label>
-            </div>
+            </label>
 
-            <div className="contact--box contact--area">
+            <label className="connect--field">
+              <span>Message</span>
               <textarea
                 name="user_message"
                 id="message"
-                className="contact--input"
                 required
-                placeholder="Message"
-              ></textarea>
-              <label htmlFor="message" className="contact--label">
-                Message
-              </label>
-            </div>
+                rows={6}
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                placeholder="What are you building, who is it for, and when do you need it?"
+              />
+            </label>
 
-            <p className="contact--message" id="contact-message">{message}</p>
-
-            <button type="submit" className="contact--button buttons">
-              <Send size={18} /> Send Message
+            <button type="submit" className="btn btn--primary connect--submit" disabled={status.state === "sending"}>
+              <Send size={18} aria-hidden="true" /> {status.state === "sending" ? "Sending…" : "Send message"}
             </button>
+
+            <p className={`connect--status connect--status-${status.state}`} role="status" aria-live="polite">
+              {status.text}
+            </p>
           </form>
-        </div>
-        <div className="contact--social">
-          <img
-            src="img/curved-arrow.svg"
-            alt=""
-            aria-hidden="true"
-            className="contact--social-arrow"
-          />
-
-          <div className="contact--social-data">
-            <div>
-              <p className="contact--social-description-1">
-                Does not send emails
-              </p>
-
-              <p className="contact--social-description-2">
-                Write me on my social networks
-              </p>
-            </div>
-
-            <div className="contact--social-links">
-              <a
-                href="https://www.instagram.com/les_troll_them/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="contact--social-link"
-              >
-                <Instagram size={20} aria-hidden="true" />
-              </a>
-
-              <a
-                href="https://www.linkedin.com/in/wasif-rehman-32210a18b/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="contact--social-link"
-              >
-                <Linkedin size={20} aria-hidden="true" />
-              </a>
-            </div>
-          </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

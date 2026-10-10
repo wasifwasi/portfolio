@@ -1,153 +1,83 @@
-import React, { useEffect, useRef } from "react";
-import { Linkedin, Send } from "lucide-react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import SkillsGrid from "./SkillsGrid";
-import Cover from "./Cover";
+import React from "react";
+import { motion } from "framer-motion";
+import { Linkedin, CalendarClock } from "lucide-react";
+import BookCallLink from "./BookCallLink";
+import { CONTACT } from "../data/site";
 
-gsap.registerPlugin(ScrollTrigger);
+const reveal = {
+  initial: { opacity: 0, y: 28 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: "-60px" },
+  transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+};
 
 const About = () => {
-  const aboutRef = useRef(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Animate title
-      gsap.fromTo(
-        ".section--title-1",
-        { opacity: 0, x: -100 },
-        {
-          opacity: 1,
-          x: 0,
-          duration: 1,
-          scrollTrigger: {
-            trigger: ".section--title-1",
-            start: "top 80%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-
-      // Animate 3D profile
-      gsap.fromTo(
-        ".about--profile",
-        { opacity: 0, scale: 0.8, rotate: 5 },
-        {
-          opacity: 1,
-          scale: 1,
-          rotate: 0,
-          duration: 1.2,
-          scrollTrigger: {
-            trigger: ".about--profile",
-            start: "top 80%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-
-      // Animate description
-      gsap.fromTo(
-        ".about--description",
-        { opacity: 0, y: 50 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          scrollTrigger: {
-            trigger: ".about--description",
-            start: "top 85%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-
-      // Animate list items
-      gsap.fromTo(
-        ".about--item",
-        { opacity: 0, x: -30 },
-        {
-          opacity: 1,
-          x: 0,
-          duration: 0.6,
-          stagger: 0.2,
-          scrollTrigger: {
-            trigger: ".about--list",
-            start: "top 85%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-
-      // Animate buttons
-      gsap.fromTo(
-        ".about--buttons a",
-        { opacity: 0, y: 20, scale: 0.9 },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.5,
-          stagger: 0.15,
-          scrollTrigger: {
-            trigger: ".about--buttons",
-            start: "top 90%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-    }, aboutRef);
-
-    return () => ctx.revert();
-  }, []);
-
   return (
-    <section className="about section" id="about" ref={aboutRef}>
-      <div className="about--container container grid">
-        <h2 className="section--title-1">
-          <span>About Me.</span>
-        </h2>
-        <div className="about--profile">
-           <SkillsGrid />
-        </div>
-        <div className="about--info">
-          <p className="about--description">
-            I am a <Cover>Solution Architect</Cover> who designs and ships complete systems end-to-end — from
-            architecture and data modeling to <Cover>React</Cover> and <Cover>Next.js</Cover> frontends, robust
-            <Cover> Node.js</Cover> and <Cover>NestJS</Cover> backends, and cloud infrastructure. I lead projects
-            spanning <Cover>AI-powered automation</Cover>, real-time platforms, 3D experiences, and cross-platform
-            mobile apps — turning ambiguous requirements into scalable, production-grade solutions that drive real
-            business results.
-          </p>
-          <ul className="about--list">
-            <li className="about--item">
-              <b>Architecture:</b> System design, API design, data modeling, multi-tenant platforms, payments &amp; auth.
-            </li>
-            <li className="about--item">
-              <b>Core Tech:</b> Next.js, React, React Native, Node.js, NestJS, TypeScript, PostgreSQL, MongoDB, Prisma, Supabase.
-            </li>
-            <li className="about--item">
-              <b>AI &amp; Cloud:</b> Anthropic, Gemini &amp; Groq AI, AWS S3, Stripe, Three.js, real-time &amp; serverless.
-            </li>
-          </ul>
-          <div className="about--buttons">
-            <a href="#contact" className="buttons">
-              <Send size={18} aria-hidden="true" />{" "}
-              Contact Me
-            </a>
-            <a
-              href="https://www.linkedin.com/in/wasif-rehman-32210a18b/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="button--ghost"
-            >
-              <Linkedin aria-hidden="true"/>
-            </a>
-          </div>
+    <section className="bio section" id="about">
+      <div className="container">
+        <header className="section-head">
+          <h2 className="section-head--title">About me</h2>
+        </header>
+
+        <div className="bio--grid">
+          <motion.div className="bio--text" {...reveal}>
+            <p>
+              I've been shipping production software since 2022: at software houses, as a
+              full-stack developer at AIDEVGEN, and for my own freelance clients. I like owning a
+              product end to end: the data model, the API, the AI layer, the web and mobile UI, and
+              the deployment that keeps it running.
+            </p>
+            <p>
+              I write in plain English, show working software early, and say so when something
+              shouldn't be automated.
+            </p>
+
+            <ul className="bio--list">
+              <li>
+                <b>Backend &amp; data</b> Node.js, NestJS, Python / FastAPI, PostgreSQL, MongoDB,
+                Supabase, Prisma
+              </li>
+              <li>
+                <b>AI</b> Claude, OpenAI, Gemini, Groq and Whisper for agents, OCR, transcription
+                and summaries
+              </li>
+              <li>
+                <b>Web &amp; mobile</b> Next.js, React 19, React Native (Expo), TypeScript
+              </li>
+            </ul>
+
+            <div className="bio--actions">
+              <BookCallLink className="btn btn--primary">
+                <CalendarClock size={18} aria-hidden="true" /> Book a 15-min call
+              </BookCallLink>
+              <a
+                href={CONTACT.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn--ghost btn--icon"
+                aria-label="LinkedIn"
+              >
+                <Linkedin size={18} aria-hidden="true" />
+              </a>
+            </div>
+          </motion.div>
+
+          <motion.figure className="bio--photo" {...reveal}>
+            <img
+              src="/img/me/about.webp"
+              srcSet="/img/me/about-480.webp 480w, /img/me/about.webp 960w"
+              sizes="(min-width: 900px) 380px, 100vw"
+              alt="Wasif Rehman outdoors in the hills"
+              width={480}
+              height={600}
+              loading="lazy"
+              decoding="async"
+            />
+          </motion.figure>
         </div>
       </div>
     </section>
   );
 };
-
 
 export default About;

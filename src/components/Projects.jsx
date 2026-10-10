@@ -5,6 +5,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SEO from "./SEO";
 import Pagination from "./Pagination";
+import { projectsData } from "../data/projects";
 
 const PROJECTS_PER_PAGE = 6;
 
@@ -67,7 +68,7 @@ const OptimizedImage = ({ src, alt, className, isLogo }) => {
           onLoad={handleLoad}
           onError={handleError}
           decoding="async"
-          fetchpriority="low"
+          fetchPriority="low"
         />
       )}
 
@@ -80,280 +81,6 @@ const OptimizedImage = ({ src, alt, className, isLogo }) => {
     </div>
   );
 };
-
-// Project data - Update the github and demo links with your actual URLs
-const projectsData = [
-  {
-    id: 2,
-    slug: "freenote-app",
-    image: "img/freenote.webp",
-    alt: "FreeNote - AI-Powered Voice Note App",
-    subtitle: "Mobile App & AI",
-    title: "FreeNote",
-    description:
-      "AI-powered voice note-taking app with real-time transcription, smart summarization, interactive AI chat, PDF export, and cloud sync. Built with React Native, Expo, Firebase, and Groq AI.",
-    github: "https://github.com/wasifwasi",
-    demo: "#",
-    isLogo: true,
-    role: "Full-Stack Developer",
-    company: "AIDEVGEN",
-    tags: ["React Native", "Expo", "Firebase", "Groq AI", "TypeScript"],
-  },
-  {
-    id: 3,
-    slug: "prove-it-auto",
-    image: "img/project_img_1.webp",
-    alt: "Prove It Auto - AI-Powered Car Maintenance App",
-    subtitle: "Mobile App & AI",
-    title: "Prove It Auto",
-    description:
-      "AI-powered car maintenance app featuring dashboard light scanning, tire inspection, maintenance quote analysis, and service scheduling. Built with React Native, Node.js, MongoDB, and Google Gemini AI.",
-    github: "https://github.com/wasifwasi",
-    demo: "#",
-    isLogo: true,
-    role: "Full-Stack Developer",
-    company: "AIDEVGEN",
-    tags: ["React Native", "Node.js", "MongoDB", "Gemini AI"],
-  },
-  {
-    id: 4,
-    slug: "ecommerce-platform",
-    image: "img/ecommerce.webp",
-    alt: "E-Commerce Platform Dashboard",
-    subtitle: "Full-Stack MERN",
-    title: "E-Commerce Platform",
-    description:
-      "A complete e-commerce solution with product management, cart functionality, Stripe payments, user authentication, and admin dashboard. Built with MongoDB, Express, React, and Node.js.",
-    github: "https://github.com/wasifwasi",
-    demo: "#",
-    role: "Full-Stack Developer",
-    company: "Personal Project",
-    tags: ["MongoDB", "Express", "React", "Node.js", "Stripe"],
-  },
-  {
-    id: 5,
-    slug: "live-voting-system",
-    image: "img/vote.webp",
-    alt: "Live Voting System Dashboard",
-    subtitle: "Full Stack Development",
-    title: "Live Voting System",
-    description:
-      "Created a live voting system using React, Node.js, and MongoDB for accurate vote forecasting and analysis with real-time updates.",
-    github: "https://github.com/wasifwasi",
-    demo: "#",
-    role: "Full-Stack Developer",
-    company: "Freelance",
-    tags: ["React", "Node.js", "MongoDB", "Socket.io", "Real-time"],
-  },
-  {
-    id: 6,
-    slug: "academic-analytics",
-    image: "img/edu.webp",
-    alt: "Academic Analytics System Interface",
-    subtitle: "Full-Stack Development",
-    title: "Academic Analytics System",
-    description:
-      "Built a comprehensive academic analytics system with team collaboration features, real-time updates, and drag-and-drop interface using the MERN stack.",
-    github: "https://github.com/wasifwasi",
-    demo: "#",
-    role: "Full-Stack Developer",
-    company: "Freelance",
-    tags: ["React", "Node.js", "MongoDB", "Express", "Analytics"],
-  },
-  {
-    id: 7,
-    slug: "bible-trader",
-    image: "img/bible-trader.webp",
-    alt: "Bible Trader - Marketplace Platform",
-    subtitle: "Full-Stack E-commerce",
-    title: "Bible Trader",
-    description:
-      "A marketplace platform for buying, selling, and trading Bibles. Features escrow payments, Stripe integration, trade requests, and daily verse display. Built with React, TypeScript, Tailwind CSS, and Supabase.",
-    github: "https://github.com/wasifwasi",
-    demo: "#",
-    isLogo: true,
-    role: "Full-Stack Developer",
-    company: "AIDEVGEN",
-    tags: ["React", "TypeScript", "Tailwind", "Supabase", "Stripe"],
-  },
-  {
-    id: 8,
-    slug: "mmpb-recruitment",
-    image: "img/mmpb.webp",
-    alt: "Master Man Power Bureau - Recruitment Platform",
-    subtitle: "Full-Stack Recruitment Platform",
-    title: "Master Man Power Bureau",
-    description:
-      "International recruitment agency platform for overseas employment. Features job listings, application tracking, CV management with AWS S3, admin dashboard, and email notifications. Built with Next.js, NestJS, PostgreSQL, and Prisma.",
-    github: "https://github.com/wasifwasi",
-    demo: "#",
-    isLogo: true,
-    role: "Full-Stack Developer",
-    company: "Freelance",
-    tags: ["Next.js", "NestJS", "PostgreSQL", "Prisma", "AWS S3"],
-  },
-  {
-    id: 9,
-    slug: "zareen-couture",
-    image: "img/zareen.webp",
-    alt: "Zareen Couture - Luxury Bridal E-Commerce",
-    subtitle: "Full-Stack E-commerce",
-    title: "Zareen Couture",
-    description:
-      "Luxury Pakistani bridal couture e-commerce platform with advanced filtering, custom order system, virtual consultation booking, and global shipping. Built with Next.js, TypeScript, and Tailwind CSS.",
-    github: "https://github.com/wasifwasi",
-    demo: "#",
-    isLogo: true,
-    role: "Full-Stack Developer",
-    company: "Freelance",
-    tags: ["Next.js", "TypeScript", "Tailwind CSS", "React", "Lucide"],
-  },
-  {
-    id: 10,
-    slug: "plumbers-mate-ai",
-    image: "img/plumbers-mate.png",
-    alt: "Plumber's Mate AI - AI Business Automation Platform",
-    subtitle: "AI SaaS & Business Automation",
-    title: "Plumber's Mate AI",
-    description:
-      "AI-powered business automation platform for plumbing businesses — captures leads, books jobs, automates quotes, payments, and Google review requests, and re-engages old leads. Built with Next.js 16, React 19, TypeScript, Tailwind CSS, and Framer Motion.",
-    github: "https://github.com/wasifwasi",
-    demo: "#",
-    isLogo: true,
-    role: "Full-Stack Developer (Collaborator)",
-    company: "AIDEVGEN",
-    tags: ["Next.js", "React 19", "TypeScript", "Tailwind CSS", "Framer Motion"],
-  },
-  {
-    id: 11,
-    slug: "clay-imaginary",
-    image: "img/clay-imaginary.webp",
-    alt: "Clay Imaginary - AI Image Generation Studio",
-    subtitle: "AI Image Generation & Editing",
-    title: "Clay Imaginary",
-    description:
-      "AI-powered image generation and editing studio with canvas-based compositing, drag-and-drop design, and export-to-image workflows for social, product, and content creators. Built with Next.js 15, React 19, Fabric.js, Framer Motion, and html2canvas.",
-    github: "https://github.com/wasifwasi",
-    demo: "#",
-    isLogo: true,
-    role: "Full-Stack Developer (Collaborator)",
-    company: "AIDEVGEN",
-    tags: ["Next.js", "React 19", "Fabric.js", "TypeScript", "Tailwind CSS"],
-  },
-  {
-    id: 12,
-    slug: "home-structure",
-    featured: true,
-    image: "img/home-structure.webp",
-    alt: "homeStructure - House Design Studio",
-    subtitle: "3D Architecture & Design Tool",
-    title: "homeStructure",
-    description:
-      "A web app to design a climate-smart house on a real irregular plot. Draw and edit a 2D floor plan on the exact boundary, watch it build in live 3D, browse pre-built models, and get ventilation advice tuned to the local climate. Built with Next.js 16, React 19, Three.js, and react-konva.",
-    github: "https://github.com/wasifwasi",
-    demo: "https://home-structure-nxnh.vercel.app/",
-    isLogo: false,
-    role: "Full-Stack Developer",
-    company: "Personal Project",
-    tags: ["Next.js", "React 19", "Three.js", "react-konva", "Zustand"],
-  },
-  {
-    id: 13,
-    slug: "bpoai",
-    image: "img/bpoai.webp",
-    alt: "BPOAI - BPO Directory & AI Intelligence Hub",
-    subtitle: "AI Directory Platform",
-    title: "BPOAI",
-    description:
-      "A directory and AI intelligence hub for the top BPO (Business Process Outsourcing) companies in the Philippines. Features company discovery, an interactive 3D experience, and a Supabase-backed data layer. Built with Next.js 16, React 19, Supabase, Three.js, and Framer Motion.",
-    github: "https://github.com/wasifwasi",
-    demo: "#",
-    isLogo: false,
-    role: "Lead Developer",
-    company: "AIDEVGEN",
-    tags: ["Next.js", "React 19", "Supabase", "Three.js", "Framer Motion"],
-  },
-  {
-    id: 14,
-    slug: "voltoutreach",
-    image: "img/voltoutreach.webp",
-    alt: "VoltOutreach - Recruitment & Outreach Platform",
-    subtitle: "Recruitment & Outreach Platform",
-    title: "VoltOutreach",
-    description:
-      "A recruitment and outreach portal with job listings, candidate applications, an admin dashboard, and AI-assisted outreach. Includes Calendly booking and Cloudinary media handling. Built with Next.js 16, React 19, MongoDB, and the Anthropic AI SDK.",
-    github: "https://github.com/wasifwasi",
-    demo: "https://vault-out-sourcing.vercel.app/",
-    isLogo: false,
-    role: "Lead Developer",
-    company: "AIDEVGEN",
-    tags: ["Next.js", "React 19", "MongoDB", "Anthropic AI", "Cloudinary"],
-  },
-  {
-    id: 15,
-    slug: "purex",
-    image: "img/purex.webp",
-    alt: "PureX - Product & Water Quality Mobile App",
-    subtitle: "Mobile App & AI",
-    title: "PureX",
-    description:
-      "A mobile app that scans product barcodes for nutrition and safety insights and surfaces location-based water-quality reports. Uses Google Gemini AI for analysis and a Supabase backend. Built with React Native, Expo, Supabase, and RevenueCat for subscriptions.",
-    github: "https://github.com/wasifwasi",
-    demo: "#",
-    isLogo: false,
-    role: "Full-Stack Developer",
-    company: "AIDEVGEN",
-    tags: ["React Native", "Expo", "Supabase", "Gemini AI", "RevenueCat"],
-  },
-  {
-    id: 17,
-    slug: "umrahflow",
-    image: "img/umrahflow.svg",
-    alt: "UmrahFlow - Umrah/Hajj Visa Automation Platform",
-    subtitle: "AI Automation Platform",
-    title: "UmrahFlow",
-    description:
-      "End-to-end Umrah/Hajj visa-automation platform: WhatsApp intake, AI passport OCR (MRZ + Claude vision), a human-review dashboard, and a bridge that stages approved passports for submission to the Saudi Nusuk portal. Built with Next.js, Python microservices, PostgreSQL, and Docker.",
-    github: "https://github.com/wasifwasi",
-    demo: "#",
-    isLogo: false,
-    role: "Full-Stack Developer",
-    company: "Freelance",
-    tags: ["Next.js", "Python", "PostgreSQL", "Claude AI", "Docker"],
-  },
-  {
-    id: 18,
-    slug: "multi-department-pos",
-    image: "img/pos.svg",
-    alt: "Multi-Department Retail POS System",
-    subtitle: "Multi-Tenant Retail SaaS",
-    title: "Multi-Department POS",
-    description:
-      "A multi-tenant, multi-department retail POS for a Pakistani cloth house: departments ring up sales as numbered tickets, a central counter takes payment, and the owner tracks inventory, KPIs, shifts, returns, and reconciliation. Built with Next.js 16, React 19, Prisma 7, PostgreSQL, and Supabase.",
-    github: "https://github.com/wasifwasi",
-    demo: "#",
-    isLogo: false,
-    role: "Full-Stack Developer",
-    company: "Freelance",
-    tags: ["Next.js", "React 19", "Prisma", "PostgreSQL", "Supabase"],
-  },
-  {
-    id: 16,
-    slug: "auth-system",
-    image: "img/auth-system.webp",
-    alt: "Auth System - Full-Stack Authentication App",
-    subtitle: "Full-Stack Authentication",
-    title: "Auth System",
-    description:
-      "A production-ready authentication application with sign-up, login, protected routes, and Gmail-based password reset. Middleware-protected routes with secure session handling. Built with Next.js 16, NextAuth v5, MongoDB, and Nodemailer.",
-    github: "https://github.com/wasifwasi",
-    demo: "#",
-    isLogo: false,
-    role: "Full-Stack Developer",
-    company: "AIDEVGEN",
-    tags: ["Next.js", "NextAuth v5", "MongoDB", "Nodemailer", "Zod"],
-  },
-];
 
 const Projects = () => {
   const projectsRef = useRef(null);
@@ -445,8 +172,8 @@ const Projects = () => {
   return (
     <section className="projects section" id="projects" ref={projectsRef}>
       <SEO
-        title="Projects | Wasif Rehman - Solution Architect"
-        description="Explore my portfolio of full-stack projects including enterprise systems, AI-powered apps, mobile applications, and e-commerce platforms."
+        title="Projects | Wasif Rehman - Full-Stack & AI Engineer"
+        description="Case studies of AI agents, automation pipelines, SaaS platforms and mobile apps — the problem, what I built, and the stack."
         path="/projects"
       />
       <h2 className="section--title-1">

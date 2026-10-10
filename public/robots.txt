@@ -170,4 +170,4 @@ Disallow: /js/
 Disallow: /playbook
 
 # Sitemaps
-Sitemap: https://wasifrehman.com/sitemap.xml
+Sitemap: https://portfolio-wod3.vercel.app/sitemap.xml

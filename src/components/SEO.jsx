@@ -1,13 +1,13 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 
-const SITE_URL = "https://wasifrehman.com";
+const SITE_URL = "https://portfolio-wod3.vercel.app";
 const SITE_NAME = "Wasif Rehman Portfolio";
 const DEFAULT_IMAGE = `${SITE_URL}/logo512.png`;
 
 const SEO = ({
-  title = "Wasif Rehman | Solution Architect",
-  description = "Solution Architect designing and shipping end-to-end systems across web, mobile, and AI — from real-time platforms and 3D experiences to AI-powered automation on Next.js, React, and modern cloud stacks.",
+  title = "Wasif Rehman | Full-Stack & AI Engineer",
+  description = "Wasif Rehman — full-stack & AI engineer. I build AI agents, automation pipelines, Next.js web platforms and React Native apps that work in production. Book a free 15-min call.",
   path = "/",
   image = DEFAULT_IMAGE,
   type = "website",
@@ -22,15 +22,15 @@ const SEO = ({
     "@type": "Person",
     name: "Wasif Rehman",
     url: SITE_URL,
-    jobTitle: "Solution Architect",
-    description: "Solution Architect designing end-to-end systems across web, mobile, and AI with Next.js, React, Node.js, and modern cloud stacks.",
+    jobTitle: "Full-Stack & AI Engineer",
+    description: "Full-stack & AI engineer building AI agents, Next.js platforms and React Native apps that work in production.",
     sameAs: [
-      "https://github.com/wasifrehman",
-      "https://linkedin.com/in/wasifrehman",
+      "https://github.com/wasifwasi",
+      "https://www.linkedin.com/in/wasif-rehman-32210a18b/",
     ],
     knowsAbout: [
-      "React", "Node.js", "Next.js", "React Native", "Python",
-      "JavaScript", "TypeScript", "AI/ML", "Firebase", "MongoDB",
+      "AI agents", "LLM integration", "Next.js", "React", "React Native",
+      "Node.js", "Python", "FastAPI", "TypeScript", "PostgreSQL", "Supabase",
     ],
   };
 
@@ -39,7 +39,7 @@ const SEO = ({
     "@type": "WebSite",
     name: SITE_NAME,
     url: SITE_URL,
-    description: "Portfolio of Wasif Rehman - Solution Architect",
+    description: "Portfolio of Wasif Rehman — Full-Stack & AI Engineer",
     author: personSchema,
   };
 

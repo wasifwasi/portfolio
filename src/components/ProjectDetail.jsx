@@ -12,8 +12,8 @@ const projectContent = {
     role: 'Full-Stack Developer',
     company: 'AIDEVGEN',
     companyType: 'AI & Software Development Company',
-    image: 'img/freenote.webp',
-    isLogo: true,
+    image: 'img/work/freenote.webp',
+    isLogo: false,
     techStack: ['React Native', 'Expo', 'TypeScript', 'Firebase', 'Firestore', 'Cloud Functions', 'Groq AI', 'OpenAI Whisper', 'Zustand', 'RevenueCat'],
     overview: 'A cross-platform voice note-taking application that leverages AI to automatically transcribe, summarize, and enable interactive chat with audio recordings. Features cloud sync, PDF export, and a freemium subscription model.',
     content: (
@@ -74,8 +74,8 @@ const projectContent = {
     role: 'Full-Stack Developer',
     company: 'AIDEVGEN',
     companyType: 'AI & Software Development Company',
-    image: 'img/project_img_1.webp',
-    isLogo: true,
+    image: 'img/work/proveit.webp',
+    isLogo: false,
     techStack: ['React Native', 'Expo', 'Node.js', 'MongoDB', 'Google Gemini AI', 'Express.js', 'JWT Auth', 'Cloud Storage'],
     overview: 'An innovative mobile application that leverages Google Gemini AI to help car owners understand dashboard warning lights, inspect tire conditions, and analyze maintenance quotes from mechanics.',
     content: (
@@ -125,7 +125,7 @@ const projectContent = {
     role: 'Full-Stack Developer',
     company: 'Personal Project',
     companyType: 'Personal Portfolio Project',
-    image: 'img/ecommerce.webp',
+    image: 'img/work/ecommerce.webp',
     isLogo: false,
     techStack: ['MongoDB', 'Express.js', 'React', 'Node.js', 'Stripe', 'Redux', 'JWT', 'Cloudinary', 'Tailwind CSS'],
     overview: 'A complete e-commerce solution featuring product management, shopping cart functionality, secure Stripe payments, user authentication, and a comprehensive admin dashboard for inventory and order management.',
@@ -281,8 +281,8 @@ const projectContent = {
     role: 'Full-Stack Developer',
     company: 'AIDEVGEN',
     companyType: 'AI & Software Development Company',
-    image: 'img/bible-trader.webp',
-    isLogo: true,
+    image: 'img/work/bible-trader.webp',
+    isLogo: false,
     techStack: ['React', 'TypeScript', 'Tailwind CSS', 'Supabase', 'Stripe Connect', 'PostgreSQL', 'Edge Functions'],
     overview: 'A secure peer-to-peer marketplace for buying, selling, and trading Bibles and religious books, featuring escrow payments, trade matching, and daily verse displays.',
     content: (
@@ -334,8 +334,8 @@ const projectContent = {
     role: 'Full-Stack Developer',
     company: 'Freelance Project',
     companyType: 'Freelance',
-    image: 'img/mmpb.webp',
-    isLogo: true,
+    image: 'img/work/mmpb.webp',
+    isLogo: false,
     techStack: ['Next.js 14', 'NestJS', 'PostgreSQL', 'Prisma', 'AWS S3', 'TypeScript', 'Tailwind CSS', 'JWT Auth', 'Nodemailer'],
     overview: 'A comprehensive international recruitment platform connecting skilled workers with employers across GCC countries. Features job listings, application tracking, CV management, and a complete admin dashboard for managing the recruitment workflow.',
     content: (
@@ -441,8 +441,8 @@ const projectContent = {
     role: 'Full-Stack Developer',
     company: 'Personal Project',
     companyType: 'Personal Project',
-    image: 'img/home-structure.webp',
-    heroImage: 'img/home-structure-hero.webp',
+    image: 'img/work/homestructure-3d.webp',
+    heroImage: 'img/work/homestructure-plan.webp',
     isLogo: false,
     techStack: ['Next.js 16', 'React 19', 'TypeScript', 'Three.js', 'react-three-fiber', 'react-konva', 'Zustand', 'Zod', 'Tailwind CSS'],
     overview: 'A web app to design a climate-smart house on a real irregular plot. Draw and edit a 2D floor plan on the exact plot boundary, watch it build in live 3D, load architect-designed models, and get passive-design and ventilation advice tuned to a hot, semi-arid climate.',
@@ -499,7 +499,7 @@ const projectContent = {
     role: 'Lead Developer',
     company: 'AIDEVGEN',
     companyType: 'AI & Software Development Company',
-    image: 'img/bpoai.webp',
+    image: 'img/work/bpoai.webp',
     isLogo: false,
     techStack: ['Next.js 16', 'React 19', 'TypeScript', 'Supabase', 'Three.js', 'react-three-fiber', 'Framer Motion', 'Tailwind CSS', 'Resend'],
     overview: 'A directory and AI intelligence hub for the top BPO (Business Process Outsourcing) companies in the Philippines, combining company discovery with an immersive 3D landing experience and a Supabase-backed data layer.',
@@ -555,7 +555,7 @@ const projectContent = {
     role: 'Lead Developer',
     company: 'AIDEVGEN',
     companyType: 'AI & Software Development Company',
-    image: 'img/voltoutreach.webp',
+    image: 'img/work/voltoutreach.webp',
     isLogo: false,
     techStack: ['Next.js 16', 'React 19', 'TypeScript', 'MongoDB', 'Mongoose', 'Anthropic AI', 'JWT (jose)', 'Cloudinary', 'Calendly', 'Framer Motion'],
     overview: 'A recruitment and outreach portal with job listings, candidate applications, an admin dashboard, AI-assisted outreach, Calendly scheduling, and Cloudinary-backed media handling.',
@@ -612,7 +612,7 @@ const projectContent = {
     role: 'Full-Stack Developer',
     company: 'AIDEVGEN',
     companyType: 'AI & Software Development Company',
-    image: 'img/purex.webp',
+    image: 'img/work/purex.webp',
     isLogo: false,
     techStack: ['React Native', 'Expo', 'TypeScript', 'Supabase', 'Google Gemini AI', 'RevenueCat', 'Apple Auth', 'Expo Camera', 'Expo Location'],
     overview: 'A cross-platform mobile app that scans product barcodes for nutrition and safety insights and surfaces location-based water-quality reports, powered by Google Gemini AI and a Supabase backend.',
@@ -669,7 +669,7 @@ const projectContent = {
     role: 'Full-Stack Developer',
     company: 'Freelance',
     companyType: 'Freelance Client Project',
-    image: 'img/umrahflow.svg',
+    image: 'img/work/umrahflow.webp',
     isLogo: false,
     techStack: ['Next.js', 'Python', 'FastAPI', 'PostgreSQL', 'Prisma', 'Claude AI (Vision)', 'OpenAI', 'Docker', 'WAHA (WhatsApp)', 'Twilio-compatible API'],
     overview: 'An end-to-end Umrah/Hajj visa-automation platform that takes a pilgrim from a WhatsApp message to a staged visa submission: AI passport OCR, an automated WhatsApp agent, a human-review dashboard, and a bridge into the Saudi Nusuk submission console.',
@@ -728,7 +728,7 @@ const projectContent = {
     role: 'Full-Stack Developer',
     company: 'Freelance',
     companyType: 'Freelance Client Project',
-    image: 'img/pos.svg',
+    image: 'img/work/pos.webp',
     isLogo: false,
     techStack: ['Next.js 16', 'React 19', 'TypeScript', 'Prisma 7', 'PostgreSQL', 'Supabase', 'Tailwind CSS v4'],
     overview: 'A multi-tenant, multi-department retail POS built for a Pakistani cloth house: departments record sales as numbered tickets, one central counter takes payment, and the owner oversees inventory, KPIs, shifts, returns, and reconciliation.',
@@ -780,59 +780,59 @@ const projectContent = {
       </>
     ),
   },
-  'auth-system': {
-    title: 'Auth System',
-    subtitle: 'Full-Stack Authentication Application',
-    date: 'February 2026 - March 2026',
-    role: 'Full-Stack Developer',
+  'clay-imaginary': {
+    title: 'HookFeed',
+    subtitle: 'AI Social Content Generator (built as Clay Imaginary)',
+    date: 'February 2026 - April 2026',
+    role: 'Full-Stack Developer (Collaborator)',
     company: 'AIDEVGEN',
     companyType: 'AI & Software Development Company',
-    image: 'img/auth-system.webp',
+    image: 'img/work/hookfeed.webp',
     isLogo: false,
-    techStack: ['Next.js 16', 'TypeScript', 'NextAuth v5', 'MongoDB', 'bcryptjs', 'Nodemailer', 'Zod', 'Tailwind CSS'],
-    overview: 'A production-ready authentication application with sign-up, login, protected routes, and Gmail-based password reset, built on Next.js 16 and NextAuth v5 with secure, middleware-protected session handling.',
+    techStack: ['Next.js', 'React 19', 'TypeScript', 'Fabric.js', 'Framer Motion', 'html2canvas', 'Google OAuth', 'Tailwind CSS'],
+    overview: 'A live SaaS for creators: pick a post type and a style, and the AI writes the hook and designs a ready-to-post social media visual in about a minute. Started as Clay Imaginary, an AI image studio, and now runs at hookfeed.ai on credit-based subscription plans.',
     content: (
       <>
         <h3>Project Overview</h3>
-        <p>Auth System is a complete, production-ready authentication starter: users can register, log in, access protected routes, and reset forgotten passwords via email. It demonstrates a secure, modern auth flow built on the latest Next.js and NextAuth, with validation and middleware protection done right.</p>
+        <p>Creators need to post every day, but most can't design. HookFeed turns a topic into a finished post: the creator picks a format (carousel, quote card or meme) and a style (minimal, bold or luxury), and the AI writes the hook, designs the visual and hands back a post that is ready to publish. Under the hood it grew out of Clay Imaginary, a canvas-based AI image studio where every generated element stays editable.</p>
 
         <h3>My Role & Responsibilities</h3>
-        <p>As a <b>Full-Stack Developer at AIDEVGEN</b>, I was responsible for:</p>
+        <p>As a <b>full-stack developer on the AIDEVGEN team</b>, I worked on:</p>
         <ul>
-          <li>Building the full authentication application with Next.js 16 and NextAuth v5</li>
-          <li>Implementing registration and login with bcryptjs password hashing</li>
-          <li>Designing the Gmail-based password-reset flow with Nodemailer</li>
-          <li>Protecting routes with middleware and secure session handling</li>
-          <li>Validating all inputs end-to-end with Zod</li>
-          <li>Modeling users and tokens in MongoDB</li>
+          <li>The canvas editor built on Fabric.js, where every image, headline and shape is an editable object</li>
+          <li>The layer system: a side panel that stays in sync with the canvas as layers are reordered</li>
+          <li>The server-side generation route that keeps API keys off the client and lets providers be swapped</li>
+          <li>The template gallery that gives new users a starting point instead of a blank canvas</li>
+          <li>Export to a single post-ready image, and Google sign-in with projects saved as canvas JSON</li>
         </ul>
 
-        <h3>Key Features Developed</h3>
+        <h3>Key Features</h3>
         <ul>
-          <li><b>Sign-up & login:</b> secure credential auth with hashed passwords</li>
-          <li><b>Password reset:</b> email-based reset over Gmail SMTP via Nodemailer</li>
-          <li><b>Protected routes:</b> middleware-guarded pages that require a valid session</li>
-          <li><b>Validation:</b> Zod schemas on every form and API route</li>
+          <li><b>Two-step creation:</b> choose a post type and a style; the AI handles the writing and design</li>
+          <li><b>Post formats:</b> carousels, quote cards and memes in social-ready sizes</li>
+          <li><b>Editable results:</b> generated posts open as layered canvases that can be moved, resized and restyled</li>
+          <li><b>Templates:</b> ready-made scenes for common niches that users remix</li>
+          <li><b>Plans:</b> credit-based monthly subscriptions for solo creators, regular posters and teams</li>
         </ul>
 
         <h3>Technical Architecture</h3>
         <ul>
-          <li><b>Framework:</b> Next.js 16 with TypeScript and Tailwind CSS</li>
-          <li><b>Auth:</b> NextAuth v5 (beta) with a credentials provider and bcryptjs hashing</li>
-          <li><b>Database:</b> MongoDB for users and reset tokens</li>
-          <li><b>Email:</b> Nodemailer over Gmail SMTP for password-reset links</li>
-          <li><b>Validation:</b> Zod across forms and server routes</li>
+          <li><b>Frontend:</b> Next.js with React 19 and TypeScript, Framer Motion for UI motion</li>
+          <li><b>Canvas engine:</b> Fabric.js scene graph with a shared store keeping the layer panel and canvas in sync</li>
+          <li><b>AI generation:</b> a server-side API route that proxies to the image and text models, with logging and rate limits</li>
+          <li><b>Export:</b> html2canvas captures the composed canvas and overlays as one image</li>
+          <li><b>Accounts:</b> Google OAuth sign-in; projects serialised with <code>canvas.toJSON()</code> and restored layer by layer</li>
         </ul>
 
         <h3>Technical Challenges Solved</h3>
         <ul>
-          <li>Implementing a secure, time-limited password-reset token flow over email</li>
-          <li>Configuring NextAuth v5 (beta) with a credentials provider and middleware route protection</li>
-          <li>Keeping validation consistent on both client and server with shared Zod schemas</li>
+          <li>Keeping drag, rotate and scale smooth by editing at social-post resolution and upscaling only on export</li>
+          <li>Restoring a saved project with every layer's exact position, rotation, opacity and filters</li>
+          <li>Removing the blank-canvas problem with templates that double as the product's showcase</li>
         </ul>
 
         <h3>Results & Impact</h3>
-        <p>Delivered a reusable, production-ready authentication foundation that handles the full account lifecycle — registration, login, protected access, and password recovery — with modern security practices baked in and ready to drop into other products.</p>
+        <p>The product is live at <a href="https://www.hookfeed.ai/" target="_blank" rel="noopener noreferrer">hookfeed.ai</a> with paid plans, taking creators from a topic to a publish-ready post in about a minute without a design tool.</p>
       </>
     ),
   },

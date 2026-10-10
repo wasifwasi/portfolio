@@ -1,136 +1,69 @@
-import React, { useRef, useState, useCallback } from "react";
-import { Layers, Bot, Workflow } from "lucide-react";
-import PulseBeams from "./PulseBeams";
+import React from "react";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { Workflow, Sparkles, Rocket, Check, ArrowRight } from "lucide-react";
+import { SERVICES, projectTitle } from "../data/site";
 
-const Card3D = ({ children, className = "" }) => {
-  const cardRef = useRef(null);
-  const [transform, setTransform] = useState(
-    "perspective(1000px) rotateY(0deg) rotateX(0deg)"
-  );
-
-  const handleMouseMove = useCallback((e) => {
-    const card = cardRef.current;
-    if (!card) return;
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
-    const rotateY = (x / rect.width) * 20;
-    const rotateX = -(y / rect.height) * 20;
-    setTransform(
-      `perspective(1000px) rotateY(${rotateY}deg) rotateX(${rotateX}deg)`
-    );
-  }, []);
-
-  const handleMouseLeave = useCallback(() => {
-    setTransform("perspective(1000px) rotateY(0deg) rotateX(0deg)");
-  }, []);
-
-  return (
-    <div
-      ref={cardRef}
-      className={`card-3d ${className}`}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      style={{ transform, transformStyle: "preserve-3d" }}
-    >
-      {children}
-    </div>
-  );
-};
-
-const CardItem = ({ children, className = "", translateZ = 0, as: Tag = "div" }) => (
-  <Tag
-    className={className}
-    style={{
-      transform: `translateZ(${translateZ}px)`,
-      transformStyle: "preserve-3d",
-      transition: "transform 0.2s ease",
-    }}
-  >
-    {children}
-  </Tag>
-);
+const ICONS = { "ai-automation": Workflow, "ai-feature": Sparkles, mvp: Rocket };
 
 const Services = () => {
-  const servicesData = [
-    {
-      icon: Layers,
-      title: "MERN Stack Development",
-      description: (
-        <>
-          Building scalable full-stack applications with <b>MongoDB, Express, React & Node.js</b>.
-          From RESTful APIs to dynamic dashboards, delivering end-to-end
-          solutions with clean architecture.
-        </>
-      ),
-    },
-    {
-      icon: Bot,
-      title: "AI Integration & Automation",
-      description: (
-        <>
-          Integrating <b>AI-powered features</b> into web applications including
-          chatbots, smart assistants, and workflow automation using
-          <b> OpenAI, Google Gemini</b>, and other LLM APIs.
-        </>
-      ),
-    },
-    {
-      icon: Workflow,
-      title: "API & Backend Solutions",
-      description: (
-        <>
-          Designing robust <b>REST & GraphQL APIs</b> with authentication,
-          real-time features using <b>Socket.io</b>, and database optimization.
-          Building backends that scale efficiently.
-        </>
-      ),
-    },
-  ];
-
   return (
-    <section className="services section" id="services">
-      <PulseBeams className="services--pulse-beams" />
-      <h2
-        className="section--title-2"
+    <section className="offer section" id="services">
+      <div className="container">
+        <header className="section-head">
+          <h2 className="section-head--title">What I can build for you</h2>
+          <p className="section-head--lead">
+            Three common starting points. Each one begins with a free 15-minute call and a written
+            scope with the price before any work starts.
+          </p>
+        </header>
 
-
-      >
-        <span>Services.</span>
-      </h2>
-      <div className="services--container container grid">
-        {servicesData.map((service, index) => {
-          const IconComponent = service.icon;
-          return (
-            <Card3D
-              key={index}
-              className="services--card"
-            >
-              <article
-                className="services--card-inner"
-
-
-
+        <div className="offer--grid">
+          {SERVICES.map((service, i) => {
+            const Icon = ICONS[service.slug];
+            return (
+              <motion.article
+                key={service.slug}
+                className="offer--card"
+                initial={{ opacity: 0, y: 28 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.55, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
               >
-                <div className="services--border"></div>
-                <div className="services--content">
-                  <CardItem translateZ={60}>
-                    <div className="services--icon">
-                      <div className="services--box"></div>
-                      <IconComponent size={32} strokeWidth={1.5} />
-                    </div>
-                  </CardItem>
-                  <CardItem translateZ={40} as="h2" className="services--title">
-                    {service.title}
-                  </CardItem>
-                  <CardItem translateZ={20} as="p" className="services--description">
-                    {service.description}
-                  </CardItem>
-                </div>
-              </article>
-            </Card3D>
-          );
-        })}
+                <span className="offer--icon" aria-hidden="true">
+                  <Icon size={22} strokeWidth={1.75} />
+                </span>
+                <h3 className="offer--title">{service.title}</h3>
+                <p className="offer--pitch">{service.pitch}</p>
+
+                <p className="offer--label">What you get</p>
+                <ul className="offer--list">
+                  {service.includes.map((line) => (
+                    <li key={line}>
+                      <Check size={16} aria-hidden="true" /> {line}
+                    </li>
+                  ))}
+                </ul>
+
+                <p className="offer--label">Proof</p>
+                <ul className="offer--proof">
+                  {service.proof.map((slug) => (
+                    <li key={slug}>
+                      <Link to={`/projects/${slug}`}>{projectTitle(slug)}</Link>
+                    </li>
+                  ))}
+                </ul>
+
+                <Link
+                  to={`/?service=${service.slug}#contact`}
+                  className="btn btn--ghost offer--cta"
+                >
+                  Get a free estimate <ArrowRight size={16} aria-hidden="true" />
+                </Link>
+              </motion.article>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

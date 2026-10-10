@@ -1,156 +1,85 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { Instagram, Linkedin, Github, ArrowDown, ArrowRight, Mail } from "lucide-react";
-import { gsap } from "gsap";
-import PulseBeams from "./PulseBeams";
+import { motion } from "framer-motion";
+import { CalendarClock, ArrowRight } from "lucide-react";
+import { HERO_STRIP, METRICS } from "../data/site";
+import Picture from "./Picture";
+import BookCallLink from "./BookCallLink";
+
+const rise = (delay = 0) => ({
+  initial: { opacity: 0, y: 18 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] },
+});
 
 const Home = () => {
-  const homeRef = useRef(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-
-      tl.fromTo(
-        ".home--eyebrow",
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.6 }
-      )
-        .fromTo(
-          ".home--name",
-          { opacity: 0, y: 40 },
-          { opacity: 1, y: 0, duration: 0.9 },
-          "-=0.3"
-        )
-        .fromTo(
-          ".home--role",
-          { opacity: 0, y: 30 },
-          { opacity: 1, y: 0, duration: 0.7 },
-          "-=0.5"
-        )
-        .fromTo(
-          ".home--description",
-          { opacity: 0, y: 24 },
-          { opacity: 1, y: 0, duration: 0.7 },
-          "-=0.5"
-        )
-        .fromTo(
-          ".home--cta",
-          { opacity: 0, y: 20, scale: 0.96 },
-          { opacity: 1, y: 0, scale: 1, duration: 0.5, stagger: 0.12 },
-          "-=0.4"
-        )
-        .fromTo(
-          ".home--social-link",
-          { opacity: 0, y: 16, scale: 0.6 },
-          { opacity: 1, y: 0, scale: 1, duration: 0.4, stagger: 0.1 },
-          "-=0.3"
-        )
-        .fromTo(
-          ".home--avatar",
-          { opacity: 0, scale: 0.85 },
-          { opacity: 1, scale: 1, duration: 0.7 },
-          "-=0.6"
-        );
-
-      // Gentle, low-cost bounce on the scroll indicator only
-      gsap.to(".home--scroll-box", {
-        y: 8,
-        duration: 0.9,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-      });
-    }, homeRef);
-
-    return () => ctx.revert();
-  }, []);
-
   return (
-    <section className="home section" id="home" ref={homeRef}>
-      <PulseBeams className="home--pulse-beams" />
-      <div className="home--container container">
-        <div className="home--content">
-          <span className="home--eyebrow">
-            <span className="home--eyebrow-dot" /> Available for new projects
-          </span>
+    <section className="hero section" id="home">
+      <div className="container">
+        <div className="hero--top">
+          <motion.div className="hero--intro" {...rise(0)}>
+            <p className="hero--status">
+              <span className="hero--status-dot" aria-hidden="true" /> Taking on new projects
+            </p>
 
-          <h1 className="home--name">
-            Wasif <span className="home--name-accent">Rehman</span>
-          </h1>
+            <h1 className="hero--title">I'm Wasif. I build the software real businesses run on.</h1>
 
-          <p className="home--role">
-            <span>Solution Architect</span> &amp; Full-Stack Developer
-          </p>
+            <p className="hero--lead">
+              Web apps, mobile apps and AI tools, from the database to the screen your customers
+              use. Here are three of them.
+            </p>
 
-          <p className="home--description">
-            I design and ship end-to-end systems across web, mobile, and AI —
-            from real-time platforms and 3D experiences to AI-powered automation,
-            built on Next.js, React, and modern cloud stacks.
-          </p>
+            <div className="hero--actions">
+              <BookCallLink className="btn btn--primary">
+                <CalendarClock size={18} aria-hidden="true" /> Book a 15-min call
+              </BookCallLink>
+              <a href="#work" className="btn btn--ghost">
+                See the work <ArrowRight size={18} aria-hidden="true" />
+              </a>
+            </div>
 
-          <div className="home--actions">
-            <Link to="/projects" className="home--cta home--cta-primary">
-              View Projects <ArrowRight size={18} aria-hidden="true" />
-            </Link>
-            <a href="#contact" className="home--cta home--cta-ghost">
-              <Mail size={18} aria-hidden="true" /> Contact Me
-            </a>
-          </div>
+            <dl className="hero--facts">
+              {METRICS.map((m) => (
+                <div key={m.label}>
+                  <dt>{m.label}</dt>
+                  <dd>{m.value}</dd>
+                </div>
+              ))}
+            </dl>
+          </motion.div>
 
-          <div className="home--social">
-            <a
-              href="https://www.instagram.com/les_troll_them"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="home--social-link"
-              aria-label="Instagram"
-            >
-              <Instagram />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/wasif-rehman-32210a18b/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="home--social-link"
-              aria-label="LinkedIn"
-            >
-              <Linkedin />
-            </a>
-            <a
-              href="https://github.com/wasifwasi"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="home--social-link"
-              aria-label="GitHub"
-            >
-              <Github />
-            </a>
-          </div>
-        </div>
-
-        <div className="home--visual">
-          <div className="home--avatar">
+          <motion.figure className="hero--portrait" {...rise(0.1)}>
             <img
-              src="img/dp.webp"
+              src="/img/me/hero.webp"
+              srcSet="/img/me/hero-480.webp 480w, /img/me/hero.webp 960w"
+              sizes="240px"
               alt="Wasif Rehman"
-              width={320}
-              height={320}
-              fetchpriority="high"
+              width={480}
+              height={600}
+              fetchPriority="high"
               decoding="async"
-              className="home--avatar-img"
             />
-            <span className="home--avatar-ring" aria-hidden="true" />
-          </div>
+            <figcaption>
+              <b>Wasif Rehman</b>
+              <span>Full-stack &amp; AI engineer</span>
+            </figcaption>
+          </motion.figure>
         </div>
-      </div>
 
-      <a href="#about" className="home--scroll" aria-label="Scroll down">
-        <div className="home--scroll-box">
-          <ArrowDown size={18} />
-        </div>
-        <span className="home--scroll-text">Scroll Down</span>
-      </a>
+        <ul className="hero--strip">
+          {HERO_STRIP.map((item, i) => (
+            <motion.li key={item.slug} {...rise(0.18 + i * 0.07)}>
+              <Link to={`/projects/${item.slug}`} className="hero--tile">
+                <Picture base={item.image} alt={item.alt} eager sizes="(min-width: 900px) 380px, 100vw" />
+                <span className="hero--tile-text">
+                  <b>{item.title}</b>
+                  <span>{item.caption}</span>
+                </span>
+              </Link>
+            </motion.li>
+          ))}
+        </ul>
+      </div>
     </section>
   );
 };
