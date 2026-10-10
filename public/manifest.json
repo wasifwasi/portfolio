@@ -1,11 +1,16 @@
 {
   "short_name": "Wasif Rehman",
-  "name": "Wasif Rehman - Full Stack Developer Portfolio",
+  "name": "Wasif Rehman, Full-Stack & AI Engineer",
   "icons": [
     {
+      "src": "favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any"
+    },
+    {
       "src": "favicon.png",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/png"
+      "type": "image/png",
+      "sizes": "32x32"
     },
     {
       "src": "logo192.png",
@@ -22,10 +27,13 @@
   ],
   "start_url": "/",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff",
-  "description": "Full Stack Developer specializing in React, Node.js, AI/ML integration, and mobile app development.",
-  "categories": ["portfolio", "developer", "technology"],
-  "lang": "en-US",
-  "orientation": "portrait-primary"
+  "theme_color": "#09090b",
+  "background_color": "#09090b",
+  "description": "Full-stack and AI engineer building AI agents, web platforms and mobile apps that work in production.",
+  "categories": [
+    "portfolio",
+    "developer",
+    "technology"
+  ],
+  "lang": "en-US"
 }

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { CalendarClock, ArrowRight } from "lucide-react";
-import { HERO_STRIP, METRICS } from "../data/site";
+import { HERO, HERO_STRIP, METRICS } from "../data/site";
 import Picture from "./Picture";
 import BookCallLink from "./BookCallLink";
 
@@ -22,12 +22,9 @@ const Home = () => {
               <span className="hero--status-dot" aria-hidden="true" /> Taking on new projects
             </p>
 
-            <h1 className="hero--title">I'm Wasif. I build the software real businesses run on.</h1>
+            <h1 className="hero--title">{HERO.title}</h1>
 
-            <p className="hero--lead">
-              Web apps, mobile apps and AI tools, from the database to the screen your customers
-              use. Here are three of them.
-            </p>
+            <p className="hero--lead">{HERO.lead}</p>
 
             <div className="hero--actions">
               <BookCallLink className="btn btn--primary">

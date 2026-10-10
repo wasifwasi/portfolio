@@ -1,6 +1,7 @@
 import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
 import { createRequire } from 'module'
+import { staticPages } from './scripts/static-pages.js'
 
 const require = createRequire(import.meta.url)
 
@@ -51,7 +52,7 @@ export default defineConfig(({ mode }) => {
   for (const key of globalThis.__portfolioDevEnv || []) delete process.env[key]
   const env = loadEnv(mode, process.cwd(), '')
   const copied = []
-  for (const key of ['GROQ_API_KEY', 'GROQ_MODEL', 'PLAYBOOK_PASSWORD', 'CALENDLY_TOKEN', 'CALENDLY_EVENT_URL']) {
+  for (const key of ['CHAT_PROVIDER', 'CHAT_MODEL', 'GROQ_API_KEY', 'GROQ_MODEL', 'GEMINI_API_KEY', 'OPENROUTER_API_KEY', 'PLAYBOOK_PASSWORD', 'CALENDLY_TOKEN', 'CALENDLY_EVENT_URL']) {
     if (env[key] && !process.env[key]) {
       process.env[key] = env[key]
       copied.push(key)
@@ -60,7 +61,7 @@ export default defineConfig(({ mode }) => {
   globalThis.__portfolioDevEnv = copied
 
   return {
-    plugins: [react(), serverlessDevApi()],
+    plugins: [react(), serverlessDevApi(), staticPages()],
     server: {
       port: 3000,
       open: true,

@@ -1,277 +1,109 @@
-import React, { useEffect, useRef, useState, useCallback, useMemo } from "react";
-import { useNavigate } from "react-router-dom";
-import { MessageCircle, ExternalLink, ArrowRight, Sparkles } from "lucide-react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import React, { useMemo, useState } from "react";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { ArrowRight, ExternalLink, MessageCircle } from "lucide-react";
 import SEO from "./SEO";
-import Pagination from "./Pagination";
+import ProjectImage from "./ProjectImage";
 import { projectsData } from "../data/projects";
 
-const PROJECTS_PER_PAGE = 6;
+const AI_PATTERN = /\bAI\b|Claude|Gemini|Groq|Anthropic|OpenAI|Whisper/;
+const isAI = (p) => AI_PATTERN.test(p.subtitle) || p.tags.some((t) => AI_PATTERN.test(t));
+const isMobile = (p) => p.tags.some((t) => /React Native|Expo/.test(t));
 
-gsap.registerPlugin(ScrollTrigger);
+const FILTERS = [
+  { key: "all", label: "All", test: () => true },
+  { key: "ai", label: "AI", test: isAI },
+  { key: "web", label: "Web apps", test: (p) => !isMobile(p) },
+  { key: "mobile", label: "Mobile apps", test: isMobile },
+];
 
-// Optimized Image Component with lazy loading, placeholder, and smooth transitions
-const OptimizedImage = ({ src, alt, className, isLogo }) => {
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [isInView, setIsInView] = useState(false);
-  const [hasError, setHasError] = useState(false);
-  const imgRef = useRef(null);
-  const containerRef = useRef(null);
-
-  // Intersection Observer for lazy loading
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsInView(true);
-          observer.disconnect();
-        }
-      },
-      {
-        rootMargin: "100px",
-        threshold: 0.1,
-      }
-    );
-
-    if (containerRef.current) {
-      observer.observe(containerRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
-  const handleLoad = useCallback(() => {
-    setIsLoaded(true);
-  }, []);
-
-  const handleError = useCallback(() => {
-    setHasError(true);
-    setIsLoaded(true);
-  }, []);
-
-  return (
-    <div ref={containerRef} className="optimized-image-container">
-      {/* Skeleton placeholder */}
-      <div
-        className={`image-skeleton ${isLoaded ? "hidden" : ""}`}
-        aria-hidden="true"
-      />
-
-      {/* Actual image */}
-      {isInView && !hasError && (
-        <img
-          ref={imgRef}
-          src={src}
-          alt={alt}
-          className={`${className} ${isLoaded ? "loaded" : "loading"}`}
-          onLoad={handleLoad}
-          onError={handleError}
-          decoding="async"
-          fetchPriority="low"
-        />
-      )}
-
-      {/* Error fallback */}
-      {hasError && (
-        <div className={`image-fallback ${isLogo ? "logo-fallback" : ""}`}>
-          <span>{alt.split(" - ")[0]}</span>
-        </div>
-      )}
-    </div>
-  );
-};
+// Personal and freelance projects invite a conversation; AIDEVGEN team projects don't
+const canDiscuss = (project) => project.company !== "AIDEVGEN";
+const contextLine = (p) => (p.company === "AIDEVGEN" ? `${p.role} at AIDEVGEN` : p.company);
 
 const Projects = () => {
-  const projectsRef = useRef(null);
-  const containerRef = useRef(null);
-  const navigate = useNavigate();
-  const [currentPage, setCurrentPage] = useState(1);
+  const [filter, setFilter] = useState("all");
 
-  const totalPages = Math.ceil(projectsData.length / PROJECTS_PER_PAGE);
-
-  // Newest first (highest id), with any featured project pinned to the very top
-  const orderedProjects = useMemo(() => {
-    return [...projectsData].sort((a, b) => {
-      if (!!b.featured !== !!a.featured) return b.featured ? 1 : -1;
-      return b.id - a.id;
-    });
-  }, []);
-
-  const paginatedProjects = useMemo(() => {
-    const start = (currentPage - 1) * PROJECTS_PER_PAGE;
-    return orderedProjects.slice(start, start + PROJECTS_PER_PAGE);
-  }, [currentPage, orderedProjects]);
-
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
-    if (containerRef.current) {
-      const top = containerRef.current.getBoundingClientRect().top + window.scrollY - 80;
-      window.scrollTo({ top, behavior: "smooth" });
-    }
-  };
-
-  const handleCardClick = (slug) => {
-    navigate(`/projects/${slug}`);
-  };
-
-  const handleExternalClick = (e) => {
-    e.stopPropagation();
-  };
-
-  // Personal & freelance projects invite a conversation; company (AIDEVGEN) ones don't
-  const canDiscuss = (project) => project.company !== "AIDEVGEN";
-
-  const handleDiscuss = (e, project) => {
-    e.stopPropagation();
-    navigate(`/?discuss=${encodeURIComponent(project.slug)}#contact`);
-  };
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Animate section title
-      gsap.fromTo(
-        ".projects .section--title-1",
-        { opacity: 0, x: -80 },
-        {
-          opacity: 1,
-          x: 0,
-          duration: 1,
-          scrollTrigger: {
-            trigger: ".projects .section--title-1",
-            start: "top 85%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-
-      // Animate project cards with stagger
-      gsap.fromTo(
-        ".projects--card",
-        {
-          opacity: 0,
-          y: 40,
-          scale: 0.95,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.6,
-          stagger: 0.12,
-          ease: "power3.out",
-        }
-      );
-
-      // Image hover is now handled by CSS border beam effect
-    }, projectsRef);
-
-    return () => ctx.revert();
-  }, [currentPage]);
+  const ordered = useMemo(() => [...projectsData].sort((a, b) => b.id - a.id), []);
+  const active = FILTERS.find((f) => f.key === filter);
+  const visible = ordered.filter(active.test);
 
   return (
-    <section className="projects section" id="projects" ref={projectsRef}>
+    <section className="archive section" id="projects">
       <SEO
         title="Projects | Wasif Rehman - Full-Stack & AI Engineer"
-        description="Case studies of AI agents, automation pipelines, SaaS platforms and mobile apps — the problem, what I built, and the stack."
+        description="Case studies of AI agents, automation pipelines, SaaS platforms and mobile apps: the problem, what I built, and the stack."
         path="/projects"
       />
-      <h2 className="section--title-1">
-        <span>Projects.</span>
-      </h2>
-      <div className="projects--container container grid" ref={containerRef}>
-        {paginatedProjects.map((project, index) => (
-          <article
-            className="projects--card"
-            key={project.id}
+      <div className="container">
+        <header className="section-head">
+          <h1 className="section-head--title">All projects</h1>
+          <p className="section-head--lead">
+            {projectsData.length} projects, newest first. Each one has a case study with my role and how
+            it was built.
+          </p>
+        </header>
 
+        <div className="archive--filters" role="group" aria-label="Filter projects">
+          {FILTERS.map((f) => (
+            <button
+              key={f.key}
+              type="button"
+              className={`archive--filter ${filter === f.key ? "is-active" : ""}`}
+              aria-pressed={filter === f.key}
+              onClick={() => setFilter(f.key)}
+            >
+              {f.label} <span>{ordered.filter(f.test).length}</span>
+            </button>
+          ))}
+        </div>
 
-            onClick={() => handleCardClick(project.slug)}
-            style={{ cursor: 'pointer' }}
-            role="button"
-            tabIndex={0}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                handleCardClick(project.slug);
-              }
-            }}
-          >
-            <div className="projects--image-link">
-              <div className="projects--image">
-                {project.featured && (
-                  <span className="projects--featured-badge">
-                    <Sparkles size={13} aria-hidden="true" /> Featured
-                  </span>
-                )}
-                <OptimizedImage
-                  src={project.image}
-                  alt={project.alt}
-                  className={`projects--img ${project.isLogo ? 'logo-img' : ''}`}
-                  isLogo={project.isLogo}
-                />
-                <div className="projects--image-overlay">
-                  <span>View Details</span>
+        <ul className="archive--grid">
+          {visible.map((project, i) => (
+            <motion.li
+              key={project.slug}
+              className="archive--card"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.35, delay: Math.min(i, 6) * 0.04 }}
+            >
+              <Link to={`/projects/${project.slug}`} className="archive--media" tabIndex={-1} aria-hidden="true">
+                <ProjectImage src={project.image} alt={project.alt} contain={project.isLogo} sizes="(min-width: 1000px) 360px, (min-width: 640px) 50vw, 100vw" />
+              </Link>
+              <div className="archive--body">
+                <p className="archive--meta">
+                  <span className="archive--kind">{project.subtitle}</span>
+                  <span>{contextLine(project)}</span>
+                </p>
+                <h2 className="archive--title">
+                  <Link to={`/projects/${project.slug}`}>{project.title}</Link>
+                </h2>
+                <p className="archive--desc">{project.description}</p>
+                <ul className="archive--tags" aria-label="Stack">
+                  {project.tags.map((tag) => (
+                    <li key={tag}>{tag}</li>
+                  ))}
+                </ul>
+                <div className="archive--links">
+                  <Link to={`/projects/${project.slug}`} className="work--link">
+                    Case study <ArrowRight size={16} aria-hidden="true" />
+                  </Link>
+                  {project.demo && project.demo !== "#" && (
+                    <a href={project.demo} target="_blank" rel="noopener noreferrer" className="work--link work--link-muted">
+                      Live app <ExternalLink size={14} aria-hidden="true" />
+                    </a>
+                  )}
+                  {canDiscuss(project) && (
+                    <Link to={`/?discuss=${encodeURIComponent(project.slug)}#contact`} className="work--link work--link-muted">
+                      <MessageCircle size={14} aria-hidden="true" /> Discuss
+                    </Link>
+                  )}
                 </div>
               </div>
-            </div>
-
-            <div className="projects--content">
-              <div className="projects--header">
-                <h3 className="projects--subtitle">{project.subtitle}</h3>
-                <div className="projects--meta">
-                  <span className="projects--role">{project.role}</span>
-                  <span className="projects--company">{project.company}</span>
-                </div>
-              </div>
-
-              <div className="projects--title-link">
-                <h2 className="projects--title">{project.title}</h2>
-              </div>
-
-              <p className="project--description">{project.description}</p>
-
-              <div className="projects--tags">
-                {project.tags.map((tag, tagIndex) => (
-                  <span key={tagIndex} className="projects--tag">{tag}</span>
-                ))}
-              </div>
-
-              <div className="projects--buttons">
-                <span className="projects-link projects-link--details">
-                  <ArrowRight size={16} aria-hidden="true" /> Details
-                </span>
-                {canDiscuss(project) && (
-                  <button
-                    type="button"
-                    className="projects-link projects-link--discuss"
-                    onClick={(e) => handleDiscuss(e, project)}
-                  >
-                    <MessageCircle size={16} aria-hidden="true" /> Discuss this project
-                  </button>
-                )}
-
-                {project.demo !== "#" && (
-                  <a
-                    href={project.demo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="projects-link"
-                    onClick={handleExternalClick}
-                  >
-                    <ExternalLink size={16} aria-hidden="true" /> Demo
-                  </a>
-                )}
-              </div>
-            </div>
-          </article>
-        ))}
+            </motion.li>
+          ))}
+        </ul>
       </div>
-      <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={handlePageChange}
-      />
     </section>
   );
 };

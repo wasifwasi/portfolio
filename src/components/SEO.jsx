@@ -3,7 +3,8 @@ import { Helmet } from "react-helmet-async";
 
 const SITE_URL = "https://portfolio-wod3.vercel.app";
 const SITE_NAME = "Wasif Rehman Portfolio";
-const DEFAULT_IMAGE = `${SITE_URL}/logo512.png`;
+// Social preview image (1200x630), built from real project photos
+const DEFAULT_IMAGE = `${SITE_URL}/og.jpg`;
 
 const SEO = ({
   title = "Wasif Rehman | Full-Stack & AI Engineer",
@@ -15,6 +16,8 @@ const SEO = ({
   noindex = false,
 }) => {
   const url = `${SITE_URL}${path}`;
+  // Link previews need absolute image URLs
+  const imageUrl = image.startsWith("/") ? `${SITE_URL}${image}` : image;
 
   // JSON-LD Structured Data
   const personSchema = {
@@ -102,7 +105,7 @@ const SEO = ({
       <meta property="og:url" content={url} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
-      <meta property="og:image" content={image} />
+      <meta property="og:image" content={imageUrl} />
       <meta property="og:site_name" content={SITE_NAME} />
       <meta property="og:locale" content="en_US" />
 
@@ -111,7 +114,7 @@ const SEO = ({
       <meta name="twitter:url" content={url} />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={image} />
+      <meta name="twitter:image" content={imageUrl} />
 
       {/* JSON-LD Structured Data */}
       <script type="application/ld+json">

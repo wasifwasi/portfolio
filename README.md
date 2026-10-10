@@ -1,94 +1,111 @@
 # Wasif's Portfolio
 
-**v2.0** | Personal portfolio for Wasif Rehman, full-stack & AI engineer. Built to turn visitors into client calls: a direct hero, real case studies, fixed-scope services and a low-friction contact path.
+**v2.0** | Personal portfolio for Wasif Rehman, full-stack & AI engineer. Built to turn visitors into client calls: a direct hero, real case studies, fixed-scope services and a low-friction booking path.
+
+Live at [portfolio-wod3.vercel.app](https://portfolio-wod3.vercel.app).
 
 ## Tech Stack
 
 | Category | Technologies |
 |----------|-------------|
 | **Frontend** | React 19, React Router DOM 7, Vite 7 |
-| **Animations** | Framer Motion (scroll reveals, respects reduced motion), GSAP on the projects/blog pages |
+| **Animations** | Framer Motion (respects reduced motion); GSAP on the blog pages only |
 | **Icons** | Lucide React |
+| **Booking** | Calendly (live free times via the Calendly API, booking popup) |
 | **Email** | EmailJS |
-| **Chatbot** | Groq (via the `api/chat.js` serverless function) |
+| **Chatbot** | Groq, Gemini or OpenRouter (via the `api/chat.js` serverless function) |
 
-## Home Page
+## Pages
 
-1. **Hero** – one-line hook, two CTAs (book a call, view work) and headline numbers
-2. **Selected work** – bento grid of four case studies in problem → solution → stack format
-3. **Services** – three fixed-scope offers, each linked to the projects that prove it
-4. **About** – short bio and skills grid
-5. **Contact** – book a call, WhatsApp, email, or the EmailJS form
+**Home**, in the order a visitor scrolls:
 
-Dark "obsidian" theme is the default; light theme is still available from the header toggle.
+1. **Hero** – headline, book-a-call and see-the-work buttons, headline numbers, portrait, three project photos
+2. **What I've built** – five case studies with images, plus a call-to-action tile
+3. **What I can build for you** – three fixed-scope offers, each linked to the projects that prove it
+4. **How a project works** – four steps
+5. **About** – bio, stack and photo
+6. **Contact** – book a call, WhatsApp, email, or the EmailJS form
+
+**Projects** (`/projects`) lists every project with filters (AI, web, mobile). Each has a **case study** at `/projects/<slug>`. The **blog** lives at `/blog`.
+
+Dark theme is the default; light theme is available from the header toggle.
 
 ## Editing Content
 
 | What | Where |
 |------|-------|
-| Calendly link, contact details, headline numbers, featured work, services | `src/data/site.js` |
-| Project cards (Projects page, contact prefill, chatbot) | `src/data/projects.js` |
-| Blog listing (blog page, chatbot) | `src/data/blogs.js` |
-| Full case study pages / blog post bodies | `src/components/ProjectDetail.jsx`, `src/components/BlogPost.jsx` |
+| Hero copy, headline numbers, hero photo strip, featured work, services, process steps, contact details, Calendly link | `src/data/site.js` |
+| Project cards (Projects page, contact prefill, chatbot, pre-rendered pages) | `src/data/projects.js` |
+| Blog listing (blog page, chatbot, pre-rendered pages) | `src/data/blogs.js` |
+| Full case study and blog post text | `src/components/ProjectDetail.jsx`, `src/components/BlogPost.jsx` |
+| Project images (1200px plus a `-640` version) | `public/img/work/` |
+| Profile photos (hero, about, avatar) | `public/img/me/` |
+| Social preview image (1200×630) | `public/og.jpg` |
+| Favicon (SVG source, PNG and ICO sizes) | `public/favicon.svg`, `favicon.ico`, `favicon.png`, `apple-touch-icon.png`, `logo192.png`, `logo512.png` |
 | Accent colour | `--accent-h` / `--accent-s` at the top of `src/index.css` |
 
-Until `CALENDLY_URL` is set, every "Book a call" button opens WhatsApp with a pre-filled message.
+Project photos are licensed Unsplash images with a light colour grade, or real screenshots of the live apps.
+
+## Booking
+
+Every "Book a call" button opens the on-site booking box (`BookingModal.jsx`). It reads free times from `api/availability.js`, which calls the Calendly API with `CALENDLY_TOKEN`; the visitor picks a day and time, enters their details, and Calendly's own form opens pre-filled for the final "Schedule Event" click. Without the token, the buttons open Calendly's full calendar instead, and without a `CALENDLY_URL` they open WhatsApp.
+
+## Search and Link Previews
+
+The app is client-rendered, so the build also writes a static HTML file for every route (`scripts/static-pages.js`, a Vite plugin): home, projects, every case study, blog and every post. Each file has its own title, description, canonical URL and social tags, plus the page's text for crawlers. `"cleanUrls": true` in `vercel.json` serves `/projects/umrahflow` from `projects/umrahflow.html`; the React app takes over once it loads.
 
 ## Getting Started
 
-### Prerequisites
-
-- Node.js (v18 or higher)
-- npm or yarn
-
-### Installation
-
 ```bash
-# Clone the repository
 git clone <repository-url>
-
-# Navigate to project directory
 cd portfolio
-
-# Install dependencies
 npm install
-
-# Start development server
-npm start
+npm run dev   # http://localhost:3000
 ```
 
-The app will open at [http://localhost:3000](http://localhost:3000).
+The dev server also runs the `api/` functions (chat, availability, playbook), reading keys from `.env`.
 
 ## Available Scripts
 
 | Command | Description |
 |---------|-------------|
-| `npm start` / `npm run dev` | Start Vite development server |
-| `npm run build` | Build for production (outputs to `dist/`) |
-| `npm run preview` | Preview production build locally |
+| `npm start` / `npm run dev` | Start the Vite development server |
+| `npm run build` | Build for production into `dist/`, including the static pages |
+| `npm run preview` | Preview the production build locally (note: Vite's preview always serves the home HTML; `npx serve dist` matches Vercel's clean URLs) |
 
 ## Project Structure
 
 ```
 portfolio/
-├── api/                    # Vercel serverless functions (chat, playbook)
-├── lib/                    # Server-only data (playbook questions)
-├── public/                 # Images, llms.txt, sitemap, robots.txt
+├── api/                      # Vercel serverless functions
+│   ├── chat.js               # Chatbot proxy (provider, model and limits fixed server-side)
+│   ├── availability.js       # Free Calendly times for the booking box
+│   └── playbook.js           # Password-protected interview playbook
+├── lib/                      # Server-only data (playbook questions)
+├── public/                   # Images, favicons, og.jpg, llms.txt, sitemap, robots.txt
+├── scripts/
+│   └── static-pages.js       # Build step: one static HTML file per route
 ├── src/
-│   ├── data/               # site.js, projects.js, blogs.js — edit content here
+│   ├── data/                 # site.js, projects.js, blogs.js — edit content here
+│   ├── lib/booking.js        # Calendly loader, free-time feed, "open booking" event
 │   ├── components/
-│   │   ├── Header.jsx      # Nav, "Book a call" button, theme toggle
-│   │   ├── Home.jsx        # Hero: hook, CTAs, headline numbers
-│   │   ├── FeaturedWork.jsx# Bento grid of featured case studies
-│   │   ├── Services.jsx    # Fixed-scope service offers
-│   │   ├── About.jsx       # Bio + skills grid
-│   │   ├── Contact.jsx     # Call / WhatsApp / email + EmailJS form
-│   │   ├── Projects.jsx    # All projects page
-│   │   ├── ProjectDetail.jsx # Case study pages
+│   │   ├── Header.jsx        # Nav, "Book a call" button, theme toggle
+│   │   ├── Home.jsx          # Hero
+│   │   ├── FeaturedWork.jsx  # Case study grid on the home page
+│   │   ├── Services.jsx      # Fixed-scope offers
+│   │   ├── Process.jsx       # How a project works
+│   │   ├── About.jsx         # Bio and photo
+│   │   ├── Contact.jsx       # Call / WhatsApp / email + EmailJS form
+│   │   ├── BookCallLink.jsx  # Any "Book a call" link
+│   │   ├── BookingModal.jsx  # On-site booking box
+│   │   ├── Projects.jsx      # All projects page
+│   │   ├── ProjectDetail.jsx # Case study pages (content + layout)
+│   │   ├── Picture.jsx / ProjectImage.jsx  # Responsive project images
 │   │   ├── Blog.jsx / BlogPost.jsx
-│   │   └── Chatbot.jsx     # Groq-powered portfolio assistant
-│   ├── App.jsx             # Routing
-│   └── index.css           # Global styles and theme tokens
+│   │   └── Chatbot.jsx       # Portfolio assistant
+│   ├── App.jsx               # Routing and the booking box
+│   └── index.css             # Global styles and theme tokens
+├── vercel.json
 └── vite.config.js
 ```
 
@@ -96,11 +113,14 @@ portfolio/
 
 | Variable | Where | Used for |
 |----------|-------|----------|
-| `GROQ_API_KEY` | Vercel project settings, and local `.env` | Chatbot (`api/chat.js`, also run by the dev server) |
-| `GROQ_MODEL` | Optional, same places | Overrides the chatbot model (default `openai/gpt-oss-20b`) |
-| `PLAYBOOK_PASSWORD` | Vercel project settings (optional) | Overrides the default `/playbook` password |
-| `CALENDLY_TOKEN` | Vercel project settings, and local `.env` | Calendly personal access token; lets the booking box show live free times (`api/availability.js`). Without it, "Book a call" opens Calendly's full calendar |
-| `CALENDLY_EVENT_URL` | Optional, same places | The Calendly event link to read times for (default `https://calendly.com/wasifrehman58/new-meeting`) |
+| `CHAT_PROVIDER` | Optional, Vercel and `.env` | `groq` (default), `gemini` or `openrouter` |
+| `GROQ_API_KEY` | Vercel and `.env` | Chatbot key when the provider is Groq |
+| `GEMINI_API_KEY` | Vercel and `.env` | Chatbot key when the provider is Gemini (a Google AI Studio key) |
+| `OPENROUTER_API_KEY` | Vercel and `.env` | Chatbot key when the provider is OpenRouter |
+| `CHAT_MODEL` | Optional, same places | Overrides the model (defaults: `openai/gpt-oss-20b`, `gemini-2.5-flash`, `openai/gpt-oss-20b:free`) |
+| `CALENDLY_TOKEN` | Vercel and `.env` | Calendly personal access token with `users:read`, `event_types:read` and `availability:read` |
+| `CALENDLY_EVENT_URL` | Optional, same places | The Calendly event to read times for (default `https://calendly.com/wasifrehman58/new-meeting`) |
+| `PLAYBOOK_PASSWORD` | Optional, Vercel | Overrides the default `/playbook` password |
 
 EmailJS service/template IDs and the public key are set in `src/components/Contact.jsx`.
 
@@ -110,12 +130,11 @@ A private, password-protected interview question bank (basic → advanced) lives
 
 - The questions are **not** shipped in the public JS bundle. `api/playbook.js` (a Vercel serverless function) checks the password and only then returns `lib/playbook-data.js`.
 - Default password is set as a SHA-256 hash inside `api/playbook.js`. To change it without touching code, add an environment variable `PLAYBOOK_PASSWORD` in the Vercel project settings and redeploy.
-- Locally, the same handler runs inside the Vite dev server (see the `playbookDevApi` plugin in `vite.config.js`), so `npm run dev` is enough.
 - The route is `noindex` and listed under `Disallow` in `robots.txt`.
 
 ## Deployment
 
-Vercel builds the site from source (`npm run build` → `dist/`, see `vercel.json`), so `dist/` is not committed.
+Vercel builds the site from source (`npm run build` → `dist/`, see `vercel.json`), so `dist/` is not committed. Add the environment variables above in the Vercel project settings.
 
 ## Contact
 

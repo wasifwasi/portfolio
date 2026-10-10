@@ -1,8 +1,11 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { gsap } from 'gsap';
-import { ArrowLeft, MessageCircle, ExternalLink, Calendar, User, Building2, Layers, CheckCircle2 } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ArrowLeft, ArrowRight, MessageCircle, ExternalLink, CalendarClock } from 'lucide-react';
 import SEO from './SEO';
+import ProjectImage from './ProjectImage';
+import BookCallLink from './BookCallLink';
+import { projectsData } from '../data/projects';
 
 const projectContent = {
   'freenote-app': {
@@ -442,7 +445,7 @@ const projectContent = {
     company: 'Personal Project',
     companyType: 'Personal Project',
     image: 'img/work/homestructure-3d.webp',
-    heroImage: 'img/work/homestructure-plan.webp',
+    extraImage: { src: 'img/work/homestructure-plan.webp', caption: 'The landing page, showing a floor plan generated for an irregular plot' },
     isLogo: false,
     techStack: ['Next.js 16', 'React 19', 'TypeScript', 'Three.js', 'react-three-fiber', 'react-konva', 'Zustand', 'Zod', 'Tailwind CSS'],
     overview: 'A web app to design a climate-smart house on a real irregular plot. Draw and edit a 2D floor plan on the exact plot boundary, watch it build in live 3D, load architect-designed models, and get passive-design and ventilation advice tuned to a hot, semi-arid climate.',
@@ -841,185 +844,101 @@ const projectContent = {
 const ProjectDetail = () => {
   const { id } = useParams();
   const project = projectContent[id];
-  const projectRef = useRef(null);
-
-  useEffect(() => {
-    if (!project) return;
-
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-
-      if (project.heroImage) {
-        tl.fromTo(
-          '.project-detail--hero-inner > *',
-          { opacity: 0, y: 30 },
-          { opacity: 1, y: 0, duration: 0.7, stagger: 0.12 }
-        );
-      }
-
-      tl.fromTo(
-        '.project-detail--back',
-        { opacity: 0, x: -30 },
-        { opacity: 1, x: 0, duration: 0.6 }
-      )
-        .fromTo(
-          '.project-detail--header',
-          { opacity: 0, y: 40 },
-          { opacity: 1, y: 0, duration: 0.8 },
-          '-=0.3'
-        )
-        .fromTo(
-          '.project-detail--meta-item',
-          { opacity: 0, y: 20 },
-          { opacity: 1, y: 0, duration: 0.5, stagger: 0.1 },
-          '-=0.4'
-        )
-        .fromTo(
-          '.project-detail--tech-tag',
-          { opacity: 0, scale: 0.8 },
-          { opacity: 1, scale: 1, duration: 0.4, stagger: 0.05 },
-          '-=0.3'
-        )
-        .fromTo(
-          '.project-detail--content',
-          { opacity: 0, y: 30 },
-          { opacity: 1, y: 0, duration: 0.8 },
-          '-=0.2'
-        );
-    }, projectRef);
-
-    return () => ctx.revert();
-  }, [project]);
+  const listing = projectsData.find((p) => p.slug === id);
+  const demo = listing?.demo && listing.demo !== '#' ? listing.demo : null;
 
   if (!project) {
     return (
-      <section className="project-detail section" ref={projectRef}>
-        <div className="container">
-          <h2>Project not found</h2>
-          <Link to="/projects" className="buttons">
-            Back to Projects
+      <section className="case section">
+        <div className="container case--missing">
+          <h1 className="section-head--title">Project not found</h1>
+          <p className="section-head--lead">It may have been renamed or removed.</p>
+          <Link to="/projects" className="btn btn--ghost">
+            <ArrowLeft size={18} aria-hidden="true" /> All projects
           </Link>
         </div>
       </section>
     );
   }
 
+  const facts = [
+    ['Timeline', project.date],
+    ['My role', project.role],
+    [project.company === 'Freelance' || project.company === 'Personal Project' ? 'Type' : 'Company', project.company === 'Freelance' ? 'Freelance client' : project.company],
+    ['Stack', project.techStack.join(', ')],
+  ];
+
   return (
-    <section className="project-detail section" id="project-detail" ref={projectRef}>
+    <article className="case section" id="project-detail">
       <SEO
-        title={`${project.title} | Wasif Rehman`}
-        description={project.description}
+        title={`${project.title} case study | Wasif Rehman`}
+        description={project.overview}
         path={`/projects/${id}`}
       />
-      {project.heroImage && (
-        <div
-          className="project-detail--hero"
-          style={{ backgroundImage: `url(/${project.heroImage})` }}
-        >
-          <div className="project-detail--hero-overlay" />
-          <div className="container project-detail--hero-inner">
-            <span className="project-detail--hero-badge">{project.companyType}</span>
-            <h1 className="project-detail--hero-title">{project.title}</h1>
-            <p className="project-detail--hero-tagline">{project.subtitle}</p>
-            {project.demo && project.demo !== '#' && (
-              <a
-                href={project.demo}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="project-detail--hero-cta"
-              >
-                <ExternalLink size={18} /> View Live Site
-              </a>
-            )}
-          </div>
-        </div>
-      )}
-      <div className="container">
-        <Link to="/projects" className="project-detail--back">
-          <ArrowLeft size={20} /> Back to Projects
+      <div className="container case--container">
+        <Link to="/projects" className="case--back">
+          <ArrowLeft size={16} aria-hidden="true" /> All projects
         </Link>
 
-        <div className="project-detail--header">
-          <div className="project-detail--image-wrapper">
-            <img
-              src={`/${project.image}`}
-              alt={project.title}
-              className={`project-detail--image ${project.isLogo ? 'logo' : ''}`}
-            />
+        <motion.header
+          className="case--head"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <p className="case--kind">{project.subtitle}</p>
+          <h1 className="case--title">{project.title}</h1>
+          <p className="case--lead">{project.overview}</p>
+          <div className="case--actions">
+            {demo && (
+              <a href={demo} target="_blank" rel="noopener noreferrer" className="btn btn--primary">
+                Open the live app <ExternalLink size={16} aria-hidden="true" />
+              </a>
+            )}
+            {project.company !== 'AIDEVGEN' && (
+              <Link to={`/?discuss=${encodeURIComponent(id)}#contact`} className="btn btn--ghost">
+                <MessageCircle size={16} aria-hidden="true" /> Discuss a similar project
+              </Link>
+            )}
           </div>
-          <div className="project-detail--info">
-            <span className="project-detail--company-badge">{project.companyType}</span>
-            <h1 className="project-detail--title">{project.title}</h1>
-            <p className="project-detail--subtitle">{project.subtitle}</p>
-          </div>
-        </div>
+        </motion.header>
 
-        <div className="project-detail--meta">
-          <div className="project-detail--meta-item">
-            <Calendar size={18} />
-            <div>
-              <span className="meta-label">Timeline</span>
-              <span className="meta-value">{project.date}</span>
+        <figure className="case--media">
+          <ProjectImage src={project.image} alt={listing?.alt || project.title} contain={project.isLogo} sizes="(min-width: 1000px) 960px, 100vw" eager />
+        </figure>
+
+        <dl className="case--facts">
+          {facts.map(([label, value]) => (
+            <div key={label}>
+              <dt>{label}</dt>
+              <dd>{value}</dd>
             </div>
-          </div>
-          <div className="project-detail--meta-item">
-            <User size={18} />
-            <div>
-              <span className="meta-label">My Role</span>
-              <span className="meta-value">{project.role}</span>
-            </div>
-          </div>
-          <div className="project-detail--meta-item">
-            <Building2 size={18} />
-            <div>
-              <span className="meta-label">Company/Client</span>
-              <span className="meta-value">{project.company}</span>
-            </div>
-          </div>
-          <div className="project-detail--meta-item">
-            <Layers size={18} />
-            <div>
-              <span className="meta-label">Project Type</span>
-              <span className="meta-value">{project.companyType}</span>
-            </div>
-          </div>
-        </div>
+          ))}
+        </dl>
 
-        <div className="project-detail--tech">
-          <h3 className="project-detail--tech-title">Technologies Used</h3>
-          <div className="project-detail--tech-tags">
-            {project.techStack.map((tech, index) => (
-              <span key={index} className="project-detail--tech-tag">
-                {tech}
-              </span>
-            ))}
-          </div>
-        </div>
+        <div className="case--body">{project.content}</div>
 
-        <div className="project-detail--overview">
-          <CheckCircle2 size={24} className="overview-icon" />
-          <p>{project.overview}</p>
-        </div>
+        {project.extraImage && (
+          <figure className="case--media case--media-extra">
+            <ProjectImage src={project.extraImage.src} alt={project.extraImage.caption} sizes="(min-width: 1000px) 960px, 100vw" />
+            <figcaption>{project.extraImage.caption}</figcaption>
+          </figure>
+        )}
 
-        <div className="project-detail--content">
-          {project.content}
-        </div>
-
-        <div className="project-detail--actions">
-          {project.company !== "AIDEVGEN" && (
-            <Link
-              to={`/?discuss=${encodeURIComponent(id)}#contact`}
-              className="buttons"
-            >
-              <MessageCircle size={20} /> Discuss this project
+        <aside className="case--cta">
+          <h2>Want something like this built?</h2>
+          <p>Tell me about it on a free 15-minute call. You'll get a written scope and a price before any work starts.</p>
+          <div className="case--actions">
+            <BookCallLink className="btn btn--primary">
+              <CalendarClock size={18} aria-hidden="true" /> Book a 15-min call
+            </BookCallLink>
+            <Link to="/projects" className="btn btn--ghost">
+              More projects <ArrowRight size={16} aria-hidden="true" />
             </Link>
-          )}
-          <Link to="/projects" className="button--ghost">
-            <ArrowLeft size={20} /> All Projects
-          </Link>
-        </div>
+          </div>
+        </aside>
       </div>
-    </section>
+    </article>
   );
 };
 

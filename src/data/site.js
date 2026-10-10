@@ -35,6 +35,12 @@ export const METRICS = [
   { value: "2022", label: "Shipping full-stack since" },
 ];
 
+// Hero copy (also used for the pre-rendered home page in scripts/static-pages.js)
+export const HERO = {
+  title: "I'm Wasif. I build the software real businesses run on.",
+  lead: "Web apps, mobile apps and AI tools, from the database to the screen your customers use. Here are three of them.",
+};
+
 // Hero photo strip: each tile links to its case study. Images live in public/img/work
 // (1200px and -640 versions); photos are licensed Unsplash shots with a light colour grade.
 export const HERO_STRIP = [

@@ -13,49 +13,6 @@ const BLOGS_PER_PAGE = 6;
 gsap.registerPlugin(ScrollTrigger);
 
 
-const stickyContent = [
-  {
-    title: "AI & Automation",
-    description:
-      "Exploring how AI agents, LLMs, and intelligent automation are revolutionizing software development — from autonomous coding to no-code workflows.",
-    content: (
-      <div className="sticky-scroll--icons">
-        <span>🤖</span><span>🧠</span><span>⚡</span><span>🔗</span>
-      </div>
-    ),
-  },
-  {
-    title: "Web Performance",
-    description:
-      "Deep dives into code splitting, lazy loading, caching strategies, Core Web Vitals, and everything needed to build blazing-fast web applications.",
-    content: (
-      <div className="sticky-scroll--icons">
-        <span>📊</span><span>⚡</span><span>🖼️</span><span>🔍</span>
-      </div>
-    ),
-  },
-  {
-    title: "Full-Stack Projects",
-    description:
-      "Building real-world applications with React, Node.js, Stripe payments, escrow systems, and marketplace architectures from concept to deployment.",
-    content: (
-      <div className="sticky-scroll--icons">
-        <span>💳</span><span>⚛️</span><span>🟢</span><span>🛒</span>
-      </div>
-    ),
-  },
-  {
-    title: "Security & Best Practices",
-    description:
-      "Analyzing vulnerabilities, code audit techniques, and implementing security-first development practices to build resilient applications.",
-    content: (
-      <div className="sticky-scroll--icons">
-        <span>🛡️</span><span>🔒</span><span>🐛</span><span>⚠️</span>
-      </div>
-    ),
-  },
-];
-
 const Blog = () => {
   const blogRef = useRef(null);
   const containerRef = useRef(null);
@@ -122,7 +79,7 @@ const Blog = () => {
         path="/blog"
       />
       <div className="blog--header container">
-        <h2 className="section--title">Latest Blogs</h2>
+        <h1 className="section--title">Latest Blogs</h1>
         <span className="section--subtitle">My thoughts & insights</span>
       </div>
 
