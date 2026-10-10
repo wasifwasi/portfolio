@@ -13,6 +13,10 @@ const SEO = ({
   image = DEFAULT_IMAGE,
   type = "website",
   article = null,
+  // Breadcrumb trail after Home, e.g. [{ name: "Blog", path: "/blog" }, { name, path }]
+  crumbs = null,
+  // Extra JSON-LD objects (e.g. FAQPage)
+  schemas = [],
   noindex = false,
 }) => {
   const url = `${SITE_URL}${path}`;
@@ -57,6 +61,7 @@ const SEO = ({
         author: {
           "@type": "Person",
           name: "Wasif Rehman",
+          url: SITE_URL,
         },
         publisher: {
           "@type": "Person",
@@ -66,6 +71,8 @@ const SEO = ({
           "@type": "WebPage",
           "@id": url,
         },
+        image: imageUrl,
+        articleSection: article.section,
         keywords: article.tags?.join(", "),
       }
     : null;
@@ -80,16 +87,12 @@ const SEO = ({
         name: "Home",
         item: SITE_URL,
       },
-      ...(path !== "/"
-        ? [
-            {
-              "@type": "ListItem",
-              position: 2,
-              name: title,
-              item: url,
-            },
-          ]
-        : []),
+      ...(crumbs || (path !== "/" ? [{ name: title, path }] : [])).map((crumb, i) => ({
+        "@type": "ListItem",
+        position: i + 2,
+        name: crumb.name,
+        item: `${SITE_URL}${crumb.path}`,
+      })),
     ],
   };
 
@@ -125,6 +128,11 @@ const SEO = ({
           {JSON.stringify(articleSchema)}
         </script>
       )}
+      {schemas.map((schema, i) => (
+        <script key={i} type="application/ld+json">
+          {JSON.stringify(schema)}
+        </script>
+      ))}
     </Helmet>
   );
 };

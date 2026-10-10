@@ -2,8 +2,23 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/blog/nextjs-20-whats-new",
+      "destination": "/blog",
+      "permanent": false
+    },
+    {
+      "source": "/blog/next-19-new-features",
+      "destination": "/blog",
+      "permanent": false
+    }
+  ],
   "rewrites": [
-    { "source": "/((?!api/).*)", "destination": "/index.html" }
+    {
+      "source": "/((?!api/).*)",
+      "destination": "/index.html"
+    }
   ],
   "headers": [
     {

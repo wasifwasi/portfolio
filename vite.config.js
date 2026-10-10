@@ -2,6 +2,7 @@ import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
 import { createRequire } from 'module'
 import { staticPages } from './scripts/static-pages.js'
+import { blogMeta } from './scripts/blog-meta.js'
 
 const require = createRequire(import.meta.url)
 
@@ -61,7 +62,7 @@ export default defineConfig(({ mode }) => {
   globalThis.__portfolioDevEnv = copied
 
   return {
-    plugins: [react(), serverlessDevApi(), staticPages()],
+    plugins: [react(), blogMeta(), serverlessDevApi(), staticPages()],
     server: {
       port: 3000,
       open: true,
@@ -73,7 +74,6 @@ export default defineConfig(({ mode }) => {
         output: {
           manualChunks: {
             'react-vendor': ['react', 'react-dom', 'react-router-dom'],
-            gsap: ['gsap'],
             motion: ['framer-motion'],
             markdown: ['react-markdown', 'remark-gfm'],
             icons: ['lucide-react'],

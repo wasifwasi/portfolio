@@ -10,7 +10,7 @@ Available for freelance projects. Currently a full-stack developer at AIDEVGEN a
 - [Selected work](https://portfolio-wod3.vercel.app/#work): Four featured case studies in problem → solution → stack format
 - [Services](https://portfolio-wod3.vercel.app/#services): Fixed-scope offers for AI automation, AI features and web/mobile MVPs
 - [All projects](https://portfolio-wod3.vercel.app/projects): 15 case studies across AI, SaaS, web and mobile
-- [Blog](https://portfolio-wod3.vercel.app/blog): 28 technical articles and architecture write-ups
+- [Blog](https://portfolio-wod3.vercel.app/blog): 26 technical articles and architecture write-ups
 - [Contact](https://portfolio-wod3.vercel.app/#contact): Book a call, WhatsApp, email or contact form
 
 ## Services
@@ -240,253 +240,235 @@ Case study: https://portfolio-wod3.vercel.app/projects/freenote-app
 
 ## Blog posts
 
-### When NOT to Let the AI Finish the Job
-**Published:** August 02, 2026 | **Tags:** AI Agents, Human-in-the-Loop, Automation, Trust, Opinion
+### Human-in-the-Loop Automation: When Not to Let AI Finish the Job
+**Published:** August 02, 2026 | **Topic:** Opinion | **Tags:** AI agents, Human-in-the-loop, Automation, Trust
 
-Two production systems, one lesson: the most valuable line of code in an automation platform is the one that stops and asks a human. Why UmrahFlow halts before the government portal and why my POS makes owners approve discounts.
+Why my automation systems stop and ask a person: human-in-the-loop design in a visa pipeline and a retail POS, and a simple rule for where the stop should go.
 
 https://portfolio-wod3.vercel.app/blog/when-not-to-let-ai-finish-the-job
 
 ---
 
-### Multi-Tenant from Day One: Building for One Store, Architecting for SaaS
-**Published:** July 26, 2026 | **Tags:** SaaS, Multi-Tenancy, Next.js, Architecture, Prisma
+### Multi-Tenant SaaS Architecture from Day One: A POS Case Study
+**Published:** July 26, 2026 | **Topic:** SaaS architecture | **Tags:** SaaS, Multi-tenancy, Prisma, PostgreSQL, Supabase
 
-My POS has exactly one customer, but every table has a tenantId. What multi-tenancy actually cost to add up front, what it buys later, and where the line is between preparing for SaaS and over-engineering.
+Multi-tenant SaaS architecture for a POS with one customer: why every table has a tenantId, what it cost up front and where I drew the line on over-engineering.
 
 https://portfolio-wod3.vercel.app/blog/multi-tenant-from-day-one-pos-saas
 
 ---
 
-### Designing UI for People Who Do the Same 5 Actions 300 Times a Day
-**Published:** July 19, 2026 | **Tags:** UI/UX, Tailwind CSS, Accessibility, Design Systems, POS
+### POS UI Design for Staff Who Repeat the Same 5 Actions All Day
+**Published:** July 19, 2026 | **Topic:** Product design | **Tags:** UI/UX, Tailwind CSS, Accessibility, Design systems, POS
 
-Retail staff are not "users exploring an interface" — they are operators under time pressure. How I designed a POS around tabular numerals, state-only color, keyboard-first tills, and chrome that disappears into the sale.
+POS UI design for till staff under time pressure: tabular numbers, a state-only color palette, keyboard-first flows and a till that stays out of the sale's way.
 
 https://portfolio-wod3.vercel.app/blog/designing-ui-for-repetitive-retail-work
 
 ---
 
-### Modeling a Real Cloth House: Why My POS Has Tickets AND Bills
-**Published:** July 12, 2026 | **Tags:** Prisma, PostgreSQL, Data Modeling, Next.js, Retail Tech
+### POS Database Design: Why My Retail POS Has Tickets and Bills
+**Published:** July 12, 2026 | **Topic:** SaaS architecture | **Tags:** Prisma, PostgreSQL, Data modeling, Retail tech
 
-In a multi-department Pakistani cloth store, where a sale is recorded and where money is taken are different places. How that one domain insight shaped a Prisma schema of tickets, bills, shifts, and escalations.
+POS database design for a multi-department store, where sales are rung up on each floor but paid at one counter, and how that split shaped my Prisma schema.
 
 https://portfolio-wod3.vercel.app/blog/modeling-real-store-tickets-and-bills-pos
 
 ---
 
-### Taming WhatsApp as an App Input: Debouncing Albums, Draining Queues
-**Published:** July 05, 2026 | **Tags:** WhatsApp, WAHA, Message Queues, Integrations, Python
+### WhatsApp Webhooks: Debouncing Photo Albums and Draining Queues
+**Published:** July 05, 2026 | **Topic:** Automation | **Tags:** WhatsApp, WAHA, Message queues, Integrations, Python
 
-WhatsApp is a terrible API and a perfect UX. How UmrahFlow turns messy real-world messages — photo albums, doubles, voice notes — into clean records with a Twilio-compatible relay, debounced draining, and agent traces.
+How I handle WhatsApp webhooks for a real business: a Twilio-compatible relay over WAHA, store-first processing, debounced photo albums and agent traces.
 
 https://portfolio-wod3.vercel.app/blog/taming-whatsapp-as-an-app-input
 
 ---
 
-### Building Microservices to Someone Else's Contract
-**Published:** June 28, 2026 | **Tags:** Microservices, FastAPI, Docker, API Design, DevOps
+### Building Microservices to Someone Else's API Contract
+**Published:** June 28, 2026 | **Topic:** Web development | **Tags:** Microservices, FastAPI, Docker, API design, DevOps
 
-The dashboard already existed; its ML services didn't. How I rebuilt two missing services to the exact API shape an existing app expected — without changing a line of dashboard code — and made five services start with one command.
+How I rebuilt missing microservices to the exact API contract an existing dashboard expected, without editing its code, and ran five services with one command.
 
 https://portfolio-wod3.vercel.app/blog/building-microservices-to-someone-elses-contract
 
 ---
 
-### Reading Passports with AI: Merging MRZ Parsing with Claude Vision
-**Published:** June 21, 2026 | **Tags:** Claude, Computer Vision, OCR, Python, AI/ML
+### Passport OCR with AI: Combining MRZ Parsing and Claude Vision
+**Published:** June 21, 2026 | **Topic:** AI document processing | **Tags:** Claude, Computer vision, OCR, Python
 
-MRZ parsing is deterministic but brittle; vision models read anything but can hallucinate. Why UmrahFlow's passport OCR cross-checks a local MRZ pass against a Claude vision pass — and falls back to OpenAI when it must.
+How UmrahFlow reads passports from WhatsApp photos: MRZ check digits verify what they can, Claude vision reads the rest, and any disagreement goes to a person.
 
 https://portfolio-wod3.vercel.app/blog/passport-ocr-mrz-claude-vision
 
 ---
 
-### From WhatsApp Photo to Government Portal: Automating Visa Processing
-**Published:** June 14, 2026 | **Tags:** AI Agents, WhatsApp, OCR, Claude, Automation
+### Multi-Agent AI Backend: How I Built BPOAI's Nine-Agent Server
+**Published:** June 18, 2026 | **Topic:** AI agents | **Tags:** AI agents, Claude, Apify, Supabase, Express
 
-How UmrahFlow takes a pilgrim from a WhatsApp message to a staged Umrah visa submission — an AI agent, passport OCR, a human-review dashboard, and a bridge into the Saudi Nusuk portal that deliberately stops one step short.
-
-https://portfolio-wod3.vercel.app/blog/whatsapp-to-government-portal-visa-automation
-
----
-
-### How the BPOAI Agent Flow Works
-**Published:** June 18, 2026 | **Tags:** AI Agents, Claude, Apify, Supabase, Express
-
-How I built the agent server behind BPOAI — nine specialized Claude-powered agents that scrape leads, score AI readiness, verify claims, run email outreach drips, and publish weekly news, all wired together through webhooks and cron.
+How I built BPOAI's multi-agent AI backend: nine agents on an Express server that scrape leads with Apify, score companies with Claude and run email drips.
 
 https://portfolio-wod3.vercel.app/blog/building-a-9-agent-ai-backend-for-bpoai
 
 ---
 
-### Designing a Real House in the Browser: 2D Plans to Live 3D
-**Published:** June 14, 2026 | **Tags:** Three.js, react-konva, Next.js, Zustand, 3D Web
+### 3D House Design in the Browser with react-konva and Three.js
+**Published:** June 14, 2026 | **Topic:** 3D & web graphics | **Tags:** Three.js, react-konva, Zustand, Next.js, 3D web
 
-How I built homeStructure — a climate-smart house design studio for a real irregular plot in Attock, with an editable 2D floor planner (react-konva), live 3D (react-three-fiber), and a passive-design score.
+3D house design in the browser for a real, irregular plot: how I built a react-konva floor planner, live react-three-fiber 3D and a passive-design score.
 
 https://portfolio-wod3.vercel.app/blog/designing-houses-in-the-browser-react-three-konva
 
 ---
 
-### Building a BPO Directory & AI Hub with Supabase and Three.js
-**Published:** June 02, 2026 | **Tags:** Next.js, Supabase, Three.js, Framer Motion, Directory
+### Umrah Visa Automation: From WhatsApp Photo to Government Portal
+**Published:** June 14, 2026 | **Topic:** Automation | **Tags:** AI agents, WhatsApp, OCR, Claude, Automation
 
-A look at BPOAI — a directory and intelligence hub for the top BPO companies in the Philippines, combining a Supabase data layer with an immersive 3D landing experience.
+How I built Umrah visa automation that turns a WhatsApp passport photo into a staged Nusuk submission, with an AI agent, passport OCR and two human checkpoints.
+
+https://portfolio-wod3.vercel.app/blog/whatsapp-to-government-portal-visa-automation
+
+---
+
+### BPO Directory Website with Next.js, Supabase and Three.js
+**Published:** June 02, 2026 | **Topic:** Web development | **Tags:** Next.js, Supabase, Three.js, Framer Motion, Cloudflare
+
+How I built BPOAI, a BPO directory website for the Philippines: searchable Supabase data, a lazy-loaded 3D landing, Resend lead capture and Cloudflare.
 
 https://portfolio-wod3.vercel.app/blog/building-a-bpo-directory-ai-hub-supabase-three
 
 ---
 
-### An AI-Assisted Recruitment Platform with Next.js and MongoDB
-**Published:** May 24, 2026 | **Tags:** Next.js, MongoDB, Anthropic AI, Recruitment, Cloudinary
+### AI Recruitment Platform Built with Next.js and MongoDB
+**Published:** May 24, 2026 | **Topic:** Web development | **Tags:** Next.js, MongoDB, Anthropic SDK, Cloudinary, Recruitment
 
-How VoltOutreach streamlines hiring — job listings, candidate applications, an admin dashboard, and AI-assisted outreach with the Anthropic SDK, Cloudinary, and Calendly.
+How I built VoltOutreach, an AI recruitment platform on Next.js and MongoDB: job listings, applications, an admin dashboard and AI-drafted candidate outreach.
 
 https://portfolio-wod3.vercel.app/blog/ai-assisted-recruitment-platform-nextjs-mongodb
 
 ---
 
-### Barcode Scanning Meets Water Quality: PureX on Expo + Gemini
-**Published:** May 12, 2026 | **Tags:** React Native, Expo, Google Gemini, Supabase, Mobile Dev
+### Barcode Scanning App with Expo and Gemini: How I Built PureX
+**Published:** May 12, 2026 | **Topic:** Mobile | **Tags:** React Native, Expo, Google Gemini, Supabase, RevenueCat
 
-Building PureX — a React Native app that scans product barcodes for nutrition and safety insights and surfaces location-based water-quality reports, powered by Google Gemini and Supabase.
+How I built PureX, a barcode scanning app on React Native and Expo that uses Gemini to explain products and local water quality, with Supabase and RevenueCat.
 
 https://portfolio-wod3.vercel.app/blog/barcode-scanning-water-quality-mobile-gemini
 
 ---
 
-### Production-Ready Auth with NextAuth v5 and MongoDB
-**Published:** May 02, 2026 | **Tags:** Next.js, NextAuth, MongoDB, Authentication, Security
+### NextAuth v5 and MongoDB: Production-Ready Auth for Next.js
+**Published:** May 02, 2026 | **Topic:** Security | **Tags:** Next.js, NextAuth, MongoDB, Zod, Security
 
-A practical guide to the full account lifecycle — sign-up, login, protected routes, and email-based password reset — built with Next.js 16, NextAuth v5, MongoDB, and Nodemailer.
+How I built production-ready Next.js auth with NextAuth v5 and MongoDB: credentials login, bcrypt hashing, protected routes, Zod validation and password reset.
 
 https://portfolio-wod3.vercel.app/blog/production-ready-auth-nextauth-v5-mongodb
 
 ---
 
-### Building an AI Lead-Capture Platform for Trades Businesses
-**Published:** April 18, 2026 | **Tags:** Next.js, AI Automation, SaaS, Lead Generation, Framer Motion
+### AI Lead Capture for Plumbers and Trades Businesses
+**Published:** April 18, 2026 | **Topic:** Automation | **Tags:** Next.js, AI automation, Lead capture, SaaS, Framer Motion
 
-How I built Plumber's Mate AI — an automation platform that captures leads, books jobs, sends quotes, collects payments, and re-engages old customers with Next.js 16 and React 19.
+How I built Plumber's Mate AI, an AI lead capture platform for trades businesses that qualifies leads, books jobs, takes payment and asks for reviews.
 
 https://portfolio-wod3.vercel.app/blog/ai-lead-capture-trades-businesses
 
 ---
 
-### Canvas-Based AI Image Studios with Fabric.js and Next.js
-**Published:** April 10, 2026 | **Tags:** Fabric.js, Next.js, AI Image Gen, Canvas API, html2canvas
+### Fabric.js and Next.js: Building a Canvas-Based AI Image Studio
+**Published:** April 10, 2026 | **Topic:** 3D & web graphics | **Tags:** Fabric.js, Next.js, Canvas, AI images, html2canvas
 
-A technical walkthrough of building Clay Imaginary — a drag-and-drop AI image studio with Fabric.js compositing, html2canvas export, and AI-powered generation for creators.
+How I built a canvas-based AI image studio with Fabric.js and Next.js: layers, AI generation, templates and html2canvas export. Now live as HookFeed.
 
 https://portfolio-wod3.vercel.app/blog/canvas-ai-image-studio-fabricjs
 
 ---
 
-### Next.js 20: Everything New You Need to Know
-**Published:** March 28, 2026 | **Tags:** Next.js, React, Turbopack, Edge Computing, Full-Stack
+### OpenClaw Setup Guide: Channels, Custom Skills and Deployment
+**Published:** March 22, 2026 | **Topic:** AI agents | **Tags:** OpenClaw, AI Agents, Self-Hosted, DevOps
 
-From React Server Functions to the revamped Turbopack pipeline and native Edge-first routing—here's what makes Next.js 20 the biggest release yet.
-
-https://portfolio-wod3.vercel.app/blog/nextjs-20-whats-new
-
----
-
-### OpenClaw Deep Dive: Building Your Own AI Agent Pipeline
-**Published:** March 22, 2026 | **Tags:** OpenClaw, AI Agents, Tutorial, Self-Hosted, DevOps
-
-A hands-on technical walkthrough of setting up OpenClaw from scratch—configuring channels, creating custom skills, wiring up tool chains, and deploying your personal AI agent stack.
+A hands-on OpenClaw setup guide: install it, connect WhatsApp, Telegram and Discord, build a custom skill, chain tools, run multiple agents and lock it down.
 
 https://portfolio-wod3.vercel.app/blog/openclaw-deep-dive-setup
 
 ---
 
-### React Native with Expo in 2026: The Ultimate Mobile Stack
-**Published:** March 15, 2026 | **Tags:** React Native, Expo, Mobile Dev, TypeScript, Cross-Platform
+### React Native with Expo in 2026: My Cross-Platform Mobile Stack
+**Published:** March 15, 2026 | **Topic:** Mobile | **Tags:** React Native, Expo, TypeScript, Mobile
 
-How Expo 54 and React Native 0.81 are making cross-platform mobile development faster than ever—from EAS builds to native modules, and why it's the go-to stack for startups.
+Why React Native with Expo is my default for cross-platform apps: EAS builds, Expo Router, the New Architecture, native modules and lessons from FreeNote.
 
 https://portfolio-wod3.vercel.app/blog/react-native-expo-2026
 
 ---
 
-### OpenClaw: Your Personal AI Gateway to Messaging Apps
-**Published:** March 10, 2026 | **Tags:** OpenClaw, AI Agents, Self-Hosted, WhatsApp, Automation
+### OpenClaw: A Self-Hosted AI Assistant for Your Messaging Apps
+**Published:** March 10, 2026 | **Topic:** AI agents | **Tags:** OpenClaw, AI Agents, Self-Hosted, WhatsApp
 
-How OpenClaw bridges WhatsApp, Telegram, Discord, and iMessage with AI agents—giving you a self-hosted, privacy-first AI assistant that actually does things.
+What OpenClaw is: an open-source, self-hosted AI gateway that brings AI agents into WhatsApp, Telegram, Discord and iMessage, running on your own hardware.
 
 https://portfolio-wod3.vercel.app/blog/openclaw-personal-ai-gateway
 
 ---
 
-### AI Automation: Transforming the Future of Work
-**Published:** February 27, 2026 | **Tags:** AI, Automation, LLMs, Workflows, Future Tech
+### What Is AI Automation? LLM Workflows, Use Cases and Risks
+**Published:** February 27, 2026 | **Topic:** Automation | **Tags:** AI, Automation, LLMs, Workflows
 
-Explore how AI-driven automation is reshaping industries—from intelligent workflows and autonomous coding agents to no-code platforms and the evolving role of developers.
+What AI automation is, how LLM agent workflows differ from rule-based automation, where teams already use it, and why humans should stay in the loop.
 
 https://portfolio-wod3.vercel.app/blog/ai-automation-future
 
 ---
 
-### Web Performance Optimization: A Complete Guide
-**Published:** January 20, 2026 | **Tags:** Performance, Core Web Vitals, Caching, Lazy Loading, SEO
+### Web Performance Optimization: A Practical Guide to Faster Sites
+**Published:** January 20, 2026 | **Topic:** Web development | **Tags:** Performance, Core Web Vitals, Caching, Lazy Loading, SEO
 
-Master critical techniques like code splitting, lazy loading, image optimization, caching strategies, and Core Web Vitals to build blazing-fast web applications.
+A web performance optimization guide covering code splitting, image formats, caching, the critical rendering path, Core Web Vitals and network tuning.
 
 https://portfolio-wod3.vercel.app/blog/web-performance-optimization
 
 ---
 
-### Building an AI-Powered Car Maintenance App
-**Published:** January 05, 2026 | **Tags:** React Native, Google Gemini, AI/ML, Mobile Dev, Node.js
+### AI Car Maintenance App: Reading Dashboard Lights with Gemini
+**Published:** January 05, 2026 | **Topic:** Mobile | **Tags:** React Native, Google Gemini, Expo, Node.js, Mobile
 
-How I integrated Google Gemini AI with React Native to create intelligent dashboard light scanning, tire inspection, and maintenance quote analysis.
+How I built an AI car maintenance app with React Native and Google Gemini that explains dashboard warning lights, checks tire photos and reviews repair quotes.
 
 https://portfolio-wod3.vercel.app/blog/ai-powered-car-maintenance
 
 ---
 
-### Building a Secure Marketplace with Escrow Payments
-**Published:** January 03, 2026 | **Tags:** Stripe, Payments, Security, E-commerce, React
+### Marketplace Escrow Payments with Stripe Connect: Bible Trader
+**Published:** January 03, 2026 | **Topic:** Web development | **Tags:** Stripe Connect, Payments, Marketplace, Security, React
 
-A deep dive into implementing Stripe escrow payments, trade systems, and secure transactions for the Bible Trader marketplace platform.
+How I built marketplace escrow payments with Stripe Connect for Bible Trader: funds held until delivery is confirmed, item trades, disputes and edge cases.
 
 https://portfolio-wod3.vercel.app/blog/building-marketplace-with-escrow
 
 ---
 
-### Next 19 New Features
-**Published:** December 12, 2025 | **Tags:** Next.js, React, TurboPack, Server Actions, Full-Stack
+### React2Shell: Fixing the React Server Components Vulnerability
+**Published:** December 10, 2025 | **Topic:** Security | **Tags:** Security, React, Server Components, Vulnerability
 
-Explore the groundbreaking features introduced in Next.js 19, from enhanced performance to new routing capabilities.
-
-https://portfolio-wod3.vercel.app/blog/next-19-new-features
-
----
-
-### Security Flaw: react2shell
-**Published:** December 10, 2025 | **Tags:** Security, Vulnerability, React, Code Audit, Best Practices
-
-A critical look at the recently discovered security vulnerability in the react2shell library and how to mitigate it.
+React2Shell is a critical React Server Components vulnerability that can let attackers run arbitrary code on your server. What is at risk and how to fix it.
 
 https://portfolio-wod3.vercel.app/blog/security-flaw-react2shell
 
 ---
 
-### The Rise of AI Agents
-**Published:** December 08, 2025 | **Tags:** AI Agents, Automation, LLMs, Future Tech, DevTools
+### AI Agents Explained: From Chatbots to Agentic Workflows
+**Published:** December 08, 2025 | **Topic:** AI agents | **Tags:** AI Agents, LLMs, Automation, DevTools
 
-How autonomous AI agents are transforming software development, automation, and the future of work.
+What AI agents are, how they differ from chatbots, how they are changing software development, and why the next step is people orchestrating agent teams.
 
 https://portfolio-wod3.vercel.app/blog/ai-agents-revolution
 
 ---
 
-### Mastering Code & Speed Optimization
-**Published:** December 05, 2025 | **Tags:** Algorithms, React, Performance, Optimization, Best Practices
+### Code Optimization Techniques: Algorithms, React and Network
+**Published:** December 05, 2025 | **Topic:** Web development | **Tags:** Performance, Algorithms, React, Optimization
 
-Essential techniques to slash latency, optimize algorithms, and boost your application's response speed.
+Three code optimization techniques that cut latency: choose efficient algorithms, stop unnecessary React re-renders, and shrink what goes over the network.
 
 https://portfolio-wod3.vercel.app/blog/code-speed-optimization
 

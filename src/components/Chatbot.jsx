@@ -3,7 +3,7 @@ import { MessageCircle, X, Send, Bot, User, Loader2 } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { projectsData } from '../data/projects';
-import { blogs } from '../data/blogs';
+import { posts } from '../lib/blog';
 import { SERVICES, CONTACT, BOOK_CALL_HREF, BOOK_CALL_IS_CALENDLY } from '../data/site';
 
 // Built from the shared data modules so the assistant always matches the site.
@@ -12,8 +12,8 @@ const PROJECT_LINES = projectsData
   .map((p, i) => `${i + 1}. ${p.title} — ${p.subtitle}. Role: ${p.role} (${p.company}). Stack: ${p.tags.join(', ')}. Case study: /projects/${p.slug}`)
   .join('\n');
 
-const BLOG_LINES = blogs
-  .map((b, i) => `${i + 1}. "${b.title}" (${b.date}) ID: ${b.id}`)
+const BLOG_LINES = posts
+  .map((b, i) => `${i + 1}. "${b.title}" (${b.date}, ${b.category}) ID: ${b.id}`)
   .join('\n');
 
 const SERVICE_LINES = SERVICES
@@ -42,7 +42,7 @@ ${SERVICE_LINES}
 PROJECTS (${projectsData.length} total):
 ${PROJECT_LINES}
 
-BLOG POSTS (${blogs.length} articles, available at /blog/{id}):
+BLOG POSTS (${posts.length} articles, available at /blog/{id}):
 ${BLOG_LINES}
 
 CONTACT & SOCIAL LINKS:

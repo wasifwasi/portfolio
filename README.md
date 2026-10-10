@@ -9,7 +9,7 @@ Live at [portfolio-wod3.vercel.app](https://portfolio-wod3.vercel.app).
 | Category | Technologies |
 |----------|-------------|
 | **Frontend** | React 19, React Router DOM 7, Vite 7 |
-| **Animations** | Framer Motion (respects reduced motion); GSAP on the blog pages only |
+| **Animations** | Framer Motion (respects reduced motion) |
 | **Icons** | Lucide React |
 | **Booking** | Calendly (live free times via the Calendly API, booking popup) |
 | **Email** | EmailJS |
@@ -26,7 +26,9 @@ Live at [portfolio-wod3.vercel.app](https://portfolio-wod3.vercel.app).
 5. **About** – bio, stack and photo
 6. **Contact** – book a call, WhatsApp, email, or the EmailJS form
 
-**Projects** (`/projects`) lists every project with filters (AI, web, mobile). Each has a **case study** at `/projects/<slug>`. The **blog** lives at `/blog`.
+**Projects** (`/projects`) lists every project with filters (AI, web, mobile). Each has a **case study** at `/projects/<slug>`.
+
+**Blog** (`/blog`) shows the newest post as a large card, then every post with topic filters. Each post (`/blog/<id>`) has a cover, a short summary, a contents box, numbered sections with tables, callouts, steps, diagrams and code, a pull quote, FAQs, a call to action, the related case study and related posts.
 
 Dark theme is the default; light theme is available from the header toggle.
 
@@ -36,15 +38,16 @@ Dark theme is the default; light theme is available from the header toggle.
 |------|-------|
 | Hero copy, headline numbers, hero photo strip, featured work, services, process steps, contact details, Calendly link | `src/data/site.js` |
 | Project cards (Projects page, contact prefill, chatbot, pre-rendered pages) | `src/data/projects.js` |
-| Blog listing (blog page, chatbot, pre-rendered pages) | `src/data/blogs.js` |
-| Full case study and blog post text | `src/components/ProjectDetail.jsx`, `src/components/BlogPost.jsx` |
+| Blog posts: one file per post, plus the list in `index.js` (format in the README there) | `src/content/blog/` |
+| Full case study text | `src/components/ProjectDetail.jsx` |
+| Blog covers (16:9, 1200px plus a `-640` version) | `public/img/blog/` |
 | Project images (1200px plus a `-640` version) | `public/img/work/` |
 | Profile photos (hero, about, avatar) | `public/img/me/` |
 | Social preview image (1200×630) | `public/og.jpg` |
 | Favicon (SVG source, PNG and ICO sizes) | `public/favicon.svg`, `favicon.ico`, `favicon.png`, `apple-touch-icon.png`, `logo192.png`, `logo512.png` |
 | Accent colour | `--accent-h` / `--accent-s` at the top of `src/index.css` |
 
-Project photos are licensed Unsplash images with a light colour grade, or real screenshots of the live apps.
+Project photos are licensed Unsplash images with a light colour grade, or real screenshots of the live apps. Blog covers are generated images (Gemini), captioned as such on each post.
 
 ## Booking
 
@@ -52,7 +55,7 @@ Every "Book a call" button opens the on-site booking box (`BookingModal.jsx`). I
 
 ## Search and Link Previews
 
-The app is client-rendered, so the build also writes a static HTML file for every route (`scripts/static-pages.js`, a Vite plugin): home, projects, every case study, blog and every post. Each file has its own title, description, canonical URL and social tags, plus the page's text for crawlers. `"cleanUrls": true` in `vercel.json` serves `/projects/umrahflow` from `projects/umrahflow.html`; the React app takes over once it loads.
+The app is client-rendered, so the build also writes a static HTML file for every route (`scripts/static-pages.js`, a Vite plugin): home, projects, every case study, blog and every post. Each file has its own title, description, canonical URL and social tags, plus the page's text for crawlers. Blog posts get their full text plus Article, FAQ and breadcrumb structured data, and the build writes `sitemap.xml` from the same list of pages. `"cleanUrls": true` in `vercel.json` serves `/projects/umrahflow` from `projects/umrahflow.html`; the React app takes over once it loads.
 
 ## Getting Started
 
@@ -82,12 +85,15 @@ portfolio/
 │   ├── availability.js       # Free Calendly times for the booking box
 │   └── playbook.js           # Password-protected interview playbook
 ├── lib/                      # Server-only data (playbook questions)
-├── public/                   # Images, favicons, og.jpg, llms.txt, sitemap, robots.txt
+├── public/                   # Images, favicons, og.jpg, llms.txt, robots.txt
 ├── scripts/
-│   └── static-pages.js       # Build step: one static HTML file per route
+│   ├── static-pages.js       # Build step: one static HTML file per route, plus sitemap.xml
+│   └── blog-meta.js          # Lets the blog page load post summaries without the full text
 ├── src/
-│   ├── data/                 # site.js, projects.js, blogs.js — edit content here
+│   ├── data/                 # site.js, projects.js — edit content here
+│   ├── content/blog/         # One file per blog post, plus index.js and the format README
 │   ├── lib/booking.js        # Calendly loader, free-time feed, "open booking" event
+│   ├── lib/blog.js           # Post list, categories and related posts for the app
 │   ├── components/
 │   │   ├── Header.jsx        # Nav, "Book a call" button, theme toggle
 │   │   ├── Home.jsx          # Hero
@@ -101,7 +107,9 @@ portfolio/
 │   │   ├── Projects.jsx      # All projects page
 │   │   ├── ProjectDetail.jsx # Case study pages (content + layout)
 │   │   ├── Picture.jsx / ProjectImage.jsx  # Responsive project images
-│   │   ├── Blog.jsx / BlogPost.jsx
+│   │   ├── Blog.jsx          # Blog page: featured post, topic filters, cards
+│   │   ├── BlogPost.jsx      # A blog post
+│   │   ├── BlogBlocks.jsx    # Post building blocks: tables, callouts, steps, diagrams, code
 │   │   └── Chatbot.jsx       # Portfolio assistant
 │   ├── App.jsx               # Routing and the booking box
 │   └── index.css             # Global styles and theme tokens
