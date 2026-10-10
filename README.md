@@ -23,7 +23,7 @@ Live at [portfolio-wod3.vercel.app](https://portfolio-wod3.vercel.app).
 2. **What I've built** – five case studies with images, plus a call-to-action tile
 3. **What I can build for you** – three fixed-scope offers, each linked to the projects that prove it
 4. **How a project works** – four steps
-5. **About** – bio, stack and photo
+5. **About** – bio and stack
 6. **Contact** – book a call, WhatsApp, email, or the EmailJS form
 
 **Projects** (`/projects`) lists every project with filters (AI, web, mobile). Each has a **case study** at `/projects/<slug>`.
@@ -42,7 +42,7 @@ Dark theme is the default; light theme is available from the header toggle.
 | Full case study text | `src/components/ProjectDetail.jsx` |
 | Blog covers (16:9) | `public/img/blog/` |
 | Project images (3:2) | `public/img/work/` |
-| Profile photos (hero, about, avatar) | `public/img/me/` |
+| Profile photos (hero, avatar) | `public/img/me/` |
 | Social preview image (1200×630) | `public/og.jpg` |
 | Favicon (SVG source, PNG and ICO sizes) | `public/favicon.svg`, `favicon.ico`, `favicon.png`, `apple-touch-icon.png`, `logo192.png`, `logo512.png` |
 | Accent colour | `--accent-h` / `--accent-s` at the top of `src/index.css` |

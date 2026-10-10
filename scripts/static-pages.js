@@ -137,7 +137,6 @@ function checkPosts(posts, blogDir) {
 function checkImages(posts, publicDir) {
   const bases = new Set([
     'img/me/hero',
-    'img/me/about',
     'img/me/avatar',
     ...projectsData.map((p) => imageBase(p.image)),
     ...[...HERO_STRIP, ...FEATURED_WORK].map((item) => item.image),

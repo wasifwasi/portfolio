@@ -2156,12 +2156,6 @@ section[id] {
 }
 
 /* About */
-.bio--grid {
-  display: grid;
-  gap: 2.5rem;
-  align-items: center;
-}
-
 .bio--text p {
   color: var(--text-color);
   line-height: 1.75;
@@ -2201,23 +2195,11 @@ section[id] {
   gap: 0.75rem;
 }
 
-.bio--photo {
-  margin: 0;
-  justify-self: center;
-  width: min(100%, 380px);
-}
-
-.bio--photo img {
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  border-radius: 0.75rem;
-}
-
+/* Wide screens: the three skill groups side by side */
 @media screen and (min-width: 900px) {
-  .bio--grid {
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 4rem;
+  .bio--list {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
   }
 }
 
