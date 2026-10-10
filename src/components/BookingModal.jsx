@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { X, ArrowLeft, CalendarClock, MessageCircle } from "lucide-react";
 import { whatsappLink } from "../data/site";
+import Picture from "./Picture";
 import { loadAvailability, openCalendly, openFullCalendar, withParams, POPUP_PARAMS } from "../lib/booking";
 
 const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -110,7 +111,7 @@ const BookingModal = ({ onClose }) => {
         transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
       >
         <header className="booking--head">
-          <img src="/img/me/avatar-128.webp" alt="" width={48} height={48} className="booking--avatar" />
+          <Picture base="img/me/avatar" alt="" sizes="48px" width={48} height={48} className="booking--avatar" eager />
           <div>
             <h2 id="booking-title">15-minute project call</h2>
             <p>With Wasif on Google Meet. Free, no obligation.</p>

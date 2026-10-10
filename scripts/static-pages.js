@@ -8,7 +8,8 @@ import path from 'path'
 import { projectsData } from '../src/data/projects.js'
 import { POSTS } from '../src/content/blog/index.js'
 import { tokenizeInline, plainInline } from '../src/content/blog/inline.js'
-import { HERO, FEATURED_WORK, SERVICES, PROCESS, CONTACT, CALENDLY_URL } from '../src/data/site.js'
+import { HERO, HERO_STRIP, FEATURED_WORK, SERVICES, PROCESS, CONTACT, CALENDLY_URL } from '../src/data/site.js'
+import { imageSrcSet, imageBase, imageFiles, blogOgImage, SIZES } from '../src/lib/images.js'
 
 export const SITE_URL = 'https://portfolio-wod3.vercel.app'
 const DEFAULT_IMAGE = `${SITE_URL}/og.jpg`
@@ -41,6 +42,15 @@ function renderPage(template, page) {
   html = setAttr(html, 'meta name="twitter:title"', 'content', page.title)
   html = setAttr(html, 'meta name="twitter:description"', 'content', page.description)
   html = setAttr(html, 'meta name="twitter:image"', 'content', page.image || DEFAULT_IMAGE)
+  // Start the page's main image with the HTML instead of after the JavaScript has run.
+  // Same AVIF files and sizes as the <Picture> that shows it, so it is downloaded once.
+  if (page.preload) {
+    const { base, sizes } = page.preload
+    html = html.replace(
+      '</head>',
+      `  <link rel="preload" as="image" type="image/avif" imagesrcset="${esc(imageSrcSet(base, 'avif'))}" imagesizes="${esc(sizes)}" fetchpriority="high" />\n  </head>`
+    )
+  }
   // Readable text for crawlers; visually hidden so there is no flash before React renders.
   // React replaces everything inside #root, structured data included (Helmet adds its own).
   return html.replace('<div id="root"></div>', `<div id="root"><div class="prerender">${page.body}</div></div>`)
@@ -123,9 +133,26 @@ function checkPosts(posts, blogDir) {
   if (problems.length) throw new Error(`static-pages: blog problems:\n  ${problems.join('\n  ')}`)
 }
 
+// Every photo the site shows must exist in each AVIF and WebP size, or browsers get a broken image
+function checkImages(posts, publicDir) {
+  const bases = new Set([
+    'img/me/hero',
+    'img/me/about',
+    'img/me/avatar',
+    ...projectsData.map((p) => imageBase(p.image)),
+    ...[...HERO_STRIP, ...FEATURED_WORK].map((item) => item.image),
+    ...posts.filter((p) => p.cover).map((p) => imageBase(p.cover.src)),
+  ])
+  const missing = [...bases].flatMap((base) => imageFiles(base)).filter((file) => !fs.existsSync(path.join(publicDir, file)))
+  missing.push(...posts.filter((p) => p.cover && !fs.existsSync(path.join(publicDir, blogOgImage(p.id)))).map((p) => blogOgImage(p.id).slice(1)))
+  if (missing.length) {
+    throw new Error(`static-pages: missing image files (run "npm run images" to make them):\n  ${missing.join('\n  ')}`)
+  }
+}
+
 function postPage(post) {
   const url = `${SITE_URL}/blog/${post.id}`
-  const image = post.cover ? `${SITE_URL}${post.cover.src}` : DEFAULT_IMAGE
+  const image = post.cover ? `${SITE_URL}${blogOgImage(post.id)}` : DEFAULT_IMAGE
   const { body } = post
   const article = {
     '@context': 'https://schema.org',
@@ -161,7 +188,6 @@ function postPage(post) {
 
   const html = `<article><h1>${esc(post.title)}</h1><p>${inlineHtml(body.dek)}</p>
 <p>By Wasif Rehman · <time datetime="${post.dateISO}">${esc(post.date)}</time> · ${esc(post.category)}</p>
-${post.cover ? `<img src="${esc(post.cover.src)}" alt="${esc(post.cover.alt)}" width="1200" height="675">` : ''}
 <h2>In short</h2><ul>${body.takeaways.map((t) => `<li>${inlineHtml(t)}</li>`).join('')}</ul>
 ${body.sections.map((s) => `<section id="${esc(s.id)}"><h2>${esc(s.heading)}</h2>${s.blocks.map(blockHtml).join('')}</section>`).join('\n')}
 ${body.faq?.length ? `<h2>Frequently asked questions</h2>${body.faq.map((f) => `<h3>${esc(f.q)}</h3><p>${inlineHtml(f.a)}</p>`).join('')}` : ''}
@@ -176,6 +202,7 @@ ${jsonLd(article)}${faq ? jsonLd(faq) : ''}${jsonLd(crumbs)}`
     description: post.excerpt,
     image,
     imageAlt: post.cover?.alt,
+    preload: post.cover ? { base: imageBase(post.cover.src), sizes: SIZES.postCover } : null,
     lastmod: post.dateISO,
     body: html,
   }
@@ -191,6 +218,7 @@ function buildPages(homeDescription, posts) {
     path: '/',
     title: 'Wasif Rehman | Full-Stack & AI Engineer',
     description: homeDescription,
+    preload: { base: 'img/me/hero', sizes: SIZES.heroPortrait },
     body: `<h1>${esc(HERO.title)}</h1><p>${esc(HERO.lead)}</p>${contactLinks()}
 <h2>What I've built</h2><ul>${FEATURED_WORK.map((w) => `<li>${link(`/projects/${w.slug}`, w.title)}: ${esc(w.problem)} ${esc(w.solution)}</li>`).join('')}</ul>
 <p>${link('/projects', `All ${projectsData.length} projects`)}</p>
@@ -203,6 +231,7 @@ function buildPages(homeDescription, posts) {
     path: '/projects',
     title: 'Projects | Wasif Rehman - Full-Stack & AI Engineer',
     description: 'Case studies of AI agents, automation pipelines, SaaS platforms and mobile apps: the problem, what I built, and the stack.',
+    preload: { base: imageBase(byNewest[0].image), sizes: SIZES.projectCard },
     body: `<h1>All projects</h1><ul>${byNewest.map((p) => `<li>${link(`/projects/${p.slug}`, p.title)} (${esc(p.subtitle)}): ${esc(p.description)}</li>`).join('')}</ul>`,
   })
 
@@ -213,6 +242,7 @@ function buildPages(homeDescription, posts) {
       path: `/projects/${p.slug}`,
       title: `${p.title} case study | Wasif Rehman`,
       description: p.description,
+      preload: { base: imageBase(p.image), sizes: SIZES.caseStudy },
       body: `<h1>${esc(p.title)}</h1><p>${esc(p.subtitle)}</p><p>${esc(p.description)}</p>
 <p>Role: ${esc(p.role)} (${esc(p.company)}). Stack: ${esc(p.tags.join(', '))}.</p>${demo}
 ${about.length ? `<h2>Posts about ${esc(p.title)}</h2><ul>${about.map((post) => `<li>${link(`/blog/${post.id}`, post.title)}</li>`).join('')}</ul>` : ''}
@@ -225,6 +255,7 @@ ${about.length ? `<h2>Posts about ${esc(p.title)}</h2><ul>${about.map((post) => 
     title: 'Blog: AI Agents, Automation and SaaS Engineering | Wasif Rehman',
     description: "Write-ups from building AI agents, document automation, multi-tenant SaaS and React Native apps: the architecture, the trade-offs and what I'd do again.",
     lastmod: posts[0]?.dateISO,
+    preload: posts[0]?.cover ? { base: imageBase(posts[0].cover.src), sizes: SIZES.blogFeatured } : null,
     body: `<h1>Notes from building AI agents, SaaS and mobile apps</h1><ul>${posts.map((b) => `<li>${link(`/blog/${b.id}`, b.title)} (${esc(b.date)}, ${esc(b.category)}): ${esc(b.excerpt)}</li>`).join('')}</ul>`,
   })
 
@@ -254,6 +285,7 @@ export function staticPages() {
         (a, b) => b.dateISO.localeCompare(a.dateISO) || a.title.localeCompare(b.title)
       )
       checkPosts(posts, path.join(root, 'src/content/blog'))
+      checkImages(posts, path.join(root, 'public'))
 
       const indexFile = path.join(outDir, 'index.html')
       let template = fs.readFileSync(indexFile, 'utf8')

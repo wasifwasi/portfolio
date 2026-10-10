@@ -40,7 +40,4 @@ export function relatedPosts(post, count = 3) {
     .map(({ other }) => other);
 }
 
-// Covers are 1200px wide, with a 640px version next to them
-export const coverSrcSet = (cover) => `${cover.src.replace(/\.webp$/, '-640.webp')} 640w, ${cover.src} 1200w`;
-
 export const readTime = (minutes) => `${minutes} min read`;

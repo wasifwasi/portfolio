@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { CalendarClock, ArrowRight } from "lucide-react";
 import { HERO, HERO_STRIP, METRICS } from "../data/site";
 import Picture from "./Picture";
+import { SIZES } from "../lib/images";
 import BookCallLink from "./BookCallLink";
 
 const rise = (delay = 0) => ({
@@ -46,16 +47,7 @@ const Home = () => {
           </motion.div>
 
           <motion.figure className="hero--portrait" {...rise(0.1)}>
-            <img
-              src="/img/me/hero.webp"
-              srcSet="/img/me/hero-480.webp 480w, /img/me/hero.webp 960w"
-              sizes="240px"
-              alt="Wasif Rehman"
-              width={480}
-              height={600}
-              fetchPriority="high"
-              decoding="async"
-            />
+            <Picture base="img/me/hero" alt="Wasif Rehman" sizes={SIZES.heroPortrait} width={480} height={600} priority />
             <figcaption>
               <b>Wasif Rehman</b>
               <span>Full-stack &amp; AI engineer</span>
@@ -67,7 +59,7 @@ const Home = () => {
           {HERO_STRIP.map((item, i) => (
             <motion.li key={item.slug} {...rise(0.18 + i * 0.07)}>
               <Link to={`/projects/${item.slug}`} className="hero--tile">
-                <Picture base={item.image} alt={item.alt} eager sizes="(min-width: 900px) 380px, 100vw" />
+                <Picture base={item.image} alt={item.alt} eager sizes={SIZES.heroTile} />
                 <span className="hero--tile-text">
                   <b>{item.title}</b>
                   <span>{item.caption}</span>

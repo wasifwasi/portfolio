@@ -6,7 +6,9 @@ import NotFound from './NotFound';
 import BookCallLink from './BookCallLink';
 import ProjectImage from './ProjectImage';
 import { Block, Inline } from './BlogBlocks';
-import { findPost, relatedPosts, coverSrcSet, readTime } from '../lib/blog';
+import Picture from './Picture';
+import { findPost, relatedPosts, readTime } from '../lib/blog';
+import { imageBase, blogOgImage, SIZES } from '../lib/images';
 import { plainInline } from '../content/blog/inline';
 import { projectsData } from '../data/projects';
 import { CONTACT } from '../data/site';
@@ -18,7 +20,7 @@ const PostCard = ({ post }) => (
   <li className="post--related-card">
     <Link to={`/blog/${post.id}`} className="post--related-media" tabIndex={-1} aria-hidden="true">
       {post.cover && (
-        <img src={post.cover.src} srcSet={coverSrcSet(post.cover)} sizes="(min-width: 900px) 320px, 100vw" alt="" width={1200} height={675} loading="lazy" decoding="async" />
+        <Picture base={imageBase(post.cover.src)} alt="" sizes={SIZES.relatedPost} width={1200} height={675} />
       )}
     </Link>
     <p className="post--related-meta">{post.category} · {readTime(post.readMinutes)}</p>
@@ -64,7 +66,7 @@ const BlogPost = () => {
         title={`${post.title} | Wasif Rehman`}
         description={post.excerpt}
         path={`/blog/${post.id}`}
-        image={post.cover?.src}
+        image={post.cover ? blogOgImage(post.id) : undefined}
         type="article"
         crumbs={[{ name: 'Blog', path: '/blog' }, { name: post.title, path: `/blog/${post.id}` }]}
         article={{
@@ -90,7 +92,7 @@ const BlogPost = () => {
             <h1 className="post--title">{post.title}</h1>
             <p className="post--dek">{body ? <Inline text={body.dek} /> : post.excerpt}</p>
             <div className="post--byline">
-              <img src="/img/me/avatar-128.webp" alt="" width={44} height={44} />
+              <Picture base="img/me/avatar" alt="" sizes="44px" width={44} height={44} eager />
               <p>
                 <span className="post--author">Wasif Rehman</span>
                 <span className="post--byline-meta">
@@ -101,16 +103,7 @@ const BlogPost = () => {
           </div>
           {post.cover && (
             <figure className="post--cover">
-              <img
-                src={post.cover.src}
-                srcSet={coverSrcSet(post.cover)}
-                sizes="(min-width: 1000px) 560px, 100vw"
-                alt={post.cover.alt}
-                width={1200}
-                height={675}
-                fetchPriority="high"
-                decoding="async"
-              />
+              <Picture base={imageBase(post.cover.src)} alt={post.cover.alt} sizes={SIZES.postCover} width={1200} height={675} priority />
               <figcaption>{post.cover.credit || 'Image generated for this article'}</figcaption>
             </figure>
           )}
@@ -235,7 +228,7 @@ const BlogPost = () => {
               {project && (
                 <Link to={`/projects/${project.slug}`} className="post--project">
                   <span className="post--project-media">
-                    <ProjectImage src={project.image} alt={project.alt} contain={project.isLogo} sizes="(min-width: 900px) 360px, 100vw" />
+                    <ProjectImage src={project.image} alt={project.alt} contain={project.isLogo} sizes={SIZES.postProject} />
                   </span>
                   <span className="post--project-body">
                     <span className="post--label">The case study</span>
@@ -249,7 +242,7 @@ const BlogPost = () => {
               )}
 
               <div className="post--author-box">
-                <img src="/img/me/avatar.webp" alt="Wasif Rehman" width={96} height={96} loading="lazy" />
+                <Picture base="img/me/avatar" alt="Wasif Rehman" sizes="64px" width={96} height={96} />
                 <div>
                   <p className="post--label">Written by</p>
                   <p className="post--author-name">Wasif Rehman</p>

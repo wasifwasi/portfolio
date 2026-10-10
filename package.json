@@ -23,7 +23,8 @@
     "start": "vite",
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "images": "node scripts/images.mjs"
   },
   "browserslist": {
     "production": [
@@ -39,6 +40,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^5.1.2",
+    "sharp": "^0.34.5",
     "vite": "^7.3.1"
   }
 }

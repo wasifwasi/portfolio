@@ -6,6 +6,7 @@ import SEO from './SEO';
 import ProjectImage from './ProjectImage';
 import BookCallLink from './BookCallLink';
 import { projectsData } from '../data/projects';
+import { SIZES } from '../lib/images';
 
 const projectContent = {
   'freenote-app': {
@@ -904,7 +905,7 @@ const ProjectDetail = () => {
         </motion.header>
 
         <figure className="case--media">
-          <ProjectImage src={project.image} alt={listing?.alt || project.title} contain={project.isLogo} sizes="(min-width: 1000px) 960px, 100vw" eager />
+          <ProjectImage src={project.image} alt={listing?.alt || project.title} contain={project.isLogo} sizes={SIZES.caseStudy} priority />
         </figure>
 
         <dl className="case--facts">
@@ -920,7 +921,7 @@ const ProjectDetail = () => {
 
         {project.extraImage && (
           <figure className="case--media case--media-extra">
-            <ProjectImage src={project.extraImage.src} alt={project.extraImage.caption} sizes="(min-width: 1000px) 960px, 100vw" />
+            <ProjectImage src={project.extraImage.src} alt={project.extraImage.caption} sizes={SIZES.caseStudy} />
             <figcaption>{project.extraImage.caption}</figcaption>
           </figure>
         )}

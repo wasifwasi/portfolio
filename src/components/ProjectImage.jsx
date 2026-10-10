@@ -1,23 +1,17 @@
 import React from "react";
+import Picture from "./Picture";
+import { imageBase } from "../lib/images";
 
-// Project image from public/img. Images in img/work have a 640px version for small screens;
-// older screenshots elsewhere are served as they are.
-const ProjectImage = ({ src, alt, contain = false, sizes = "100vw", eager = false }) => {
-  const responsive = src.startsWith("img/work/") && src.endsWith(".webp");
-  const base = src.replace(/\.webp$/, "");
-  return (
-    <img
-      src={`/${src}`}
-      srcSet={responsive ? `/${base}-640.webp 640w, /${src} 1200w` : undefined}
-      sizes={responsive ? sizes : undefined}
-      alt={alt}
-      width={1200}
-      height={800}
-      loading={eager ? "eager" : "lazy"}
-      decoding="async"
-      className={contain ? "is-contained" : undefined}
-    />
-  );
-};
+// A project's image, given as its path in public/img (e.g. "img/work/pos.webp"). Logos are contained, not cropped.
+const ProjectImage = ({ src, alt, contain = false, sizes = "100vw", eager = false, priority = false }) => (
+  <Picture
+    base={imageBase(src)}
+    alt={alt}
+    sizes={sizes}
+    eager={eager}
+    priority={priority}
+    className={contain ? "is-contained" : undefined}
+  />
+);
 
 export default ProjectImage;

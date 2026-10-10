@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, ExternalLink, MessageCircle } from "lucide-react";
 import SEO from "./SEO";
 import ProjectImage from "./ProjectImage";
+import { SIZES } from "../lib/images";
 import { projectsData } from "../data/projects";
 
 const AI_PATTERN = /\bAI\b|Claude|Gemini|Groq|Anthropic|OpenAI|Whisper/;
@@ -68,7 +69,14 @@ const Projects = () => {
               transition={{ duration: 0.35, delay: Math.min(i, 6) * 0.04 }}
             >
               <Link to={`/projects/${project.slug}`} className="archive--media" tabIndex={-1} aria-hidden="true">
-                <ProjectImage src={project.image} alt={project.alt} contain={project.isLogo} sizes="(min-width: 1000px) 360px, (min-width: 640px) 50vw, 100vw" />
+                <ProjectImage
+                  src={project.image}
+                  alt={project.alt}
+                  contain={project.isLogo}
+                  sizes={SIZES.projectCard}
+                  priority={i === 0}
+                  eager={i < 3}
+                />
               </Link>
               <div className="archive--body">
                 <p className="archive--meta">

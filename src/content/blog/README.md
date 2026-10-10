@@ -26,7 +26,7 @@ export default { ... };        // the article body (loaded only on the post page
 | `keywords` | 5–8 search phrases people actually type, most important first. |
 | `tags` | 3–5 short technology or topic tags shown on the card. |
 | `project` | Slug of the related case study (`umrahflow`, `bpoai`, …) or `null`. |
-| `cover` | `{ src: '/img/blog/<id>.webp', alt: '...' }`, or `null` until a cover is made. Covers are 16:9 WebP files in `public/img/blog`: `<id>.webp` (1200×675) and `<id>-640.webp`. The image is also the post's social preview. Add `credit` only if the cover is not generated; the caption defaults to "Image generated for this article". |
+| `cover` | `{ src: '/img/blog/<id>.webp', alt: '...' }`, or `null` until a cover is made. To add a cover, save it as `public/img/blog/<id>.png` (16:9) and run `npm run images`: it writes the AVIF and WebP sizes and `public/img/blog/og/<id>.jpg`, the post's link preview. Add `credit` only if the cover is not generated; the caption defaults to "Image generated for this article". |
 
 ## Body
 

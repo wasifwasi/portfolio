@@ -40,14 +40,16 @@ Dark theme is the default; light theme is available from the header toggle.
 | Project cards (Projects page, contact prefill, chatbot, pre-rendered pages) | `src/data/projects.js` |
 | Blog posts: one file per post, plus the list in `index.js` (format in the README there) | `src/content/blog/` |
 | Full case study text | `src/components/ProjectDetail.jsx` |
-| Blog covers (16:9, 1200px plus a `-640` version) | `public/img/blog/` |
-| Project images (1200px plus a `-640` version) | `public/img/work/` |
+| Blog covers (16:9) | `public/img/blog/` |
+| Project images (3:2) | `public/img/work/` |
 | Profile photos (hero, about, avatar) | `public/img/me/` |
 | Social preview image (1200×630) | `public/og.jpg` |
 | Favicon (SVG source, PNG and ICO sizes) | `public/favicon.svg`, `favicon.ico`, `favicon.png`, `apple-touch-icon.png`, `logo192.png`, `logo512.png` |
 | Accent colour | `--accent-h` / `--accent-s` at the top of `src/index.css` |
 
 Project photos are licensed Unsplash images with a light colour grade, or real screenshots of the live apps. Blog covers are generated images (Gemini), captioned as such on each post.
+
+**Images load as AVIF** (about a third the size of WebP) with a WebP fallback, each in a few widths so phones get a smaller file. To add or replace a photo, put its largest version in the folder (`public/img/work/<name>.png`, `.jpg` or `.webp`, 1200px wide; blog covers 16:9 as `public/img/blog/<post id>.png`) and run `npm run images`, which writes the missing AVIF and WebP sizes (and the link-preview JPEG for blog covers). The build stops if a size is missing. Each page's main image is preloaded from the HTML, so it starts downloading before the JavaScript runs.
 
 ## Booking
 
@@ -74,6 +76,7 @@ The dev server also runs the `api/` functions (chat, availability, playbook), re
 |---------|-------------|
 | `npm start` / `npm run dev` | Start the Vite development server |
 | `npm run build` | Build for production into `dist/`, including the static pages |
+| `npm run images` | Make the AVIF and WebP sizes for new or replaced photos in `public/img` |
 | `npm run preview` | Preview the production build locally (note: Vite's preview always serves the home HTML; `npx serve dist` matches Vercel's clean URLs) |
 
 ## Project Structure
@@ -88,12 +91,14 @@ portfolio/
 ├── public/                   # Images, favicons, og.jpg, llms.txt, robots.txt
 ├── scripts/
 │   ├── static-pages.js       # Build step: one static HTML file per route, plus sitemap.xml
-│   └── blog-meta.js          # Lets the blog page load post summaries without the full text
+│   ├── blog-meta.js          # Lets the blog page load post summaries without the full text
+│   └── images.mjs            # npm run images: AVIF and WebP sizes for every photo
 ├── src/
 │   ├── data/                 # site.js, projects.js — edit content here
 │   ├── content/blog/         # One file per blog post, plus index.js and the format README
 │   ├── lib/booking.js        # Calendly loader, free-time feed, "open booking" event
 │   ├── lib/blog.js           # Post list, categories and related posts for the app
+│   ├── lib/images.js         # Image widths, file names and display sizes
 │   ├── components/
 │   │   ├── Header.jsx        # Nav, "Book a call" button, theme toggle
 │   │   ├── Home.jsx          # Hero
@@ -106,7 +111,7 @@ portfolio/
 │   │   ├── BookingModal.jsx  # On-site booking box
 │   │   ├── Projects.jsx      # All projects page
 │   │   ├── ProjectDetail.jsx # Case study pages (content + layout)
-│   │   ├── Picture.jsx / ProjectImage.jsx  # Responsive project images
+│   │   ├── Picture.jsx / ProjectImage.jsx  # Photos: AVIF with WebP fallback, several widths
 │   │   ├── Blog.jsx          # Blog page: featured post, topic filters, cards
 │   │   ├── BlogPost.jsx      # A blog post
 │   │   ├── BlogBlocks.jsx    # Post building blocks: tables, callouts, steps, diagrams, code

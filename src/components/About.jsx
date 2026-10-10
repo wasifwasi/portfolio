@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Linkedin, CalendarClock } from "lucide-react";
 import BookCallLink from "./BookCallLink";
+import Picture from "./Picture";
 import { CONTACT } from "../data/site";
 
 const reveal = {
@@ -63,15 +64,12 @@ const About = () => {
           </motion.div>
 
           <motion.figure className="bio--photo" {...reveal}>
-            <img
-              src="/img/me/about.webp"
-              srcSet="/img/me/about-480.webp 480w, /img/me/about.webp 960w"
-              sizes="(min-width: 900px) 380px, 100vw"
+            <Picture
+              base="img/me/about"
               alt="Wasif Rehman outdoors in the hills"
+              sizes="(min-width: 900px) 380px, 100vw"
               width={480}
               height={600}
-              loading="lazy"
-              decoding="async"
             />
           </motion.figure>
         </div>

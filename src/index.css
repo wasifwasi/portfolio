@@ -108,6 +108,11 @@ img {
   height: auto;
 }
 
+/* <picture> only chooses the file (AVIF or WebP); layout styles apply to the <img> inside */
+picture {
+  display: contents;
+}
+
 /*========== Variables Dark theme ==========*/
 body.dark-theme {
   --first-color: hsl(var(--accent-h), var(--accent-s), 63%);

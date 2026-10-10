@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X, Sun, Moon, CalendarClock } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import BookCallLink from "./BookCallLink";
+import Picture from "./Picture";
 
 const SECTION_LINKS = [
   { hash: "#work", label: "Work" },
@@ -192,7 +193,7 @@ const Header = () => {
       <nav className="nav container">
         <Link to="/" className="nav--logo">
           <span className="nav--logo-circle">
-            <img src="/img/me/avatar-128.webp" alt="" width={32} height={32} />
+            <Picture base="img/me/avatar" alt="" sizes="32px" width={32} height={32} eager />
           </span>
           <span className="nav--logo-name">Wasif Rehman</span>
         </Link>

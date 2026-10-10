@@ -4,23 +4,15 @@ import { motion } from 'framer-motion';
 import { ArrowRight, CalendarClock } from 'lucide-react';
 import SEO from './SEO';
 import BookCallLink from './BookCallLink';
-import { posts, categories, coverSrcSet, readTime } from '../lib/blog';
+import Picture from './Picture';
+import { posts, categories, readTime } from '../lib/blog';
+import { imageBase, SIZES } from '../lib/images';
 
 const PAGE_SIZE = 9;
 
-const Cover = ({ post, sizes, eager = false }) =>
+const Cover = ({ post, sizes, priority = false, eager = false }) =>
   post.cover ? (
-    <img
-      src={post.cover.src}
-      srcSet={coverSrcSet(post.cover)}
-      sizes={sizes}
-      alt=""
-      width={1200}
-      height={675}
-      loading={eager ? 'eager' : 'lazy'}
-      fetchPriority={eager ? 'high' : undefined}
-      decoding="async"
-    />
+    <Picture base={imageBase(post.cover.src)} alt="" sizes={sizes} width={1200} height={675} priority={priority} eager={eager} />
   ) : (
     <span className="journal--cover-blank" />
   );
@@ -65,7 +57,7 @@ const Blog = () => {
             transition={{ duration: 0.4 }}
           >
             <Link to={`/blog/${featured.id}`} className="journal--featured-media" tabIndex={-1} aria-hidden="true">
-              <Cover post={featured} sizes="(min-width: 900px) 600px, 100vw" eager />
+              <Cover post={featured} sizes={SIZES.blogFeatured} priority />
             </Link>
             <div className="journal--featured-body">
               <p className="journal--meta">
@@ -118,7 +110,7 @@ const Blog = () => {
               transition={{ duration: 0.35, delay: Math.min(i % PAGE_SIZE, 6) * 0.04 }}
             >
               <Link to={`/blog/${post.id}`} className="journal--media" tabIndex={-1} aria-hidden="true">
-                <Cover post={post} sizes="(min-width: 1000px) 360px, (min-width: 640px) 50vw, 100vw" />
+                <Cover post={post} sizes={SIZES.blogCard} eager={i < 3} />
               </Link>
               <div className="journal--body">
                 <p className="journal--meta">
