@@ -57,7 +57,7 @@ Every "Book a call" button opens the on-site booking box (`BookingModal.jsx`). I
 
 ## Search and Link Previews
 
-The app is client-rendered, so the build also writes a static HTML file for every route (`scripts/static-pages.js`, a Vite plugin): home, projects, every case study, blog and every post. Each file has its own title, description, canonical URL and social tags, plus the page's text for crawlers. Blog posts get their full text plus Article, FAQ and breadcrumb structured data, and the build writes `sitemap.xml` from the same list of pages. `"cleanUrls": true` in `vercel.json` serves `/projects/umrahflow` from `projects/umrahflow.html`; the React app takes over once it loads.
+The app is client-rendered, so the build also writes a static HTML file for every route (`scripts/static-pages.js`, a Vite plugin): home, projects, every case study, blog and every post. Each file has its own title, description, canonical URL and social tags, plus the page's text for crawlers. Blog posts get their full text plus Article, FAQ and breadcrumb structured data, and the build writes `sitemap.xml` from the same list of pages. `"cleanUrls": true` in `vercel.json` serves `/projects/umrahflow` from `projects/umrahflow.html`; the React app takes over once it loads. Every route needs its own file (the private `/playbook` page gets one too, marked noindex); any other address gets `404.html`, which loads the app's "Page not found" page with a real 404 status.
 
 ## Getting Started
 

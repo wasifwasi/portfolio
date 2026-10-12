@@ -31,6 +31,7 @@ function renderPage(template, page) {
   const url = `${SITE_URL}${page.path}`
   let html = template.replace(/<title>[^<]*<\/title>/, `<title>${esc(page.title)}</title>`)
   html = setAttr(html, 'meta name="description"', 'content', page.description)
+  html = setAttr(html, 'meta name="robots"', 'content', page.noindex ? 'noindex, nofollow' : 'index, follow')
   html = setAttr(html, 'link rel="canonical"', 'href', url)
   html = setAttr(html, 'meta property="og:type"', 'content', page.type || 'website')
   html = setAttr(html, 'meta property="og:url"', 'content', url)
@@ -259,12 +260,31 @@ ${about.length ? `<h2>Posts about ${esc(p.title)}</h2><ul>${about.map((post) => 
   })
 
   for (const post of posts) pages.push(postPage(post))
+
+  // Private page: the app shows the password box; the questions come from api/playbook.js
+  pages.push({
+    path: '/playbook',
+    title: 'Interview Playbook | Wasif Rehman',
+    description: 'Private interview preparation notes.',
+    noindex: true,
+    body: '<h1>Interview playbook</h1><p>This page is private.</p>',
+  })
+
+  // Vercel serves 404.html, with a 404 status, for any address without its own file;
+  // the app then shows its "Page not found" page (or the missing project or post message)
+  pages.push({
+    path: '/404',
+    title: 'Page Not Found | Wasif Rehman',
+    description: "The page you're looking for doesn't exist.",
+    noindex: true,
+    body: `<h1>Page not found</h1><p>${link('/', 'Home')} · ${link('/projects', 'Projects')} · ${link('/blog', 'Blog')}</p>`,
+  })
   return pages
 }
 
 function sitemap(pages, today) {
   const priority = (p) => (p === '/' ? '1.0' : p === '/projects' || p === '/blog' ? '0.9' : p.startsWith('/projects/') ? '0.8' : '0.7')
-  const urls = pages.map(
+  const urls = pages.filter((page) => !page.noindex).map(
     (page) => `  <url>\n    <loc>${SITE_URL}${page.path}</loc>\n    <lastmod>${page.lastmod || today}</lastmod>\n    <priority>${priority(page.path)}</priority>\n  </url>`
   )
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join('\n')}\n</urlset>\n`
